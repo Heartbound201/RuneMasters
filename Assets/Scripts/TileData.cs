@@ -6,7 +6,7 @@ using UnityEngine;
 public class TileData : ISerializable
 {
     public Board board;
-    public List<Entity> content = new List<Entity>();
+    public List<Unit> content = new List<Unit>();
     public bool isPassable;
     public Tile tile;
 
@@ -18,11 +18,11 @@ public class TileData : ISerializable
         }
     }
 
-    public Entity Entity
+    public Unit Unit
     {
         get
         {
-            return content.OfType<Entity>().FirstOrDefault();
+            return content.OfType<Unit>().FirstOrDefault();
         }
     }
 

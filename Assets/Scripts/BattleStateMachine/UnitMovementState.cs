@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
-public class UnitMovementState : BaseState
+public class UnitMovementState : State
 {
     protected override void AddListeners()
     {
@@ -19,11 +19,17 @@ public class UnitMovementState : BaseState
 
     private void SelectTile(HexTile<TileData> selectedTile)
     {
-        HexTile<TileData> origin = owner.selectedEntity.tile;
+        HexTile<TileData> origin = owner.selectedUnit.standingTile;
         List<HexTile<TileData>> line = owner.board.hexMap.GetTiles.Line(origin.Position, selectedTile.Position, false);
         Debug.LogFormat("from {0} to {1}. {2}", origin.Position, selectedTile.Position, line);
-        owner.selectedEntity.MoveTo(line);
-        owner.ChangeState(new UnitSelectionState());
+        StartCoroutine(Sequence(line));
+
+        owner.ChangeState<UnitSelectionState>(); //TODO must be a coroutine aswell
     }
-    
+
+    IEnumerator Sequence(List<HexTile<TileData>> line)
+    {
+        yield return StartCoroutine(owner.selectedUnit.Move(line)); // coroutine
+        owner.ChangeState<UnitSelectionState>();
+    }
 }

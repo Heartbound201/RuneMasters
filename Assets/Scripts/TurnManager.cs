@@ -1,14 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class TurnManager
+public class TurnManager : MonoBehaviour
 {
 
     private Turn _currentTurn;
     public Turn currentTurn;
 
-    public List<Entity> units = new List<Entity>();
-    public List<Entity> enemies = new List<Entity>();
+    public List<Unit> units = new List<Unit>();
+    public List<Unit> enemies = new List<Unit>();
     
     public enum Turn
     {

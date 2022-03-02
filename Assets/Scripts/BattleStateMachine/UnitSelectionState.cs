@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
-public class UnitSelectionState : BaseState
+public class UnitSelectionState : State
 {
-    public override void EnterState()
+    public override void Enter()
     {
-        base.EnterState();
-        owner.selectedEntity = null;
+        base.Enter();
+        owner.selectedUnit = null;
         // switch (owner.turnManager.currentTurn)
         // {
         //     case TurnManager.Turn.Player:
@@ -37,20 +37,19 @@ public class UnitSelectionState : BaseState
     public void SelectUnitByPosition(HexTile<TileData> selectedTile)
     {
         // if(owner.turnManager.currentTurn == TurnManager.Turn.Enemy) return;
-        
         if (selectedTile != null)
         {
             Debug.Log("clicked tile " + selectedTile);
-            if (selectedTile.Data.Entity != null)
+            if (selectedTile.Data.Unit != null)
             {
-                Debug.Log("clicked entity " + selectedTile.Data.Entity);
-                if (selectedTile.Data.Entity.hasActed)
+                Debug.Log("clicked entity " + selectedTile.Data.Unit);
+                if (selectedTile.Data.Unit.hasActed)
                 {
                     Debug.Log("clicked entity has already acted this turn");
                     return;
                 }
-                owner.selectedEntity = selectedTile.Data.Entity;
-                owner.ChangeState(new UnitMovementState());
+                owner.selectedUnit = selectedTile.Data.Unit;
+                owner.ChangeState<UnitMovementState>();
             }
         }
     }

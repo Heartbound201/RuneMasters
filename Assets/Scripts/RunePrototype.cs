@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunePrototype : MonoBehaviour
+[CreateAssetMenu(fileName = "New Rune", menuName = "Create Rune")]
+public class RunePrototype : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Sprite icon;
+    public string abilityName;
+    public string abilityDescription;
+    public List<Vector3> steps = new List<Vector3>();
 }

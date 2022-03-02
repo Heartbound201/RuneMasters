@@ -34,7 +34,7 @@ public class Board : MonoBehaviour
     public AudioClip tileSelectionSfx;
     public AudioClip unitPlacementSfx;
 
-    private void Start()
+    private void Awake()
     {
         hexMouse = gameObject.AddComponent<HexMouse>();
     }
@@ -45,7 +45,6 @@ public class Board : MonoBehaviour
         Vector3Int mouseTilePosition = hexMouse.TileCoord;
         HexTile<TileData> t = hexMap.TilesByPosition[mouseTilePosition];
         HoverTile(t);
-        
         if (Input.GetMouseButtonDown(0))
         {
             SelectTile(t);
@@ -56,36 +55,33 @@ public class Board : MonoBehaviour
     public void HoverTile(HexTile<TileData> tile)
     {
         if(tileHover != null && tileHover != tile)
+        {
             tileHover.Data.tile.renderer.material = tileHover.Data.tile.originalMat;
-        
-        if(tileHover == tileSelection) return; 
-        
+        }
+
         tileHover = tile;
-        
+
+        if(tileHover == tileSelection) return;
         tileHover.Data.tile.renderer.material = tileHoverMat;
     }
     public void SelectTile(HexTile<TileData> tile)
     {
         if(tileSelection != null && tileSelection != tile)
+        {
             tileSelection.Data.tile.renderer.material = tileSelection.Data.tile.originalMat;
-        
+        }
         tileSelection = tile;
         
         tileSelection.Data.tile.renderer.material = tileSelectionMat;
     }
-    public void GenerateBoard()
-    {
-        StartCoroutine(GenerateBoardAsync());
-        SetCamera();
-    }
-
+    
     public void SpawnAllyInRandomPosition()
     {
         HexTile<TileData> hexTile;
         do
         {
             hexTile = hexMap.Tiles[Random.Range(0, hexMap.Tiles.Length)];
-        } while (hexTile.Data.Entity != null);
+        } while (hexTile.Data.Unit != null);
 
         SpawnEntity(genericAllyPrefab, hexTile.Position);
     }
@@ -96,7 +92,7 @@ public class Board : MonoBehaviour
         do
         {
             hexTile = hexMap.Tiles[Random.Range(0, hexMap.Tiles.Length)];
-        } while (hexTile.Data.Entity != null);
+        } while (hexTile.Data.Unit != null);
 
         SpawnEntity(genericEnemyPrefab, hexTile.Position);
     }
@@ -115,13 +111,13 @@ public class Board : MonoBehaviour
     {
         HexTile<TileData> hexTile = hexMap.TilesByPosition[pos];
         GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
-        Entity entity = o.GetComponent<Entity>();
-        entity.tile = hexTile;
-        hexTile.Data.content.Add(entity); 
+        Unit unit = o.GetComponent<Unit>();
+        unit.standingTile = hexTile;
+        hexTile.Data.content.Add(unit); 
         
     }
 
-    private IEnumerator GenerateBoardAsync()
+    public IEnumerator GenerateBoard()
     {
         hexMap = new HexMap<TileData>(HexMapBuilder.CreateHexagonalShapedMap(radius), null);                        
         hexMouse.Init(hexMap);
@@ -141,7 +137,7 @@ public class Board : MonoBehaviour
     }
     
 
-    private void SetCamera()
+    public void SetCamera()
     {
         //put the following at the end of the start method (or in its own method called after map creation)
         Camera.main.transform.position = new Vector3(hexMap.MapSizeData.center.x, 4, hexMap.MapSizeData.center.z); // centers the camera and moves it 5 units above the XZ-plane

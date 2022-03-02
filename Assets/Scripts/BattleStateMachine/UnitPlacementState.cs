@@ -2,16 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitPlacementState : BaseState
+public class UnitPlacementState : State
 {
-    public override void EnterState()
+    public override void Enter ()
     {
-        base.EnterState();
-        owner.board.SpawnAllyInRandomPosition();
-        owner.board.SpawnAllyInRandomPosition();
-        owner.board.SpawnAllyInRandomPosition();
-        owner.board.SpawnEnemyInRandomPosition();
-        owner.ChangeState(new UnitSelectionState());
+        base.Enter ();
+        StartCoroutine(Init());
+    }
+    IEnumerator Init ()
+    {
+        
+        yield return Board.GenerateBoard();
+        Board.SetCamera();
+        Board.SpawnAllyInRandomPosition();
+        Board.SpawnAllyInRandomPosition();
+        Board.SpawnAllyInRandomPosition();
+        Board.SpawnEnemyInRandomPosition();
+        owner.ChangeState<UnitSelectionState>();
     }
 
 }

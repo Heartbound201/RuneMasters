@@ -1,0 +1,25 @@
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.Serialization;
+    using Wunderwunsch.HexMapLibrary.Generic;
+
+    public class BattleStateMachine : StateMachine
+    {
+        public Board board;
+        public TurnManager turnManager;
+        public LevelData levelData;
+        
+        public List<Unit> enemies = new List<Unit>();
+        public List<Unit> units = new List<Unit>();
+
+        public Unit selectedUnit;
+        public HexTile<TileData> selectedTile;
+
+        private void Start()
+        {
+            Debug.Log("Start game");
+            // Start game in menu state
+            ChangeState<UnitPlacementState>();
+        }
+        
+    }

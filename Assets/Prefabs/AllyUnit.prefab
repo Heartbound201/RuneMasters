@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74648d3602b468785e733a9b5f54d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPassable: 0
+  health: 10
+  alliance: 1
+  size: 1
+  isPassable: 1
   hasActed: 0
-  items: []
-  abilities: []
+  runes: []
 --- !u!1 &8254965180053802087
 GameObject:
   m_ObjectHideFlags: 0

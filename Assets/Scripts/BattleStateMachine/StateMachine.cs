@@ -1,54 +1,42 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Wunderwunsch.HexMapLibrary.Generic;
+﻿using UnityEngine;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour 
 {
-    // Reference to currently operating state.
-    private BaseState currentState;
-
-    public Board board;
-    public TurnManager turnManager;
-    public List<Entity> enemies = new List<Entity>();
-    public List<Entity> units = new List<Entity>();
-
-    public Entity selectedEntity;
-    public HexTile<TileData> selectedTile;
-
-    private void Start()
+    public virtual State CurrentState
     {
-        // Start game in menu state
-        board.GenerateBoard();
-        ChangeState(new UnitPlacementState());
+        get { return _currentState; }
+        set { Transition (value); }
     }
-
-    private void Update()
+    protected State _currentState;
+    protected bool _inTransition;
+    public virtual T GetState<T> () where T : State
     {
-        // If we have reference to state, we should update it!
-        if (currentState != null)
-        {
-            currentState.UpdateState();
-        }
+        T target = GetComponent<T>();
+        if (target == null)
+            target = gameObject.AddComponent<T>();
+        return target;
     }
-
-    public void ChangeState(BaseState newState)
+  
+    public virtual void ChangeState<T> () where T : State
     {
-        // If we currently have state, we need to destroy it!
-        if (currentState != null)
+        CurrentState = GetState<T>();
+    }
+    protected virtual void Transition (State value)
+    {
+        if (_currentState == value || _inTransition)
+            return;
+        _inTransition = true;
+    
+        if (_currentState != null)
+            _currentState.Exit();
+    
+        _currentState = value;
+        
+        if (_currentState != null)
         {
-            currentState.ExitState();
+            _currentState.Enter();
         }
 
-        // Swap reference
-        currentState = newState;
-        Debug.Log("State changed to " + currentState);
-
-        // If we passed reference to new state, we should assign owner of that state and initialize it!
-        // If we decided to pass null as new state, nothing will happened.
-        if (currentState != null)
-        {
-            currentState.owner = this;
-            currentState.EnterState();
-        }
+        _inTransition = false;
     }
 }
