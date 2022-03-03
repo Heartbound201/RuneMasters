@@ -7,4 +7,5 @@ public class AbilityPrototype : ScriptableObject
 {
     public string abilityName;
     public string abilityDescription;
+    public GameObject abilityPrefab;
 }

@@ -10,16 +10,11 @@ public class UnitSelectionState : State
     {
         base.Enter();
         owner.selectedUnit = null;
-        // switch (owner.turnManager.currentTurn)
-        // {
-        //     case TurnManager.Turn.Player:
-        //         break;
-        //     case TurnManager.Turn.Enemy:
-        //         SelectEnemyByOrder();
-        //         break;
-        //     default:
-        //         throw new ArgumentOutOfRangeException();
-        // }
+        if(TurnManager.IsOver()) TurnManager.Switch();
+        if (TurnManager.currentTurn == TurnManager.Turn.Enemy)
+        {
+            SelectEnemyByOrder();
+        }
     }
 
     protected override void AddListeners()
@@ -36,7 +31,8 @@ public class UnitSelectionState : State
 
     public void SelectUnitByPosition(HexTile<TileData> selectedTile)
     {
-        // if(owner.turnManager.currentTurn == TurnManager.Turn.Enemy) return;
+        if(owner.turnManager.currentTurn == TurnManager.Turn.Enemy) return;
+        
         if (selectedTile != null)
         {
             Debug.Log("clicked tile " + selectedTile);
@@ -56,6 +52,7 @@ public class UnitSelectionState : State
 
     public void SelectEnemyByOrder()
     {
-        
+        owner.selectedUnit = TurnManager.ServeEnemy();
+        owner.ChangeState<AIActionState>();
     }
 }

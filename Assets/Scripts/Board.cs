@@ -17,7 +17,6 @@ public class Board : MonoBehaviour
     public TileCollection tileCollection;
 
     public HexMap<TileData> hexMap;
-    public Player player;
     public GameObject genericAllyPrefab;
     public GameObject genericEnemyPrefab;
 
@@ -45,6 +44,7 @@ public class Board : MonoBehaviour
         Vector3Int mouseTilePosition = hexMouse.TileCoord;
         HexTile<TileData> t = hexMap.TilesByPosition[mouseTilePosition];
         HoverTile(t);
+        // 9 15 22 67
         if (Input.GetMouseButtonDown(0))
         {
             SelectTile(t);
@@ -60,7 +60,8 @@ public class Board : MonoBehaviour
         }
 
         tileHover = tile;
-
+        Debug.Log("Hovering " + tile.Index);
+        
         if(tileHover == tileSelection) return;
         tileHover.Data.tile.renderer.material = tileHoverMat;
     }
@@ -84,6 +85,18 @@ public class Board : MonoBehaviour
         } while (hexTile.Data.Unit != null);
 
         SpawnEntity(genericAllyPrefab, hexTile.Position);
+    }
+    
+    public void SpawnAllyAtIndex(int index)
+    {
+        HexTile<TileData> hexTile = hexMap.Tiles[index];
+        SpawnEntity(genericAllyPrefab, hexTile.Position);
+    }
+    
+    public void SpawnEnemyAtIndex(int index)
+    {
+        HexTile<TileData> hexTile = hexMap.Tiles[index];
+        SpawnEntity(genericEnemyPrefab, hexTile.Position);
     }
     
     public void SpawnEnemyInRandomPosition()

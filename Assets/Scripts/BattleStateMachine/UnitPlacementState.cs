@@ -14,10 +14,12 @@ public class UnitPlacementState : State
         
         yield return Board.GenerateBoard();
         Board.SetCamera();
-        Board.SpawnAllyInRandomPosition();
-        Board.SpawnAllyInRandomPosition();
-        Board.SpawnAllyInRandomPosition();
-        Board.SpawnEnemyInRandomPosition();
+        
+        Board.SpawnEnemyAtIndex(67);
+        Board.SpawnAllyAtIndex(9);
+        Board.SpawnAllyAtIndex(15);
+        Board.SpawnAllyAtIndex(22);
+        
         owner.ChangeState<UnitSelectionState>();
     }
 

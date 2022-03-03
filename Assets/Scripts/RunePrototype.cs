@@ -6,7 +6,8 @@ using UnityEngine;
 public class RunePrototype : ScriptableObject
 {
     public Sprite icon;
-    public string abilityName;
-    public string abilityDescription;
+    public string runeName;
+    public string runeDescription;
     public List<Vector3> steps = new List<Vector3>();
+    public GameObject runePrefab;
 }

@@ -6,12 +6,13 @@ using Wunderwunsch.HexMapLibrary.Generic;
 public class Unit : MonoBehaviour
 {
     public int health;
+    public int movement;
+    public int movementLeft;
     public Alliance alliance;
     public int size;
-    
-    public HexTile<TileData> standingTile;
     public bool isPassable;
     public bool hasActed;
+    public HexTile<TileData> standingTile;
     public List<RunePrototype> runes = new List<RunePrototype>();
     
 

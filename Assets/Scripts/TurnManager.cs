@@ -26,15 +26,18 @@ public class TurnManager : MonoBehaviour
         switch (currentTurn)
         {
             case TurnManager.Turn.Player:
-                
+                return units.TrueForAll(u => u.movementLeft <= 0);
                 break;
             case TurnManager.Turn.Enemy:
-                
+                return enemies.TrueForAll(u => u.hasActed);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
 
-        return false;
+    public Unit ServeEnemy()
+    {
+        return enemies.Find(u => !u.hasActed);
     }
 }
