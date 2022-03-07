@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wunderwunsch.HexMapLibrary.Generic;
 
 public class Ability : MonoBehaviour
 {
@@ -18,5 +19,10 @@ public class Ability : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Execute(Unit actor, HexTile<Tile> targetTile)
+    {
+        throw new System.NotImplementedException();
     }
 }

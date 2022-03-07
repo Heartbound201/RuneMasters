@@ -9,42 +9,44 @@ public class UnitSelectionState : State
     public override void Enter()
     {
         base.Enter();
-        owner.selectedUnit = null;
-        if(TurnManager.IsOver()) TurnManager.Switch();
-        if (TurnManager.currentTurn == TurnManager.Turn.Enemy)
-        {
-            SelectEnemyByOrder();
-        }
+        StartCoroutine(ChangeCurrentTurn());
     }
 
     protected override void AddListeners()
     {
         base.AddListeners();
-        Board.SelectTileEvent += SelectUnitByPosition;
+        // Board.SelectTileEvent += SelectUnitByPosition;
     }
 
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
-        Board.SelectTileEvent -= SelectUnitByPosition;
+        // Board.SelectTileEvent -= SelectUnitByPosition;
     }
 
-    public void SelectUnitByPosition(HexTile<TileData> selectedTile)
+    public IEnumerator ChangeCurrentTurn()
+    {
+        TurnManager.Round().MoveNext();
+        yield return null;
+        owner.ChangeState<ActionSelectionState>();
+    }
+
+    public void SelectUnitByPosition(HexTile<Tile> selectedTile)
     {
         if(owner.turnManager.currentTurn == TurnManager.Turn.Enemy) return;
         
         if (selectedTile != null)
         {
             Debug.Log("clicked tile " + selectedTile);
-            if (selectedTile.Data.Unit != null)
+            if (selectedTile.Data.unit != null)
             {
-                Debug.Log("clicked entity " + selectedTile.Data.Unit);
-                if (selectedTile.Data.Unit.hasActed)
+                Debug.Log("clicked entity " + selectedTile.Data.unit);
+                if (selectedTile.Data.unit.hasActed)
                 {
                     Debug.Log("clicked entity has already acted this turn");
                     return;
                 }
-                owner.selectedUnit = selectedTile.Data.Unit;
+                owner.ActingUnit = selectedTile.Data.unit;
                 owner.ChangeState<UnitMovementState>();
             }
         }
@@ -52,7 +54,7 @@ public class UnitSelectionState : State
 
     public void SelectEnemyByOrder()
     {
-        owner.selectedUnit = TurnManager.ServeEnemy();
+        owner.ActingUnit = TurnManager.ServeEnemy();
         owner.ChangeState<AIActionState>();
     }
 }

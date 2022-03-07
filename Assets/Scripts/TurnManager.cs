@@ -1,19 +1,33 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-
     private Turn _currentTurn;
     public Turn currentTurn;
 
     public List<Unit> units = new List<Unit>();
     public List<Unit> enemies = new List<Unit>();
-    
+
     public enum Turn
     {
-        Player, Enemy
+        Player,
+        Enemy
+    }
+
+    public IEnumerator Round()
+    {
+        while (true)
+        {
+            if (IsOver())
+            {
+                Switch();
+            }
+
+            yield return currentTurn;
+        }
     }
 
     public void Switch()
@@ -26,7 +40,7 @@ public class TurnManager : MonoBehaviour
         switch (currentTurn)
         {
             case TurnManager.Turn.Player:
-                return units.TrueForAll(u => u.movementLeft <= 0);
+                return units.TrueForAll(u => u.hasActed);
                 break;
             case TurnManager.Turn.Enemy:
                 return enemies.TrueForAll(u => u.hasActed);

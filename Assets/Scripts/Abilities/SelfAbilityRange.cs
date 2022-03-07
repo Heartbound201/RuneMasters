@@ -3,7 +3,7 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public class SelfAbilityRange : AbilityRange
 {
-    public override List<HexTile<TileData>> GetTilesInRange(Board board)
+    public override List<HexTile<Tile>> GetTilesInRange(Board board)
     {
         throw new System.NotImplementedException();
     }

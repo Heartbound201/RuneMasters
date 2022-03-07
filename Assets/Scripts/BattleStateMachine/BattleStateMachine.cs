@@ -8,12 +8,15 @@
         public Board board;
         public TurnManager turnManager;
         public LevelData levelData;
-        
-        public List<Unit> enemies = new List<Unit>();
-        public List<Unit> units = new List<Unit>();
+        public AIController aiController;
 
-        public Unit selectedUnit;
-        public HexTile<TileData> selectedTile;
+        public Party party;
+        public List<Unit> enemies = new List<Unit>();
+
+        public Unit ActingUnit;
+        public HexTile<Tile> SelectedTile;
+        public Rune SelectedRune;
+        public Ability SelectedAbility;
 
         private void Start()
         {

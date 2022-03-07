@@ -5,26 +5,29 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public class Unit : MonoBehaviour
 {
-    public int health;
+    public string name;
     public int movement;
-    public int movementLeft;
+    public int movementMax;
     public Alliance alliance;
-    public int size;
     public bool isPassable;
     public bool hasActed;
-    public HexTile<TileData> standingTile;
+    public HexTile<Tile> standingTile;
     public List<RunePrototype> runes = new List<RunePrototype>();
-    
 
-    public IEnumerator Move(List<HexTile<TileData>> vector3Ints)
+
+    public bool ExpandSearch(Tile from, Tile to)
     {
-        foreach (HexTile<TileData> vector3Int in vector3Ints)
+        return (from._distance + 1) <= movement;
+    }
+    
+    public IEnumerator Move(List<HexTile<Tile>> tiles)
+    {
+        foreach (HexTile<Tile> tile in tiles)
         {
-            Debug.Log("move to " + vector3Int.CartesianPosition);
-            transform.position = vector3Int.CartesianPosition;
-            standingTile.Data.content.Remove(this);
-            standingTile = vector3Int;
-            vector3Int.Data.content.Add(this);
+            transform.position = tile.CartesianPosition;
+            standingTile.Data.unit = null;
+            standingTile = tile;
+            tile.Data.unit = this;
             yield return new WaitForSeconds(0.5f);
         }
     }
