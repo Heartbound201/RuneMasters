@@ -1,3 +1,3 @@
-class AIActionState : State
+public class AIActionState : State
 {
 }

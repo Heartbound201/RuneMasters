@@ -77,55 +77,11 @@ public class Board : MonoBehaviour
         tileSelection.Data.Select(true);
     }
 
-    public void TestRune()
-    {
-        
-
-        List<TileDirection> steps = new List<TileDirection>
-        {
-            TileDirection.TopRight,
-            TileDirection.TopRight,
-            TileDirection.TopRight
-        };
-        List<HexTile<Tile>> runeTiles = GetRuneTiles(steps);
-        StartCoroutine(HighlightTiles(runeTiles));
-
-        TileDirection d = TileDirection.Left;
-        d.Clockwise();
-        List<TileDirection> steps1 = steps.Select(direction => d.Clockwise()).ToList();
-
-        foreach (HexTile<Tile> runeTile in runeTiles)
-        {
-            runeTile.Data.Highlight(false);
-        }
-        
-        
-        StartCoroutine(HighlightTiles(GetRuneTiles(steps1)));
-    }
-    
-    public List<HexTile<Tile>> GetRuneTiles(List<TileDirection> steps)
-    {
-        HexTile<Tile> current = tileSelection;
-
-        List<HexTile<Tile>> runeTiles = new List<HexTile<Tile>>();
-
-        foreach (TileDirection step in steps)
-        {
-            HexTile<Tile> nextTile =
-                hexMap.TilesByPosition[current.Position + HexGrid.TileDirectionVectors[(int) step]];
-            runeTiles.Add(nextTile);
-            current = nextTile;
-        }
-
-        return runeTiles;
-    }
-
-    public IEnumerator HighlightTiles(List<HexTile<Tile>> tiles)
+    public void HighlightTiles(List<HexTile<Tile>> tiles)
     {
         foreach (HexTile<Tile> tile in tiles)
         {
             tile.Data.Highlight(true);
-            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -140,16 +96,16 @@ public class Board : MonoBehaviour
         SpawnEntity(genericAllyPrefab, hexTile.Position);
     }
 
-    public void SpawnAllyAtIndex(int index)
+    public Unit SpawnAllyAtIndex(int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
-        SpawnEntity(genericAllyPrefab, hexTile.Position);
+        return SpawnEntity(genericAllyPrefab, hexTile.Position);
     }
 
-    public void SpawnEnemyAtIndex(int index)
+    public Unit SpawnEnemyAtIndex(int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
-        SpawnEntity(genericEnemyPrefab, hexTile.Position);
+        return SpawnEntity(genericEnemyPrefab, hexTile.Position);
     }
 
     public void SpawnEnemyInRandomPosition()
@@ -173,13 +129,14 @@ public class Board : MonoBehaviour
         SpawnEntity(genericEnemyPrefab, pos);
     }
 
-    public void SpawnEntity(GameObject obj, Vector3Int pos)
+    public Unit SpawnEntity(GameObject obj, Vector3Int pos)
     {
         HexTile<Tile> hexTile = hexMap.TilesByPosition[pos];
         GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
         Unit unit = o.GetComponent<Unit>();
         unit.standingTile = hexTile;
         hexTile.Data.unit = unit;
+        return unit;
     }
 
     public IEnumerator GenerateBoard()

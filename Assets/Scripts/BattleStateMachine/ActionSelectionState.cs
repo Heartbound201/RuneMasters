@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class ActionSelectionState : State
 {
-    public GameObject hud;
-    
     public override void Enter()
     {
         base.Enter();
@@ -23,12 +21,12 @@ public class ActionSelectionState : State
     
     protected void OpenMenu()
     {
-        if(hud == null)
+        if(owner.turnMenuController == null)
         {
             Debug.LogError("There's no Menu Gameobject on ActionSelectionState.");
         }
         else
-            hud.SetActive(true);
+            owner.turnMenuController.Load();
     }
     protected override void AddListeners()
     {

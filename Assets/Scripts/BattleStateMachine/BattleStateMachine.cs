@@ -15,8 +15,10 @@
 
         public Unit ActingUnit;
         public HexTile<Tile> SelectedTile;
-        public Rune SelectedRune;
+        public RunePrototype SelectedRune;
         public Ability SelectedAbility;
+
+        public TurnMenuController turnMenuController;
 
         private void Start()
         {
