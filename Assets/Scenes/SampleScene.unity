@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTurn: 0
+  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
   units: []
   enemies: []
 --- !u!1 &582367345
@@ -425,8 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c3820d72bc92f4684b9a6f28cf56e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
   tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
+  canHighlightOnHover: 0
   genericAllyPrefab: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
   genericEnemyPrefab: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
   tileHoverMat: {fileID: 2100000, guid: c4b602c3610e810429388086045c4c1f, type: 2}
@@ -594,13 +595,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 582367346}
   turnManager: {fileID: 451213438}
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: 4b96e26aab97793489ec36284a2268db, type: 2}
   aiController: {fileID: 0}
   party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
   enemies: []
   ActingUnit: {fileID: 0}
   SelectedRune: {fileID: 0}
   SelectedAbility: {fileID: 0}
+  selectedRuneSteps: 
   turnMenuController: {fileID: 1691647032}
 --- !u!4 &921112281
 Transform:

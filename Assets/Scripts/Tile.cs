@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using UnityEngine;
+using Wunderwunsch.HexMapLibrary.Generic;
 
 public class Tile : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Tile : MonoBehaviour
     public bool IsSelected;
     private MeshRenderer _renderer { get { return GetComponentInChildren<MeshRenderer>(); } }
 
-    [HideInInspector] public Tile _prev;
+    [HideInInspector] public HexTile<Tile> _prev;
     [HideInInspector] public int _distance;
     public void Select(bool value)
     {

@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 public class TurnMenuController : MonoBehaviour
 {
+    public static event Action<Unit> SelectUnit;
+
     public Party party;
     public BattleStateMachine stateMachine;
-    
+
     public Transform charactersPanel;
     public Transform infoPanel;
     public Transform runesPanel;
@@ -23,19 +26,16 @@ public class TurnMenuController : MonoBehaviour
         }
     }
 
-    public void SelectCharacter(Unit partyUnit)
+    public void SelectCharacter(Unit unit)
     {
-        stateMachine.ActingUnit = partyUnit;
+        stateMachine.ActingUnit = unit;
         //TODO center camera
-        
+
         // clear rune panel
-        for (int i = 0; i < runesPanel.childCount; i++)
-        {
-            Destroy(runesPanel.GetChild(i).gameObject);
-        }
-        
+        ClearRunePanel();
+
         // fill rune panel
-        foreach (RunePrototype runePrototype in partyUnit.runes)
+        foreach (RunePrototype runePrototype in unit.runes)
         {
             GameObject runeMenuGO = Instantiate(runeSelectionButton, runesPanel);
             RuneMenuItem runeMenuItem = runeMenuGO.GetComponent<RuneMenuItem>();
@@ -43,14 +43,32 @@ public class TurnMenuController : MonoBehaviour
             runeMenuItem.text.text = runePrototype.runeName;
             runeMenuItem.icon.sprite = runePrototype.icon;
             runeMenuItem.button.onClick.AddListener(() => SelectRune(runePrototype));
-            
+            if (unit.hasActed)
+            {
+                runeMenuItem.button.interactable = false;
+            }
         }
-        
+
         //TODO clear info panel
-        
+        ClearInfoPanel();
+
         //TODO fill info panel
-        
+
         //TODO gray out commands
+
+        SelectUnit?.Invoke(unit);
+    }
+
+    private void ClearInfoPanel()
+    {
+    }
+
+    private void ClearRunePanel()
+    {
+        for (int i = 0; i < runesPanel.childCount; i++)
+        {
+            Destroy(runesPanel.GetChild(i).gameObject);
+        }
     }
 
     private void SelectRune(RunePrototype runePrototype)

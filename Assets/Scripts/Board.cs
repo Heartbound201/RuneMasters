@@ -14,10 +14,10 @@ public class Board : MonoBehaviour
     private HexMouse hexMouse;
     public static event Action<HexTile<Tile>> SelectTileEvent;
 
-    public int radius = 5;
     public TileCollection tileCollection;
 
     public HexMap<Tile> hexMap;
+    public bool canHighlightOnHover = false;
     public GameObject genericAllyPrefab;
     public GameObject genericEnemyPrefab;
 
@@ -53,6 +53,8 @@ public class Board : MonoBehaviour
 
     public void HoverTile(HexTile<Tile> tile)
     {
+        if(!canHighlightOnHover) return;
+        
         if (tileHover != null && tileHover != tile)
         {
             tileHover.Data.Highlight(false);
@@ -139,20 +141,30 @@ public class Board : MonoBehaviour
         return unit;
     }
 
-    public IEnumerator GenerateBoard()
+    public Unit SpawnEntity(GameObject obj, int index)
     {
-        hexMap = new HexMap<Tile>(HexMapBuilder.CreateHexagonalShapedMap(radius), null);
+        HexTile<Tile> hexTile = hexMap.Tiles[index];
+        GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
+        Unit unit = o.GetComponent<Unit>();
+        unit.standingTile = hexTile;
+        hexTile.Data.unit = unit;
+        return unit;
+    }
+
+    public IEnumerator GenerateBoard(LevelData levelData)
+    {
+        hexMap = new HexMap<Tile>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
         foreach (var tile in hexMap.Tiles)
         {
-            TilePrototype tilePrototype = tileCollection.GetRandomTile();
+            TilePrototype tilePrototype = levelData.tileCollection.GetRandomTile();
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
             instance.gameObject.name = "Hex" + tile.CartesianPosition;
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.board = this;
 
-            yield return new WaitForSeconds(0.05f);
+            yield return null;
         }
 
         yield return null;
@@ -181,22 +193,20 @@ public class Board : MonoBehaviour
         List<HexTile<Tile>> tilesInRange = new List<HexTile<Tile>> {start};
 
         Queue<HexTile<Tile>> toCheck = new Queue<HexTile<Tile>>();
-        ;
         toCheck.Enqueue(start);
         Queue<HexTile<Tile>> explored = new Queue<HexTile<Tile>>();
         start.Data._distance = 0;
         while (toCheck.Count > 0)
         {
             HexTile<Tile> current = toCheck.Dequeue();
-            foreach (HexTile<Tile> next in hexMap.GetTiles.AdjacentToTile(start))
+            foreach (HexTile<Tile> next in hexMap.GetTiles.AdjacentToTile(current))
             {
-                // HexTile<Tile> next = GetTile(current.Position + dirs[i]);
                 if (next == null || next.Data._distance <= current.Data._distance + 1)
                     continue;
                 if (addTile(current, next))
                 {
                     next.Data._distance = current.Data._distance + 1;
-                    next.Data._prev = current.Data;
+                    next.Data._prev = current;
                     explored.Enqueue(next);
                     tilesInRange.Add(next);
                 }
@@ -242,5 +252,32 @@ public class Board : MonoBehaviour
         {
             hexMapTile.Data.Highlight(false);
         }
+    }
+
+    public List<HexTile<Tile>> GetRuneTiles(List<TileDirection> steps, HexTile<Tile> start)
+    {
+        HexTile<Tile> current = start;
+
+        List<HexTile<Tile>> runeTiles = new List<HexTile<Tile>>();
+        foreach (TileDirection step in steps)
+        {
+            try
+            {
+                HexTile<Tile> nextTile =
+                    hexMap.TilesByPosition[current.Position + HexGrid.TileDirectionVectors[(int) step]];
+                if (nextTile != null)
+                {
+                    runeTiles.Add(nextTile);
+                    current = nextTile;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+
+        return runeTiles;
     }
 }

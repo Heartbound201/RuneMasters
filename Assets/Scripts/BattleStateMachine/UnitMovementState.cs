@@ -5,31 +5,15 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public class UnitMovementState : State
 {
-    protected override void AddListeners()
+    public override void Enter()
     {
-        base.AddListeners();
-        Board.SelectTileEvent += SelectTile;
+        base.Enter();
+        StartCoroutine(Sequence(owner.ActingUnit.FindPath(owner.SelectedTile)));
     }
 
-    protected override void RemoveListeners()
+    private IEnumerator Sequence(List<HexTile<Tile>> line)
     {
-        base.RemoveListeners();
-        Board.SelectTileEvent -= SelectTile;
-    }
-
-    private void SelectTile(HexTile<Tile> selectedTile)
-    {
-        HexTile<Tile> origin = owner.ActingUnit.standingTile;
-        List<HexTile<Tile>> line = owner.board.hexMap.GetTiles.Line(origin.Position, selectedTile.Position, false);
-        Debug.LogFormat("from {0} to {1}. {2}", origin.Position, selectedTile.Position, line);
-        StartCoroutine(Sequence(line));
-
-        owner.ChangeState<UnitSelectionState>(); //TODO must be a coroutine aswell
-    }
-
-    IEnumerator Sequence(List<HexTile<Tile>> line)
-    {
-        yield return StartCoroutine(owner.ActingUnit.Move(line)); // coroutine
-        owner.ChangeState<UnitSelectionState>();
+        yield return StartCoroutine(owner.ActingUnit.Move(line));
+        owner.ChangeState<TurnSelectionState>();
     }
 }

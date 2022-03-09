@@ -1,6 +1,7 @@
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Serialization;
+    using Wunderwunsch.HexMapLibrary;
     using Wunderwunsch.HexMapLibrary.Generic;
 
     public class BattleStateMachine : StateMachine
@@ -17,7 +18,8 @@
         public HexTile<Tile> SelectedTile;
         public RunePrototype SelectedRune;
         public Ability SelectedAbility;
-
+        public List<TileDirection> selectedRuneSteps;
+        
         public TurnMenuController turnMenuController;
 
         private void Start()

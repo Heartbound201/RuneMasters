@@ -12,4 +12,5 @@ public class RunePrototype : ScriptableObject
     public List<TileDirection> steps = new List<TileDirection>();
     public AbilityPrototype abilityPrototype;
     public GameObject runePrefab;
+    public int Cost => steps.Count;
 }

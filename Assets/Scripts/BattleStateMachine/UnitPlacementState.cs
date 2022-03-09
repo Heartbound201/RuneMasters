@@ -12,17 +12,25 @@ public class UnitPlacementState : State
     IEnumerator Init ()
     {
         
-        yield return Board.GenerateBoard();
+        yield return Board.GenerateBoard(owner.levelData);
         Board.SetCamera();
+        
+        owner.enemies.Add(Board.SpawnEnemyAtIndex(67));
 
-        Board.SpawnEnemyAtIndex(67);
+        // clear since party is a scriptable object
         owner.party.units.Clear();
-        owner.party.units.Add(Board.SpawnAllyAtIndex(9));
-        owner.party.units.Add(Board.SpawnAllyAtIndex(15));
-        owner.party.units.Add(Board.SpawnAllyAtIndex(22));
+        foreach (SpawnInfo spawnInfo in owner.levelData.characters)
+        {
+            owner.party.units.Add(Board.SpawnEntity(spawnInfo.obj, spawnInfo.index));
+
+        }
+
+        TurnManager.units = owner.party.units;
+        TurnManager.enemies = owner.enemies;
+        Debug.Log("Units spawned");
         
-        
-        owner.ChangeState<UnitSelectionState>();
+        owner.turnMenuController.Load();
+        owner.ChangeState<TurnSelectionState>();
     }
 
 }

@@ -20,6 +20,7 @@ public class StateMachine : MonoBehaviour
     public virtual void ChangeState<T> () where T : State
     {
         CurrentState = GetState<T>();
+        Debug.Log(_currentState);
     }
     protected virtual void Transition (State value)
     {

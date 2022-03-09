@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    private Turn _currentTurn;
     public Turn currentTurn;
+    public Party party;
 
     public List<Unit> units = new List<Unit>();
     public List<Unit> enemies = new List<Unit>();
@@ -24,6 +24,7 @@ public class TurnManager : MonoBehaviour
             if (IsOver())
             {
                 Switch();
+                Debug.Log(currentTurn + " turn");
             }
 
             yield return currentTurn;
@@ -32,7 +33,22 @@ public class TurnManager : MonoBehaviour
 
     public void Switch()
     {
-        _currentTurn = _currentTurn == Turn.Enemy ? Turn.Player : Turn.Enemy;
+        switch (currentTurn)
+        {
+            case Turn.Player:
+                currentTurn = Turn.Enemy;
+                break;
+            case Turn.Enemy:
+                foreach (Unit unit in units)
+                {
+                    unit.Reset();
+                }
+                party.Reset();
+                currentTurn = Turn.Player;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     public bool IsOver()
