@@ -235,4 +235,12 @@ public class Board : MonoBehaviour
     }
 
     #endregion
+
+    public void ClearHighlight()
+    {
+        foreach (HexTile<Tile> hexMapTile in hexMap.Tiles)
+        {
+            hexMapTile.Data.Highlight(false);
+        }
+    }
 }

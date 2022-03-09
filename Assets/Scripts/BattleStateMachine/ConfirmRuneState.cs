@@ -1,50 +1,83 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class ConfirmRuneState : State
 {
+    private List<TileDirection> steps;
+
     public override void Enter()
     {
         base.Enter();
-        HighlightRune(owner.SelectedRune);
+        steps = owner.SelectedRune.steps;
+        HighlightRune();
     }
 
-    private void HighlightRune(RunePrototype runePrototype)
+    private void HighlightRune()
     {
-        List<HexTile<Tile>> runeTiles = GetRuneTiles(runePrototype.steps);
+        owner.board.ClearHighlight();
+        List<HexTile<Tile>> runeTiles = GetRuneTiles(steps);
         owner.board.HighlightTiles(runeTiles);
-
-        // TileDirection d = TileDirection.Left;
-        // d.Clockwise();
-        // List<TileDirection> steps1 = steps.Select(direction => d.Clockwise()).ToList();
-        //
-        // foreach (HexTile<Tile> runeTile in runeTiles)
-        // {
-        //     runeTile.Data.Highlight(false);
-        // }
-        //
-        //
-        // HighlightTiles(GetRuneTiles(steps1));
     }
+
+    private void Update()
+    {
+        // rotate ccw
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            RotateRuneCounterClockwise();
+            HighlightRune();
+        }
+
+        // rotate cw
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            RotateRuneClockwise();
+            HighlightRune();
+        }
+    }
+
+    public void RotateRuneClockwise()
+    {
+        steps = steps.Select(s => s.Clockwise()).ToList();
+    }
+
+    public void RotateRuneCounterClockwise()
+    {
+        steps = steps.Select(s => s.CounterClockwise()).ToList();
+    }
+
     public List<HexTile<Tile>> GetRuneTiles(List<TileDirection> steps)
     {
         HexTile<Tile> current = owner.ActingUnit.standingTile;
 
         List<HexTile<Tile>> runeTiles = new List<HexTile<Tile>>();
-
         foreach (TileDirection step in steps)
         {
-            HexTile<Tile> nextTile =
-                owner.board.hexMap.TilesByPosition[current.Position + HexGrid.TileDirectionVectors[(int) step]];
-            runeTiles.Add(nextTile);
-            current = nextTile;
+            try
+            {
+                HexTile<Tile> nextTile =
+                    owner.board.hexMap.TilesByPosition[current.Position + HexGrid.TileDirectionVectors[(int) step]];
+                if (nextTile != null)
+                {
+                    runeTiles.Add(nextTile);
+                    current = nextTile;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
+
 
         return runeTiles;
     }
+
     protected override void AddListeners()
     {
         base.AddListeners();
