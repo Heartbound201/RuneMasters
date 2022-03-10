@@ -22,12 +22,16 @@ public class ActionSelectionState : State
             owner.turnMenuController.SelectCharacter(owner.party.units.First());
 
         }
+
+        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
     }
 
     public override void Exit()
     {
         base.Exit();
         Board.ClearHighlight();
+        
+        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
     }
 
     IEnumerator AITurn()

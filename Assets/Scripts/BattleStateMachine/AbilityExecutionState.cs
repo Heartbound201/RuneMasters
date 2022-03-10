@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using Wunderwunsch.HexMapLibrary;
 
 public class AbilityExecutionState : State
 {
@@ -17,6 +19,7 @@ public class AbilityExecutionState : State
         owner.SelectedAbility = null;
         owner.SelectedTile = null;
         owner.SelectedRune = null;
+        owner.selectedRuneSteps = new List<TileDirection>();
     }
 
     private IEnumerator AITurn()
@@ -44,6 +47,7 @@ public class AbilityExecutionState : State
 
         // if (IsBattleOver())
         //     owner.ChangeState<EndBattleState>();
-        owner.ChangeState<ActionSelectionState>();
+        owner.ActingUnit.hasActed = true;
+        owner.ChangeState<TurnSelectionState>();
     }
 }

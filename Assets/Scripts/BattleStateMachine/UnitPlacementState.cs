@@ -17,19 +17,28 @@ public class UnitPlacementState : State
         
         owner.enemies.Add(Board.SpawnEnemyAtIndex(67));
 
-        // clear since party is a scriptable object
-        owner.party.units.Clear();
+        owner.party = new Party
+        {
+            healthMax = 10,
+            manaMax = 10,
+            manaReserveMax = 3
+        };
+        owner.party.Reset();
         foreach (SpawnInfo spawnInfo in owner.levelData.characters)
         {
-            owner.party.units.Add(Board.SpawnEntity(spawnInfo.obj, spawnInfo.index));
+            GameObject spawnEntity = Board.SpawnEntity(spawnInfo.obj, spawnInfo.index);
+            PlayerUnit playerUnit = spawnEntity.GetComponent<PlayerUnit>();
+            playerUnit.party = owner.party; //TODO find a better solution
+            owner.party.units.Add(playerUnit);
 
         }
 
+        TurnManager.party = owner.party;
         TurnManager.units = owner.party.units;
         TurnManager.enemies = owner.enemies;
         Debug.Log("Units spawned");
         
-        owner.turnMenuController.Load();
+        owner.turnMenuController.Load(owner.party);
         owner.ChangeState<TurnSelectionState>();
     }
 

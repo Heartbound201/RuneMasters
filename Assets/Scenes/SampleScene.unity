@@ -394,7 +394,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTurn: 0
-  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
   units: []
   enemies: []
 --- !u!1 &582367345
@@ -427,7 +426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
-  canHighlightOnHover: 0
   genericAllyPrefab: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
   genericEnemyPrefab: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
   tileHoverMat: {fileID: 2100000, guid: c4b602c3610e810429388086045c4c1f, type: 2}
@@ -448,6 +446,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &699113670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699113672}
+  - component: {fileID: 699113671}
+  m_Layer: 0
+  m_Name: InputController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &699113671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699113670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24ded7b479848a0a3f86adbc5d0a1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &699113672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699113670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 419.99994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -597,13 +638,13 @@ MonoBehaviour:
   turnManager: {fileID: 451213438}
   levelData: {fileID: 11400000, guid: 4b96e26aab97793489ec36284a2268db, type: 2}
   aiController: {fileID: 0}
-  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
   enemies: []
   ActingUnit: {fileID: 0}
   SelectedRune: {fileID: 0}
   SelectedAbility: {fileID: 0}
   selectedRuneSteps: 
   turnMenuController: {fileID: 1691647032}
+  partyInfoMenuController: {fileID: 1475038544}
 --- !u!4 &921112281
 Transform:
   m_ObjectHideFlags: 0
@@ -653,8 +694,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.09344962, g: 0.17774826, b: 0.26415092, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -790,10 +831,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 10
+    m_Right: 10
+    m_Top: 10
+    m_Bottom: 10
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -1111,7 +1152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3b1ca2c04bd174b80fcfcec3ae1149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
   partyHealthText: {fileID: 1362948495}
   partyManaText: {fileID: 762139339}
   partyManaReserveText: {fileID: 855009109}
@@ -1316,7 +1356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b4c0f734ca48ab963a6cbb19abb22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
   stateMachine: {fileID: 921112279}
   charactersPanel: {fileID: 988827100}
   infoPanel: {fileID: 152519822}
@@ -1577,14 +1616,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 10
+    m_Right: 10
+    m_Top: 10
+    m_Bottom: 10
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 64, y: 64}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 2

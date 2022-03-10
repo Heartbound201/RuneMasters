@@ -1,10 +1,17 @@
 using System.Collections.Generic;
+using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
+[CreateAssetMenu(fileName = "CirleArea", menuName = "Create Circle Ability Area")]
 public class CircleAbilityArea : AbilityArea
 {
-    public override List<Tile> GetTilesInArea(Board board, HexTile<Tile> tile)
+    public int range = 1;
+    public override List<HexTile<Tile>> GetTilesInArea(Board board, HexTile<Tile> tile)
     {
-        throw new System.NotImplementedException();
+        return board.SearchRange(tile, ExpandSearch);
+    }
+    bool ExpandSearch (HexTile<Tile> from, HexTile<Tile> to)
+    {
+        return (from.Data._distance + 1) <= range;
     }
 }

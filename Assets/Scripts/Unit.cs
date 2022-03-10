@@ -9,38 +9,32 @@ public class Unit : MonoBehaviour
     public string name;
     public int movement;
     public int movementMax;
-    public Alliance alliance;
     public bool isPassable;
     public bool hasActed;
-    public HexTile<Tile> standingTile;
-    public List<RunePrototype> runes = new List<RunePrototype>();
-
-    public Party party;
-
-    public bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
+    public HexTile<Tile> tile;
+    
+    public virtual bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
-        return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana;
+        return (from.Data._distance + 1) <= movement;
     }
     
-    public IEnumerator Move(List<HexTile<Tile>> tiles)
+    public virtual IEnumerator Move(List<HexTile<Tile>> tiles)
     {
         foreach (HexTile<Tile> tile in tiles)
         {
             transform.position = tile.CartesianPosition;
-            standingTile.Data.unit = null;
-            standingTile = tile;
+            this.tile.Data.unit = null;
+            this.tile = tile;
             tile.Data.unit = this;
             // lower movement
             movement--;
-            // lower mana
-            party.mana--;
             yield return new WaitForSeconds(0.5f);
         }
     }
     
     public virtual List<HexTile<Tile>> GetTilesInRange()
     {
-        List<HexTile<Tile>> retValue = standingTile.Data.board.SearchRange(standingTile, ExpandSearch);
+        List<HexTile<Tile>> retValue = tile.Data.board.SearchRange(tile, ExpandSearch);
         Filter(retValue);
         return retValue;
     }
@@ -67,5 +61,10 @@ public class Unit : MonoBehaviour
     {
         movement = movementMax;
         hasActed = false;
+    }
+
+    public virtual void TakeDamage(int amount)
+    {
+        
     }
 }

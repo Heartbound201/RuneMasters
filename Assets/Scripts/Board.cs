@@ -1,32 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.Tilemaps;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
-using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
 {
     private HexMouse hexMouse;
     public static event Action<HexTile<Tile>> SelectTileEvent;
 
-    public TileCollection tileCollection;
-
     public HexMap<Tile> hexMap;
-    public bool canHighlightOnHover = false;
     public GameObject genericAllyPrefab;
     public GameObject genericEnemyPrefab;
 
 
     public HexTile<Tile> tileHover;
     public HexTile<Tile> tileSelection;
-
-    [Header("Materials")] public Material tileHoverMat;
-    public Material tileSelectionMat;
 
     [Header("Audio")] public AudioClip tileHoverSfx;
     public AudioClip tileSelectionSfx;
@@ -43,7 +33,7 @@ public class Board : MonoBehaviour
         Vector3Int mouseTilePosition = hexMouse.TileCoord;
         HexTile<Tile> t = hexMap.TilesByPosition[mouseTilePosition];
         HoverTile(t);
-        // 9 15 22 67
+        
         if (Input.GetMouseButtonDown(0))
         {
             SelectTile(t);
@@ -53,18 +43,13 @@ public class Board : MonoBehaviour
 
     public void HoverTile(HexTile<Tile> tile)
     {
-        if(!canHighlightOnHover) return;
-        
         if (tileHover != null && tileHover != tile)
         {
-            tileHover.Data.Highlight(false);
+            tileHover.Data.Hover(false);
         }
 
         tileHover = tile;
-        // Debug.Log("Hovering " + tile.Index);
-
-        if (tileHover == tileSelection) return;
-        tileHover.Data.Highlight(true);
+        tileHover.Data.Hover(true);
     }
 
     public void SelectTile(HexTile<Tile> tile)
@@ -87,48 +72,10 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void SpawnAllyInRandomPosition()
-    {
-        HexTile<Tile> hexTile;
-        do
-        {
-            hexTile = hexMap.Tiles[Random.Range(0, hexMap.Tiles.Length)];
-        } while (hexTile.Data.unit != null);
-
-        SpawnEntity(genericAllyPrefab, hexTile.Position);
-    }
-
-    public Unit SpawnAllyAtIndex(int index)
-    {
-        HexTile<Tile> hexTile = hexMap.Tiles[index];
-        return SpawnEntity(genericAllyPrefab, hexTile.Position);
-    }
-
     public Unit SpawnEnemyAtIndex(int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
         return SpawnEntity(genericEnemyPrefab, hexTile.Position);
-    }
-
-    public void SpawnEnemyInRandomPosition()
-    {
-        HexTile<Tile> hexTile;
-        do
-        {
-            hexTile = hexMap.Tiles[Random.Range(0, hexMap.Tiles.Length)];
-        } while (hexTile.Data.unit != null);
-
-        SpawnEntity(genericEnemyPrefab, hexTile.Position);
-    }
-
-    public void SpawnAlly(Vector3Int pos)
-    {
-        SpawnEntity(genericAllyPrefab, pos);
-    }
-
-    public void SpawnEnemy(Vector3Int pos)
-    {
-        SpawnEntity(genericEnemyPrefab, pos);
     }
 
     public Unit SpawnEntity(GameObject obj, Vector3Int pos)
@@ -136,19 +83,19 @@ public class Board : MonoBehaviour
         HexTile<Tile> hexTile = hexMap.TilesByPosition[pos];
         GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
         Unit unit = o.GetComponent<Unit>();
-        unit.standingTile = hexTile;
+        unit.tile = hexTile;
         hexTile.Data.unit = unit;
         return unit;
     }
 
-    public Unit SpawnEntity(GameObject obj, int index)
+    public GameObject SpawnEntity(GameObject obj, int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
         GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
         Unit unit = o.GetComponent<Unit>();
-        unit.standingTile = hexTile;
+        unit.tile = hexTile;
         hexTile.Data.unit = unit;
-        return unit;
+        return o;
     }
 
     public IEnumerator GenerateBoard(LevelData levelData)
@@ -279,5 +226,10 @@ public class Board : MonoBehaviour
 
 
         return runeTiles;
+    }
+
+    public Tile GetTile(object pos)
+    {
+        throw new NotImplementedException();
     }
 }

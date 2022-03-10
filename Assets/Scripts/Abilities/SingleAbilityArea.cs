@@ -3,8 +3,11 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public class SingleAbilityArea : AbilityArea
 {
-    public override List<Tile> GetTilesInArea(Board board, HexTile<Tile> tile)
+    public override List<HexTile<Tile>> GetTilesInArea(Board board, HexTile<Tile> tile)
     {
-        throw new System.NotImplementedException();
+        List<HexTile<Tile>> retValue = new List<HexTile<Tile>>();
+        if (tile != null)
+            retValue.Add(tile);
+        return retValue;
     }
 }

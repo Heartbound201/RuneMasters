@@ -8,7 +8,7 @@ public class TurnManager : MonoBehaviour
     public Turn currentTurn;
     public Party party;
 
-    public List<Unit> units = new List<Unit>();
+    public List<PlayerUnit> units = new List<PlayerUnit>();
     public List<Unit> enemies = new List<Unit>();
 
     public enum Turn
@@ -43,7 +43,7 @@ public class TurnManager : MonoBehaviour
                 {
                     unit.Reset();
                 }
-                party.Reset();
+                party.ResetTurn();
                 currentTurn = Turn.Player;
                 break;
             default:
@@ -56,7 +56,7 @@ public class TurnManager : MonoBehaviour
         switch (currentTurn)
         {
             case TurnManager.Turn.Player:
-                return units.TrueForAll(u => u.hasActed);
+                return units.TrueForAll(u => u.hasActed) || party.mana <= 0;
                 break;
             case TurnManager.Turn.Enemy:
                 return enemies.TrueForAll(u => u.hasActed);

@@ -1,9 +1,16 @@
+using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
+[CreateAssetMenu(fileName = "DamageEffect", menuName = "Create Damage Ability Effect")]
 public class DamageAbilityEffect : AbilityEffect
 {
+    public int potency = 1;
+    
     public override void Apply(HexTile<Tile> target)
     {
-        throw new System.NotImplementedException();
+        if(target.Data.unit)
+        {
+            Debug.Log(target.Data.unit + " takes " + potency + " damage");
+        }
     }
 }

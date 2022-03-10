@@ -16,12 +16,12 @@
 
         public Unit ActingUnit;
         public HexTile<Tile> SelectedTile;
-        public RunePrototype SelectedRune;
+        public Rune SelectedRune;
         public Ability SelectedAbility;
         public List<TileDirection> selectedRuneSteps;
         
         public TurnMenuController turnMenuController;
-
+        public PartyInfoMenuController partyInfoMenuController;
         private void Start()
         {
             Debug.Log("Start game");

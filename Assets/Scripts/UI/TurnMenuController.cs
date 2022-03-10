@@ -5,7 +5,6 @@ public class TurnMenuController : MonoBehaviour
 {
     public static event Action<Unit> SelectUnit;
 
-    public Party party;
     public BattleStateMachine stateMachine;
 
     public Transform charactersPanel;
@@ -15,9 +14,9 @@ public class TurnMenuController : MonoBehaviour
     public GameObject characterSelectionButton;
     public GameObject runeSelectionButton;
 
-    public void Load()
+    public void Load(Party party)
     {
-        foreach (Unit partyUnit in party.units)
+        foreach (PlayerUnit partyUnit in party.units)
         {
             GameObject charaMenuGO = Instantiate(characterSelectionButton, charactersPanel);
             CharacterMenuItem characterMenuItem = charaMenuGO.GetComponent<CharacterMenuItem>();
@@ -26,7 +25,7 @@ public class TurnMenuController : MonoBehaviour
         }
     }
 
-    public void SelectCharacter(Unit unit)
+    public void SelectCharacter(PlayerUnit unit)
     {
         stateMachine.ActingUnit = unit;
         //TODO center camera
@@ -35,11 +34,11 @@ public class TurnMenuController : MonoBehaviour
         ClearRunePanel();
 
         // fill rune panel
-        foreach (RunePrototype runePrototype in unit.runes)
+        foreach (Rune runePrototype in unit.runes)
         {
             GameObject runeMenuGO = Instantiate(runeSelectionButton, runesPanel);
             RuneMenuItem runeMenuItem = runeMenuGO.GetComponent<RuneMenuItem>();
-            runeMenuItem.runePrototype = runePrototype;
+            runeMenuItem.rune = runePrototype;
             runeMenuItem.text.text = runePrototype.runeName;
             runeMenuItem.icon.sprite = runePrototype.icon;
             runeMenuItem.button.onClick.AddListener(() => SelectRune(runePrototype));
@@ -71,9 +70,10 @@ public class TurnMenuController : MonoBehaviour
         }
     }
 
-    private void SelectRune(RunePrototype runePrototype)
+    private void SelectRune(Rune rune)
     {
-        stateMachine.SelectedRune = runePrototype;
+        stateMachine.SelectedRune = rune;
+        stateMachine.ChangeState<ActionSelectionState>();
         stateMachine.ChangeState<ConfirmRuneState>();
     }
 }

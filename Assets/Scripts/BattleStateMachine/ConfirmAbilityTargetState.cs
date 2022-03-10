@@ -1,27 +1,29 @@
 using System.Collections.Generic;
 using Wunderwunsch.HexMapLibrary.Generic;
 
-public class AbilityTargetState : State
+public class ConfirmAbilityTargetState : State
 {
-    private List<HexTile<Tile>> tilesInRange = new List<HexTile<Tile>>();
+    private List<HexTile<Tile>> tilesInArea = new List<HexTile<Tile>>();
+
     public override void Enter()
     {
         base.Enter();
-        HighlightAbilityRange();
+        HighlightAbilityArea();
     }
 
-    private void HighlightAbilityRange()
+    private void HighlightAbilityArea()
     {
         owner.board.ClearHighlight();
-        tilesInRange = owner.SelectedAbility.abilityRange.GetTilesInRange(owner.ActingUnit, Board);
-        owner.board.HighlightTiles(tilesInRange);
+        tilesInArea = owner.SelectedAbility.abilityArea.GetTilesInArea(Board, owner.SelectedTile);
+        owner.board.HighlightTiles(tilesInArea);
     }
-    
+
     private void Undo()
     {
-        //TODO throw new System.NotImplementedException();
+        owner.SelectedTile = null;
+        owner.ChangeState<AbilityTargetState>();
     }
-    
+
     protected override void AddListeners()
     {
         base.AddListeners();
@@ -38,8 +40,8 @@ public class AbilityTargetState : State
 
     private void SelectTarget(HexTile<Tile> obj)
     {
-        if (!tilesInRange.Contains(obj)) return;
+        if (!tilesInArea.Contains(obj)) return;
         owner.SelectedTile = obj;
-        owner.ChangeState<ConfirmAbilityTargetState>();
+        owner.ChangeState<AbilityExecutionState>();
     }
 }

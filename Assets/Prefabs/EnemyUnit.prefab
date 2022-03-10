@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3517529330400996379}
-  - component: {fileID: -4129419462448988523}
+  - component: {fileID: 5676427393560813927}
   m_Layer: 0
   m_Name: EnemyUnit
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4129419462448988523
+--- !u!114 &5676427393560813927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3754591301903308259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d74648d3602b468785e733a9b5f54d86, type: 3}
+  m_Script: {fileID: 11500000, guid: 49ca5499bca4eff4db4685fffac19f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  alliance: 2
-  size: 1
-  isPassable: 1
+  name: enemy
+  movement: 0
+  movementMax: 0
+  isPassable: 0
   hasActed: 0
-  runes: []
+  abilities:
+  - {fileID: 11400000, guid: 428e9f0803d57194b8d759a45112d84b, type: 2}
 --- !u!1 &8254965180053802087
 GameObject:
   m_ObjectHideFlags: 0
