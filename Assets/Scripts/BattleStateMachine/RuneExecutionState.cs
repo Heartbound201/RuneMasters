@@ -7,7 +7,7 @@ public class RuneExecutionState : State
     public override void Enter()
     {
         base.Enter();
-        StartCoroutine(Sequence(Board.GetRuneTiles(owner.selectedRuneSteps, owner.ActingUnit.tile)));
+        StartCoroutine(Sequence(Board.GetPathTiles(owner.ActingUnit.tile, owner.selectedRuneSteps)));
     }
 
     public override void Exit()

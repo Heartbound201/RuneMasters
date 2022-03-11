@@ -9,7 +9,7 @@ public class TurnManager : MonoBehaviour
     public Party party;
 
     public List<PlayerUnit> units = new List<PlayerUnit>();
-    public List<Unit> enemies = new List<Unit>();
+    public List<EnemyUnit> enemies = new List<EnemyUnit>();
 
     public enum Turn
     {
@@ -21,11 +21,8 @@ public class TurnManager : MonoBehaviour
     {
         while (true)
         {
-            if (IsOver())
-            {
-                Switch();
-                Debug.Log(currentTurn + " turn");
-            }
+            Switch();
+            Debug.Log(currentTurn + " turn");
 
             yield return currentTurn;
         }
@@ -36,10 +33,14 @@ public class TurnManager : MonoBehaviour
         switch (currentTurn)
         {
             case Turn.Player:
+                foreach (EnemyUnit enemy in enemies)
+                {
+                    enemy.Reset();
+                }
                 currentTurn = Turn.Enemy;
                 break;
             case Turn.Enemy:
-                foreach (Unit unit in units)
+                foreach (PlayerUnit unit in units)
                 {
                     unit.Reset();
                 }
@@ -51,23 +52,4 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    public bool IsOver()
-    {
-        switch (currentTurn)
-        {
-            case TurnManager.Turn.Player:
-                return units.TrueForAll(u => u.hasActed) || party.mana <= 0;
-                break;
-            case TurnManager.Turn.Enemy:
-                return enemies.TrueForAll(u => u.hasActed);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
-
-    public Unit ServeEnemy()
-    {
-        return enemies.Find(u => !u.hasActed);
-    }
 }

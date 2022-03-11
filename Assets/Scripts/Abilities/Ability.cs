@@ -20,7 +20,7 @@ public class Ability : ScriptableObject
         {
             foreach (HexTile<Tile> tile in tilesInArea)
             {
-                abilityEffect.Apply(tile);
+                abilityEffect.Apply(actor, tile);
             }
         }
     }

@@ -33,7 +33,7 @@ public class Board : MonoBehaviour
         Vector3Int mouseTilePosition = hexMouse.TileCoord;
         HexTile<Tile> t = hexMap.TilesByPosition[mouseTilePosition];
         HoverTile(t);
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             SelectTile(t);
@@ -70,22 +70,6 @@ public class Board : MonoBehaviour
         {
             tile.Data.Highlight(true);
         }
-    }
-
-    public Unit SpawnEnemyAtIndex(int index)
-    {
-        HexTile<Tile> hexTile = hexMap.Tiles[index];
-        return SpawnEntity(genericEnemyPrefab, hexTile.Position);
-    }
-
-    public Unit SpawnEntity(GameObject obj, Vector3Int pos)
-    {
-        HexTile<Tile> hexTile = hexMap.TilesByPosition[pos];
-        GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
-        Unit unit = o.GetComponent<Unit>();
-        unit.tile = hexTile;
-        hexTile.Data.unit = unit;
-        return unit;
     }
 
     public GameObject SpawnEntity(GameObject obj, int index)
@@ -130,7 +114,6 @@ public class Board : MonoBehaviour
         //this does not account for aspect ratio but for our purposes it works good enough.
     }
 
-    #region Pathfinding
 
     public List<HexTile<Tile>> SearchRange(HexTile<Tile> start, Func<HexTile<Tile>, HexTile<Tile>, bool> addTile,
         bool selectTilesAtEnd = false)
@@ -180,18 +163,6 @@ public class Board : MonoBehaviour
         (a, b) = (b, a);
     }
 
-    public void HighlightTiles(ICollection<HexTile<Tile>> items)
-    {
-        foreach (HexTile<Tile> t in hexMap.Tiles)
-        {
-            if (items.Contains(t))
-                t.Data.Highlight(true);
-            else
-                t.Data.Highlight(false);
-        }
-    }
-
-    #endregion
 
     public void ClearHighlight()
     {
@@ -201,7 +172,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public List<HexTile<Tile>> GetRuneTiles(List<TileDirection> steps, HexTile<Tile> start)
+    public List<HexTile<Tile>> GetPathTiles(HexTile<Tile> start, List<TileDirection> steps)
     {
         HexTile<Tile> current = start;
 
@@ -228,8 +199,4 @@ public class Board : MonoBehaviour
         return runeTiles;
     }
 
-    public Tile GetTile(object pos)
-    {
-        throw new NotImplementedException();
-    }
 }

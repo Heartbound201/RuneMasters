@@ -6,11 +6,11 @@ public class DamageAbilityEffect : AbilityEffect
 {
     public int potency = 1;
     
-    public override void Apply(HexTile<Tile> target)
+    public override void Apply(Unit actor, HexTile<Tile> target)
     {
         if(target.Data.unit)
         {
-            Debug.Log(target.Data.unit + " takes " + potency + " damage");
+            target.Data.unit.TakeDamage(potency + actor.attack);
         }
     }
 }

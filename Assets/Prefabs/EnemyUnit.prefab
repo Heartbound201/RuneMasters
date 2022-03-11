@@ -47,10 +47,13 @@ MonoBehaviour:
   name: enemy
   movement: 0
   movementMax: 0
+  attack: 0
+  defense: 0
   isPassable: 0
   hasActed: 0
+  health: 3
   abilities:
-  - {fileID: 11400000, guid: 428e9f0803d57194b8d759a45112d84b, type: 2}
+  - {fileID: 11400000, guid: 29ffe2826dc4a9a49810254c81775fed, type: 2}
 --- !u!1 &8254965180053802087
 GameObject:
   m_ObjectHideFlags: 0

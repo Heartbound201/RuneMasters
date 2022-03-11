@@ -9,13 +9,16 @@ public class Unit : MonoBehaviour
     public string name;
     public int movement;
     public int movementMax;
+    public int attack;
+    public int defense;
     public bool isPassable;
     public bool hasActed;
     public HexTile<Tile> tile;
+    public List<Status> statuses = new List<Status>(); 
     
     public virtual bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
-        return (from.Data._distance + 1) <= movement;
+        return (from.Data._distance + 1) <= movement && to.Data.isPassable;
     }
     
     public virtual IEnumerator Move(List<HexTile<Tile>> tiles)
@@ -26,7 +29,7 @@ public class Unit : MonoBehaviour
             this.tile.Data.unit = null;
             this.tile = tile;
             tile.Data.unit = this;
-            // lower movement
+            
             movement--;
             yield return new WaitForSeconds(0.5f);
         }
@@ -63,8 +66,5 @@ public class Unit : MonoBehaviour
         hasActed = false;
     }
 
-    public virtual void TakeDamage(int amount)
-    {
-        
-    }
+    public virtual void TakeDamage(int amount){}
 }

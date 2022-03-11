@@ -13,8 +13,10 @@ public class Tile : MonoBehaviour
 
     public bool IsHighlighted;
     public bool IsSelected;
-    public bool IsWarning;
     public bool IsHovered;
+
+    public List<AIPlan> dangerList = new List<AIPlan>();
+    
     private MeshRenderer _renderer { get { return GetComponentInChildren<MeshRenderer>(); } }
     private Color originColor;
 
@@ -30,9 +32,15 @@ public class Tile : MonoBehaviour
         this.IsSelected = value;
     }
 
-    public void Warning(bool value)
+    public void Endanger(AIPlan danger)
     {
-        this.IsWarning = value;
+        dangerList.Add(danger);
+        RenderColor();
+    }
+    
+    public void SolveDanger(AIPlan danger)
+    {
+        dangerList.Remove(danger);
         RenderColor();
     }
     public void Hover(bool value)
@@ -61,7 +69,7 @@ public class Tile : MonoBehaviour
             return;
         }
 
-        if (IsWarning)
+        if (dangerList.Count > 0)
         {
             _renderer.material.color = Color.red;
             return;

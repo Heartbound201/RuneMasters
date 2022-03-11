@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1309d27436b24cd2ab36c67239db6416, type: 3}
   m_Name: New Level
   m_EditorClassIdentifier: 
-  boardRadius: 5
+  boardRadius: 7
   tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
+  enemies:
+  - index: 67
+    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
   characters:
   - index: 9
     obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}

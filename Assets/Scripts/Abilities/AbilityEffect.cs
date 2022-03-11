@@ -3,5 +3,5 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public abstract class AbilityEffect : ScriptableObject
 {
-    public abstract void Apply(HexTile<Tile> target);
+    public abstract void Apply(Unit actor, HexTile<Tile> target);
 }

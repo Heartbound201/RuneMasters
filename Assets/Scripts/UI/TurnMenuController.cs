@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TurnMenuController : MonoBehaviour
@@ -14,8 +15,12 @@ public class TurnMenuController : MonoBehaviour
     public GameObject characterSelectionButton;
     public GameObject runeSelectionButton;
 
+    private Party party;
+    private List<RuneMenuItem> runeMenuItems = new List<RuneMenuItem>();
+
     public void Load(Party party)
     {
+        this.party = party;
         foreach (PlayerUnit partyUnit in party.units)
         {
             GameObject charaMenuGO = Instantiate(characterSelectionButton, charactersPanel);
@@ -42,10 +47,11 @@ public class TurnMenuController : MonoBehaviour
             runeMenuItem.text.text = runePrototype.runeName;
             runeMenuItem.icon.sprite = runePrototype.icon;
             runeMenuItem.button.onClick.AddListener(() => SelectRune(runePrototype));
-            if (unit.hasActed)
+            if (unit.hasActed || party.AvailableMana < runePrototype.steps.Count) 
             {
                 runeMenuItem.button.interactable = false;
             }
+            runeMenuItems.Add(runeMenuItem);
         }
 
         //TODO clear info panel
@@ -64,10 +70,12 @@ public class TurnMenuController : MonoBehaviour
 
     private void ClearRunePanel()
     {
-        for (int i = 0; i < runesPanel.childCount; i++)
+        foreach (RuneMenuItem item in runeMenuItems)
         {
-            Destroy(runesPanel.GetChild(i).gameObject);
+            Destroy(item.gameObject);
         }
+        
+        runeMenuItems.Clear();
     }
 
     private void SelectRune(Rune rune)
@@ -76,4 +84,5 @@ public class TurnMenuController : MonoBehaviour
         stateMachine.ChangeState<ActionSelectionState>();
         stateMachine.ChangeState<ConfirmRuneState>();
     }
+
 }

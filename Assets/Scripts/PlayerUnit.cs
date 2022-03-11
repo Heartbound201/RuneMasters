@@ -22,11 +22,17 @@
                 base.tile.Data.unit = null;
                 base.tile = tile;
                 tile.Data.unit = this;
-                // lower movement
+                
                 movement--;
-                // lower mana
                 party.mana--;
                 yield return new WaitForSeconds(0.5f);
             }
+        }
+
+        public override void TakeDamage(int amount)
+        {
+            base.TakeDamage(amount);
+            party.health -= (amount - defense);
+            Debug.Log(name + " is hit for " + (amount - defense));
         }
     }

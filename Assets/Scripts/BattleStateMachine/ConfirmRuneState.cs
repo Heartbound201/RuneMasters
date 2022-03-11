@@ -22,7 +22,7 @@ public class ConfirmRuneState : State
     private void HighlightRune()
     {
         owner.board.ClearHighlight();
-        runeTiles = Board.GetRuneTiles(owner.selectedRuneSteps, owner.ActingUnit.tile);
+        runeTiles = Board.GetPathTiles(owner.ActingUnit.tile, owner.selectedRuneSteps);
         owner.board.HighlightTiles(runeTiles);
     }
 

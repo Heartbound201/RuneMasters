@@ -7,52 +7,42 @@ using Wunderwunsch.HexMapLibrary.Generic;
 public class ActionSelectionState : State
 {
     private List<HexTile<Tile>> tilesInRange;
-    
+
     public override void Enter()
     {
         base.Enter();
-        if (TurnManager.currentTurn == TurnManager.Turn.Enemy)
+
+        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
+
+        if (owner.party.units.TrueForAll(u => u.hasActed) || owner.party.mana <= 0)
         {
-            StartCoroutine(AITurn());
+            owner.ChangeState<TurnSelectionState>();
+        }
+
+        if (owner.ActingUnit == null)
+        {
+            owner.turnMenuController.SelectCharacter(owner.party.units.First());
+        }
+        else if (owner.ActingUnit.hasActed && owner.ActingUnit.movement <= 0)
+        {
+            owner.turnMenuController.SelectCharacter(owner.party.units.Find(u => !u.hasActed || u.movement > 0));
         }
         else
         {
-            OpenMenu();
-            // select the first character
-            owner.turnMenuController.SelectCharacter(owner.party.units.First());
-
+            owner.turnMenuController.SelectCharacter((PlayerUnit) owner.ActingUnit);
         }
 
-        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
     }
 
     public override void Exit()
     {
         base.Exit();
         Board.ClearHighlight();
-        
+
         owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
     }
 
-    IEnumerator AITurn()
-    {
-        // Resolve prev turn action
-        // Plan next attack
-        yield return null;
-        owner.ChangeState<AbilityExecutionState>();
-    }
-    
-    protected void OpenMenu()
-    {
-        if(owner.turnMenuController == null)
-        {
-            Debug.LogError("There's no Menu Gameobject on ActionSelectionState.");
-        }
-        else
-        {
-            //TODO scroll menu up
-        }
-    }
+
     protected override void AddListeners()
     {
         base.AddListeners();

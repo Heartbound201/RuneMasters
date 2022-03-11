@@ -9,10 +9,10 @@
         public Board board;
         public TurnManager turnManager;
         public LevelData levelData;
-        public AIController aiController;
+        public List<AIPlan> enemyPlans = new List<AIPlan>();
 
         public Party party;
-        public List<Unit> enemies = new List<Unit>();
+        public List<EnemyUnit> enemies = new List<EnemyUnit>();
 
         public Unit ActingUnit;
         public HexTile<Tile> SelectedTile;

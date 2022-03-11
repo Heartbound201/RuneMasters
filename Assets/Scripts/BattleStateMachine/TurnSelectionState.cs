@@ -12,23 +12,13 @@ public class TurnSelectionState : State
         StartCoroutine(ChangeCurrentTurn());
     }
 
-    protected override void AddListeners()
-    {
-        base.AddListeners();
-        // Board.SelectTileEvent += SelectUnitByPosition;
-    }
-
-    protected override void RemoveListeners()
-    {
-        base.RemoveListeners();
-        // Board.SelectTileEvent -= SelectUnitByPosition;
-    }
-
     public IEnumerator ChangeCurrentTurn()
     {
         TurnManager.Round().MoveNext();
         yield return null;
-        owner.ChangeState<ActionSelectionState>();
+        if (TurnManager.currentTurn == TurnManager.Turn.Player)
+            owner.ChangeState<ActionSelectionState>();
+        else
+            owner.ChangeState<AIPlanExecutionState>();
     }
-
 }

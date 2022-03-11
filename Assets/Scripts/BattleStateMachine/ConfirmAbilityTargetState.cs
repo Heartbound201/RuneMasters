@@ -11,6 +11,12 @@ public class ConfirmAbilityTargetState : State
         HighlightAbilityArea();
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+        Board.ClearHighlight();
+    }
+
     private void HighlightAbilityArea()
     {
         owner.board.ClearHighlight();
