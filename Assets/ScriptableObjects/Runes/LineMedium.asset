@@ -16,5 +16,5 @@ MonoBehaviour:
   runeName: Line[M]
   runeDescription: 
   steps: 00000000000000000000000000000000
-  ability: {fileID: 11400000, guid: 428e9f0803d57194b8d759a45112d84b, type: 2}
+  ability: {fileID: 11400000, guid: 29ffe2826dc4a9a49810254c81775fed, type: 2}
   runePrefab: {fileID: 0}

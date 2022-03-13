@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ad1505fe784f65b8c4aa4ba3550605, type: 3}
   m_Name: TileForest
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1802100997500488535, guid: 0621065fbadbf7040b59edb5e5473c8d, type: 3}
   sprite: {fileID: 0}

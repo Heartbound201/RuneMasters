@@ -108,8 +108,8 @@ public class Board : MonoBehaviour
         // Camera.main.transform.position = new Vector3(hexMap.MapSizeData.center.x, 4, hexMap.MapSizeData.center.z); // centers the camera and moves it 5 units above the XZ-plane
         // Camera.main.orthographic = true; //for this example we use an orthographic camera.
         // Camera.main.transform.rotation = Quaternion.Euler(35, 30, 0); //rotates the camera to it looks at the XZ-plane
-        Camera.main.orthographicSize =
-            hexMap.MapSizeData.extents.z * 2 * 0.8f; // sets orthographic size of the camera.]
+        // Camera.main.orthographicSize =
+        //     hexMap.MapSizeData.extents.z * 2 * 0.8f; // sets orthographic size of the camera.]
         Camera.main.nearClipPlane = -12f;
         //this does not account for aspect ratio but for our purposes it works good enough.
     }

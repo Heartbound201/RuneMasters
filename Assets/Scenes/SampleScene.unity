@@ -1487,6 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b4c0f734ca48ab963a6cbb19abb22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 963194227}
   stateMachine: {fileID: 921112279}
   charactersPanel: {fileID: 988827100}
   infoPanel: {fileID: 152519822}

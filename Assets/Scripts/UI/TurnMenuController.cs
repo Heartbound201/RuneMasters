@@ -6,6 +6,7 @@ public class TurnMenuController : MonoBehaviour
 {
     public static event Action<Unit> SelectUnit;
 
+    public Camera camera;
     public BattleStateMachine stateMachine;
 
     public Transform charactersPanel;
@@ -33,7 +34,10 @@ public class TurnMenuController : MonoBehaviour
     public void SelectCharacter(PlayerUnit unit)
     {
         stateMachine.ActingUnit = unit;
-        //TODO center camera
+        
+        float targetX = camera.transform.position.x - unit.transform.position.x;
+        float targetZ = camera.transform.position.z - unit.transform.position.z;
+        camera.transform.position -= new Vector3(targetX, 0, targetZ);
 
         // clear rune panel
         ClearRunePanel();
@@ -58,6 +62,12 @@ public class TurnMenuController : MonoBehaviour
         ClearInfoPanel();
 
         //TODO fill info panel
+        
+        // mov / str / dex / int / def
+        // 3     3     3      2     4
+        // 
+        // unit.statuses[0]
+        // unit.strength <= unit.strengthStart;
 
         //TODO gray out commands
 

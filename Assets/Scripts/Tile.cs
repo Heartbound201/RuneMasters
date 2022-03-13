@@ -63,6 +63,12 @@ public class Tile : MonoBehaviour
             return;
         }
 
+        if (IsHighlighted && dangerList.Count > 0)
+        {
+            _renderer.material.color = Color.Lerp(Color.red, Color.cyan, 0.2f);
+            return;
+        }
+        
         if (IsHighlighted)
         {
             _renderer.material.color = Color.cyan;
