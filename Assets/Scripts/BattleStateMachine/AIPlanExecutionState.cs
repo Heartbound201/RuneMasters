@@ -27,6 +27,7 @@ public class AIPlanExecutionState : State
             yield return null;
         }
         
+        owner.enemyPlans.Clear();
         owner.IsBattleOver();
 
         // TODO Move

@@ -21,7 +21,7 @@ public class EnemyUnit : Unit
         {
             foreach (var hexTileInArea in ability.abilityArea.GetTilesInArea(board, hexTileInRange))
             {
-                if (hexTileInArea.Data.unit != null && hexTileInArea.Data.unit != this)
+                if (hexTileInArea.Data.unit != null && hexTileInArea.Data.unit is PlayerUnit)
                 {
                     validAttackLocations.Add(hexTileInRange);
                 }
