@@ -38,7 +38,7 @@
                 ChangeState<GameOverState>();
             }
 
-            if (enemies.TrueForAll(e => e.health <= 0))
+            if (enemies.TrueForAll(e => e.currentHealth <= 0))
             {
                 ChangeState<VictoryState>();
             }

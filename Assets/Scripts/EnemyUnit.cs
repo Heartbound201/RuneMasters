@@ -6,9 +6,17 @@ using Wunderwunsch.HexMapLibrary.Generic;
 public class EnemyUnit : Unit
 {
     public int health;
+    [HideInInspector] public int currentHealth;
+    public HealthBar healthBar;
     
     public List<Ability> abilities = new List<Ability>();
 
+    void Start()
+    {
+        currentHealth = health;
+        healthBar.UpdateHealth(currentHealth, health);
+    }
+    
     public AIPlan PlanAction()
     {
         AIPlan plan = new AIPlan(this);
@@ -39,12 +47,14 @@ public class EnemyUnit : Unit
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        health -= amount - defense;
+        currentHealth -= amount - defense;
+        healthBar.UpdateHealth(currentHealth, health);
     }
     
     public override void Heal(int amount)
     {
         base.Heal(amount);
-        health += amount;
+        currentHealth += amount;
+        healthBar.UpdateHealth(currentHealth, health);
     }
 }
