@@ -35,4 +35,10 @@
             party.health -= (amount - defense);
             Debug.Log(name + " is hit for " + (amount - defense));
         }
+        public override void Heal(int amount)
+        {
+            base.Heal(amount);
+            party.health += amount;
+            Debug.Log(name + " is healed for " + amount);
+        }
     }

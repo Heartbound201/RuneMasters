@@ -39,4 +39,10 @@ public class EnemyUnit : Unit
         base.TakeDamage(amount);
         health -= amount - defense;
     }
+    
+    public override void Heal(int amount)
+    {
+        base.Heal(amount);
+        health += amount;
+    }
 }

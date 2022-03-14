@@ -22,11 +22,44 @@
         
         public TurnMenuController turnMenuController;
         public PartyInfoMenuController partyInfoMenuController;
+        public GameObject defeatPanel;
+        public GameObject victoryPanel;
         private void Start()
         {
             Debug.Log("Start game");
             // Start game in menu state
             ChangeState<UnitPlacementState>();
         }
+
+        protected internal void IsBattleOver()
+        {
+            if(party.health <= 0)
+            {
+                ChangeState<GameOverState>();
+            }
+
+            if (enemies.TrueForAll(e => e.health <= 0))
+            {
+                ChangeState<VictoryState>();
+            }
+        }
         
+    }
+
+    public class VictoryState : State
+    {
+        public override void Enter()
+        {
+            base.Enter();
+            owner.victoryPanel.SetActive(true);
+        }
+    }
+
+    public class GameOverState : State
+    {
+        public override void Enter()
+        {
+            base.Enter();
+            owner.defeatPanel.SetActive(true);
+        }
     }

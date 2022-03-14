@@ -28,7 +28,7 @@ public class AbilityExecutionState : State
         yield return null;
         owner.ActingUnit.hasActed = true;
 
-        //TODO check gameover
+        owner.IsBattleOver();
         owner.ChangeState<ActionSelectionState>();
     }
 }

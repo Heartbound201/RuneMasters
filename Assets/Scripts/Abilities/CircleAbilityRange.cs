@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
-[CreateAssetMenu(fileName = "CirleRange", menuName = "Create Circle Ability Range")]
+[CreateAssetMenu(fileName = "CircleRange", menuName = "Create Circle Ability Range")]
 public class CircleAbilityRange : AbilityRange
 {
     public int range = 1;

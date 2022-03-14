@@ -87,4 +87,7 @@ public class Unit : MonoBehaviour
     public virtual void TakeDamage(int amount)
     {
     }
+    public virtual void Heal(int amount)
+    {
+    }
 }
