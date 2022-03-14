@@ -11,7 +11,7 @@
         
         public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
         {
-            return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana;
+            return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana && to.Data.isPassable;
         }
         
         public override IEnumerator Move(List<HexTile<Tile>> tiles)
