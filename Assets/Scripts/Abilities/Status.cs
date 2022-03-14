@@ -1,11 +1,9 @@
 public abstract class Status
 {
-    protected string name;
     protected int duration;
 
-    protected Status(string name, int duration)
+    protected Status(int duration)
     {
-        this.name = name;
         this.duration = duration;
     }
 

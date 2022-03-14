@@ -33,16 +33,26 @@ public class TurnManager : MonoBehaviour
         switch (currentTurn)
         {
             case Turn.Player:
+                foreach (PlayerUnit unit in units)
+                {
+                    unit.TriggerStatusEnd();
+                }
                 foreach (EnemyUnit enemy in enemies)
                 {
                     enemy.Reset();
+                    enemy.TriggerStatusStart();
                 }
                 currentTurn = Turn.Enemy;
                 break;
             case Turn.Enemy:
+                foreach (EnemyUnit enemy in enemies)
+                {
+                    enemy.TriggerStatusEnd();
+                }
                 foreach (PlayerUnit unit in units)
                 {
                     unit.Reset();
+                    unit.TriggerStatusStart();
                 }
                 party.ResetTurn();
                 currentTurn = Turn.Player;

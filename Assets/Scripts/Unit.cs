@@ -84,6 +84,21 @@ public class Unit : MonoBehaviour
         hasActed = false;
     }
 
+    public void TriggerStatusStart()
+    {
+        foreach (var status in statuses)
+        {
+            status.ApplyOnTurnStart(this);
+        }
+    }
+    public void TriggerStatusEnd()
+    {
+        foreach (var status in statuses)
+        {
+            status.ApplyOnTurnEnd(this);
+        }
+    }
+
     public virtual void TakeDamage(int amount)
     {
     }
