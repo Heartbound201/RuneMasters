@@ -91,7 +91,7 @@ public class Board : MonoBehaviour
             TilePrototype tilePrototype = levelData.tileCollection.GetRandomTile();
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
-            instance.gameObject.name = "Hex" + tile.CartesianPosition;
+            instance.gameObject.name = "Hex" + tile.CartesianPosition + "["+tile.Index+"]";
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.board = this;
 
