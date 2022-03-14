@@ -68,11 +68,13 @@ public class ConfirmRuneState : State
     private void ConfirmRune(HexTile<Tile> obj)
     {
         if (!runeTiles.Contains(obj)) return;
+        if (!runeTiles.TrueForAll(t => t.Data.isPassable)) return;
         StartCoroutine(ExecuteRune());
     }
 
     private void ConfirmRune()
     {
+        if (!runeTiles.TrueForAll(t => t.Data.isPassable)) return;
         StartCoroutine(ExecuteRune());
     }
 

@@ -82,8 +82,6 @@ public class Board : MonoBehaviour
         return o;
     }
 
-    // TODO add obstacles to map generation
-    // TODO enemy health
     // TODO unit info
     // TODO status 
     // TODO tooltip
