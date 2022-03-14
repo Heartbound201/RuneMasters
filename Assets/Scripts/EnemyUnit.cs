@@ -27,10 +27,12 @@ public class EnemyUnit : Unit
                 }
             }
         }
-        
-        plan.ability = ability;
-        plan.attackLocations = new List<HexTile<Tile>>() {validAttackLocations[Random.Range(0, validAttackLocations.Count)]};
-        
+        if(validAttackLocations.Count > 0)
+        {
+            plan.ability = ability;
+            plan.attackLocations = new List<HexTile<Tile>>()
+                {validAttackLocations[Random.Range(0, validAttackLocations.Count)]};
+        }
         return plan;
     }
 

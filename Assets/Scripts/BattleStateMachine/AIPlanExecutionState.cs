@@ -17,6 +17,7 @@ public class AIPlanExecutionState : State
         {
             foreach (HexTile<Tile> aiPlanAttackLocation in aiPlan.attackLocations)
             {
+                if(aiPlan.ability == null) continue;
                 aiPlan.ability.Execute(aiPlan.actor, aiPlanAttackLocation);
                 foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(Board, aiPlanAttackLocation))
                 {
