@@ -82,18 +82,25 @@ public class Board : MonoBehaviour
         return o;
     }
 
+    // TODO add obstacles to map generation
+    // TODO enemy health
+    // TODO unit info
+    // TODO status 
+    // TODO tooltip
+    
     public IEnumerator GenerateBoard(LevelData levelData)
     {
         hexMap = new HexMap<Tile>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
         foreach (var tile in hexMap.Tiles)
         {
-            TilePrototype tilePrototype = levelData.tileCollection.GetRandomTile();
+            TilePrototype tilePrototype = levelData.tiles.Find(ti => ti.index == tile.Index).proto;
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
             instance.gameObject.name = "Hex" + tile.CartesianPosition + "["+tile.Index+"]";
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.board = this;
+            tile.Data.prototype = tilePrototype;
 
             yield return null;
         }

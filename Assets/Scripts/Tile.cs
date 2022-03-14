@@ -7,6 +7,8 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public class Tile : MonoBehaviour
 {
+    public TilePrototype prototype;
+    
     public Board board;
     public Unit unit;
     public bool isPassable;
