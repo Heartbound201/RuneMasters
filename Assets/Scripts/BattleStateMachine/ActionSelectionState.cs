@@ -25,7 +25,8 @@ public class ActionSelectionState : State
         }
         else if (owner.ActingUnit.hasActed && owner.ActingUnit.movement <= 0)
         {
-            owner.turnMenuController.SelectCharacter(owner.party.units.Find(u => !u.hasActed || u.movement > 0));
+            PlayerUnit playerUnit = owner.party.units.Find(u => !u.hasActed || u.movement > 0);
+            owner.turnMenuController.SelectCharacter((PlayerUnit) (playerUnit != null ? playerUnit : owner.ActingUnit));
         }
         else
         {
