@@ -105,6 +105,7 @@ namespace Wunderwunsch.HexMapLibrary
             }
             this.GetTilePosition = new TilePositionProvider(coordinateWrapper, tileIndexByPosition);
             this.GetTilePositions = new TilePositionsProvider(coordinateWrapper, tileIndexByPosition);
+            this.GetTileDistance = new MapDistanceCalculatorTile(coordinateWrapper);
 
             MapSizeData = HexUtility.CalculateMapCenterAndExtents(TileIndexByPosition.Keys);
 
@@ -112,10 +113,12 @@ namespace Wunderwunsch.HexMapLibrary
             CreateEdgeIndex();
             this.GetEdgePosition = new EdgePositionProvider(CoordinateWrapper, EdgeIndexByPosition);
             this.GetEdgePositions = new EdgePositionsProvider(CoordinateWrapper, EdgeIndexByPosition);
+            this.GetEdgeDistance = new MapDistanceCalculatorEdges(CoordinateWrapper);
 
             CreateCornerIndex();
             this.GetCornerPosition = new CornerPositionProvider(CoordinateWrapper, CornerIndexByPosition);
             this.GetCornerPositions = new CornersPositionsProvider(CoordinateWrapper, CornerIndexByPosition);
+            this.GetCornerDistance = new MapDistanceCalculatorCorners(CoordinateWrapper);
         }
 
         private void CreateEdgeIndex()
