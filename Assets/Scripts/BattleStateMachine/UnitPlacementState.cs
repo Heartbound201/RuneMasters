@@ -28,7 +28,7 @@ public class UnitPlacementState : State
             manaMax = 10,
             manaReserveMax = 3
         };
-        owner.party.Reset();
+        owner.party.Init();
         foreach (SpawnInfo spawnInfo in owner.levelData.characters)
         {
             GameObject spawnEntity = Board.SpawnEntity(spawnInfo.obj, spawnInfo.index);

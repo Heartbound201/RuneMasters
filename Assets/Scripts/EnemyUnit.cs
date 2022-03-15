@@ -47,14 +47,14 @@ public class EnemyUnit : Unit
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        currentHealth -= amount - defense;
+        currentHealth = Mathf.Clamp(currentHealth - (amount - defense), 0, health);
         healthBar.UpdateHealth(currentHealth, health);
     }
     
     public override void Heal(int amount)
     {
         base.Heal(amount);
-        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, health);
         healthBar.UpdateHealth(currentHealth, health);
     }
 }

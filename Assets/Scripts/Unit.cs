@@ -40,14 +40,16 @@ public class Unit : MonoBehaviour
 
     public virtual IEnumerator Move(List<HexTile<Tile>> tiles)
     {
-        foreach (HexTile<Tile> tile in tiles)
+        for (int i = 1; i < tiles.Count; ++i)
         {
-            transform.position = tile.CartesianPosition;
-            this.tile.Data.unit = null;
-            this.tile = tile;
+            HexTile<Tile> from = tiles[i - 1];
+            HexTile<Tile> to = tiles[i];
+            transform.position = to.CartesianPosition;
+            from.Data.unit = null;
+            tile = to;
             tile.Data.unit = this;
 
-            movement--;
+            movement = Mathf.Clamp(movement - 1, 0, movementMax);
             yield return new WaitForSeconds(0.5f);
         }
     }

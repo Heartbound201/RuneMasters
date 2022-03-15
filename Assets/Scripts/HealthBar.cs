@@ -15,6 +15,6 @@ public class HealthBar : MonoBehaviour
     
     void Update()
     {
-        transform.rotation = Camera.main.transform.rotation;
+        text.transform.rotation = Camera.main.transform.rotation;
     }
 }

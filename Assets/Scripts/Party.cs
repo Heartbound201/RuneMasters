@@ -21,8 +21,35 @@
             mana = manaMax;
         }
 
+        public void SpendMana(int amount)
+        {
+            if (manaReserve > 0)
+            {
+                int left = 0;
+                if (amount > manaReserve)
+                {
+                    left = amount - manaReserve;
+                }
+                manaReserve = Mathf.Clamp(manaReserve - amount, 0, manaReserveMax);
+                mana = Mathf.Clamp(mana - left, 0, manaMax);
+            }
+            else
+            {
+                mana = Mathf.Clamp(mana - amount, 0, manaMax);
+            }
+        }
 
-        public void Reset()
+        public void TakeDamage(int amount)
+        {
+            health = Mathf.Clamp(health - amount, 0, healthMax);
+        }
+
+        public void Heal(int amount)
+        {
+            health = Mathf.Clamp(health + amount, 0, healthMax);
+        }
+        
+        public void Init()
         {
             health = healthMax;
             mana = manaMax;

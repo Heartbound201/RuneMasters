@@ -14,7 +14,7 @@ public class ActionSelectionState : State
 
         owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
 
-        if (owner.party.units.TrueForAll(u => u.hasActed) || owner.party.mana <= 0)
+        if (owner.party.units.TrueForAll(u => u.hasActed) || owner.party.AvailableMana <= 0)
         {
             owner.ChangeState<TurnSelectionState>();
         }

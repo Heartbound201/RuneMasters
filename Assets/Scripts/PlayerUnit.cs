@@ -1,44 +1,48 @@
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using Wunderwunsch.HexMapLibrary.Generic;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Wunderwunsch.HexMapLibrary.Generic;
 
-    public class PlayerUnit : Unit
+public class PlayerUnit : Unit
+{
+    public List<Rune> runes = new List<Rune>();
+
+    public Party party;
+
+    public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
-        public List<Rune> runes = new List<Rune>();
+        return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana &&
+               to.Data.isPassable;
+    }
 
-        public Party party;
-        
-        public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
+    public override IEnumerator Move(List<HexTile<Tile>> tiles)
+    {
+        for (int i = 1; i < tiles.Count; ++i)
         {
-            return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana && to.Data.isPassable;
-        }
-        
-        public override IEnumerator Move(List<HexTile<Tile>> tiles)
-        {
-            foreach (HexTile<Tile> tile in tiles)
-            {
-                transform.position = tile.CartesianPosition;
-                base.tile.Data.unit = null;
-                base.tile = tile;
-                tile.Data.unit = this;
-                
-                movement--;
-                party.mana--;
-                yield return new WaitForSeconds(0.5f);
-            }
-        }
+            HexTile<Tile> from = tiles[i - 1];
+            HexTile<Tile> to = tiles[i];
+            transform.position = to.CartesianPosition;
+            from.Data.unit = null;
+            tile = to;
+            tile.Data.unit = this;
 
-        public override void TakeDamage(int amount)
-        {
-            base.TakeDamage(amount);
-            party.health -= (amount - defense);
-            Debug.Log(name + " is hit for " + (amount - defense));
-        }
-        public override void Heal(int amount)
-        {
-            base.Heal(amount);
-            party.health += amount;
-            Debug.Log(name + " is healed for " + amount);
+            movement = Mathf.Clamp(movement - 1, 0, movementMax);
+            party.SpendMana(1);
+            yield return new WaitForSeconds(0.5f);
         }
     }
+
+    public override void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        party.TakeDamage(amount - defense);
+        Debug.Log(name + " is hit for " + (amount - defense));
+    }
+
+    public override void Heal(int amount)
+    {
+        base.Heal(amount);
+        party.Heal(amount);
+        Debug.Log(name + " is healed for " + amount);
+    }
+}

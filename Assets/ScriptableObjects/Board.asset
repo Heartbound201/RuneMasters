@@ -355,13 +355,13 @@ MonoBehaviour:
   tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
   enemies:
   - index: 117
-    obj: {fileID: 0}
+    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
   - index: 139
-    obj: {fileID: 0}
+    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
   characters:
   - index: 12
-    obj: {fileID: 0}
+    obj: {fileID: 3754591301903308259, guid: 86cf64050e5595f4dad82b421a42b65a, type: 3}
   - index: 21
-    obj: {fileID: 0}
+    obj: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
   - index: 20
-    obj: {fileID: 0}
+    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}

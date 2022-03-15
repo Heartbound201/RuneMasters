@@ -83,7 +83,6 @@ public class Board : MonoBehaviour
     }
 
     // TODO unit info
-    // TODO status 
     // TODO tooltip
     
     public IEnumerator GenerateBoard(LevelData levelData)
