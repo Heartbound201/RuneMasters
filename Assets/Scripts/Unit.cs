@@ -53,6 +53,19 @@ public class Unit : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+    public virtual IEnumerator MoveRune(List<HexTile<Tile>> tiles)
+    {
+        foreach (HexTile<Tile> to in tiles)
+        {
+            transform.position = to.CartesianPosition;
+            tile.Data.unit = null;
+            tile = to;
+            tile.Data.unit = this;
+
+            movement = Mathf.Clamp(movement - 1, 0, movementMax);
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 
     public virtual List<HexTile<Tile>> GetTilesInRange()
     {

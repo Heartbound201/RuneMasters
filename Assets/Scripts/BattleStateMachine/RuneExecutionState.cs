@@ -19,7 +19,7 @@ public class RuneExecutionState : State
 
     IEnumerator Sequence(List<HexTile<Tile>> line)
     {
-        yield return StartCoroutine(owner.ActingUnit.Move(line)); // coroutine
+        yield return StartCoroutine(owner.ActingUnit.MoveRune(line)); // coroutine
         owner.SelectedAbility = owner.SelectedRune.ability;
         owner.ChangeState<AbilityTargetState>();
     }

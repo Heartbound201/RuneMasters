@@ -31,6 +31,20 @@ public class PlayerUnit : Unit
             yield return new WaitForSeconds(0.5f);
         }
     }
+    public override IEnumerator MoveRune(List<HexTile<Tile>> tiles)
+    {
+        foreach (HexTile<Tile> to in tiles)
+        {
+            transform.position = to.CartesianPosition;
+            tile.Data.unit = null;
+            tile = to;
+            tile.Data.unit = this;
+
+            movement = Mathf.Clamp(movement - 1, 0, movementMax);
+            party.SpendMana(1);
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 
     public override void TakeDamage(int amount)
     {
