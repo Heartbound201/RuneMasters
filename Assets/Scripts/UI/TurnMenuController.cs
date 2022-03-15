@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TurnMenuController : MonoBehaviour
@@ -10,8 +11,9 @@ public class TurnMenuController : MonoBehaviour
     public BattleStateMachine stateMachine;
 
     public Transform charactersPanel;
-    public Transform infoPanel;
     public Transform runesPanel;
+
+    public TMP_Text movementInfo;
 
     public GameObject characterSelectionButton;
     public GameObject runeSelectionButton;
@@ -58,10 +60,9 @@ public class TurnMenuController : MonoBehaviour
             runeMenuItems.Add(runeMenuItem);
         }
 
-        //TODO clear info panel
         ClearInfoPanel();
 
-        //TODO fill info panel
+        FillInfoPanel(unit);
         
         // mov / str / dex / int / def
         // 3     3     3      2     4
@@ -72,6 +73,11 @@ public class TurnMenuController : MonoBehaviour
         //TODO gray out commands
 
         SelectUnit?.Invoke(unit);
+    }
+
+    private void FillInfoPanel(PlayerUnit playerUnit)
+    {
+        movementInfo.text = $"{playerUnit.movement}/{playerUnit.movementMax}";
     }
 
     private void ClearInfoPanel()

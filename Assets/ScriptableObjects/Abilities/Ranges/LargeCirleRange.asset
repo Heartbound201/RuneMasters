@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6290be791fae4d1cab8c7f6f0a2a8712, type: 3}
   m_Name: LargeCirleRange
   m_EditorClassIdentifier: 
-  range: 10
+  range: 3
