@@ -24,9 +24,9 @@ public class UnitPlacementState : State
 
         owner.party = new Party
         {
-            healthMax = 10,
-            manaMax = 10,
-            manaReserveMax = 3
+            healthMax = 25,
+            manaMax = 12,
+            manaReserveMax = 6
         };
         owner.party.Init();
         foreach (SpawnInfo spawnInfo in owner.levelData.characters)

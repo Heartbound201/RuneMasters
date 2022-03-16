@@ -52,7 +52,10 @@
         public void Init()
         {
             health = healthMax;
-            mana = manaMax;
+
+            // Temp fix, da sistemare correttamente l-inizializzazione della riserva mana
+            //mana = manaMax;
+            mana = 0;
             manaReserve = 0;
         }
     }
