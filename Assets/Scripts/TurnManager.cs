@@ -28,6 +28,21 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        EnemyUnit.KOEvent += OnEnemyUnitKoEvent;
+    }
+
+    private void OnEnemyUnitKoEvent(Unit unit)
+    {
+        enemies.Remove((EnemyUnit) unit);
+    }
+
+    private void OnDestroy()
+    {
+        EnemyUnit.KOEvent -= OnEnemyUnitKoEvent;
+    }
+
     public void Switch()
     {
         switch (currentTurn)
