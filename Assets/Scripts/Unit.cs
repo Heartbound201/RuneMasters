@@ -33,6 +33,22 @@ public class Unit : MonoBehaviour
         dexterityStart = dexterity;
     }
 
+    public virtual void PlaceOnTile(HexTile<Tile> target)
+    {
+        // Make sure old tile location is not still pointing to this unit
+        if (tile != null && tile.Data.unit == this)
+            tile.Data.unit = null;
+
+        // Link unit and tile references
+        tile = target;
+
+        if (target != null)
+        {
+            target.Data.unit = this;
+            transform.position = target.CartesianPosition;
+        }
+    }
+
     public virtual bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
         return (from.Data._distance + 1) <= movement && to.Data.isPassable;
@@ -42,12 +58,7 @@ public class Unit : MonoBehaviour
     {
         for (int i = 1; i < tiles.Count; ++i)
         {
-            HexTile<Tile> from = tiles[i - 1];
-            HexTile<Tile> to = tiles[i];
-            transform.position = to.CartesianPosition;
-            from.Data.unit = null;
-            tile = to;
-            tile.Data.unit = this;
+            PlaceOnTile(tiles[i]);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             yield return new WaitForSeconds(0.5f);
@@ -57,10 +68,7 @@ public class Unit : MonoBehaviour
     {
         foreach (HexTile<Tile> to in tiles)
         {
-            transform.position = to.CartesianPosition;
-            tile.Data.unit = null;
-            tile = to;
-            tile.Data.unit = this;
+            PlaceOnTile(to);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             yield return new WaitForSeconds(0.5f);

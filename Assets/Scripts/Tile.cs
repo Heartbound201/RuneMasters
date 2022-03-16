@@ -89,7 +89,7 @@ public class Tile : MonoBehaviour
     {
         get
         {
-            return isPassable && unit.isPassable;
+            return isPassable && !(unit!=null && !unit.isPassable);
         }
     }
 

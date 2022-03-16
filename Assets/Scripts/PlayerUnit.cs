@@ -12,19 +12,14 @@ public class PlayerUnit : Unit
     public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
         return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana &&
-               to.Data.isPassable;
+               to.Data.IsPassable;
     }
 
     public override IEnumerator Move(List<HexTile<Tile>> tiles)
     {
         for (int i = 1; i < tiles.Count; ++i)
         {
-            HexTile<Tile> from = tiles[i - 1];
-            HexTile<Tile> to = tiles[i];
-            transform.position = to.CartesianPosition;
-            from.Data.unit = null;
-            tile = to;
-            tile.Data.unit = this;
+            PlaceOnTile(tiles[i]);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
@@ -35,10 +30,7 @@ public class PlayerUnit : Unit
     {
         foreach (HexTile<Tile> to in tiles)
         {
-            transform.position = to.CartesianPosition;
-            tile.Data.unit = null;
-            tile = to;
-            tile.Data.unit = this;
+            PlaceOnTile(to);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
