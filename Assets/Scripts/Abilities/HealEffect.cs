@@ -13,7 +13,7 @@ public class HealEffect : AbilityEffect
         if(target.Data.unit)
         {
             int amount = Mathf.RoundToInt(potency + actor.strength*strengthScaling + actor.intelligence*intelligenceScaling + actor.dexterity*dexterityScaling);
-            target.Data.unit.TakeDamage(amount);
+            target.Data.unit.Heal(amount);
         }
     }
 }
