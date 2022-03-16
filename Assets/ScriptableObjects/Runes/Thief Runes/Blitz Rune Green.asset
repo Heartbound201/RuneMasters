@@ -15,6 +15,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3426775b5e9aeb649ab4c0bc3240a529, type: 3}
   runeName: Blitz
   runeDescription: 
-  steps: 00000000000000000000000002000000020000000000000000000000
+  steps: 000000000000000002000000020000000000000000000000
   ability: {fileID: 11400000, guid: e9bfa7bdbb423ef478903c2b17bf52ce, type: 2}
   runePrefab: {fileID: 0}

@@ -15,6 +15,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ed8bbecf46b3d21428663741e323ef4d, type: 3}
   runeName: Kmer
   runeDescription: 
-  steps: 0500000005000000050000000100000001000000
+  steps: 05000000050000000100000001000000
   ability: {fileID: 11400000, guid: 11e0264360e37404795cb184c6a2adc8, type: 2}
   runePrefab: {fileID: 0}
