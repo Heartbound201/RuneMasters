@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99a5bb4a7d724a62910e5db823f60088, type: 3}
-  m_Name: CirleArea
+  m_Script: {fileID: 11500000, guid: 6290be791fae4d1cab8c7f6f0a2a8712, type: 3}
+  m_Name: CirleRange 2
   m_EditorClassIdentifier: 
-  range: 1
+  range: 2

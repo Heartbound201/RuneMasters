@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6290be791fae4d1cab8c7f6f0a2a8712, type: 3}
-  m_Name: CirleRange
+  m_Name: CirleRange 3
   m_EditorClassIdentifier: 
-  range: 2
+  range: 3
