@@ -45,16 +45,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Tank
-  movement: 2
-  movementMax: 2
+  movement: 1
+  movementMax: 1
   isPassable: 1
   hasActed: 0
+  strength: 0
+  defense: 0
+  intelligence: 0
+  dexterity: 0
+  strengthStart: 0
+  defenseStart: 0
+  intelligenceStart: 0
+  dexterityStart: 0
   runes:
-  - {fileID: 11400000, guid: de284f3b196c19d499f17fc0831fb6a4, type: 2}
-  - {fileID: 11400000, guid: 35bb5e09526c6be44ad6b73f27f06ec3, type: 2}
-  - {fileID: 11400000, guid: 00f3ee20ff8f5ad4d95c1d8f02d54bc6, type: 2}
-  - {fileID: 11400000, guid: f26fd1d09dcfd6f4881fe3822c84da52, type: 2}
-  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
+  - {fileID: 11400000, guid: 54ea6615bf16f1e4386e83472bdffc6d, type: 2}
+  - {fileID: 11400000, guid: f078877b9704e5942b7aef84a038c3ce, type: 2}
+  - {fileID: 11400000, guid: 557710074044098469d58eca31925722, type: 2}
+  - {fileID: 11400000, guid: 395ed6c00887ba74fabb39b87f3287ba, type: 2}
+  - {fileID: 11400000, guid: 084e98db54d4b3c408305ec49d795053, type: 2}
 --- !u!1 &8254965180053802087
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +123,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fda3ba9db049ee64594b3f6b907103c6, type: 2}
+  - {fileID: 2100000, guid: 5f3f9251599373c4b9c5be846c3ea321, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

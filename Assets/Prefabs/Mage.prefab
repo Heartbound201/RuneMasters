@@ -45,16 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Mage
-  movement: 3
-  movementMax: 3
+  movement: 2
+  movementMax: 2
   isPassable: 1
   hasActed: 0
+  strength: 0
+  defense: 0
+  intelligence: 0
+  dexterity: 0
+  strengthStart: 0
+  defenseStart: 0
+  intelligenceStart: 0
+  dexterityStart: 0
   runes:
-  - {fileID: 11400000, guid: de284f3b196c19d499f17fc0831fb6a4, type: 2}
-  - {fileID: 11400000, guid: 35bb5e09526c6be44ad6b73f27f06ec3, type: 2}
-  - {fileID: 11400000, guid: 00f3ee20ff8f5ad4d95c1d8f02d54bc6, type: 2}
-  - {fileID: 11400000, guid: 5b471d5bdee0a60469d70cb9585c68ca, type: 2}
-  party: {fileID: 11400000, guid: 450095da7e4d6d24696a15277787ad33, type: 2}
+  - {fileID: 11400000, guid: 48ae0869f553b344ab354d1591a6bf58, type: 2}
+  - {fileID: 11400000, guid: affc2e2bc509db64d9f16cf1fb2ac4d2, type: 2}
+  - {fileID: 11400000, guid: aee3444bb1aadb04d9b2dd6bebd64c9c, type: 2}
+  - {fileID: 11400000, guid: 7fdf261c9fc089146afe8eaf04214e83, type: 2}
 --- !u!1 &8254965180053802087
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fda3ba9db049ee64594b3f6b907103c6, type: 2}
+  - {fileID: 2100000, guid: 5e0929cdbd17a12468e0dd7ef3ffd0a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

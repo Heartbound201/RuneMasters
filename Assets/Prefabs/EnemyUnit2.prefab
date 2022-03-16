@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5676427393560813927}
   - component: {fileID: 6271444441539859201}
   m_Layer: 0
-  m_Name: EnemyUnit
+  m_Name: EnemyUnit2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ca5499bca4eff4db4685fffac19f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: enemy
+  name: enemy2
   movement: 0
   movementMax: 0
   isPassable: 0
@@ -134,11 +134,11 @@ MonoBehaviour:
   defenseStart: 0
   intelligenceStart: 0
   dexterityStart: 0
-  health: 12
+  health: 8
   currentHealth: 0
   healthBar: {fileID: 6271444441539859201}
   abilities:
-  - {fileID: 11400000, guid: 29ffe2826dc4a9a49810254c81775fed, type: 2}
+  - {fileID: 11400000, guid: 9c6798ca17fbbdd4eaf806c37b540da7, type: 2}
 --- !u!114 &6271444441539859201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bdacd8ead2489124ca552c3b8b2f73e1, type: 2}
+  - {fileID: 2100000, guid: 91008342618192445abf2558e9225024, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

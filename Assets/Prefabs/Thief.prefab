@@ -45,15 +45,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Thief
-  movement: 4
-  movementMax: 4
+  movement: 3
+  movementMax: 3
   isPassable: 1
   hasActed: 0
+  strength: 0
+  defense: 0
+  intelligence: 0
+  dexterity: 0
+  strengthStart: 0
+  defenseStart: 0
+  intelligenceStart: 0
+  dexterityStart: 0
   runes:
-  - {fileID: 11400000, guid: de284f3b196c19d499f17fc0831fb6a4, type: 2}
-  - {fileID: 11400000, guid: 35bb5e09526c6be44ad6b73f27f06ec3, type: 2}
-  - {fileID: 11400000, guid: 00f3ee20ff8f5ad4d95c1d8f02d54bc6, type: 2}
-  - {fileID: 11400000, guid: 79f9fb21bd963a74aba716c0562b97e4, type: 2}
+  - {fileID: 11400000, guid: 5c91fcf917480f744bfe0db1b0c230a1, type: 2}
+  - {fileID: 11400000, guid: a88bd834178fa1348bfb4050e45c5b54, type: 2}
+  - {fileID: 11400000, guid: 511f9cb8efd8f1343a512df790bc03a9, type: 2}
+  - {fileID: 11400000, guid: fc2fab04cf49dab4daf8e8175fda771b, type: 2}
 --- !u!1 &8254965180053802087
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fda3ba9db049ee64594b3f6b907103c6, type: 2}
+  - {fileID: 2100000, guid: 9294d1586432d7047835429e5185aa02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
