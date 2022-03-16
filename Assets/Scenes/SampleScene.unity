@@ -1859,6 +1859,7 @@ MonoBehaviour:
   charactersPanel: {fileID: 988827100}
   runesPanel: {fileID: 2065601382}
   movementInfo: {fileID: 4339211}
+  defenseInfo: {fileID: 1639111884229978152}
   characterSelectionButton: {fileID: 7161619918386738280, guid: cdd9e0808a04b784b850c3519c630865, type: 3}
   runeSelectionButton: {fileID: 480635549618743431, guid: d0f234dae56287a478d59ba5f0f6f499, type: 3}
 --- !u!1 &1693627591
@@ -2269,6 +2270,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6dc6ae9d598e7d4fb2a3113e445430a, type: 3}
+--- !u!114 &1639111884229978152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8509913155056087159, guid: d6dc6ae9d598e7d4fb2a3113e445430a, type: 3}
+  m_PrefabInstance: {fileID: 1639111884229978151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8945251416003575403
 PrefabInstance:
   m_ObjectHideFlags: 0

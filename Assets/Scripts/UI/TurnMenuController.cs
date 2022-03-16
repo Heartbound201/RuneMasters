@@ -14,6 +14,7 @@ public class TurnMenuController : MonoBehaviour
     public Transform runesPanel;
 
     public TMP_Text movementInfo;
+    public TMP_Text defenseInfo;
 
     public GameObject characterSelectionButton;
     public GameObject runeSelectionButton;
@@ -78,6 +79,7 @@ public class TurnMenuController : MonoBehaviour
     private void FillInfoPanel(PlayerUnit playerUnit)
     {
         movementInfo.text = $"{playerUnit.movement}/{playerUnit.movementMax}";
+        defenseInfo.text = $"{playerUnit.defense}";
     }
 
     private void ClearInfoPanel()
