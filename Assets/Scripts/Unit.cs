@@ -113,7 +113,6 @@ public class Unit : MonoBehaviour
             statuses[i].ApplyOnTurnEnd(this);
         }
     }
-
     public virtual void TakeDamage(int amount)
     {
     }

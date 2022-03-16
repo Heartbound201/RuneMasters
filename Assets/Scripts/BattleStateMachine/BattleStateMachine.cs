@@ -29,6 +29,17 @@
             Debug.Log("Start game");
             // Start game in menu state
             ChangeState<UnitPlacementState>();
+            EnemyUnit.KOEvent += OnEnemyUnitKoEvent;
+        }
+
+        private void OnEnemyUnitKoEvent(Unit unit)
+        {
+            enemies.Remove((EnemyUnit) unit);
+        }
+
+        private void OnDestroy()
+        {
+            EnemyUnit.KOEvent -= OnEnemyUnitKoEvent;
         }
 
         protected internal void IsBattleOver()
@@ -38,7 +49,7 @@
                 ChangeState<GameOverState>();
             }
 
-            if (enemies.TrueForAll(e => e.currentHealth <= 0))
+            if (enemies.Count == 0 || enemies.TrueForAll(e => e.currentHealth <= 0))
             {
                 ChangeState<VictoryState>();
             }

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
+using Random = UnityEngine.Random;
 
 public class EnemyUnit : Unit
 {
@@ -11,6 +13,8 @@ public class EnemyUnit : Unit
 
     public List<Ability> abilities = new List<Ability>();
 
+    public static event Action<Unit> KOEvent;
+    
     void Start()
     {
         currentHealth = health;
@@ -89,6 +93,18 @@ public class EnemyUnit : Unit
         base.TakeDamage(amount);
         currentHealth = Mathf.Clamp(currentHealth - (amount - defense), 0, health);
         healthBar.UpdateHealth(currentHealth, health);
+
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    
+    private void Die()
+    {
+        tile.Data.unit = null;
+        KOEvent?.Invoke(this);
+        Destroy(gameObject);
     }
 
     public override void Heal(int amount)
