@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
-  m_Name: Pdor Rune 1
+  m_Name: Pdor Rune Blue
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ee30db914d141c24784d5512e881d82f, type: 3}
   runeName: Pdor
   runeDescription: 
   steps: 0000000000000000000000000500000005000000

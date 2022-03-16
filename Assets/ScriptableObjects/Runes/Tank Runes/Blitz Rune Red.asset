@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
   m_Name: Blitz Rune Red
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 24b8815710c87d14d843933caa8eabae, type: 3}
+  icon: {fileID: 21300000, guid: 4cd1d9294c9082142b3e03ec26b5452d, type: 3}
   runeName: Blitz
   runeDescription: 
   steps: 00000000000000000000000002000000020000000000000000000000

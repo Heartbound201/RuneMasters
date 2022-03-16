@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
-  m_Name: Kmer Rune 1
+  m_Name: Kmer Rune Blue
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ed8bbecf46b3d21428663741e323ef4d, type: 3}
   runeName: Kmer
   runeDescription: 
   steps: 0500000005000000050000000100000001000000
