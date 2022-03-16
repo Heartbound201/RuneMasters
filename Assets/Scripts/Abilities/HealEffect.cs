@@ -10,10 +10,10 @@ public class HealEffect : AbilityEffect
     public float dexterityScaling;
     public override void Apply(Unit actor, HexTile<Tile> target)
     {
-        if(target.Data.unit)
+        foreach (Unit unit in target.Data.unitList)
         {
             int amount = Mathf.RoundToInt(potency + actor.strength*strengthScaling + actor.intelligence*intelligenceScaling + actor.dexterity*dexterityScaling);
-            target.Data.unit.Heal(amount);
+            unit.Heal(amount);
         }
     }
 }

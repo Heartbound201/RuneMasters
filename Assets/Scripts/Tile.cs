@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class Tile : MonoBehaviour
@@ -10,7 +11,7 @@ public class Tile : MonoBehaviour
     public TilePrototype prototype;
     
     public Board board;
-    public Unit unit;
+    public List<Unit> unitList;
     public bool isPassable;
 
     public bool IsHighlighted;
@@ -25,6 +26,7 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         originColor = _renderer.material.color;
+        unitList = new List<Unit>();
     }
 
     [HideInInspector] public HexTile<Tile> _prev;
@@ -89,7 +91,7 @@ public class Tile : MonoBehaviour
     {
         get
         {
-            return isPassable && !(unit!=null && !unit.isPassable);
+            return isPassable && unitList.TrueForAll(u => u.isPassable);
         }
     }
 

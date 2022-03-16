@@ -75,14 +75,9 @@ public class Board : MonoBehaviour
     public GameObject SpawnEntity(GameObject obj, int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
-        GameObject o = Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
-        Unit unit = o.GetComponent<Unit>();
-        unit.tile = hexTile;
-        hexTile.Data.unit = unit;
-        return o;
+        return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
-    // TODO unit info
     // TODO tooltip
     
     public IEnumerator GenerateBoard(LevelData levelData)

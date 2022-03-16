@@ -49,7 +49,7 @@ public class EnemyUnit : Unit
 
             foreach (var hexTileInArea in ability.abilityArea.GetTilesInArea(board, hexTileInRange))
             {
-                if (hexTileInArea.Data.unit != null && hexTileInArea.Data.unit is PlayerUnit)
+                if (hexTileInArea.Data.unitList.Count > 0 && hexTileInArea.Data.unitList is PlayerUnit)
                 {
                     validAttackLocations.Add(hexTileInRange);
                 }
@@ -72,9 +72,9 @@ public class EnemyUnit : Unit
         Unit nearestEnemy = null;
         tile.Data.board.SearchRange(from.tile, delegate(HexTile<Tile> arg1, HexTile<Tile> arg2)
         {
-            if (nearestEnemy == null && arg2.Data.unit != null)
+            if (nearestEnemy == null && arg2.Data.unitList.Count > 0)
             {
-                Unit other = arg2.Data.unit;
+                Unit other = arg2.Data.unitList[0];
                 if (other != null && other is PlayerUnit)
                 {
                     Unit unit = other.GetComponent<Unit>();
@@ -102,7 +102,7 @@ public class EnemyUnit : Unit
     
     private void Die()
     {
-        tile.Data.unit = null;
+        tile.Data.unitList.Remove(this);
         KOEvent?.Invoke(this);
         Destroy(gameObject);
     }

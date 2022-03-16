@@ -36,15 +36,15 @@ public class Unit : MonoBehaviour
     public virtual void PlaceOnTile(HexTile<Tile> target)
     {
         // Make sure old tile location is not still pointing to this unit
-        if (tile != null && tile.Data.unit == this)
-            tile.Data.unit = null;
+        if (tile != null && tile.Data.unitList.Contains(this))
+            tile.Data.unitList.Remove(this);
 
         // Link unit and tile references
         tile = target;
 
         if (target != null)
         {
-            target.Data.unit = this;
+            target.Data.unitList.Add(this);
             transform.position = target.CartesianPosition;
         }
     }
@@ -85,7 +85,7 @@ public class Unit : MonoBehaviour
     protected virtual void Filter(List<HexTile<Tile>> tiles)
     {
         for (int i = tiles.Count - 1; i > 0; --i)
-            if (tiles[i].Data.unit != null)
+            if (tiles[i].Data.unitList.Count > 0)
                 tiles.RemoveAt(i);
     }
 

@@ -8,10 +8,10 @@ class DamageOvertimeAbilityEffect : DamageAbilityEffect
 
     public override void Apply(Unit actor, HexTile<Tile> target)
     {
-        if(target.Data.unit)
+        foreach (Unit unit in target.Data.unitList)
         {
             DamageOvertimeStatus se = new DamageOvertimeStatus(duration, potency);
-            se.Apply(target.Data.unit);
+            se.Apply(unit);
         }
     }
 }
