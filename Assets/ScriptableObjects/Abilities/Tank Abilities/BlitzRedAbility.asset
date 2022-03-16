@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52851217fd3397f4a86f8a4f03da19e4, type: 3}
+  m_Name: BlitzRedAbility
+  m_EditorClassIdentifier: 
+  name: Blitz
+  description: 
+  abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
+  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
+  abilityEffects:
+  - {fileID: 11400000, guid: 2298db8971b7295489bdbf9bfb88627e, type: 2}
+  - {fileID: 11400000, guid: 659077462b78595438a3cfcbfbf5dadc, type: 2}
