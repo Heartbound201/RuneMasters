@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17146b2fc758421487a22d3bc7e72022, type: 3}
   m_Name: BuffDef2_2Turns
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 2
   strength: 0
-  defense: 5
+  defense: 2
   intelligence: 0
   dexterity: 0
