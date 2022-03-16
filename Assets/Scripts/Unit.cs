@@ -108,9 +108,9 @@ public class Unit : MonoBehaviour
     }
     public void TriggerStatusEnd()
     {
-        foreach (var status in statuses)
+        for (int i = statuses.Count - 1; i >= 0; i--)
         {
-            status.ApplyOnTurnEnd(this);
+            statuses[i].ApplyOnTurnEnd(this);
         }
     }
 
