@@ -698,8 +698,8 @@ MonoBehaviour:
     obj: {fileID: 3754591301903308259, guid: 15e4a4e177a662c4084156b13730d6cf, type: 3}
   characters:
   - index: 160
-    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
-  - index: 66
     obj: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
+  - index: 66
+    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
   - index: 252
     obj: {fileID: 3754591301903308259, guid: 86cf64050e5595f4dad82b421a42b65a, type: 3}

@@ -26,7 +26,7 @@ public class UnitPlacementState : State
         owner.party = new Party
         {
             healthMax = 25,
-            manaMax = 12,
+            manaMax = 15,
             manaReserveMax = 6
         };
         owner.party.Init();
