@@ -50,7 +50,7 @@ MonoBehaviour:
   isPassable: 1
   hasActed: 0
   strength: 0
-  defense: 0
+  defense: 6
   intelligence: 0
   dexterity: 0
   strengthStart: 0
