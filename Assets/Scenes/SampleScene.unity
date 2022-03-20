@@ -240,10 +240,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 963194227}
-  transitionDuration: 1
   currentMode: 0
-  zoomInSize: 12
+  transitionDuration: 0.5
+  zoomInSize: 5
   zoomOutSize: 16
+  zoomSensitivity: 80
 --- !u!4 &91501281
 Transform:
   m_ObjectHideFlags: 0

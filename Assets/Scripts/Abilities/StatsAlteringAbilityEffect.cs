@@ -11,10 +11,10 @@ class StatsAlteringAbilityEffect : AbilityEffect
     public int dexterity;
     public override void Apply(Unit actor, HexTile<Tile> target)
     {
-        foreach (Unit unit in target.Data.unitList)
+        for (int i = target.Data.unitList.Count - 1; i >= 0; i--)
         {
             StatsAlteringStatus se = new StatsAlteringStatus(duration, strength, defense, intelligence, dexterity);
-            se.Apply(unit);
+            se.Apply(target.Data.unitList[i]);
         }
     }
 }

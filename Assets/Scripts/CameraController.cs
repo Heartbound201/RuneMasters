@@ -5,10 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Camera camera;
-    public float transitionDuration;
     public CameraMode currentMode;
+    public float transitionDuration;
     public float zoomInSize = 12;
     public float zoomOutSize = 16;
+    public float zoomSensitivity = 10f;
+    
+    private bool inTransition = false;
 
     public enum CameraMode
     {
@@ -18,18 +21,21 @@ public class CameraController : MonoBehaviour
 
     public void GoIsometric()
     {
-        StartCoroutine(Transition(new Vector3(), Quaternion.Euler(35, 30, 0)));
+        if(inTransition) return;
+        StartCoroutine(Transition(camera.transform.position, Quaternion.Euler(35, 30, 0)));
         currentMode = CameraMode.Isometric;
     }
 
     public void GoTopDown()
     {
-        StartCoroutine(Transition(new Vector3(), Quaternion.Euler(90, 30, 0)));
+        if(inTransition) return;
+        StartCoroutine(Transition(camera.transform.position, Quaternion.Euler(90, 30, 0)));
         currentMode = CameraMode.Topdown;
     }
 
     private IEnumerator Transition(Vector3 targetPos, Quaternion targetRot)
     {
+        inTransition = true;
         float t = 0.0f;
         Vector3 startingPos = camera.transform.position;
         Quaternion startingRot = camera.transform.rotation;
@@ -41,43 +47,46 @@ public class CameraController : MonoBehaviour
             camera.transform.rotation = Quaternion.Lerp(startingRot, targetRot, t);
             yield return 0;
         }
-    }
-    private IEnumerator Transition(float targetZoom)
-    {
-        float t = 0.0f;
-        float startingZoom = camera.orthographicSize;
-        while (t < 1.0f)
-        {
-            t += Time.deltaTime * (Time.timeScale / transitionDuration);
-            camera.orthographicSize = Mathf.Lerp(startingZoom, targetZoom, t);
-            yield return 0;
-        }
+
+        inTransition = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            switch (currentMode)
-            {
-                case CameraMode.Isometric:
-                    GoTopDown();
-                    break;
-                case CameraMode.Topdown:
-                    GoIsometric();
-                    break;
-            }
+            ChangeCameraMode();
         }
 
-        // zoom in
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        ChangeZoom();
+    }
+
+    private void ChangeZoom()
+    {
+        float zoom = camera.orthographicSize;
+        if (Input.mouseScrollDelta.y > 0)
         {
-            StartCoroutine(Transition(zoomInSize));
+            zoom -= zoomSensitivity * Time.deltaTime;
         }
-        // zoom out
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.mouseScrollDelta.y < 0)
         {
-            StartCoroutine(Transition(zoomOutSize));
+            zoom += zoomSensitivity * Time.deltaTime;
+        }
+
+        zoom = Mathf.Clamp(zoom, zoomInSize, zoomOutSize);
+        camera.orthographicSize = zoom;
+    }
+
+    private void ChangeCameraMode()
+    {
+        switch (currentMode)
+        {
+            case CameraMode.Isometric:
+                GoTopDown();
+                break;
+            case CameraMode.Topdown:
+                GoIsometric();
+                break;
         }
     }
 }
