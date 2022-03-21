@@ -1,5 +1,7 @@
 using System;
+using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
+using Wunderwunsch.HexMapLibrary.Generic;
 
 public static class TileDirectionExtensions
 {
@@ -54,5 +56,29 @@ public static class TileDirectionExtensions
             default:
                 throw new ArgumentOutOfRangeException(nameof(d), d, null);
         }
+    }
+    
+    public static TileDirection GetDirection(this HexTile<Tile> t1, HexTile<Tile> t2)
+    {
+        if (t1.CartesianPosition.z < t2.CartesianPosition.z && t1.CartesianPosition.x < t2.CartesianPosition.x)
+            return TileDirection.TopRight;
+        if (t1.CartesianPosition.z < t2.CartesianPosition.z && t1.CartesianPosition.x > t2.CartesianPosition.x)
+            return TileDirection.TopLeft;
+        if (t1.CartesianPosition.z > t2.CartesianPosition.z && t1.CartesianPosition.x < t2.CartesianPosition.x)
+            return TileDirection.BottomRight;
+        if (t1.CartesianPosition.z > t2.CartesianPosition.z && t1.CartesianPosition.x > t2.CartesianPosition.x)
+            return TileDirection.BottomLeft;
+        if (Mathf.Approximately(t1.CartesianPosition.z , t2.CartesianPosition.z) && t1.CartesianPosition.x < t2.CartesianPosition.x)
+            return TileDirection.Right;
+        return TileDirection.Left;
+    }
+    public static Vector3 ToEuler(this TileDirection d)
+    {
+        return new Vector3(0, d.ToDegree(), 0);
+    }
+    
+    public static int ToDegree(this TileDirection d)
+    {
+        return (int) d * 60;
     }
 }

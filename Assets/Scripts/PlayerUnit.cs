@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class PlayerUnit : Unit
@@ -19,22 +20,41 @@ public class PlayerUnit : Unit
     {
         for (int i = 1; i < tiles.Count; ++i)
         {
+            TileDirection tileDirection = tile.GetDirection(tiles[i]);
+            if (direction != tileDirection)
+                yield return StartCoroutine(Turn(tileDirection));
+            yield return StartCoroutine(Walk(tiles[i]));
             PlaceOnTile(tiles[i]);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
+        }
+
+        if (animator != null)
+        {
+            animator.Play("Idle");
         }
     }
+
     public override IEnumerator MoveRune(List<HexTile<Tile>> tiles)
     {
         foreach (HexTile<Tile> to in tiles)
         {
+            TileDirection tileDirection = tile.GetDirection(to);
+            if (direction != tileDirection)
+                yield return StartCoroutine(Turn(tileDirection));
+            yield return StartCoroutine(Walk(to));
             PlaceOnTile(to);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
+        }
+
+        if (animator != null)
+        {
+            animator.Play("Idle");
         }
     }
 

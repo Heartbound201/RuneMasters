@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Wunderwunsch.HexMapLibrary;
 
 public class UnitPlacementState : State
 {
@@ -19,7 +20,7 @@ public class UnitPlacementState : State
         {
             GameObject spawnEntity = Board.SpawnEntity(spawnInfo.obj, spawnInfo.index);
             EnemyUnit enemyUnit = spawnEntity.GetComponent<EnemyUnit>();
-            enemyUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index]);
+            enemyUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Left);
             owner.enemies.Add(enemyUnit);
         }
 
@@ -35,7 +36,7 @@ public class UnitPlacementState : State
             GameObject spawnEntity = Board.SpawnEntity(spawnInfo.obj, spawnInfo.index);
             PlayerUnit playerUnit = spawnEntity.GetComponent<PlayerUnit>();
 
-            playerUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index]);
+            playerUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Right);
             playerUnit.party = owner.party; //TODO find a better solution
             owner.party.units.Add(playerUnit);
         }
