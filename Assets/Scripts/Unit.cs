@@ -82,13 +82,13 @@ public class Unit : MonoBehaviour
             PlaceOnTile(tiles[i]);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
-            yield return null;
         }
 
         if (animator != null)
         {
             animator.Play("Idle");
         }
+        yield return null;
     }
 
     public virtual IEnumerator MoveRune(List<HexTile<Tile>> tiles)
@@ -102,13 +102,13 @@ public class Unit : MonoBehaviour
             PlaceOnTile(to);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
-            yield return null;
         }
 
         if (animator != null)
         {
             animator.Play("Idle");
         }
+        yield return null;
     }
 
     public virtual List<HexTile<Tile>> GetTilesInRange()
@@ -215,5 +215,20 @@ public class Unit : MonoBehaviour
         transform.rotation = Quaternion.Euler(dir.ToEuler());
         direction = dir;
         yield return null;
+    }
+
+    public void StartAttackAnim()
+    {
+        if (animator != null)
+        {
+            animator.Play("Attack");
+        }
+    }
+    public void EndAttackAnim()
+    {
+        if (animator != null)
+        {
+            animator.Play("Idle");
+        }
     }
 }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Wunderwunsch.HexMapLibrary.Generic;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
     public Camera camera;
     public CameraMode currentMode;
     public float transitionDuration;
@@ -19,14 +21,22 @@ public class CameraController : MonoBehaviour
         Topdown
     }
 
-    public void GoIsometric()
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    private void GoIsometric()
     {
         if(inTransition) return;
         StartCoroutine(Transition(camera.transform.position, Quaternion.Euler(35, 0, 0)));
         currentMode = CameraMode.Isometric;
     }
 
-    public void GoTopDown()
+    private void GoTopDown()
     {
         if(inTransition) return;
         StartCoroutine(Transition(camera.transform.position, Quaternion.Euler(90, 0, 0)));
@@ -37,8 +47,9 @@ public class CameraController : MonoBehaviour
     {
         inTransition = true;
         float t = 0.0f;
-        Vector3 startingPos = camera.transform.position;
-        Quaternion startingRot = camera.transform.rotation;
+        var transform1 = camera.transform;
+        Vector3 startingPos = transform1.position;
+        Quaternion startingRot = transform1.rotation;
         while (t < 1.0f)
         {
             t += Time.deltaTime * (Time.timeScale / transitionDuration);
@@ -49,6 +60,16 @@ public class CameraController : MonoBehaviour
         }
 
         inTransition = false;
+    }
+
+    public static void CameraLookAt(Unit unit)
+    {
+        var position = unit.transform.position;
+        instance.camera.transform.position = new Vector3(position.x, 0 , position.z);
+    } public void CameraLookAt(HexTile<Tile> tile)
+    {
+        var position = tile.Data.transform.position;
+        instance.camera.transform.position = new Vector3(position.x, 0 , position.z);
     }
 
     private void Update()

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class AbilityTargetState : State
@@ -40,6 +41,9 @@ public class AbilityTargetState : State
     {
         if (!tilesInRange.Contains(obj)) return;
         owner.SelectedTile = obj;
+        TileDirection tileDirection = owner.ActingUnit.tile.GetDirection(obj);
+        if (owner.ActingUnit.direction != tileDirection)
+            StartCoroutine(owner.ActingUnit.Turn(tileDirection));
         owner.ChangeState<ConfirmAbilityTargetState>();
     }
 }

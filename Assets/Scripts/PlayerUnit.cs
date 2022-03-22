@@ -28,13 +28,13 @@ public class PlayerUnit : Unit
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
-            yield return null;
         }
 
         if (animator != null)
         {
             animator.Play("Idle");
         }
+        yield return null;
     }
 
     public override IEnumerator MoveRune(List<HexTile<Tile>> tiles)
@@ -49,13 +49,13 @@ public class PlayerUnit : Unit
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
-            yield return null;
         }
 
         if (animator != null)
         {
             animator.Play("Idle");
         }
+        yield return null;
     }
 
     public override void TakeDamage(int amount)

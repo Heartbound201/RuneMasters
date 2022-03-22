@@ -24,10 +24,16 @@ public class AbilityExecutionState : State
     {
         Ability a = owner.SelectedAbility;
 
+        owner.ActingUnit.StartAttackAnim();
+        
+        CameraController.instance.CameraLookAt(owner.SelectedTile);
+        
         a.Execute(owner.ActingUnit, owner.SelectedTile);
         yield return null;
         owner.ActingUnit.hasActed = true;
-
+        
+        owner.ActingUnit.EndAttackAnim();
+        
         owner.IsBattleOver();
         owner.ChangeState<ActionSelectionState>();
     }

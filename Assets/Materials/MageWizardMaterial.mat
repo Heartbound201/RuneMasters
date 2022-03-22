@@ -45,5 +45,5 @@ Material:
     m_Colors:
     - _Hair: {r: 0.63235295, g: 0.047971603, b: 0.009299317, a: 0}
     - _InnerCloth: {r: 0.50735295, g: 0.45260414, b: 0.01119162, a: 0}
-    - _OuterChlothes: {r: 0.024816178, g: 0.375, b: 0.07070238, a: 0}
+    - _OuterChlothes: {r: 0.022739422, g: 0.18243542, b: 0.6886792, a: 0}
   m_BuildTextureStacks: []

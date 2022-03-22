@@ -37,11 +37,8 @@ public class TurnMenuController : MonoBehaviour
     public void SelectCharacter(PlayerUnit unit)
     {
         stateMachine.ActingUnit = unit;
-        
-        float targetX = camera.transform.position.x - unit.transform.position.x;
-        float targetZ = camera.transform.position.z - unit.transform.position.z;
-        camera.transform.position -= new Vector3(targetX, 0, targetZ);
 
+        CameraController.CameraLookAt(unit);
         // clear rune panel
         ClearRunePanel();
 
