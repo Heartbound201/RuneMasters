@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
@@ -88,6 +85,7 @@ public class Unit : MonoBehaviour
         {
             animator.Play("Idle");
         }
+
         yield return null;
     }
 
@@ -108,6 +106,7 @@ public class Unit : MonoBehaviour
         {
             animator.Play("Idle");
         }
+
         yield return null;
     }
 
@@ -224,6 +223,7 @@ public class Unit : MonoBehaviour
             animator.Play("Attack");
         }
     }
+
     public void EndAttackAnim()
     {
         if (animator != null)

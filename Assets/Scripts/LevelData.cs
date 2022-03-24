@@ -5,9 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Level", menuName = "Create Level Data")]
 public class LevelData : ScriptableObject
 {
-    public int boardRadius;
+    public int boardRadius = 5;
     public List<TileInfo> tiles = new List<TileInfo>();
-    public TileCollection tileCollection;
     public List<SpawnInfo> enemies = new  List<SpawnInfo>();
     public List<SpawnInfo> characters = new List<SpawnInfo>();
     // public List<Vector3> spawnableTiles = new List<Vector3>();

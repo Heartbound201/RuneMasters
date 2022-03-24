@@ -7,12 +7,10 @@ using Wunderwunsch.HexMapLibrary.Generic;
 
 public class Board : MonoBehaviour
 {
-    private HexMouse hexMouse;
     public static event Action<HexTile<Tile>> SelectTileEvent;
 
+    public HexMouse hexMouse;
     public HexMap<Tile> hexMap;
-    public GameObject genericAllyPrefab;
-    public GameObject genericEnemyPrefab;
 
 
     public HexTile<Tile> tileHover;
@@ -78,8 +76,6 @@ public class Board : MonoBehaviour
         return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
-    // TODO tooltip
-    
     public IEnumerator GenerateBoard(LevelData levelData)
     {
         hexMap = new HexMap<Tile>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
