@@ -118,8 +118,11 @@ public class MapEditor : MonoBehaviour
     {
         if (levelData.characters.Exists(info => info.index == hexTile.Index))
         {
-            Unit unit = hexTile.Data.unitList[0];
-            if (unit != null) Destroy(unit.gameObject);
+            if(hexTile.Data.unitList.Count > 0)
+            {
+                Unit unit = hexTile.Data.unitList[0];
+                if (unit != null) Destroy(unit.gameObject);
+            }
             hexTile.Data.unitList.Clear();
             SpawnInfo spawnInfo = levelData.characters.Find(info => info.index == hexTile.Index);
             spawnInfo.obj = go;
@@ -144,8 +147,12 @@ public class MapEditor : MonoBehaviour
     {
         if (levelData.enemies.Exists(info => info.index == hexTile.Index))
         {
-            Unit unit = hexTile.Data.unitList[0];
-            if (unit != null) Destroy(unit.gameObject);
+            if (hexTile.Data.unitList.Count > 0)
+            {
+                Unit unit = hexTile.Data.unitList[0];
+                if (unit != null) Destroy(unit.gameObject);
+            }
+
             hexTile.Data.unitList.Clear();
             SpawnInfo spawnInfo = levelData.enemies.Find(info => info.index == hexTile.Index);
             spawnInfo.obj = go;
