@@ -14,7 +14,6 @@ public class UnitPlacementState : State
     IEnumerator Init()
     {
         yield return Board.GenerateBoard(owner.levelData);
-        Board.SetCamera();
 
         foreach (SpawnInfo spawnInfo in owner.levelData.enemies)
         {

@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f35ec5f45b4f07b031089111c0ac39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1876689095}
   levelData: {fileID: 11400000, guid: 7637326394bb0404cabe2cef79a56192, type: 2}
   tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
   defaultTile: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}

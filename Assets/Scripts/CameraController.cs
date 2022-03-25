@@ -1,19 +1,22 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
-    public Camera camera;
+    public Camera cam;
     public CameraMode currentMode;
     public float transitionDuration;
     public float zoomInSize = 12;
     public float zoomOutSize = 16;
     public float zoomSensitivity = 10f;
-    
+    public Bounds bounds;
+
     private bool inTransition = false;
+    private Vector3 dragOrigin;
 
     public enum CameraMode
     {
@@ -32,14 +35,14 @@ public class CameraController : MonoBehaviour
     private void GoIsometric()
     {
         if(inTransition) return;
-        StartCoroutine(Transition(camera.transform.position, Quaternion.Euler(35, 0, 0)));
+        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(35, 0, 0)));
         currentMode = CameraMode.Isometric;
     }
 
     private void GoTopDown()
     {
         if(inTransition) return;
-        StartCoroutine(Transition(camera.transform.position, Quaternion.Euler(90, 0, 0)));
+        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(90, 0, 0)));
         currentMode = CameraMode.Topdown;
     }
 
@@ -47,15 +50,15 @@ public class CameraController : MonoBehaviour
     {
         inTransition = true;
         float t = 0.0f;
-        var transform1 = camera.transform;
+        var transform1 = cam.transform;
         Vector3 startingPos = transform1.position;
         Quaternion startingRot = transform1.rotation;
         while (t < 1.0f)
         {
             t += Time.deltaTime * (Time.timeScale / transitionDuration);
 
-            camera.transform.position = Vector3.Lerp(startingPos, targetPos, t);
-            camera.transform.rotation = Quaternion.Lerp(startingRot, targetRot, t);
+            cam.transform.position = Vector3.Lerp(startingPos, targetPos, t);
+            cam.transform.rotation = Quaternion.Lerp(startingRot, targetRot, t);
             yield return 0;
         }
 
@@ -65,11 +68,11 @@ public class CameraController : MonoBehaviour
     public static void CameraLookAt(Unit unit)
     {
         var position = unit.transform.position;
-        instance.camera.transform.position = new Vector3(position.x, 0 , position.z);
+        instance.cam.transform.position = new Vector3(position.x, 0 , position.z);
     } public void CameraLookAt(HexTile<Tile> tile)
     {
         var position = tile.Data.transform.position;
-        instance.camera.transform.position = new Vector3(position.x, 0 , position.z);
+        instance.cam.transform.position = new Vector3(position.x, 0 , position.z);
     }
 
     private void Update()
@@ -80,11 +83,26 @@ public class CameraController : MonoBehaviour
         }
 
         ChangeZoom();
+        HandlePanning();
+    }
+
+    private void HandlePanning()
+    {
+        if (Input.GetMouseButtonDown(2))
+        {
+            dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        if (Input.GetMouseButton(2))
+        {
+            Vector3 diff = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
+            cam.transform.position = bounds.ClosestPoint(cam.transform.position + diff);
+        }
     }
 
     private void ChangeZoom()
     {
-        float zoom = camera.orthographicSize;
+        float zoom = cam.orthographicSize;
         if (Input.mouseScrollDelta.y > 0)
         {
             zoom -= zoomSensitivity * Time.deltaTime;
@@ -95,7 +113,7 @@ public class CameraController : MonoBehaviour
         }
 
         zoom = Mathf.Clamp(zoom, zoomInSize, zoomOutSize);
-        camera.orthographicSize = zoom;
+        cam.orthographicSize = zoom;
     }
 
     private void ChangeCameraMode()

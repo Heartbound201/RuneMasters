@@ -13,6 +13,7 @@ public class MapEditor : MonoBehaviour
     private HexTile<Tile> tileHover;
     private HexTile<Tile> tileSelected;
 
+    public Camera cam;
     public LevelData levelData;
     public TileCollection tileCollection;
     public TilePrototype defaultTile;
@@ -243,14 +244,14 @@ public class MapEditor : MonoBehaviour
     private void SetCamera()
     {
         //put the following at the end of the start method (or in its own method called after map creation)
-        Camera.main.transform.position =
+        cam.transform.position =
             new Vector3(hexMap.MapSizeData.center.x, 4,
                 hexMap.MapSizeData.center.z); // centers the camera and moves it 5 units above the XZ-plane
-        Camera.main.orthographic = true; //for this example we use an orthographic camera.
-        Camera.main.transform.rotation = Quaternion.Euler(35, 30, 0); //rotates the camera to it looks at the XZ-plane
-        Camera.main.orthographicSize =
+        cam.orthographic = true; //for this example we use an orthographic camera.
+        cam.transform.rotation = Quaternion.Euler(35, 30, 0); //rotates the camera to it looks at the XZ-plane
+        cam.orthographicSize =
             hexMap.MapSizeData.extents.z * 2 * 0.8f; // sets orthographic size of the camera.]
-        Camera.main.nearClipPlane = -12f;
+        cam.nearClipPlane = -12f;
         //this does not account for aspect ratio but for our purposes it works good enough.
     }
 

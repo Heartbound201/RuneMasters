@@ -240,12 +240,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a609773978348e49fec372d51f17802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 963194227}
+  cam: {fileID: 963194227}
   currentMode: 0
   transitionDuration: 0.5
   zoomInSize: 5
   zoomOutSize: 16
   zoomSensitivity: 80
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 20, y: 10, z: 10}
 --- !u!4 &91501281
 Transform:
   m_ObjectHideFlags: 0
@@ -759,8 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c3820d72bc92f4684b9a6f28cf56e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  genericAllyPrefab: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
-  genericEnemyPrefab: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
+  hexMouse: {fileID: 0}
   tileHoverSfx: {fileID: 0}
   tileSelectionSfx: {fileID: 0}
   unitPlacementSfx: {fileID: 0}
@@ -1174,7 +1176,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -12
+  near clip plane: -20
   far clip plane: 1000
   field of view: 60
   orthographic: 1

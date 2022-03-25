@@ -12,7 +12,6 @@ public class Board : MonoBehaviour
     public HexMouse hexMouse;
     public HexMap<Tile> hexMap;
 
-
     public HexTile<Tile> tileHover;
     public HexTile<Tile> tileSelection;
 
@@ -95,20 +94,6 @@ public class Board : MonoBehaviour
 
         yield return null;
     }
-
-
-    public void SetCamera()
-    {
-        //put the following at the end of the start method (or in its own method called after map creation)
-        // Camera.main.transform.position = new Vector3(hexMap.MapSizeData.center.x, 4, hexMap.MapSizeData.center.z); // centers the camera and moves it 5 units above the XZ-plane
-        // Camera.main.orthographic = true; //for this example we use an orthographic camera.
-        // Camera.main.transform.rotation = Quaternion.Euler(35, 30, 0); //rotates the camera to it looks at the XZ-plane
-        // Camera.main.orthographicSize =
-        //     hexMap.MapSizeData.extents.z * 2 * 0.8f; // sets orthographic size of the camera.]
-        Camera.main.nearClipPlane = -12f;
-        //this does not account for aspect ratio but for our purposes it works good enough.
-    }
-
 
     public List<HexTile<Tile>> SearchRange(HexTile<Tile> start, Func<HexTile<Tile>, HexTile<Tile>, bool> addTile,
         bool selectTilesAtEnd = false)
