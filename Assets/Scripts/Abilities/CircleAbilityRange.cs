@@ -8,7 +8,11 @@ public class CircleAbilityRange : AbilityRange
     public int range = 1;
     public override List<HexTile<Tile>> GetTilesInRange(Unit unit, Board board)
     {
-        return board.SearchRange(unit.tile, ExpandSearch);
+        return GetTilesInRange(unit.tile, board);
+    }
+    public override List<HexTile<Tile>> GetTilesInRange(HexTile<Tile> tile, Board board)
+    {
+        return board.SearchRange(tile, ExpandSearch);
     }
     bool ExpandSearch (HexTile<Tile> from, HexTile<Tile> to)
     {

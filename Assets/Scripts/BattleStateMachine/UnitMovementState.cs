@@ -13,7 +13,7 @@ public class UnitMovementState : State
 
     private IEnumerator Sequence(List<HexTile<Tile>> line)
     {
-        yield return StartCoroutine(owner.ActingUnit.Move(line));
+        yield return StartCoroutine(owner.ActingUnit.MoveTact(line));
         owner.ChangeState<ActionSelectionState>();
     }
 }

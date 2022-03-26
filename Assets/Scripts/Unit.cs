@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
     public int movementMax;
     public bool isPassable;
     public bool hasActed;
+    public bool hasMoved;
     public HexTile<Tile> tile;
     public TileDirection direction;
     public List<Status> statuses = new List<Status>();
@@ -68,19 +69,19 @@ public class Unit : MonoBehaviour
         return (from.Data._distance + 1) <= movement && to.Data.isPassable;
     }
 
-    public virtual IEnumerator Move(List<HexTile<Tile>> tiles)
+    public virtual IEnumerator MoveTact(List<HexTile<Tile>> tiles)
     {
         for (int i = 1; i < tiles.Count; ++i)
         {
-            TileDirection tileDirection = tile.GetDirection(tiles[i]);
-            if (direction != tileDirection)
-                yield return StartCoroutine(Turn(tileDirection));
+            yield return StartCoroutine(Turn(tiles[i]));
             yield return StartCoroutine(Walk(tiles[i]));
             PlaceOnTile(tiles[i]);
 
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
         }
 
+        hasMoved = true;
+        
         if (animator != null)
         {
             animator.Play("Idle");
@@ -93,9 +94,7 @@ public class Unit : MonoBehaviour
     {
         foreach (HexTile<Tile> to in tiles)
         {
-            TileDirection tileDirection = tile.GetDirection(to);
-            if (direction != tileDirection)
-                yield return StartCoroutine(Turn(tileDirection));
+            yield return StartCoroutine(Turn(to));
             yield return StartCoroutine(Walk(to));
             PlaceOnTile(to);
 
@@ -140,6 +139,7 @@ public class Unit : MonoBehaviour
     {
         movement = movementMax;
         hasActed = false;
+        hasMoved = false;
     }
 
     public void TriggerStatusStart()
@@ -195,9 +195,10 @@ public class Unit : MonoBehaviour
 
     public virtual IEnumerator Turn(TileDirection dir)
     {
+        if (direction == dir) yield break;
         Quaternion startRot = transform.rotation;
         float elapsedTime = 0f;
-        float waitTime = 0.5f;
+        float waitTime = 0.15f;
 
         if (animator != null)
         {
@@ -216,16 +217,24 @@ public class Unit : MonoBehaviour
         yield return null;
     }
 
-    public void StartAttackAnim()
+    public virtual IEnumerator Turn(HexTile<Tile> targetTile)
     {
+        yield return Turn(tile.GetDirection(targetTile));
+    }
+
+    public IEnumerator Act(Ability ability, HexTile<Tile> targetTile)
+    {
+        if(ability == null) yield break;
         if (animator != null)
         {
             animator.Play("Attack");
         }
-    }
 
-    public void EndAttackAnim()
-    {
+        yield return Turn(targetTile);
+        ability.Execute(this, targetTile);
+
+        hasActed = true;
+
         if (animator != null)
         {
             animator.Play("Idle");

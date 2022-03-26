@@ -24,4 +24,38 @@ public class Ability : ScriptableObject
             }
         }
     }
+
+    public int Predict(Unit actor, HexTile<Tile> targetTile)
+    {
+        int abilityValue = 0;
+        foreach (AbilityEffect abilityEffect in abilityEffects)
+        {
+            // TODO add abilityEffect.predict() : int
+            if (abilityEffect is HealEffect)
+            {
+                if (actor.tile == targetTile)
+                {
+                    abilityValue += 10;
+                }
+                else if (targetTile.Data.unitList.Count > 0 && targetTile.Data.unitList[0] is PlayerUnit)
+                {
+                    abilityValue -= 10;
+                }
+            }
+            else
+            {
+                if (actor.tile == targetTile)
+                {
+                    abilityValue -= 10;
+                }
+                else if (targetTile.Data.unitList.Count > 0 && targetTile.Data.unitList[0] is PlayerUnit)
+                {
+                    abilityValue += 10;
+                }
+            }
+            
+        }
+
+        return abilityValue;
+    }
 }

@@ -16,13 +16,11 @@ public class PlayerUnit : Unit
                to.Data.IsPassable;
     }
 
-    public override IEnumerator Move(List<HexTile<Tile>> tiles)
+    public override IEnumerator MoveTact(List<HexTile<Tile>> tiles)
     {
         for (int i = 1; i < tiles.Count; ++i)
         {
-            TileDirection tileDirection = tile.GetDirection(tiles[i]);
-            if (direction != tileDirection)
-                yield return StartCoroutine(Turn(tileDirection));
+            yield return StartCoroutine(Turn(tiles[i]));
             yield return StartCoroutine(Walk(tiles[i]));
             PlaceOnTile(tiles[i]);
 
@@ -34,6 +32,7 @@ public class PlayerUnit : Unit
         {
             animator.Play("Idle");
         }
+
         yield return null;
     }
 
@@ -41,9 +40,7 @@ public class PlayerUnit : Unit
     {
         foreach (HexTile<Tile> to in tiles)
         {
-            TileDirection tileDirection = tile.GetDirection(to);
-            if (direction != tileDirection)
-                yield return StartCoroutine(Turn(tileDirection));
+            yield return StartCoroutine(Turn(to));
             yield return StartCoroutine(Walk(to));
             PlaceOnTile(to);
 
@@ -55,6 +52,7 @@ public class PlayerUnit : Unit
         {
             animator.Play("Idle");
         }
+
         yield return null;
     }
 

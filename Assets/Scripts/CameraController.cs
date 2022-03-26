@@ -35,14 +35,14 @@ public class CameraController : MonoBehaviour
     private void GoIsometric()
     {
         if(inTransition) return;
-        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(35, 0, 0)));
+        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(35, 30, 0)));
         currentMode = CameraMode.Isometric;
     }
 
     private void GoTopDown()
     {
         if(inTransition) return;
-        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(90, 0, 0)));
+        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(90, 30, 0)));
         currentMode = CameraMode.Topdown;
     }
 

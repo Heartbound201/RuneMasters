@@ -122,10 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: enemy
-  movement: 0
-  movementMax: 0
+  movement: 2
+  movementMax: 2
   isPassable: 0
   hasActed: 0
+  hasMoved: 0
   direction: 0
   strength: 0
   defense: 0
