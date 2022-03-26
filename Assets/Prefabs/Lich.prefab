@@ -135,7 +135,7 @@ MonoBehaviour:
   defenseStart: 0
   intelligenceStart: 0
   dexterityStart: 0
-  health: 8
+  health: 1
   currentHealth: 0
   healthBar: {fileID: 6271444441539859201}
   abilities:
