@@ -105,9 +105,9 @@ MonoBehaviour:
   - index: 44
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 45
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 46
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 47
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 48
@@ -129,13 +129,13 @@ MonoBehaviour:
   - index: 56
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 57
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 58
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 59
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 60
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 61
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 62
@@ -145,7 +145,7 @@ MonoBehaviour:
   - index: 64
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 65
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 66
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 67
@@ -181,7 +181,7 @@ MonoBehaviour:
   - index: 82
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 83
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 84
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 85
@@ -259,11 +259,11 @@ MonoBehaviour:
   - index: 121
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 122
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 123
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 124
-    proto: {fileID: 11400000, guid: cb2b6320b529fb344b8bdd47d4875891, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 125
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 126
@@ -352,7 +352,6 @@ MonoBehaviour:
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 168
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
-  tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
   enemies:
   - index: 117
     obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}

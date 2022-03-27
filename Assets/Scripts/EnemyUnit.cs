@@ -21,66 +21,6 @@ public class EnemyUnit : Unit
         healthBar.UpdateHealth(currentHealth, health);
     }
 
-    // public AIPlan PlanAction()
-    // {
-    //     AIPlan plan = new AIPlan(this);
-    //     Board board = tile.Data.board;
-    //     
-    //     // get nearest enemy
-    //     Unit nearestEnemy = GetNearestEnemy(this);
-    //     // current distance from nearest enemy
-    //     int distance = board.hexMap.GetTileDistance.Grid(tile.Position, nearestEnemy.tile.Position);
-    //     
-    //     // pick movement option
-    //     HexTile<Tile> closestTargetMovement = tile;
-    //     int distanceMovement = distance;
-    //     foreach (var hexTileInRange in GetTilesInRange())
-    //     {
-    //         int d = board.hexMap.GetTileDistance.Grid(hexTileInRange.Position, nearestEnemy.tile.Position);
-    //         if (d < distanceMovement)
-    //         {
-    //             distanceMovement = d;
-    //             closestTargetMovement = hexTileInRange;
-    //         }
-    //     }
-    //     plan.moveLocation = closestTargetMovement;
-    //     plan.movePath = FindPath(closestTargetMovement);
-    //
-    //     // pick random ability
-    //     Ability ability = abilities[Random.Range(0, abilities.Count)];
-    //     
-    //     // pick random target
-    //     List<HexTile<Tile>> validAttackLocations = new List<HexTile<Tile>>();
-    //     int distanceAttack = distance;
-    //     HexTile<Tile> closestTargetAttack = null;
-    //     foreach (var hexTileInRange in ability.abilityRange.GetTilesInRange(plan.moveLocation, board))
-    //     {
-    //         int d = board.hexMap.GetTileDistance.Grid(hexTileInRange.Position, nearestEnemy.tile.Position);
-    //         if (d < distanceAttack)
-    //         {
-    //             distanceAttack = d;
-    //             closestTargetAttack = hexTileInRange;
-    //         }
-    //
-    //         foreach (var hexTileInArea in ability.abilityArea.GetTilesInArea(board, hexTileInRange))
-    //         {
-    //             if (hexTileInArea.Data.unitList.Count > 0 && hexTileInArea.Data.unitList is PlayerUnit)
-    //             {
-    //                 validAttackLocations.Add(hexTileInRange);
-    //             }
-    //         }
-    //     }
-    //
-    //     if (validAttackLocations.Count <= 0)
-    //     {
-    //         validAttackLocations.Add(closestTargetAttack);
-    //     }
-    //
-    //     plan.ability = ability;
-    //     plan.attackLocation = validAttackLocations[Random.Range(0, validAttackLocations.Count)];
-    //     StartCoroutine(Turn(plan.attackLocation));
-    //     return plan;
-    // }
     public AIPlan PlanAction()
     {
         float temp = Time.realtimeSinceStartup;

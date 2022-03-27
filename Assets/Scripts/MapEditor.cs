@@ -26,6 +26,13 @@ public class MapEditor : MonoBehaviour
         hexMouse = gameObject.AddComponent<HexMouse>();
     }
 
+    private void OnDestroy()
+    {
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(levelData);
+#endif
+    }
+
     void Start()
     {
         if (levelData == null)
