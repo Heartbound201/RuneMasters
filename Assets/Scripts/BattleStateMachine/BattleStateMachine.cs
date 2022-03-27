@@ -1,4 +1,5 @@
     using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
     using UnityEngine.Serialization;
     using Wunderwunsch.HexMapLibrary;
@@ -35,8 +36,17 @@
         private void OnEnemyUnitKoEvent(Unit unit)
         {
             enemies.Remove((EnemyUnit) unit);
+            enemyPlans.FindAll(plan => plan.actor == unit).ForEach(plan => ClearAIPlanDangerFromTiles(plan, plan.attackLocation));
         }
-
+        private void ClearAIPlanDangerFromTiles(AIPlan aiPlan, HexTile<Tile> aiPlanAttackLocation)
+        {
+            enemyPlans.Remove(aiPlan);
+            if (aiPlan.ability == null) return;
+            foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(board, aiPlanAttackLocation))
+            {
+                tile.Data.SolveDanger(aiPlan);
+            }
+        }
         private void OnDestroy()
         {
             EnemyUnit.KOEvent -= OnEnemyUnitKoEvent;

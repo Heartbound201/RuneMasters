@@ -14,7 +14,7 @@ public class EnemyUnit : Unit
     public List<Ability> abilities = new List<Ability>();
 
     public static event Action<Unit> KOEvent;
-    
+
     void Start()
     {
         currentHealth = health;
@@ -87,24 +87,22 @@ public class EnemyUnit : Unit
         int planCounter = 0;
 
         HexTile<Tile> start = tile;
-        List<HexTile<Tile>> moveOptions = GetTilesInRange();
         List<Ability> abilityOption = abilities;
 
         Unit nearestEnemy = GetNearestEnemy(this);
         Debug.Log("Nearest enemy is " + nearestEnemy);
 
-        AIPlan bestPlan = new AIPlan(this, null, null, tile, new List<HexTile<Tile>>(), nearestEnemy);
+        AIPlan bestPlan = new AIPlan(this, null, null, tile, nearestEnemy);
         planCounter++;
 
         // Evaluate every possible movement
-        foreach (HexTile<Tile> moveOpt in moveOptions)
+        foreach (HexTile<Tile> moveOpt in GetTilesInRange())
         {
             // There may not be a useful ability to cast
-            List<HexTile<Tile>> path = FindPath(moveOpt);
-            AIPlan planMoveOnly = new AIPlan(this, null, null, moveOpt, path, nearestEnemy);
+            AIPlan planMoveOnly = new AIPlan(this, null, null, moveOpt, nearestEnemy);
             planCounter++;
 
-            if (planMoveOnly.Score >= bestPlan.Score)
+            if (planMoveOnly.Evaluate() >= bestPlan.Evaluate())
             {
                 bestPlan = planMoveOnly;
             }
@@ -117,17 +115,17 @@ public class EnemyUnit : Unit
                 // Evaluate every possible target
                 foreach (HexTile<Tile> atkOpt in atkOptions)
                 {
-                    AIPlan plan = new AIPlan(this, a, atkOpt, moveOpt, path, nearestEnemy);
+                    AIPlan plan = new AIPlan(this, a, atkOpt, moveOpt, nearestEnemy);
                     planCounter++;
-                    if (plan.Score > bestPlan.Score)
+                    if (plan.Evaluate() > bestPlan.Evaluate())
                         bestPlan = plan;
                 }
             }
         }
 
         PlaceOnTile(start);
-        Debug.Log("[AI " + this + "] " + planCounter + " plans explored in " + (Time.realtimeSinceStartup - temp) +
-                  ". Best plan's score: " + bestPlan.Score);
+        Debug.LogFormat("[AI {0}] {1} plans explored in {2}. Best plan's score: {3}",
+            this, planCounter, (Time.realtimeSinceStartup - temp), bestPlan.Evaluate());
         return bestPlan;
     }
 
@@ -158,12 +156,12 @@ public class EnemyUnit : Unit
         currentHealth = Mathf.Clamp(currentHealth - (amount - defense), 0, health);
         healthBar.UpdateHealth(currentHealth, health);
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
     }
-    
+
     private void Die()
     {
         tile.Data.unitList.Remove(this);

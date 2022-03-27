@@ -13,9 +13,10 @@ public class AIPlanExecutionState : State
     IEnumerator AITurn()
     {
         // Resolve prev turn action
-        foreach (AIPlan aiPlan in owner.enemyPlans)
+        for (int i = owner.enemyPlans.Count - 1; i >= 0; i--)
         {
-            yield return ExecuteAIPlan(aiPlan);
+            yield return ExecuteAIPlan(owner.enemyPlans[i]);
+            
         }
 
         owner.enemyPlans.Clear();
@@ -38,7 +39,9 @@ public class AIPlanExecutionState : State
 
     private IEnumerator ExecuteAIPlan(AIPlan aiPlan)
     {
-        yield return StartCoroutine(aiPlan.actor.MoveTact(aiPlan.movePath));
+        List<HexTile<Tile>> tilesInRange = aiPlan.actor.GetTilesInRange();
+        List<HexTile<Tile>> findPath = aiPlan.actor.FindPath(aiPlan.moveLocation);
+        yield return StartCoroutine(aiPlan.actor.MoveTact(findPath));
         yield return StartCoroutine(aiPlan.actor.Act(aiPlan.ability, aiPlan.attackLocation));
         ClearAIPlanDangerFromTiles(aiPlan, aiPlan.attackLocation);
     }
@@ -54,10 +57,12 @@ public class AIPlanExecutionState : State
 
     private void ClearAIPlanDangerFromTiles(AIPlan aiPlan, HexTile<Tile> aiPlanAttackLocation)
     {
+        owner.enemyPlans.Remove(aiPlan);
         if (aiPlan.ability == null) return;
         foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(Board, aiPlanAttackLocation))
         {
             tile.Data.SolveDanger(aiPlan);
         }
+
     }
 }

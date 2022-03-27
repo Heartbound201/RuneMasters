@@ -9,10 +9,7 @@ public class AIPlan
     public Ability ability;
     public HexTile<Tile> attackLocation;
     public HexTile<Tile> moveLocation;
-    public List<HexTile<Tile>> movePath;
     public Unit nearestEnemy;
-    
-    public int Score { get { return Evaluate(); }}
     
     public AIPlan(Unit unit)
     {
@@ -20,13 +17,12 @@ public class AIPlan
     }
 
     public AIPlan(Unit actor, Ability ability, HexTile<Tile> attackLocation, HexTile<Tile> moveLocation,
-        List<HexTile<Tile>> movePath, Unit nearestEnemy)
+        Unit nearestEnemy)
     {
         this.actor = actor;
         this.ability = ability;
         this.attackLocation = attackLocation;
         this.moveLocation = moveLocation;
-        this.movePath = movePath;
         this.nearestEnemy = nearestEnemy;
     }
 
@@ -36,7 +32,6 @@ public class AIPlan
 
         if (moveLocation != null)
         {                
-            value += movePath.Count;
             int currentDistance = moveLocation.Data.board.hexMap.GetTileDistance.Grid(actor.tile.Position, nearestEnemy.tile.Position);
             int afterMovementDistance = moveLocation.Data.board.hexMap.GetTileDistance.Grid(moveLocation.Position, nearestEnemy.tile.Position);
             value += currentDistance - afterMovementDistance;
