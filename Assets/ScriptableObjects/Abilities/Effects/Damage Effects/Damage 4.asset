@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93bcba96b8448c3a9b63e82f45c93d5, type: 3}
   m_Name: Damage 4
   m_EditorClassIdentifier: 
+  particleEffectSelf: {fileID: 0}
+  particleEffectProjectile: {fileID: 0}
+  particleEffectTarget: {fileID: 100000, guid: 63bb3f317ae665b4998e11e30a9674ff, type: 3}
   potency: 4
   strengthScaling: 0
   intelligenceScaling: 0

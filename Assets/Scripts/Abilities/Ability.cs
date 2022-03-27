@@ -13,14 +13,14 @@ public class Ability : ScriptableObject
     public List<AbilityEffect> abilityEffects = new List<AbilityEffect>();
 
 
-    public void Execute(Unit actor, HexTile<Tile> targetTile)
+    public IEnumerator Execute(Unit actor, HexTile<Tile> targetTile)
     {
         List<HexTile<Tile>> tilesInArea = abilityArea.GetTilesInArea(targetTile.Data.board, targetTile);
         foreach (AbilityEffect abilityEffect in abilityEffects)
         {
             foreach (HexTile<Tile> tile in tilesInArea)
             {
-                abilityEffect.Apply(actor, tile);
+                yield return abilityEffect.Apply(actor, tile);
             }
         }
     }

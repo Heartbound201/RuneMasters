@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
@@ -9,8 +10,10 @@ class StatsAlteringAbilityEffect : AbilityEffect
     public int defense;
     public int intelligence;
     public int dexterity;
-    public override void Apply(Unit actor, HexTile<Tile> target)
+    public override IEnumerator Apply(Unit actor, HexTile<Tile> target)
     {
+        yield return base.Apply(actor, target);
+        
         for (int i = target.Data.unitList.Count - 1; i >= 0; i--)
         {
             StatsAlteringStatus se = new StatsAlteringStatus(duration, strength, defense, intelligence, dexterity);

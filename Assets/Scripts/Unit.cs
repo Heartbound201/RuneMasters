@@ -231,7 +231,7 @@ public class Unit : MonoBehaviour
         }
 
         yield return Turn(targetTile);
-        ability.Execute(this, targetTile);
+        yield return ability.Execute(this, targetTile);
 
         hasActed = true;
 
