@@ -21,7 +21,7 @@ public abstract class AbilityEffect : ScriptableObject
     {
         if (particleEffectSelf)
         {
-            var gameObject = Instantiate(particleEffectSelf, actor.tile.Data.transform);
+            var gameObject = Instantiate(particleEffectSelf, actor.tile.Data.transform.position, Quaternion.identity);
             ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
             yield return new WaitForSeconds(totalDuration);
