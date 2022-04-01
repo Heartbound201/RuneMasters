@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
   particleEffectProjectile: {fileID: 0}
-  particleEffectTarget: {fileID: 100000, guid: 63bb3f317ae665b4998e11e30a9674ff, type: 3}
+  particleEffectTarget: {fileID: 1727626132299242, guid: a36e825ef110a9a4ea92bc25064ec4ba, type: 3}
   potency: 4
   strengthScaling: 0
   intelligenceScaling: 0

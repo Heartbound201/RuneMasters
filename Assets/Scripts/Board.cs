@@ -10,7 +10,7 @@ public class Board : MonoBehaviour
     public static event Action<HexTile<Tile>> SelectTileEvent;
 
     public HexMouse hexMouse;
-    public HexMap<Tile> hexMap;
+    public HexMap<Tile, int> hexMap;
 
     public HexTile<Tile> tileHover;
     public HexTile<Tile> tileSelection;
@@ -19,6 +19,9 @@ public class Board : MonoBehaviour
     public AudioClip tileSelectionSfx;
     public AudioClip unitPlacementSfx;
 
+    public GameObject edgePrefab;
+    private GameObject[] edges;
+    private GameObject[] tiles;
     private void Awake()
     {
         hexMouse = gameObject.AddComponent<HexMouse>();
@@ -77,8 +80,10 @@ public class Board : MonoBehaviour
 
     public IEnumerator GenerateBoard(LevelData levelData)
     {
-        hexMap = new HexMap<Tile>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
+        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
+        tiles = new GameObject[hexMap.TilesByPosition.Count];
+        edges = new GameObject[hexMap.EdgesByPosition.Count];
         foreach (var tile in hexMap.Tiles)
         {
             TilePrototype tilePrototype = levelData.tiles.Find(ti => ti.index == tile.Index).proto;
@@ -87,11 +92,23 @@ public class Board : MonoBehaviour
             instance.gameObject.name = "Hex" + tile.CartesianPosition + "["+tile.Index+"]";
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.board = this;
+            tile.Data.pos = tile.Position;
+            tile.Data.posCart = tile.CartesianPosition;
+            tile.Data.posNorm = tile.NormalizedPosition;
             tile.Data.prototype = tilePrototype;
-
+            tiles[tile.Index] = instance;
             yield return null;
         }
 
+        foreach (var tileBorder in hexMap.Edges)
+        {
+            GameObject instance = Instantiate(edgePrefab, transform);
+            instance.name = "MapEdge_" + tileBorder.Position;
+            instance.transform.position = tileBorder.CartesianPosition;
+            instance.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
+            edges[tileBorder.Index] = instance;
+            instance.SetActive(false);
+        }
         yield return null;
     }
 
@@ -177,6 +194,16 @@ public class Board : MonoBehaviour
 
 
         return runeTiles;
+    }
+
+    public void HighlightRune(List<HexTile<Tile>> tiles)
+    {
+        List<HexEdge<int>> hexEdges = hexMap.GetEdges.TileBorders(tiles);
+        foreach (HexEdge<int> hexEdge in hexEdges)
+        {
+            MeshRenderer meshRenderer = edges[hexEdge.Index].GetComponentInChildren<MeshRenderer>();
+            meshRenderer.material.color = Color.red;
+        }
     }
 
 }
