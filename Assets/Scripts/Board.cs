@@ -100,14 +100,17 @@ public class Board : MonoBehaviour
             yield return null;
         }
 
-        foreach (var tileBorder in hexMap.Edges)
+        if(edgePrefab)
         {
-            GameObject instance = Instantiate(edgePrefab, transform);
-            instance.name = "MapEdge_" + tileBorder.Position;
-            instance.transform.position = tileBorder.CartesianPosition;
-            instance.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
-            edges[tileBorder.Index] = instance;
-            instance.SetActive(false);
+            foreach (var tileBorder in hexMap.Edges)
+            {
+                GameObject instance = Instantiate(edgePrefab, transform);
+                instance.name = "MapEdge_" + tileBorder.Position;
+                instance.transform.position = tileBorder.CartesianPosition;
+                instance.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
+                edges[tileBorder.Index] = instance;
+                instance.SetActive(false);
+            }
         }
         yield return null;
     }

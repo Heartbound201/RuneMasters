@@ -23,8 +23,7 @@
         
         public TurnMenuController turnMenuController;
         public PartyInfoMenuController partyInfoMenuController;
-        public GameObject defeatPanel;
-        public GameObject victoryPanel;
+        public GameOverPanelController gameOverPanelController;
         private void Start()
         {
             Debug.Log("Start game");
@@ -65,22 +64,4 @@
             }
         }
         
-    }
-
-    public class VictoryState : State
-    {
-        public override void Enter()
-        {
-            base.Enter();
-            owner.victoryPanel.SetActive(true);
-        }
-    }
-
-    public class GameOverState : State
-    {
-        public override void Enter()
-        {
-            base.Enter();
-            owner.defeatPanel.SetActive(true);
-        }
     }
