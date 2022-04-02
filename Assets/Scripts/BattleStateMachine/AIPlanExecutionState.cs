@@ -49,7 +49,7 @@ public class AIPlanExecutionState : State
     private void AddAIPlanDangerToTiles(AIPlan enemyPlan)
     {
         if (enemyPlan.ability == null) return;
-        foreach (HexTile<Tile> tile in enemyPlan.ability.abilityArea.GetTilesInArea(Board, enemyPlan.attackLocation))
+        foreach (HexTile<Tile> tile in enemyPlan.ability.abilityArea.GetTilesInArea(Board, enemyPlan.actor.tile, enemyPlan.attackLocation))
         {
             tile.Data.Endanger(enemyPlan);
         }
@@ -59,7 +59,7 @@ public class AIPlanExecutionState : State
     {
         owner.enemyPlans.Remove(aiPlan);
         if (aiPlan.ability == null) return;
-        foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(Board, aiPlanAttackLocation))
+        foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(Board, aiPlan.actor.tile, aiPlanAttackLocation))
         {
             tile.Data.SolveDanger(aiPlan);
         }

@@ -41,7 +41,7 @@
         {
             enemyPlans.Remove(aiPlan);
             if (aiPlan.ability == null) return;
-            foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(board, aiPlanAttackLocation))
+            foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(board, aiPlan.actor.tile, aiPlanAttackLocation))
             {
                 tile.Data.SolveDanger(aiPlan);
             }

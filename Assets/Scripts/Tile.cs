@@ -29,16 +29,16 @@ public class Tile : MonoBehaviour
     [HideInInspector] public HexTile<Tile> _prev;
     [HideInInspector] public int _distance;
 
-    void OnGUI(){
-        Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
-        string text = $"{pos.x:0.00},{pos.y:0.00}";
-        Vector3 textSize = GUI.skin.label.CalcSize(new GUIContent(text));
-        GUIStyle guiStyle = new GUIStyle()
-        {
-            fontSize = 24
-        };
-        GUI.Label(new Rect(position.x, Screen.height - position.y, textSize.x, textSize.y), text, guiStyle);
-    }
+    // void OnGUI(){
+    //     Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
+    //     string text = $"{pos.x:0.00},{pos.y:0.00}";
+    //     Vector3 textSize = GUI.skin.label.CalcSize(new GUIContent(text));
+    //     GUIStyle guiStyle = new GUIStyle()
+    //     {
+    //         fontSize = 24
+    //     };
+    //     GUI.Label(new Rect(position.x, Screen.height - position.y, textSize.x, textSize.y), text, guiStyle);
+    // }
     private void Start()
     {
         originColor = _renderer.material.color;

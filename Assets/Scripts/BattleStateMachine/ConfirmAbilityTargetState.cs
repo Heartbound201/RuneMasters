@@ -20,7 +20,7 @@ public class ConfirmAbilityTargetState : State
     private void HighlightAbilityArea()
     {
         owner.board.ClearHighlight();
-        tilesInArea = owner.SelectedAbility.abilityArea.GetTilesInArea(Board, owner.SelectedTile);
+        tilesInArea = owner.SelectedAbility.abilityArea.GetTilesInArea(Board, owner.ActingUnit.tile, owner.SelectedTile);
         owner.board.HighlightTiles(tilesInArea);
     }
 

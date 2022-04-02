@@ -6,9 +6,9 @@ using Wunderwunsch.HexMapLibrary.Generic;
 public class CircleAbilityArea : AbilityArea
 {
     public int range = 1;
-    public override List<HexTile<Tile>> GetTilesInArea(Board board, HexTile<Tile> tile)
+    public override List<HexTile<Tile>> GetTilesInArea(Board board, HexTile<Tile> start, HexTile<Tile> target)
     {
-        return board.SearchRange(tile, ExpandSearch);
+        return board.SearchRange(target, ExpandSearch);
     }
     bool ExpandSearch (HexTile<Tile> from, HexTile<Tile> to)
     {

@@ -9,10 +9,6 @@ public abstract class AbilityEffect : ScriptableObject
     public GameObject particleEffectSelf;
     public GameObject particleEffectProjectile;
     public GameObject particleEffectTarget;
-    [Header("SoundEffects")] 
-    public GameObject soundEffectSelf;
-    public GameObject soundEffectProjectile;
-    public GameObject soundEffectTarget;
 
     public virtual IEnumerator Apply(Unit actor, HexTile<Tile> target)
     {

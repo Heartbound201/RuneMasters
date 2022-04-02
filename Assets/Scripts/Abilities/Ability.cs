@@ -15,7 +15,7 @@ public class Ability : ScriptableObject
 
     public IEnumerator Execute(Unit actor, HexTile<Tile> targetTile)
     {
-        List<HexTile<Tile>> tilesInArea = abilityArea.GetTilesInArea(targetTile.Data.board, targetTile);
+        List<HexTile<Tile>> tilesInArea = abilityArea.GetTilesInArea(targetTile.Data.board, actor.tile, targetTile);
         foreach (AbilityEffect abilityEffect in abilityEffects)
         {
             foreach (HexTile<Tile> tile in tilesInArea)

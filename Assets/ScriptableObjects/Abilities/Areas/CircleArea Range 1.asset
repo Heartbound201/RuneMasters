@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a5bb4a7d724a62910e5db823f60088, type: 3}
-  m_Name: CirleAreaRange2
+  m_Name: CircleArea Range 1
   m_EditorClassIdentifier: 
-  range: 2
+  range: 1
