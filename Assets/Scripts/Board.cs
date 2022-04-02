@@ -50,6 +50,19 @@ public class Board : MonoBehaviour
 
         tileHover = tile;
         tileHover.Data.Hover(true);
+
+        // Check if tile is in danger
+        if (tileHover.Data.dangerList.Count != 0)
+        {
+            // Cast to understand what type of ability will hit
+            if (tileHover.Data.dangerList[0].ability.abilityEffects[0] as DamageAbilityEffect)
+            {
+                DamageAbilityEffect DamageAbility = tileHover.Data.dangerList[0].ability.abilityEffects[0] as DamageAbilityEffect;
+
+                // Get and pass tileHover.Data.dangerList[0].actor and DamageAbility.potency to UI (through statemachine?)
+            }
+            // Other casts, if necessary (dotdamage etc..)
+        }
     }
 
     public void SelectTile(HexTile<Tile> tile)
