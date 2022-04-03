@@ -1,0 +1,71 @@
+
+Mcsharpsquid:S1125à"*Remove the unnecessary Boolean literal(s).(öóèùÿÿÿÿ
+csharpsquid:S101"`Rename class 'STUDIO_VERSION' to match pascal case naming rules, consider using 'StudioVersion'.(Şò—Şùÿÿÿÿ
+•csharpsquid:S1016"tRename struct 'TIMELINE_BEAT_PROPERTIES' to match pascal case naming rules, consider using 'TimelineBeatProperties'.(ô¯„ûÿÿÿÿÿ
+›csharpsquid:S101'"zRename struct 'PROGRAMMER_SOUND_PROPERTIES' to match pascal case naming rules, consider using 'ProgrammerSoundProperties'.(ë°Ö”øÿÿÿÿ
+~csharpsquid:S101d"]Rename struct 'BUFFER_USAGE' to match pascal case naming rules, consider using 'BufferUsage'.(­Í‹†şÿÿÿÿ
+™csharpsquid:S101/"xRename struct 'TIMELINE_MARKER_PROPERTIES' to match pascal case naming rules, consider using 'TimelineMarkerProperties'.(‰ŒÈ¶şÿÿÿÿ
+csharpsquid:S101A"Rename struct 'TIMELINE_NESTED_BEAT_PROPERTIES' to match pascal case naming rules, consider using 'TimelineNestedBeatProperties'.(ÈÅ³Ñ
+scsharpsquid:S101T"WRename struct 'CPU_USAGE' to match pascal case naming rules, consider using 'CpuUsage'.(ŞÊ¥¦
+•csharpsquid:S101­"xRename struct 'PLUGIN_INSTANCE_PROPERTIES' to match pascal case naming rules, consider using 'PluginInstanceProperties'.(Şô¸Ğ
+|csharpsquid:S101Z"[Rename struct 'BUFFER_INFO' to match pascal case naming rules, consider using 'BufferInfo'.(€½êÜøÿÿÿÿ
+‡csharpsquid:S101H"fRename struct 'ADVANCEDSETTINGS' to match pascal case naming rules, consider using 'Advancedsettings'.(û¡ãÃøÿÿÿÿ
+scsharpsquid:S101k"WRename struct 'BANK_INFO' to match pascal case naming rules, consider using 'BankInfo'.(µŞà­
+csharpsquid:S101"]Rename struct 'PARAMETER_ID' to match pascal case naming rules, consider using 'ParameterId'.(°Òñ©üÿÿÿÿ
+‘csharpsquid:S101¤"oRename struct 'PARAMETER_DESCRIPTION' to match pascal case naming rules, consider using 'ParameterDescription'.(â‘¬„ûÿÿÿÿ
+|csharpsquid:S101Ù"_Rename struct 'USER_PROPERTY' to match pascal case naming rules, consider using 'UserProperty'.(¾×ùÃ
+{csharpsquid:S101½"YRename struct 'SOUND_INFO' to match pascal case naming rules, consider using 'SoundInfo'.(†›†Ùıÿÿÿÿ
+’csharpsquid:S101æ"uRename struct 'Union_IntBoolFloatString' to match pascal case naming rules, consider using 'UnionIntBoolFloatString'.(±…ş‡
+csharpsquid:S101á"]Rename struct 'COMMAND_INFO' to match pascal case naming rules, consider using 'CommandInfo'.(èŸ›™ùÿÿÿÿ
+csharpsquid:S101î"]Rename struct 'MEMORY_USAGE' to match pascal case naming rules, consider using 'MemoryUsage'.(œ½ŒÔûÿÿÿÿ
+ncsharpsquid:S101À"LRename struct 'VCA' to match pascal case naming rules, consider using 'Vca'.(»õïíüÿÿÿÿ
+qcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(Şò—Şùÿÿÿÿ
+]csharpsquid:S1854ş":Remove this useless assignment to local variable 'result'.(ÅÓŞƒüÿÿÿÿ
+Xcsharpsquid:S1854™":Remove this useless assignment to local variable 'result'.(³ªñá
+Wcsharpsquid:S1854³":Remove this useless assignment to local variable 'result'.(ªş–
+Xcsharpsquid:S1854ş":Remove this useless assignment to local variable 'result'.(Ï¡í¶
+Xcsharpsquid:S1854˜":Remove this useless assignment to local variable 'result'.(î‘¯ç
+Icsharpsquid:S4070´"+Remove the 'FlagsAttribute' from this enum.(Õ®¤É
+Hcsharpsquid:S4070w"+Remove the 'FlagsAttribute' from this enum.(âººÇ
+Xcsharpsquid:S2344ÿ"5Rename this enumeration to remove the 'FLAGS' suffix.(µí¯§ıÿÿÿÿ
+Xcsharpsquid:S2344“"5Rename this enumeration to remove the 'FLAGS' suffix.(‡ŞğÂøÿÿÿÿ
+Xcsharpsquid:S2344ˆ"5Rename this enumeration to remove the 'FLAGS' suffix.(²°ôèÿÿÿÿÿ
+Scsharpsquid:S2344"5Rename this enumeration to remove the 'FLAGS' suffix.(ãêÎ€
+Xcsharpsquid:S2344ó"5Rename this enumeration to remove the 'FLAGS' suffix.(Ş’½Œÿÿÿÿÿ
+ƒcsharpsquid:S2342ÿ"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(µí¯§ıÿÿÿÿ
+csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ïØ„Ëüÿÿÿÿ
+ƒcsharpsquid:S2342“"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(‡ŞğÂøÿÿÿÿ
+csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(›«î¾úÿÿÿÿ
+ƒcsharpsquid:S2342ˆ"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(²°ôèÿÿÿÿÿ
+~csharpsquid:S2342"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(ãêÎ€
+}csharpsquid:S2342˜"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(š¥†Ô
+‚csharpsquid:S2342¡"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(îó¹ıÿÿÿÿ
+~csharpsquid:S2342´"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(Õ®¤É
+}csharpsquid:S2342w"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(âººÇ
+}csharpsquid:S2342Ğ"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¡¢Ø˜
+|csharpsquid:S2342±"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ó¾¼,
+‚csharpsquid:S2342ƒ"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ö­—Šúÿÿÿÿ
+}csharpsquid:S2342·"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¢¬Ú¢
+‚csharpsquid:S2342Ó"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(òôÕüÿÿÿÿ
+ƒcsharpsquid:S2342ó"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(Ş’½Œÿÿÿÿÿ
+gcsharpsquid:S1104‰"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+gcsharpsquid:S1104½"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+gcsharpsquid:S1104±"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+gcsharpsquid:S1104‡
+"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+gcsharpsquid:S1104Ÿ"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+gcsharpsquid:S1104²"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+gcsharpsquid:S1104ü"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
+8csharpsquid:S2346"Rename 'NORMAL' to 'None'.(²ß×Ş
+8csharpsquid:S2346Š"Rename 'NORMAL' to 'None'.(²ß×Ş
+8csharpsquid:S2346’"Rename 'NORMAL' to 'None'.(²ß×Ş
+8csharpsquid:S2346õ"Rename 'NORMAL' to 'None'.(²ß×Ş
+]csharpsquid:S1939";'int' should not be explicitly used as the underlying type.(ïØ„Ëüÿÿÿÿ
+]csharpsquid:S1939";'int' should not be explicitly used as the underlying type.(›«î¾úÿÿÿÿ
+Ycsharpsquid:S1939˜";'int' should not be explicitly used as the underlying type.(š¥†Ô
+^csharpsquid:S1939¡";'int' should not be explicitly used as the underlying type.(îó¹ıÿÿÿÿ
+Ycsharpsquid:S1939Ğ";'int' should not be explicitly used as the underlying type.(¡¢Ø˜
+Xcsharpsquid:S1939±";'int' should not be explicitly used as the underlying type.(ó¾¼,
+^csharpsquid:S1939ƒ";'int' should not be explicitly used as the underlying type.(ö­—Šúÿÿÿÿ
+Ycsharpsquid:S1939·";'int' should not be explicitly used as the underlying type.(¢¬Ú¢
+^csharpsquid:S1939Ó";'int' should not be explicitly used as the underlying type.(òôÕüÿÿÿÿ

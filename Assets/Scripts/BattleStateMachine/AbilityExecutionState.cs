@@ -17,7 +17,7 @@ public class AbilityExecutionState : State
         owner.SelectedAbility = null;
         owner.SelectedTile = null;
         owner.SelectedRune = null;
-        owner.selectedRuneSteps = new List<TileDirection>();
+        owner.SelectedRuneSteps = new List<TileDirection>();
     }
 
     IEnumerator Execution()
@@ -29,6 +29,7 @@ public class AbilityExecutionState : State
         CameraController.instance.CameraLookAt(owner.SelectedTile);
         
         owner.IsBattleOver();
+        owner.SelectedRune.SendInCooldown();
         owner.ChangeState<ActionSelectionState>();
     }
 }

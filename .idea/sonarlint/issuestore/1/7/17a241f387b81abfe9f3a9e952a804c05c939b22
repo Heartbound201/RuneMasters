@@ -1,0 +1,39 @@
+
+pcsharpsquid:S3776˜"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(·ışş
+pcsharpsquid:S3776§"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¥í·ó
+ucsharpsquid:S3776µ
+"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ëíùùıÿÿÿÿ
+ucsharpsquid:S3776±"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(«ÑÁÛÿÿÿÿÿ
+gcsharpsquid:S3358½
+"DExtract this nested ternary operation into an independent statement.(íµİ„ıÿÿÿÿ
+ƒcsharpsquid:S2342•"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(äÀé´ıÿÿÿÿ
+Bcsharpsquid:S2933" Make 'ToggleDisplay' 'readonly'.(„Í£øÿÿÿÿ
+@csharpsquid:S2933"#Make 'FrequencyDisplay' 'readonly'.(Óó–
+Dcsharpsquid:S2933""Make 'FrequencyValues' 'readonly'.(ßî“¶üÿÿÿÿ
+Jcsharpsquid:S2933q"(Make 'platformTreeViewState' 'readonly'.(½ƒæìÿÿÿÿÿ
+9csharpsquid:S2933€"Make 'platform' 'readonly'.(Áˆ¤ã
+?csharpsquid:S2933"!Make 'settingsEditor' 'readonly'.(ıóÃâ
+Dcsharpsquid:S2933‚"'Make 'outputSubdirectories' 'readonly'.(ÛÙ‚a
+<csharpsquid:S2933„"Make 'headerStyle' 'readonly'.(šƒê
+Acsharpsquid:S2933…"Make 'toggleStyle' 'readonly'.(ÌŠÀ«øÿÿÿÿ
+Ccsharpsquid:S2933‡"%Make 'subdirectoryHeader' 'readonly'.(âšßÇ
+Gcsharpsquid:S2933ˆ"$Make 'speakerModeHeader' 'readonly'.(‘Û¹Âùÿÿÿÿ
+>csharpsquid:S2933è"Make 'settings' 'readonly'.(¦­È’ûÿÿÿÿ
+Acsharpsquid:S2933Ÿ"Make 'displayList' 'readonly'.(ÀÊÒìúÿÿÿÿ
+Lcsharpsquid:S1066Ë
+"/Merge this if statement with the enclosing one.(Óƒ¶'
+_csharpsquid:S3457€"<Remove this formatting call and simply use the input string.(«õ€¨øÿÿÿÿ
+_csharpsquid:S3457"<Remove this formatting call and simply use the input string.(êôº©şÿÿÿÿ
+_csharpsquid:S3457‚"<Remove this formatting call and simply use the input string.(³ñªãıÿÿÿÿ
+]csharpsquid:S107˜"@Method has 9 parameters, which is greater than the 7 authorized.(·ışş
+gcsharpsquid:S3241–"JChange return type to 'void'; not a single caller uses the returned value.(ãÜº
+bcsharpsquid:S1117í"DRename 'sourceProjectPath' which hides the field with the same name.(º˜…Œ
+dcsharpsquid:S1117î"ARename 'sourceBankPath' which hides the field with the same name.(òÎµÿÿÿÿÿ
+acsharpsquid:S1117ï"CRename 'hasSourceProject' which hides the field with the same name.(Šóõ
+bcsharpsquid:S1117€"DRename 'sourceProjectPath' which hides the field with the same name.(º˜…Œ
+dcsharpsquid:S1117"ARename 'sourceBankPath' which hides the field with the same name.(òÎµÿÿÿÿÿ
+acsharpsquid:S1117‚"CRename 'hasSourceProject' which hides the field with the same name.(Šóõ
+]csharpsquid:S1117ƒ"?Rename 'hasPlatforms' which hides the field with the same name.(˜ºå²
+dcsharpsquid:S1117›"ARename 'sourceBankPath' which hides the field with the same name.(òÎµÿÿÿÿÿ
+acsharpsquid:S1117œ"CRename 'hasSourceProject' which hides the field with the same name.(Šóõ
+]csharpsquid:S1117"?Rename 'hasPlatforms' which hides the field with the same name.(˜ºå²

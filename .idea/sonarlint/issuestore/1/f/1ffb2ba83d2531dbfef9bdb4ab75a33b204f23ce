@@ -1,0 +1,23 @@
+
+pcsharpsquid:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÅÜâÒ
+€csharpsquid:S1450B"cRemove the field 'listenerPositionFmod' and declare it as a local variable in the relevant methods.(“Ã—Ö
+ucsharpsquid:S4487~"YRemove this unread private class field 'positionX' or refactor the code to use its value.(ÿÎÖI
+ucsharpsquid:S4487"YRemove this unread private class field 'positionY' or refactor the code to use its value.(ªÜi
+|csharpsquid:S4487€"YRemove this unread private class field 'positionZ' or refactor the code to use its value.(õá›—øÿÿÿÿ
+|csharpsquid:S4487ƒ"YRemove this unread private class field 'rotationX' or refactor the code to use its value.(ùÒ€ôøÿÿÿÿ
+wcsharpsquid:S4487„"YRemove this unread private class field 'rotationY' or refactor the code to use its value.(ÁìÎó
+|csharpsquid:S4487…"YRemove this unread private class field 'rotationZ' or refactor the code to use its value.(‡¢í¦øÿÿÿÿ
+wcsharpsquid:S4487†"YRemove this unread private class field 'rotationW' or refactor the code to use its value.(Öµ–ç
+~csharpsquid:S4487‰"[Remove this unread private class field 'dimensionsX' or refactor the code to use its value.(¾Òà˜ùÿÿÿÿ
+ycsharpsquid:S4487Š"[Remove this unread private class field 'dimensionsY' or refactor the code to use its value.(úş¶­
+~csharpsquid:S4487‹"[Remove this unread private class field 'dimensionsZ' or refactor the code to use its value.(‘—Âÿüÿÿÿÿ
+csharpsquid:S4487"\Remove this unread private class field 'materialLeft' or refactor the code to use its value.(¯¶–Èúÿÿÿÿ
+€csharpsquid:S4487"]Remove this unread private class field 'materialRight' or refactor the code to use its value.(ıùØóùÿÿÿÿ
+csharpsquid:S4487"^Remove this unread private class field 'materialBottom' or refactor the code to use its value.(±¿©çûÿÿÿÿ
+ycsharpsquid:S4487‘"[Remove this unread private class field 'materialTop' or refactor the code to use its value.(İÂâ´
+{csharpsquid:S4487’"]Remove this unread private class field 'materialFront' or refactor the code to use its value.(ò—ñ†
+zcsharpsquid:S4487“"\Remove this unread private class field 'materialBack' or refactor the code to use its value.(ÅŸâ
+ƒcsharpsquid:S4487—"`Remove this unread private class field 'reflectionScalar' or refactor the code to use its value.(‘ÅøÌúÿÿÿÿ
+xcsharpsquid:S4487š"ZRemove this unread private class field 'reverbGain' or refactor the code to use its value.(‰ˆ‡
+}csharpsquid:S4487"ZRemove this unread private class field 'reverbTime' or refactor the code to use its value.(†¯ç¿øÿÿÿÿ
+ƒcsharpsquid:S4487¢"`Remove this unread private class field 'reverbBrightness' or refactor the code to use its value.(™µÁŸüÿÿÿÿ

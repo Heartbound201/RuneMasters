@@ -43,15 +43,16 @@ public class TurnMenuController : MonoBehaviour
         ClearRunePanel();
 
         // fill rune panel
-        foreach (Rune runePrototype in unit.runes)
+        foreach (var rune in unit.runes)
         {
             GameObject runeMenuGO = Instantiate(runeSelectionButton, runesPanel);
             RuneMenuItem runeMenuItem = runeMenuGO.GetComponent<RuneMenuItem>();
-            runeMenuItem.rune = runePrototype;
-            runeMenuItem.text.text = runePrototype.runeName;
-            runeMenuItem.icon.sprite = runePrototype.icon;
-            runeMenuItem.button.onClick.AddListener(() => SelectRune(runePrototype));
-            if (unit.hasActed || party.AvailableMana < runePrototype.steps.Count) 
+            runeMenuItem.unit = unit;
+            runeMenuItem.rune = rune;
+            runeMenuItem.text.text = rune.RunePrototype.runeName;
+            runeMenuItem.icon.sprite = rune.RunePrototype.icon;
+            runeMenuItem.button.onClick.AddListener(() => SelectRune(rune));
+            if (!rune.IsAvailable(unit)) 
             {
                 runeMenuItem.button.interactable = false;
             }
@@ -62,14 +63,6 @@ public class TurnMenuController : MonoBehaviour
 
         FillInfoPanel(unit);
         
-        // mov / str / dex / int / def
-        // 3     3     3      2     4
-        // 
-        // unit.statuses[0]
-        // unit.strength <= unit.strengthStart;
-
-        //TODO gray out commands
-
         SelectUnit?.Invoke(unit);
     }
 

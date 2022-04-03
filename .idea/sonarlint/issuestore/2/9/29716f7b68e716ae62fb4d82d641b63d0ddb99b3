@@ -1,0 +1,12 @@
+
+tcsharpsquid:S3776)"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Æ¡Ü™úÿÿÿÿ
+ucsharpsquid:S3776Î"RRefactor this method to reduce its Cognitive Complexity from 34 to the 15 allowed.(—¾¶§ÿÿÿÿÿ
+Dcsharpsquid:S2933„"!Make 'paramsProperty' 'readonly'.(¸Ü‚Çüÿÿÿÿ
+Gcsharpsquid:S2933‡"$Make 'serializedTargets' 'readonly'.(÷ùåµúÿÿÿÿ
+Ecsharpsquid:S2933‹""Make 'propertyRecords' 'readonly'.(ˆú½şÿÿÿÿ
+Gcsharpsquid:S2933"$Make 'missingParameters' 'readonly'.(ÀÚš¸üÿÿÿÿ
+Xcsharpsquid:S1199R"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
+gcsharpsquid:S2589S"EChange this condition so that it does not always evaluate to 'false'.(éÂ„…şÿÿÿÿ
+_csharpsquid:S1117­"ARename 'paramsProperty' which hides the field with the same name.(çéÑŠ
+_csharpsquid:S1117î"ARename 'paramsProperty' which hides the field with the same name.(çéÑŠ
+_csharpsquid:S1117‚"ARename 'paramsProperty' which hides the field with the same name.(çéÑŠ

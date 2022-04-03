@@ -1,0 +1,28 @@
+
+\csharpsquid:S3442Â"9Change the visibility of this constructor to 'protected'.(Ğıñ·ÿÿÿÿÿ
+tcsharpsquid:S101"SRename class 'VERSION' to match pascal case naming rules, consider using 'Version'.(’¦Œªúÿÿÿÿ
+csharpsquid:S101"`Rename class 'STUDIO_VERSION' to match pascal case naming rules, consider using 'StudioVersion'.(Şò—Şùÿÿÿÿ
+šcsharpsquid:S101Ø"xRename interface 'PropertyOverrideControl' to match pascal case naming rules, consider using 'IPropertyOverrideControl'.(Ä½Ğ…ÿÿÿÿÿ
+qcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(’¦Œªúÿÿÿÿ
+qcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(Şò—Şùÿÿÿÿ
+ƒcsharpsquid:S2342¯"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(šó·ùÿÿÿÿ
+acsharpsquid:S1104^"DMake this field 'private' and encapsulate it in a 'public' property.(œøşÎ
+bcsharpsquid:S1104µ"DMake this field 'private' and encapsulate it in a 'public' property.(ˆË«
+bcsharpsquid:S1104¶"DMake this field 'private' and encapsulate it in a 'public' property.(Û¶ˆ¹
+gcsharpsquid:S1104£"DMake this field 'private' and encapsulate it in a 'public' property.(ñÎìšùÿÿÿÿ
+acsharpsquid:S1104¤"DMake this field 'private' and encapsulate it in a 'public' property.(Õƒ(
+bcsharpsquid:S1104¥"DMake this field 'private' and encapsulate it in a 'public' property.(‹¤Çš
+bcsharpsquid:S1104¦"DMake this field 'private' and encapsulate it in a 'public' property.(Ìøİû
+gcsharpsquid:S1104§"DMake this field 'private' and encapsulate it in a 'public' property.(áİòşÿÿÿÿ
+gcsharpsquid:S1104¨"DMake this field 'private' and encapsulate it in a 'public' property.(â±ÚÕüÿÿÿÿ
+gcsharpsquid:S1104©"DMake this field 'private' and encapsulate it in a 'public' property.(ŞÇÊ–ùÿÿÿÿ
+acsharpsquid:S1104ª"DMake this field 'private' and encapsulate it in a 'public' property.(úÒÜ
+bcsharpsquid:S1104«"DMake this field 'private' and encapsulate it in a 'public' property.(¾æß’
+bcsharpsquid:S1104¬"DMake this field 'private' and encapsulate it in a 'public' property.(ƒÀÎ
+bcsharpsquid:S1104­"DMake this field 'private' and encapsulate it in a 'public' property.(’ßÅ
+bcsharpsquid:S1104®"DMake this field 'private' and encapsulate it in a 'public' property.(¡æ†Ò
+bcsharpsquid:S1104¯"DMake this field 'private' and encapsulate it in a 'public' property.(€›¦–
+bcsharpsquid:S1104°"DMake this field 'private' and encapsulate it in a 'public' property.(¸ˆ¯¦
+acsharpsquid:S1104¸"DMake this field 'private' and encapsulate it in a 'public' property.(¸™ğ=
+gcsharpsquid:S1104¹"DMake this field 'private' and encapsulate it in a 'public' property.(ï†™´ûÿÿÿÿ
+Acsharpsquid:S125²"Remove this commented out code.(­èÚøùÿÿÿÿ

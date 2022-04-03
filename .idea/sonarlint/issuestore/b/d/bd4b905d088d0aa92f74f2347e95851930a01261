@@ -1,0 +1,121 @@
+
+…csharpsquid:S101"dRename struct 'DSP_BUFFER_ARRAY' to match pascal case naming rules, consider using 'DspBufferArray'.(ÄÁ—˜ÿÿÿÿÿ
+“csharpsquid:S101Ä"qRename struct 'DSP_PARAMETER_DESC_DATA' to match pascal case naming rules, consider using 'DspParameterDescData'.(­½‡˜şÿÿÿÿ
+pcsharpsquid:S101$"TRename struct 'COMPLEX' to match pascal case naming rules, consider using 'Complex'.(Ò“¿¬
+œcsharpsquid:S101·"zRename struct 'DSP_LOUDNESS_METER_INFO_TYPE' to match pascal case naming rules, consider using 'DspLoudnessMeterInfoType'.(Û…šˆıÿÿÿÿ
+·csharpsquid:S101š"™Rename struct 'DSP_PARAMETER_FLOAT_MAPPING_PIECEWISE_LINEAR' to match pascal case naming rules, consider using 'DspParameterFloatMappingPiecewiseLinear'.(‚ôÏ
+ƒcsharpsquid:S101¥"fRename struct 'DSP_METERING_INFO' to match pascal case naming rules, consider using 'DspMeteringInfo'.(´şñ¨
+›csharpsquid:S101¢"yRename struct 'DSP_PARAMETER_FLOAT_MAPPING' to match pascal case naming rules, consider using 'DspParameterFloatMapping'.(ÃÑƒ€şÿÿÿÿ
+•csharpsquid:S101Ê"sRename struct 'DSP_PARAMETER_DESC_UNION' to match pascal case naming rules, consider using 'DspParameterDescUnion'.(ãşÒßüÿÿÿÿ
+ˆcsharpsquid:S101"fRename struct 'DSP_PARAMETER_FFT' to match pascal case naming rules, consider using 'DspParameterFft'.(ğ¸¯Âüÿÿÿÿ
+•csharpsquid:S101ª"sRename struct 'DSP_PARAMETER_DESC_FLOAT' to match pascal case naming rules, consider using 'DspParameterDescFloat'.(¿Ë„³ûÿÿÿÿ
+§csharpsquid:S101Å"„Rename struct 'DSP_LOUDNESS_METER_WEIGHTING_TYPE' to match pascal case naming rules, consider using 'DspLoudnessMeterWeightingType'.(òÏäïùÿÿÿÿ
+Œcsharpsquid:S101³"oRename struct 'DSP_PARAMETER_DESC_INT' to match pascal case naming rules, consider using 'DspParameterDescInt'.(õë¢ê
+csharpsquid:S101½"qRename struct 'DSP_PARAMETER_DESC_BOOL' to match pascal case naming rules, consider using 'DspParameterDescBool'.(ƒŒŸR
+csharpsquid:S101Ì"Rename struct 'DSP_PARAMETER_ATTENUATION_RANGE' to match pascal case naming rules, consider using 'DspParameterAttenuationRange'.(ÂÙÅw
+Šcsharpsquid:S101×"hRename struct 'DSP_PARAMETER_DESC' to match pascal case naming rules, consider using 'DspParameterDesc'.(…Äçæşÿÿÿÿ
+…csharpsquid:S101Ó"cRename struct 'DSP_DESCRIPTION' to match pascal case naming rules, consider using 'DspDescription'.(·ğê´üÿÿÿÿ
+“csharpsquid:S101ï"vRename struct 'DSP_PARAMETER_OVERALLGAIN' to match pascal case naming rules, consider using 'DspParameterOverallgain'.(è¥ñ€
+csharpsquid:S101õ"qRename struct 'DSP_STATE_DFT_FUNCTIONS' to match pascal case naming rules, consider using 'DspStateDftFunctions'.(ÑÇãÖ
+šcsharpsquid:S101ö"xRename struct 'DSP_PARAMETER_3DATTRIBUTES' to match pascal case naming rules, consider using 'DspParameter3Dattributes'.(Å…ÃĞúÿÿÿÿ
+“csharpsquid:S101ü"qRename struct 'DSP_STATE_PAN_FUNCTIONS' to match pascal case naming rules, consider using 'DspStatePanFunctions'.(¶å»¤ûÿÿÿÿ
+¦csharpsquid:S101ı"ƒRename struct 'DSP_PARAMETER_3DATTRIBUTES_MULTI' to match pascal case naming rules, consider using 'DspParameter3DattributesMulti'.(³¾Íœùÿÿÿÿ
+Œcsharpsquid:S101‡"jRename struct 'DSP_STATE_FUNCTIONS' to match pascal case naming rules, consider using 'DspStateFunctions'.(­”“°ıÿÿÿÿ
+csharpsquid:S101ˆ"rRename struct 'DSP_PARAMETER_SIDECHAIN' to match pascal case naming rules, consider using 'DspParameterSidechain'.(çï†
+tcsharpsquid:S101˜"WRename struct 'DSP_STATE' to match pascal case naming rules, consider using 'DspState'.(ãÅúª
+Wcsharpsquid:S2344*"5Rename this enumeration to remove the 'FLAGS' suffix.(¢ÿ ¼øÿÿÿÿ
+csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ÂêâÅşÿÿÿÿ
+csharpsquid:S2342_"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Øòö¾ıÿÿÿÿ
+}csharpsquid:S2342‰"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(æ¡ÆÃ
+csharpsquid:S2342*"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¢ÿ ¼øÿÿÿÿ
+‚csharpsquid:S2342’"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(´ìíµùÿÿÿÿ
+}csharpsquid:S2342¡"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ç»Ë¨
+}csharpsquid:S2342¹"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(«æÀŸ
+‚csharpsquid:S2342Ê"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ÆÏŞÒùÿÿÿÿ
+‚csharpsquid:S2342¸"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¿›Ôùÿÿÿÿ
+‚csharpsquid:S2342Ò"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(æà¨ıÿÿÿÿ
+|csharpsquid:S2342¾"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Ø¿9
+}csharpsquid:S2342ƒ"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Œ¹ú¤
+}csharpsquid:S2342Ù"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¸ù¤
+}csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(±ÛÔ
+}csharpsquid:S2342Ä"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(±šƒ¼
+‚csharpsquid:S2342‰"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(äÇùéşÿÿÿÿ
+}csharpsquid:S2342â"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Â¼ô
+‚csharpsquid:S2342”"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ñ§°«ùÿÿÿÿ
+‚csharpsquid:S2342Ê"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(÷Ãøªşÿÿÿÿ
+}csharpsquid:S2342Š"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¾·éğ
+}csharpsquid:S2342ë"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Şåè…
+}csharpsquid:S2342í"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(›±Ã‡
+‚csharpsquid:S2342Ğ"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¯ÈıÑüÿÿÿÿ
+‚csharpsquid:S2342ş"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(•ô¨Öüÿÿÿÿ
+}csharpsquid:S2342Ø"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¯¹•Ù
+‚csharpsquid:S2342Ş"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Üâ…¶øÿÿÿÿ
+}csharpsquid:S2342ó"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(÷×ı¸
+}csharpsquid:S2342ã"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¸ªÖÑ
+‚csharpsquid:S2342’"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(İ¾üÈşÿÿÿÿ
+‚csharpsquid:S2342š"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Ñ×‡íøÿÿÿÿ
+}csharpsquid:S2342ó"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(İÈöÖ
+}csharpsquid:S2342¡"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ÒÀ¹³
+‚csharpsquid:S2342ú"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(×­œ¨ÿÿÿÿÿ
+‚csharpsquid:S2342ª"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(çû˜æùÿÿÿÿ
+}csharpsquid:S2342†"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(†ÿ¬
+}csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(‰¸Î
+|csharpsquid:S2342‹"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¡Ãèj
+‚csharpsquid:S2342±"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(‰×ˆışÿÿÿÿ
+}csharpsquid:S2342’"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¤ÿÙÉ
+‚csharpsquid:S2342š"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(øÏàÌøÿÿÿÿ
+‚csharpsquid:S2342Í"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.( »ä¯ùÿÿÿÿ
+}csharpsquid:S2342Ô"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ù™ûŞ
+‚csharpsquid:S2342Ş"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(½ŠÖôûÿÿÿÿ
+‚csharpsquid:S2342è"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(™˜ú…úÿÿÿÿ
+‚csharpsquid:S2342ã"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ûøı›üÿÿÿÿ
+‚csharpsquid:S2342ñ"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ƒÄÃÓûÿÿÿÿ
+‚csharpsquid:S2342ù"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¶Ùôøÿÿÿÿ
+}csharpsquid:S2342‚"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¸ËâÏ
+csharpsquid:S2368¦"^Make this method private or simplify its parameters to not use multidimensional/jagged arrays.(¦‘ºûıÿÿÿÿ
+]csharpsquid:S1939_";'int' should not be explicitly used as the underlying type.(Øòö¾ıÿÿÿÿ
+Ycsharpsquid:S1939¡";'int' should not be explicitly used as the underlying type.(ç»Ë¨
+Ycsharpsquid:S1939¹";'int' should not be explicitly used as the underlying type.(«æÀŸ
+^csharpsquid:S1939Ê";'int' should not be explicitly used as the underlying type.(ÆÏŞÒùÿÿÿÿ
+^csharpsquid:S1939¸";'int' should not be explicitly used as the underlying type.(¿›Ôùÿÿÿÿ
+^csharpsquid:S1939Ò";'int' should not be explicitly used as the underlying type.(æà¨ıÿÿÿÿ
+Xcsharpsquid:S1939¾";'int' should not be explicitly used as the underlying type.(Ø¿9
+Ycsharpsquid:S1939ƒ";'int' should not be explicitly used as the underlying type.(Œ¹ú¤
+Ycsharpsquid:S1939Ù";'int' should not be explicitly used as the underlying type.(¸ù¤
+Ycsharpsquid:S1939";'int' should not be explicitly used as the underlying type.(±ÛÔ
+Ycsharpsquid:S1939Ä";'int' should not be explicitly used as the underlying type.(±šƒ¼
+^csharpsquid:S1939‰";'int' should not be explicitly used as the underlying type.(äÇùéşÿÿÿÿ
+Ycsharpsquid:S1939â";'int' should not be explicitly used as the underlying type.(Â¼ô
+^csharpsquid:S1939”";'int' should not be explicitly used as the underlying type.(ñ§°«ùÿÿÿÿ
+^csharpsquid:S1939Ê";'int' should not be explicitly used as the underlying type.(÷Ãøªşÿÿÿÿ
+Ycsharpsquid:S1939Š";'int' should not be explicitly used as the underlying type.(¾·éğ
+Ycsharpsquid:S1939ë";'int' should not be explicitly used as the underlying type.(Şåè…
+Ycsharpsquid:S1939í";'int' should not be explicitly used as the underlying type.(›±Ã‡
+^csharpsquid:S1939Ğ";'int' should not be explicitly used as the underlying type.(¯ÈıÑüÿÿÿÿ
+^csharpsquid:S1939ş";'int' should not be explicitly used as the underlying type.(•ô¨Öüÿÿÿÿ
+Ycsharpsquid:S1939Ø";'int' should not be explicitly used as the underlying type.(¯¹•Ù
+^csharpsquid:S1939Ş";'int' should not be explicitly used as the underlying type.(Üâ…¶øÿÿÿÿ
+Ycsharpsquid:S1939ó";'int' should not be explicitly used as the underlying type.(÷×ı¸
+^csharpsquid:S1939’";'int' should not be explicitly used as the underlying type.(İ¾üÈşÿÿÿÿ
+^csharpsquid:S1939š";'int' should not be explicitly used as the underlying type.(Ñ×‡íøÿÿÿÿ
+Ycsharpsquid:S1939ó";'int' should not be explicitly used as the underlying type.(İÈöÖ
+Ycsharpsquid:S1939¡";'int' should not be explicitly used as the underlying type.(ÒÀ¹³
+^csharpsquid:S1939ú";'int' should not be explicitly used as the underlying type.(×­œ¨ÿÿÿÿÿ
+^csharpsquid:S1939ª";'int' should not be explicitly used as the underlying type.(çû˜æùÿÿÿÿ
+Ycsharpsquid:S1939†";'int' should not be explicitly used as the underlying type.(†ÿ¬
+Ycsharpsquid:S1939";'int' should not be explicitly used as the underlying type.(‰¸Î
+Xcsharpsquid:S1939‹";'int' should not be explicitly used as the underlying type.(¡Ãèj
+^csharpsquid:S1939±";'int' should not be explicitly used as the underlying type.(‰×ˆışÿÿÿÿ
+Ycsharpsquid:S1939’";'int' should not be explicitly used as the underlying type.(¤ÿÙÉ
+^csharpsquid:S1939š";'int' should not be explicitly used as the underlying type.(øÏàÌøÿÿÿÿ
+^csharpsquid:S1939Í";'int' should not be explicitly used as the underlying type.( »ä¯ùÿÿÿÿ
+Ycsharpsquid:S1939Ô";'int' should not be explicitly used as the underlying type.(ù™ûŞ
+^csharpsquid:S1939Ş";'int' should not be explicitly used as the underlying type.(½ŠÖôûÿÿÿÿ
+^csharpsquid:S1939è";'int' should not be explicitly used as the underlying type.(™˜ú…úÿÿÿÿ
+^csharpsquid:S1939ã";'int' should not be explicitly used as the underlying type.(ûøı›üÿÿÿÿ
+^csharpsquid:S1939ñ";'int' should not be explicitly used as the underlying type.(ƒÄÃÓûÿÿÿÿ
+^csharpsquid:S1939ù";'int' should not be explicitly used as the underlying type.(¶Ùôøÿÿÿÿ
+Ycsharpsquid:S1939‚";'int' should not be explicitly used as the underlying type.(¸ËâÏ
+^csharpsquid:S107Y"CDelegate has 11 parameters, which is greater than the 7 authorized.(½ ë
+^csharpsquid:S107Z"BDelegate has 8 parameters, which is greater than the 7 authorized.(÷â£æ
+^csharpsquid:S107["BDelegate has 9 parameters, which is greater than the 7 authorized.(¯×çÇ

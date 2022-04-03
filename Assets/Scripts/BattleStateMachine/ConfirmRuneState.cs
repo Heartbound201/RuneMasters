@@ -10,7 +10,7 @@ public class ConfirmRuneState : State
     public override void Enter()
     {
         base.Enter();
-        owner.selectedRuneSteps = owner.SelectedRune.steps;
+        owner.SelectedRuneSteps = owner.SelectedRune.RunePrototype.steps;
         HighlightRune();
     }
 
@@ -22,7 +22,7 @@ public class ConfirmRuneState : State
     private void HighlightRune()
     {
         owner.board.ClearHighlight();
-        runeTiles = Board.GetPathTiles(owner.ActingUnit.tile, owner.selectedRuneSteps);
+        runeTiles = Board.GetPathTiles(owner.ActingUnit.tile, owner.SelectedRuneSteps);
         owner.board.HighlightTiles(runeTiles);
     }
 
@@ -33,14 +33,14 @@ public class ConfirmRuneState : State
 
     private void RotateRuneClockwise()
     {
-        owner.selectedRuneSteps = owner.selectedRuneSteps.Select(s => s.Clockwise()).ToList();
+        owner.SelectedRuneSteps = owner.SelectedRuneSteps.Select(s => s.Clockwise()).ToList();
         
         HighlightRune();
     }
 
     private void RotateRuneCounterClockwise()
     {
-        owner.selectedRuneSteps = owner.selectedRuneSteps.Select(s => s.CounterClockwise()).ToList();
+        owner.SelectedRuneSteps = owner.SelectedRuneSteps.Select(s => s.CounterClockwise()).ToList();
         
         HighlightRune();
     }

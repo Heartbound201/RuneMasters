@@ -1,0 +1,5 @@
+
+}csharpsquid:S101"aRename class 'FMODEventTrack' to match pascal case naming rules, consider using 'FmodEventTrack'.(ùğÈì
+csharpsquid:S101-"sRename class 'FMODEventMixerBehaviour' to match pascal case naming rules, consider using 'FmodEventMixerBehaviour'.(³ã×¨
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(Î˜Íüÿÿÿÿ
+acsharpsquid:S11040"DMake this field 'private' and encapsulate it in a 'public' property.(Ö…ñ

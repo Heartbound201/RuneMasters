@@ -1,0 +1,32 @@
+
+pcsharpsquid:S3776è"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(’Ñ½´
+pcsharpsquid:S3776º"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(†¥¿à
+ucsharpsquid:S3776ä"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(®±®“üÿÿÿÿ
+pcsharpsquid:S3776¾"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(§–™Ø
+]csharpsquid:S1854ï":Remove this useless assignment to local variable 'result'.(‹”ˆÈÿÿÿÿÿ
+Gcsharpsquid:S2933&"%Make 'cachedDescriptions' 'readonly'.(ÏÇ´¯øÿÿÿÿ
+;csharpsquid:S2933("Make 'loadedBanks' 'readonly'.(Û§Ñ
+Gcsharpsquid:S2933)"%Make 'sampleLoadRequests' 'readonly'.(˜´‡°ûÿÿÿÿ
+>csharpsquid:S2933+"!Make 'activeEmitters' 'readonly'.(íèôÒ
+Fcsharpsquid:S2933-"$Make 'attachedInstances' 'readonly'.(¦ÜáÙüÿÿÿÿ
+Ecsharpsquid:S29330"(Make 'eventPositionWarnings' 'readonly'.(´ÑÍ¼
+acsharpsquid:S1104>"DMake this field 'private' and encapsulate it in a 'public' property.(Ã€‡×
+7csharpsquid:S907Ü"Remove this use of 'goto'.(øøşŒ
+7csharpsquid:S907î"Remove this use of 'goto'.(øøşŒ
+{csharpsquid:S3973Š"XUse curly braces or indentation to denote the code conditionally executed by this 'else'(„¶áìøÿÿÿÿ
+ncsharpsquid:S3218Œ"KRename this field to not shadow the outer class' member with the same name.(ğ¤Šéüÿÿÿÿ
+|csharpsquid:S2386>"_Use an immutable collection or reduce the accessibility of the public static field 'Listeners'.(Ã€‡×
+Ycsharpsquid:S1199Á"6Extract this nested code block into a separate method.(ÒÌâ–øÿÿÿÿ
+xcsharpsquid:S1450"\Remove the field 'debugCallback' and declare it as a local variable in the relevant methods.(Öã¼G
+ycsharpsquid:S1450"\Remove the field 'errorCallback' and declare it as a local variable in the relevant methods.(•´•Ü
+‚csharpsquid:S2372u"`Remove the exception throwing from this property getter, or refactor the property into a method.(¨òÖ„ûÿÿÿÿ
+ƒcsharpsquid:S2372¬"`Remove the exception throwing from this property getter, or refactor the property into a method.(¨òÖ„ûÿÿÿÿ
+~csharpsquid:S2372±"`Remove the exception throwing from this property getter, or refactor the property into a method.(ÓµÅ§
+ccsharpsquid:S2223>"FChange the visibility of 'Listeners' or make it 'const' or 'readonly'.(Ã€‡×
+xcsharpsquid:S2696ú"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(¿’ úÿÿÿÿ
+scsharpsquid:S2696û"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(¼®‚®
+Ycsharpsquid:S1117ô	";Rename 'instance' which hides the field with the same name.(¿‡ğì
+Ycsharpsquid:S1117ˆ
+";Rename 'instance' which hides the field with the same name.(¿‡ğì
+Jcsharpsquid:S1481L"(Remove the unused local variable 'file'.(õüñâùÿÿÿÿ
+Acsharpsquid:S125¥"Remove this commented out code.(ì™•„ıÿÿÿÿ

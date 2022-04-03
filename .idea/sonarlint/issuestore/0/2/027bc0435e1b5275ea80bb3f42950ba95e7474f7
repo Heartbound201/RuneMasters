@@ -1,0 +1,24 @@
+
+mcsharpsquid:S1118Š"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(¢€ß£
+mcsharpsquid:S1118Ÿ"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(•¥‘ˆ
+pcsharpsquid:S3776å"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(˜ÙŸ²
+pcsharpsquid:S3776˜"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(×ùßÏ
+pcsharpsquid:S3776ó"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(§ªÔ
+pcsharpsquid:S3776ı
+"RRefactor this method to reduce its Cognitive Complexity from 32 to the 15 allowed.(Ğ»ÒÔ
+ucsharpsquid:S3776â"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(÷»Æ¿ûÿÿÿÿ
+ucsharpsquid:S3776õ"WRefactor this constructor to reduce its Cognitive Complexity from 47 to the 15 allowed.(­ı—Î
+Bcsharpsquid:S29333" Make 'taskViewState' 'readonly'.(Õ…¹ÿÿÿÿÿ
+7csharpsquid:S2933¢"Make 'maximum' 'readonly'.(ÕŒŸl
+;csharpsquid:S2933î"Make 'tasks' 'readonly'.(¸‚ªõıÿÿÿÿ
+7csharpsquid:S2933ï"Make 'assets' 'readonly'.(ñ¬Ï
+;csharpsquid:S2933ğ"Make 'components' 'readonly'.(ë‡‡‡
+Lcsharpsquid:S1066„"/Merge this if statement with the enclosing one.(Ü­Œ6
+Rcsharpsquid:S1066Õ
+"/Merge this if statement with the enclosing one.(É¯È¼şÿÿÿÿ
+Mcsharpsquid:S1066ï
+"/Merge this if statement with the enclosing one.(Î“ÀŠ
+hcsharpsquid:S3963õ"JInitialize all 'static fields' inline and remove the 'static constructor'.(­ı—Î
+Ocsharpsquid:S1172É
+"1Remove this unused method parameter 'savePolicy'.(Ø³‹õ
+Zcsharpsquid:S1117à"7Rename 'type' which hides the field with the same name.(ïó‰ˆûÿÿÿÿ

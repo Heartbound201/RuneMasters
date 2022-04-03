@@ -11,16 +11,16 @@
         public TurnManager turnManager;
         public LevelData levelData;
         public List<AIPlan> enemyPlans = new List<AIPlan>();
-
-        public Party party;
         public List<EnemyUnit> enemies = new List<EnemyUnit>();
 
-        public Unit ActingUnit;
-        public HexTile<Tile> SelectedTile;
-        public Rune SelectedRune;
-        public Ability SelectedAbility;
-        public List<TileDirection> selectedRuneSteps;
-        
+        public Party party;
+
+        public Unit ActingUnit { get; set; }
+        public HexTile<Tile> SelectedTile { get; set; }
+        public Rune SelectedRune { get; set; }
+        public Ability SelectedAbility { get; set; }
+        public List<TileDirection> SelectedRuneSteps { get; set; }
+
         public TurnMenuController turnMenuController;
         public PartyInfoMenuController partyInfoMenuController;
         public GameOverPanelController gameOverPanelController;

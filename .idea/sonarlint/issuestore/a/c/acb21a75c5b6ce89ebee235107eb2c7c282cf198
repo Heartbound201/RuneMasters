@@ -1,0 +1,22 @@
+
+ocsharpsquid:S3776¥
+"QRefactor this field to reduce its Cognitive Complexity from 49 to the 15 allowed.(ïçÎ±
+tcsharpsquid:S37769"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(¾¯–Ôıÿÿÿÿ
+œcsharpsquid:S1186‹"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(Âí£ıÿÿÿÿ
+Kcsharpsquid:S108")Either remove or fill this block of code.(ÒÌâ–øÿÿÿÿ
+Kcsharpsquid:S108Ò")Either remove or fill this block of code.(ÒÌâ–øÿÿÿÿ
+5csharpsquid:S2933µ"Make 'text' 'readonly'.(ğ£å¢
+:csharpsquid:S2933·"Make 'textWidth' 'readonly'.(Âó—
+Dcsharpsquid:S2933"!Make 'oldIndentLevel' 'readonly'.(×èŸøÿÿÿÿ
+<csharpsquid:S2219ô"Use the 'is' operator instead.(öÕ‹È
+Mcsharpsquid:S1066‰"/Merge this if statement with the enclosing one.(ÎØë¹
+Rcsharpsquid:S1066à"/Merge this if statement with the enclosing one.(«ç˜úşÿÿÿÿ
+ncsharpsquid:S3881ÿ"KFix this implementation of 'IDisposable' to conform to the dispose pattern.(´ªßùÿÿÿÿ
+8csharpsquid:S3626W"Remove this redundant jump.(ûÁİ…
+8csharpsquid:S3626o"Remove this redundant jump.(ûÁİ…
+8csharpsquid:S3626x"Remove this redundant jump.(ûÁİ…
+Zcsharpsquid:S3457¦"<Remove this formatting call and simply use the input string.(º¸‰¸
+_csharpsquid:S3457§"<Remove this formatting call and simply use the input string.(ñ”¼üÿÿÿÿ
+csharpsquid:S2275«"kInvalid string format, the highest string format item index should not be greater than the arguments count.(†ô˜ıÿÿÿÿ
+‰csharpsquid:S2275®"kInvalid string format, the highest string format item index should not be greater than the arguments count.(ëıéË
+Scsharpsquid:S1144ü"0Remove the unused private type 'BuildProcessor'.(Ä¯§øÿÿÿÿ

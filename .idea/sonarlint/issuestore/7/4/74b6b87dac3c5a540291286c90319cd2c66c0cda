@@ -1,0 +1,3 @@
+
+›csharpsquid:S101"Rename class 'FMODRuntimeManagerOnGUIHelper' to match pascal case naming rules, consider using 'FmodRuntimeManagerOnGuiHelper'.(‡ž‹Ó
+acsharpsquid:S1104	"DMake this field 'private' and encapsulate it in a 'public' property.(Þ„âÈ

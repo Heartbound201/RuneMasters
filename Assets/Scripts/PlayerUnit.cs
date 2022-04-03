@@ -1,15 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class PlayerUnit : Unit
 {
+    public List<RunePrototype> runePrototypes = new List<RunePrototype>();
     public List<Rune> runes = new List<Rune>();
-
     public Party party;
 
+    private void Start()
+    {
+        foreach (RunePrototype runePrototype in runePrototypes)
+        {
+            runes.Add(new Rune(runePrototype));
+        }
+    }
+    
     public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
         return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana &&
@@ -68,5 +79,19 @@ public class PlayerUnit : Unit
         base.Heal(amount);
         party.Heal(amount);
         Debug.Log(name + " is healed for " + amount);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+        foreach (var rune in runes)
+        {
+            rune.LowerCooldown();
+        }
+    }
+
+    public override int AvailableMana()
+    {
+        return party.AvailableMana;
     }
 }

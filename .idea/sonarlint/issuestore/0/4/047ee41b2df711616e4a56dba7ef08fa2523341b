@@ -1,0 +1,15 @@
+
+Mcsharpsquid:S3903"+Move 'AudioManager' into a named namespace.(ëç¢ùÿÿÿÿ
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(õçÅú
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(î„üüıÿÿÿÿ
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(÷†‰Âúÿÿÿÿ
+`csharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(¬ã¨<
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(òÊÊ—
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¢†¨£
+scsharpsquid:S2223"VChange the visibility of 'MIXER_PARAM_MASTER_VOLUME' or make it 'const' or 'readonly'.(õçÅú
+wcsharpsquid:S2223"UChange the visibility of 'MIXER_PARAM_MUSIC_VOLUME' or make it 'const' or 'readonly'.(î„üüıÿÿÿÿ
+ucsharpsquid:S2223"SChange the visibility of 'MIXER_PARAM_SFX_VOLUME' or make it 'const' or 'readonly'.(÷†‰Âúÿÿÿÿ
+;csharpsquid:S125*"Remove this commented out code.(îîğç
+;csharpsquid:S1251"Remove this commented out code.(İ°Û³
+Qcsharpsquid:S1135"4Complete the task associated to this 'TODO' comment.(µëúı

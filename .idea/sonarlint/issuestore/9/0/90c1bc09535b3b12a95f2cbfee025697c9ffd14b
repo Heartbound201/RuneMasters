@@ -1,0 +1,6 @@
+
+acsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(ú©ÜÊ
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ÏÚÂÚþÿÿÿÿ
+fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¼Á’Øýÿÿÿÿ
+gcsharpsquid:S3241"JChange return type to 'void'; not a single caller uses the returned value.(‚³§û

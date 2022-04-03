@@ -135,7 +135,7 @@ public class Unit : MonoBehaviour
         return targets;
     }
 
-    public void Reset()
+    public virtual void Reset()
     {
         movement = movementMax;
         hasActed = false;
@@ -164,6 +164,11 @@ public class Unit : MonoBehaviour
         {
             animator.Play("GetHit");
         }
+    }
+
+    public virtual int AvailableMana()
+    {
+        return movement;
     }
 
     public virtual void Heal(int amount)

@@ -1,0 +1,10 @@
+
+ucsharpsquid:S3776†"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(÷†Öñøÿÿÿÿ
+ucsharpsquid:S3776Û"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Þ™—»þÿÿÿÿ
+ucsharpsquid:S3776¥"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(áýÈÇûÿÿÿÿ
+–csharpsquid:S1186B"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(‘ÎÎ€
+~csharpsquid:S2342ö"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(ÝÃðË
+7csharpsquid:S2933o"Make 'itemIDs' 'readonly'.(·ÂÂ›
+Mcsharpsquid:S1066á"/Merge this if statement with the enclosing one.(·Þ³“
+Scsharpsquid:S2184“	"5Cast one of the operands of this division to 'float'.(áªá¡
+vcsharpsquid:S927™"TRename parameter 'selectedIDs' to 'selectedIds' to match the base class declaration.(“þÙÜþÿÿÿÿ
