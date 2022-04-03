@@ -1,7 +1,0 @@
-
-ucsharpsquid:S3776‹"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(ŸÊä’øÿÿÿÿ
-Fcsharpsquid:S2933")Make 'PlatformForBuildTarget' 'readonly'.(ñ’õö
-8csharpsquid:S2219½"Use a 'null' check instead.(”˜ðA
-8csharpsquid:S2219Ï"Use a 'null' check instead.(”˜ðA
-pcsharpsquid:S927„"SRename parameter 'previous' to 'previousTarget' to match the interface declaration.(”€âŠ
-jcsharpsquid:S927„"MRename parameter 'current' to 'newTarget' to match the interface declaration.(”€âŠ

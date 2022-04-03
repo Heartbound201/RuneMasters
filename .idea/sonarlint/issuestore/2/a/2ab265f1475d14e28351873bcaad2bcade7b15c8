@@ -1,5 +1,0 @@
-
-Gcsharpsquid:S1125"*Remove the unnecessary Boolean literal(s).(Òå°“
-•csharpsquid:S101"tRename class 'CFX_AutoDestructShuriken' to match pascal case naming rules, consider using 'CfxAutoDestructShuriken'.(”ô¬àýÿÿÿÿ
-Ycsharpsquid:S3903"7Move 'CFX_AutoDestructShuriken' into a named namespace.(”ô¬àýÿÿÿÿ
-`csharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(âö¿

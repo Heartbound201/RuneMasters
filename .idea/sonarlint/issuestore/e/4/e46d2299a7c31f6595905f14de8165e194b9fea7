@@ -1,6 +1,0 @@
-
-tcsharpsquid:S101"SRename class 'VERSION' to match pascal case naming rules, consider using 'Version'.(’¦Œªúÿÿÿÿ
-csharpsquid:S101"`Rename class 'STUDIO_VERSION' to match pascal case naming rules, consider using 'StudioVersion'.(Şò—Şùÿÿÿÿ
-qcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(’¦Œªúÿÿÿÿ
-qcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(Şò—Şùÿÿÿÿ
-Mcsharpsquid:S1168q"+Return an empty collection instead of null.(Ö­»Ìşÿÿÿÿ

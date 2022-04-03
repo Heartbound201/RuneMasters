@@ -1,14 +1,0 @@
-
-<csharpsquid:S2933!"Make 'cachedParams' 'readonly'.(Òààò
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¾—‡¿ýÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(œ¹üöûÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(‡Èêéüÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ò¯Ùøýÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(Àîè¿ÿÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¹ë™˜øÿÿÿÿ
-acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¨®ˆŠ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(¥¤Ÿ­ûÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(ª­÷Šûÿÿÿÿ
-fcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(„Ý„ßüÿÿÿÿ
-`csharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(‰ç~
-{csharpsquid:S3973Ï"XUse curly braces or indentation to denote the code conditionally executed by this 'else'(„¶áìøÿÿÿÿ

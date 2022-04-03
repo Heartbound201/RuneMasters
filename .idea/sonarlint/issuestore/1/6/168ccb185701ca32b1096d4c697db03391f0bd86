@@ -1,125 +1,0 @@
-
-tcsharpsquid:S101"SRename class 'VERSION' to match pascal case naming rules, consider using 'Version'.(’¦Œªúÿÿÿÿ
-scsharpsquid:S101"WRename class 'CONSTANTS' to match pascal case naming rules, consider using 'Constants'.(Ëë·
-‘csharpsquid:S101Ñ"tRename struct 'CHANNELCONTROL_DSP_INDEX' to match pascal case naming rules, consider using 'ChannelcontrolDspIndex'.(‡·Ã
-wcsharpsquid:S101Ê"ZRename struct 'PLUGINLIST' to match pascal case naming rules, consider using 'Pluginlist'.(ÀËˆ¼
-†csharpsquid:S101ğ"iRename struct 'ERRORCALLBACK_INFO' to match pascal case naming rules, consider using 'ErrorcallbackInfo'.(…˜»ë
-ncsharpsquid:S101ã"LRename struct 'TAG' to match pascal case naming rules, consider using 'Tag'.(ó‚Õúÿÿÿÿÿ
-tcsharpsquid:S101ú"WRename struct 'CPU_USAGE' to match pascal case naming rules, consider using 'CpuUsage'.(ŞÊ¥¦
-vcsharpsquid:S101ú"YRename struct 'PORT_INDEX' to match pascal case naming rules, consider using 'PortIndex'.(Ğ”¼¯
-Šcsharpsquid:S101€"hRename struct 'CREATESOUNDEXINFO' to match pascal case naming rules, consider using 'Createsoundexinfo'.(»«şŒùÿÿÿÿ
-„csharpsquid:S101ª"gRename struct 'REVERB_PROPERTIES' to match pascal case naming rules, consider using 'ReverbProperties'.(é‘‚â
-ncsharpsquid:S101…"RRename struct 'VECTOR' to match pascal case naming rules, consider using 'Vector'.(Şş³|
-|csharpsquid:S101"_Rename struct 'ATTRIBUTES_3D' to match pascal case naming rules, consider using 'Attributes3D'.(ãÌ¶€
-scsharpsquid:S101Ï"QRename class 'PRESET' to match pascal case naming rules, consider using 'Preset'.(äéØÇÿÿÿÿÿ
-ˆcsharpsquid:S101í"fRename struct 'ADVANCEDSETTINGS' to match pascal case naming rules, consider using 'Advancedsettings'.(û¡ãÃøÿÿÿÿ
-pcsharpsquid:S101–"NRename struct 'GUID' to match pascal case naming rules, consider using 'Guid'.(úŒùªÿÿÿÿÿ
-}csharpsquid:S101Ÿ"`Rename struct 'ASYNCREADINFO' to match pascal case naming rules, consider using 'Asyncreadinfo'.(™½İ
-icsharpsquid:S101ø"LRename struct 'DSP' to match pascal case naming rules, consider using 'Dsp'.(íû¼Û
-}csharpsquid:S101«"`Rename struct 'DSPConnection' to match pascal case naming rules, consider using 'DspConnection'.(–ÂØ·
-qcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(’¦Œªúÿÿÿÿ
-lcsharpsquid:S1118"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(Ëë·
-rcsharpsquid:S1118Ï"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(äéØÇÿÿÿÿÿ
-Icsharpsquid:S4070…"+Remove the 'FlagsAttribute' from this enum.(âººÇ
-Ncsharpsquid:S4070î"+Remove the 'FlagsAttribute' from this enum.(Õş„¿ıÿÿÿÿ
-:csharpsquid:S1116“"Remove this empty statement.(›®Æü
-Xcsharpsquid:S2344Ñ"5Rename this enumeration to remove the 'FLAGS' suffix.(Ş’½Œÿÿÿÿÿ
-Xcsharpsquid:S2344Ü"5Rename this enumeration to remove the 'FLAGS' suffix.(ÜÆ™Ãÿÿÿÿÿ
-‚csharpsquid:S2342À"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(¡•Ãûùÿÿÿÿ
-‚csharpsquid:S2342°"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(“…Šâüÿÿÿÿ
-‚csharpsquid:S2342¾"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(•áúİüÿÿÿÿ
-‚csharpsquid:S2342Ç"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ğä‘ûÿÿÿÿ
-}csharpsquid:S2342¯"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ÂŠä
-}csharpsquid:S2342Ø"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(”ò™¶
-‚csharpsquid:S2342º"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ƒô¬Óúÿÿÿÿ
-‚csharpsquid:S2342Ä"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ëú¡üÿÿÿÿÿ
-‚csharpsquid:S2342Õ"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ï„ğİÿÿÿÿÿ
-ƒcsharpsquid:S2342Ñ"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(Ş’½Œÿÿÿÿÿ
-‚csharpsquid:S2342â"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(í±Şïûÿÿÿÿ
-~csharpsquid:S2342î"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(ÂÀˆ
-‚csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(´êâúÿÿÿÿ
-~csharpsquid:S2342…"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(âººÇ
-ƒcsharpsquid:S2342"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(±’Ûøÿÿÿÿ
-|csharpsquid:S2342®"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(èœ¬:
-csharpsquid:S2342'"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ã¿•šÿÿÿÿÿ
-~csharpsquid:S2342Á"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(ÛºÏ»
-|csharpsquid:S2342}"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ğµ
-}csharpsquid:S2342ì"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(–Šñ
-ƒcsharpsquid:S2342ˆ"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(«® ùÿÿÿÿ
-‚csharpsquid:S2342"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Åÿçÿøÿÿÿÿ
-|csharpsquid:S2342¬"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ÖšÚZ
-}csharpsquid:S2342Ç"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(ÚÀÉ·
-‚csharpsquid:S2342Ô"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Ÿàö¶ÿÿÿÿÿ
-ƒcsharpsquid:S2342Ü"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(ÜÆ™Ãÿÿÿÿÿ
-ƒcsharpsquid:S2342î"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(Õş„¿ıÿÿÿÿ
-‚csharpsquid:S2342ú"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(Úâ¨ıúÿÿÿÿ
-‚csharpsquid:S2342‰"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(çÁıÿÿÿÿ
-ƒcsharpsquid:S2342"`Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?s$'.(°šÌäÿÿÿÿÿ
-‚csharpsquid:S2342´"_Rename this enumeration to match the regular expression: '^([A-Z]{1,3}[a-z0-9]+)*([A-Z]{2})?$'.(åÚ¥àÿÿÿÿÿ
->csharpsquid:S2933Ø" Make 'nativeUtf8Ptr' 'readonly'.(§’­Ò
->csharpsquid:S2933ì"Make 'encoding' 'readonly'.(ÁÕ–Ôüÿÿÿÿ
-gcsharpsquid:S1104Ç"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104Š"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104‰"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104â"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104ì"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104Ÿ"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104ë"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104ı"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-gcsharpsquid:S1104Ë"DMake this field 'private' and encapsulate it in a 'public' property.(áÀ¶ëøÿÿÿÿ
-8csharpsquid:S2346Ó"Rename 'NORMAL' to 'None'.(²ß×Ş
-9csharpsquid:S2346‘"Rename 'DEFAULT' to 'None'.(ÌëÚâ
-:csharpsquid:S2346Ù"Rename 'CORE_ALL' to 'None'.(¼ÖÙ
-;csharpsquid:S2346Ş"Rename 'NONE' to 'None'.(å³¨ıúÿÿÿÿ
-8csharpsquid:S2346ğ"Rename 'NORMAL' to 'None'.(²ß×Ş
-icsharpsquid:S3881ê"KFix this implementation of 'IDisposable' to conform to the dispose pattern.(¨¸ÈÚ
-mcsharpsquid:S1006Ê"ORemove the default parameter value to match the signature of overridden method.(“ä®ï
-mcsharpsquid:S1006Î"ORemove the default parameter value to match the signature of overridden method.(Ù©Ùİ
-mcsharpsquid:S1006Ø"ORemove the default parameter value to match the signature of overridden method.(Íæ£×
-ncsharpsquid:S4200•"KMake this wrapper for native method 'FMOD5_Memory_Initialize' less trivial.(÷Ö¼›ûÿÿÿÿ
-lcsharpsquid:S4200š"IMake this wrapper for native method 'FMOD5_Memory_GetStats' less trivial.(Á”«Æıÿÿÿÿ
-lcsharpsquid:S4200»"NMake this wrapper for native method 'FMOD5_Thread_SetAttributes' less trivial.(“ßÕŒ
-Tcsharpsquid:S4200"6Make this native method private and provide a wrapper.(Ç‡ôå
-Ycsharpsquid:S4200’"6Make this native method private and provide a wrapper.(şã¦’ûÿÿÿÿ
-Tcsharpsquid:S4200”"6Make this native method private and provide a wrapper.(×ïäÕ
-Tcsharpsquid:S4200–"6Make this native method private and provide a wrapper.(ÙèÒÀ
-Tcsharpsquid:S4200˜"6Make this native method private and provide a wrapper.(à×€È
-Tcsharpsquid:S4200š"6Make this native method private and provide a wrapper.(ù“
-Ncsharpsquid:S4214"0Make this 'P/Invoke' method private or internal.(Ç‡ôå
-Scsharpsquid:S4214’"0Make this 'P/Invoke' method private or internal.(şã¦’ûÿÿÿÿ
-Ncsharpsquid:S4214”"0Make this 'P/Invoke' method private or internal.(×ïäÕ
-Ncsharpsquid:S4214–"0Make this 'P/Invoke' method private or internal.(ÙèÒÀ
-Ncsharpsquid:S4214˜"0Make this 'P/Invoke' method private or internal.(à×€È
-Ncsharpsquid:S4214š"0Make this 'P/Invoke' method private or internal.(ù“
-^csharpsquid:S1939À";'int' should not be explicitly used as the underlying type.(¡•Ãûùÿÿÿÿ
-^csharpsquid:S1939°";'int' should not be explicitly used as the underlying type.(“…Šâüÿÿÿÿ
-^csharpsquid:S1939¾";'int' should not be explicitly used as the underlying type.(•áúİüÿÿÿÿ
-^csharpsquid:S1939Ç";'int' should not be explicitly used as the underlying type.(ğä‘ûÿÿÿÿ
-Ycsharpsquid:S1939¯";'int' should not be explicitly used as the underlying type.(ÂŠä
-Ycsharpsquid:S1939Ø";'int' should not be explicitly used as the underlying type.(”ò™¶
-^csharpsquid:S1939º";'int' should not be explicitly used as the underlying type.(ƒô¬Óúÿÿÿÿ
-^csharpsquid:S1939Ä";'int' should not be explicitly used as the underlying type.(ëú¡üÿÿÿÿÿ
-^csharpsquid:S1939Õ";'int' should not be explicitly used as the underlying type.(ï„ğİÿÿÿÿÿ
-^csharpsquid:S1939â";'int' should not be explicitly used as the underlying type.(í±Şïûÿÿÿÿ
-^csharpsquid:S1939";'int' should not be explicitly used as the underlying type.(´êâúÿÿÿÿ
-]csharpsquid:S1939'";'int' should not be explicitly used as the underlying type.(ã¿•šÿÿÿÿÿ
-Xcsharpsquid:S1939}";'int' should not be explicitly used as the underlying type.(ğµ
-Ycsharpsquid:S1939ì";'int' should not be explicitly used as the underlying type.(–Šñ
-^csharpsquid:S1939";'int' should not be explicitly used as the underlying type.(Åÿçÿøÿÿÿÿ
-Xcsharpsquid:S1939¬";'int' should not be explicitly used as the underlying type.(ÖšÚZ
-Ycsharpsquid:S1939Ç";'int' should not be explicitly used as the underlying type.(ÚÀÉ·
-^csharpsquid:S1939Ô";'int' should not be explicitly used as the underlying type.(Ÿàö¶ÿÿÿÿÿ
-^csharpsquid:S1939ú";'int' should not be explicitly used as the underlying type.(Úâ¨ıúÿÿÿÿ
-^csharpsquid:S1939‰";'int' should not be explicitly used as the underlying type.(çÁıÿÿÿÿ
-^csharpsquid:S1939´";'int' should not be explicitly used as the underlying type.(åÚ¥àÿÿÿÿÿ
-Icsharpsquid:S1168„"+Return an empty collection instead of null.(¥¹ï
-bcsharpsquid:S107º"FConstructor has 12 parameters, which is greater than the 7 authorized.(ûÆ‘y
-bcsharpsquid:S107ï"@Method has 8 parameters, which is greater than the 7 authorized.(ƒËÒ‡ÿÿÿÿÿ
-\csharpsquid:S107å
-"@Method has 8 parameters, which is greater than the 7 authorized.(è•ì
-Ecsharpsquid:S1144Ì"'Remove the unused private field 'type'.(‘î¬Ğ
-Lcsharpsquid:S1144Í".Remove the unused private field 'description'.(»êû
-Acsharpsquid:S125í"Remove this commented out code.(ÒÌâ–øÿÿÿÿ
-Acsharpsquid:S125÷"Remove this commented out code.(ÒÌâ–øÿÿÿÿ
-<csharpsquid:S125„"Remove this commented out code.(œß¤ÿ
-<csharpsquid:S125ˆ"Remove this commented out code.(¦ÛÀü
