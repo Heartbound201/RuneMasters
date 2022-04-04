@@ -210,17 +210,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1349955753217134149, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081934028575049412, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5463049357590236928, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 76
       objectReference: {fileID: 0}
     - target: {fileID: 5463049357590236928, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5463049357590236928, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7412078901973165637, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_Sprite
@@ -752,10 +756,6 @@ MonoBehaviour:
   turnManager: {fileID: 451213438}
   levelData: {fileID: 11400000, guid: c7d95a947aeb10b4cb4cf2938cee4e0e, type: 2}
   enemies: []
-  ActingUnit: {fileID: 0}
-  SelectedRune: {fileID: 0}
-  SelectedAbility: {fileID: 0}
-  selectedRuneSteps: 
   turnMenuController: {fileID: 1691647032}
   partyInfoMenuController: {fileID: 1475038544}
   gameOverPanelController: {fileID: 0}
@@ -1101,13 +1101,25 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1349955753217134149, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081934028575049412, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5463049357590236928, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 5463049357590236928, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463049357590236928, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7412078901973165637, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_Sprite
@@ -2199,6 +2211,14 @@ PrefabInstance:
     - target: {fileID: 1242383583244099692, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_Name
       value: PartyHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081934028575049412, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081934028575049412, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7857701148970116523, guid: 9884387a07ae7034e9c845d67e513c3c, type: 3}
       propertyPath: m_Pivot.x
