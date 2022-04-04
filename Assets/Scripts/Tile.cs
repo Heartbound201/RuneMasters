@@ -29,9 +29,12 @@ public class Tile : MonoBehaviour
     [HideInInspector] public HexTile<Tile> _prev;
     [HideInInspector] public int _distance;
 
+    
+    // HexTile<> .position = cube coord (q + r + s = 0)
+    // pos.x = s        pos.y = r       pos.z = q
     // void OnGUI(){
     //     Vector3 position = Camera.main.WorldToScreenPoint(transform.position);
-    //     string text = $"{pos.x:0.00},{pos.y:0.00}";
+    //     string text = $"{pos.x:0},{pos.y:0},{pos.z:0}";
     //     Vector3 textSize = GUI.skin.label.CalcSize(new GUIContent(text));
     //     GUIStyle guiStyle = new GUIStyle()
     //     {

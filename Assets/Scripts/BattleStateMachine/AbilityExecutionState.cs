@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Wunderwunsch.HexMapLibrary;
+using Wunderwunsch.HexMapLibrary.Generic;
 
 public class AbilityExecutionState : State
 {
@@ -17,7 +18,7 @@ public class AbilityExecutionState : State
         owner.SelectedAbility = null;
         owner.SelectedTile = null;
         owner.SelectedRune = null;
-        owner.SelectedRuneSteps = new List<TileDirection>();
+        owner.SelectedRuneSteps = new List<HexTile<Tile>>();
     }
 
     IEnumerator Execution()

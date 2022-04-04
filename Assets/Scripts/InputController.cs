@@ -7,6 +7,7 @@ public class InputController : MonoBehaviour
     public static event Action CommandRight;
     public static event Action CommandConfirm;
     public static event Action CommandCancel;
+    public static event Action CommandMirror;
 
     private void Update()
     {
@@ -18,6 +19,11 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             CommandRight?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            CommandMirror?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
@@ -147,7 +148,7 @@ public class Board : MonoBehaviour
 
     public void HighlightTiles(List<HexTile<Tile>> tiles)
     {
-        foreach (HexTile<Tile> tile in tiles)
+        foreach (var tile in tiles.Where(tile => tile != null))
         {
             tile.Data.Highlight(true);
         }
@@ -172,7 +173,7 @@ public class Board : MonoBehaviour
             TilePrototype tilePrototype = levelData.tiles.Find(ti => ti.index == tile.Index).proto;
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
-            instance.gameObject.name = "Hex" + tile.CartesianPosition + "["+tile.Index+"]";
+            instance.gameObject.name = "Hex" + tile.CartesianPosition + "[" + tile.Index + "]";
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.board = this;
             tile.Data.pos = tile.Position;
@@ -183,7 +184,7 @@ public class Board : MonoBehaviour
             yield return null;
         }
 
-        if(edgePrefab)
+        if (edgePrefab)
         {
             foreach (var tileBorder in hexMap.Edges)
             {
@@ -258,29 +259,16 @@ public class Board : MonoBehaviour
         }
     }
 
-    public List<HexTile<Tile>> GetPathTiles(HexTile<Tile> start, List<TileDirection> steps)
+    public List<Vector3Int> GetPathTiles(Vector3Int start, List<TileDirection> steps)
     {
-        HexTile<Tile> current = start;
+        Vector3Int current = start;
 
-        List<HexTile<Tile>> runeTiles = new List<HexTile<Tile>>();
+        List<Vector3Int> runeTiles = new List<Vector3Int>();
         foreach (TileDirection step in steps)
         {
-            try
-            {
-                HexTile<Tile> nextTile =
-                    hexMap.TilesByPosition[current.Position + HexGrid.TileDirectionVectors[(int) step]];
-                if (nextTile != null)
-                {
-                    runeTiles.Add(nextTile);
-                    current = nextTile;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            runeTiles.Add(current + HexGrid.TileDirectionVectors[(int) step]);
+            current += HexGrid.TileDirectionVectors[(int) step];
         }
-
 
         return runeTiles;
     }
@@ -295,4 +283,58 @@ public class Board : MonoBehaviour
         }
     }
 
+    public List<Vector3Int> Reflect(List<Vector3Int> tiles, Vector3Int center, TileDirection direction)
+    {
+        List<Vector3Int> reflectedTiles = new List<Vector3Int>();
+        foreach (var subPos in tiles.Select(pos => pos - center))
+        {
+            Vector3Int refPos;
+            switch (direction)
+            {
+                case TileDirection.TopRight:
+                case TileDirection.BottomLeft:
+                    refPos = new Vector3Int(subPos.x, subPos.z, subPos.y) * new Vector3Int(-1, -1, -1);
+                    break;
+                case TileDirection.Right:
+                case TileDirection.Left:
+                    refPos = new Vector3Int(subPos.z, subPos.y, subPos.x) * new Vector3Int(-1, -1, -1);
+                    break;
+                case TileDirection.BottomRight:
+                case TileDirection.TopLeft:
+                    refPos = new Vector3Int(subPos.y, subPos.x, subPos.z) * new Vector3Int(-1, -1, -1);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+            }
+
+            reflectedTiles.Add(refPos + center);
+        }
+
+        return reflectedTiles;
+    }
+
+    public List<Vector3Int> RotateClockwise(List<Vector3Int> tiles, Vector3Int center)
+    {
+        return tiles.Select(hexTile => HexGrid.GetTile.FromTileRotated60DegreeClockwise(center, hexTile)).ToList();
+    }
+
+    public List<Vector3Int> RotateCounterClockwise(List<Vector3Int> tiles, Vector3Int center)
+    {
+        return tiles.Select(hexTile => HexGrid.GetTile.FromTileRotated60DegreeCounterClockwise(center, hexTile)).ToList();
+    }
+
+    public HexTile<Tile> GetTile(Vector3Int position)
+    {
+        HexTile<Tile> hexTile = null;
+        try
+        {
+            hexTile = hexMap.TilesByPosition[position];
+        }
+        catch
+        {
+        }
+
+        if (hexTile == null) return null;
+        return hexTile;
+    }
 }

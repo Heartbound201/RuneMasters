@@ -19,7 +19,7 @@
         public HexTile<Tile> SelectedTile { get; set; }
         public Rune SelectedRune { get; set; }
         public Ability SelectedAbility { get; set; }
-        public List<TileDirection> SelectedRuneSteps { get; set; }
+        public List<HexTile<Tile>> SelectedRuneSteps { get; set; }
 
         public TurnMenuController turnMenuController;
         public PartyInfoMenuController partyInfoMenuController;
