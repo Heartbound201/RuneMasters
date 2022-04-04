@@ -552,8 +552,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hexMouse: {fileID: 0}
+  canvas: {fileID: 1320306092}
   forewarningTab: {fileID: 181150537}
-  PartyInfos: {fileID: 1475038540}
+  PartyInfoTab: {fileID: 1475038540}
   tileHoverSfx: {fileID: 0}
   tileSelectionSfx: {fileID: 0}
   unitPlacementSfx: {fileID: 0}
@@ -1473,7 +1474,6 @@ MonoBehaviour:
   ManaBar: {fileID: 427966417}
   ReserveBar: {fileID: 1471184456}
   endTurnBtn: {fileID: 1925115822}
-  Map: {fileID: 582367346}
 --- !u!1 &1475832242
 GameObject:
   m_ObjectHideFlags: 0
