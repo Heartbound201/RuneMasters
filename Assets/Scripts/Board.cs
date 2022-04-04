@@ -9,22 +9,35 @@ public class Board : MonoBehaviour
 {
     public static event Action<HexTile<Tile>> SelectTileEvent;
 
-    public HexMouse hexMouse;
+	public HexMouse hexMouse;
     public HexMap<Tile, int> hexMap;
 
     public HexTile<Tile> tileHover;
     public HexTile<Tile> tileSelection;
 
-    [Header("Audio")] public AudioClip tileHoverSfx;
+	[Header("UI")]
+	public Canvas canvas;
+
+	public GameObject forewarningTab;
+	private Forewarning forewarningController;
+
+	public GameObject PartyInfoTab;
+
+
+	[Header("Audio")] public AudioClip tileHoverSfx;
     public AudioClip tileSelectionSfx;
     public AudioClip unitPlacementSfx;
 
     public GameObject edgePrefab;
     private GameObject[] edges;
     private GameObject[] tiles;
+
     private void Awake()
     {
         hexMouse = gameObject.AddComponent<HexMouse>();
+
+        forewarningController = forewarningTab.GetComponent<Forewarning>();
+        forewarningTab.SetActive(false);
     }
 
     void Update()
@@ -51,17 +64,72 @@ public class Board : MonoBehaviour
         tileHover = tile;
         tileHover.Data.Hover(true);
 
-        // Check if tile is in danger
-        if (tileHover.Data.dangerList.Count != 0)
-        {
-            // Cast to understand what type of ability will hit
-            if (tileHover.Data.dangerList[0].ability.abilityEffects[0] as DamageAbilityEffect)
-            {
-                DamageAbilityEffect DamageAbility = tileHover.Data.dangerList[0].ability.abilityEffects[0] as DamageAbilityEffect;
+		// Check if tile is in danger
+		if (tileHover.Data.dangerList.Count != 0)
+		{
+			int totalDamage = 0;
+			int enemyCount = 0;
+			string InfoText = "";
 
-                // Get and pass tileHover.Data.dangerList[0].actor and DamageAbility.potency to UI (through statemachine?)
+			foreach (AIPlan enemy in tileHover.Data.dangerList)
+			{
+				enemyCount++;
+				InfoText += enemy.actor.name + ": ";
+
+                if(enemy.ability.abilityEffects.Count != 0)
+				{
+                    foreach(AbilityEffect ability in enemy.ability.abilityEffects)
+					{
+                        // Cast to understand what type of ability will hit
+                        if (ability as DamageAbilityEffect)
+						{
+                            DamageAbilityEffect DamageAbility = ability as DamageAbilityEffect;
+							totalDamage += DamageAbility.potency;
+
+							InfoText += DamageAbility.potency.ToString() + "\n";
+                        }
+                        //Other casts, if necessary(dotdamage etc..)
+                        else if (ability as DamageOvertimeAbilityEffect)
+                        {
+							DamageOvertimeAbilityEffect DamageOvertimeAbility = ability as DamageOvertimeAbilityEffect;
+							totalDamage += DamageOvertimeAbility.potency;
+
+							InfoText += DamageOvertimeAbility.potency.ToString() + " (" + DamageOvertimeAbility.duration.ToString() + ")\n";
+						}
+						else if (ability as StatsAlteringAbilityEffect)
+                        {
+							StatsAlteringAbilityEffect StatsAlteringAbility = ability as StatsAlteringAbilityEffect;
+
+						}
+                    }
+                }
+			}
+
+			// Get and pass tileHover.Data.dangerList[0].actor and ability damage to UI
+			forewarningController.ShowInfoText(InfoText);
+
+			// Show total damage done by enemies
+			forewarningController.ShowTotalDamage(totalDamage);
+
+
+			// check if there is a unit on the tile
+			if (tileHover.Data.unitList.Count != 0)
+			{
+				// Show damage received by unit on the tile
+				int unitDefense = tileHover.Data.unitList[0].defense;
+                forewarningController.ShowDamageReceived(totalDamage - (unitDefense * enemyCount));
+			}
+			else
+			{
+                forewarningController.DamageReceivedPanel.SetActive(false);
             }
-            // Other casts, if necessary (dotdamage etc..)
+
+			// Visualize tab
+            forewarningTab.SetActive(true);
+        }
+        else
+        {
+            forewarningTab.SetActive(false);
         }
     }
 
@@ -93,7 +161,9 @@ public class Board : MonoBehaviour
 
     public IEnumerator GenerateBoard(LevelData levelData)
     {
-        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
+		canvas.enabled = false;
+
+		hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
         tiles = new GameObject[hexMap.TilesByPosition.Count];
         edges = new GameObject[hexMap.EdgesByPosition.Count];
@@ -125,7 +195,10 @@ public class Board : MonoBehaviour
                 instance.SetActive(false);
             }
         }
-        yield return null;
+
+		canvas.enabled = true;
+
+		yield return null;
     }
 
     public List<HexTile<Tile>> SearchRange(HexTile<Tile> start, Func<HexTile<Tile>, HexTile<Tile>, bool> addTile,

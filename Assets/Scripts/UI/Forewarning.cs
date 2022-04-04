@@ -9,6 +9,8 @@ public class Forewarning : MonoBehaviour
 	public TextMeshProUGUI InfoText;
 	public TextMeshProUGUI DamageReceivedValue;
 
+	public GameObject DamageReceivedPanel;
+
 	public void ShowTotalDamage(int damage)
 	{
 		TotalDamageValue.text = damage.ToString();
@@ -16,11 +18,13 @@ public class Forewarning : MonoBehaviour
 
 	public void ShowInfoText(string Infos)
 	{
-		//InfoText.text = 
+		InfoText.text = Infos;
 	}
 
 	public void ShowDamageReceived(int damage)
 	{
 		DamageReceivedValue.text = damage.ToString();
+
+		DamageReceivedPanel.SetActive(true);
 	}
 }
