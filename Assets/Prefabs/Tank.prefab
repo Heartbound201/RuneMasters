@@ -49,6 +49,7 @@ MonoBehaviour:
   movementMax: 1
   isPassable: 1
   hasActed: 0
+  hasMoved: 0
   direction: 0
   strength: 0
   defense: 6
@@ -58,10 +59,11 @@ MonoBehaviour:
   defenseStart: 0
   intelligenceStart: 0
   dexterityStart: 0
-  runes:
-  - {fileID: 11400000, guid: 54ea6615bf16f1e4386e83472bdffc6d, type: 2}
+  runePrototypes:
   - {fileID: 11400000, guid: f078877b9704e5942b7aef84a038c3ce, type: 2}
+  - {fileID: 11400000, guid: 54ea6615bf16f1e4386e83472bdffc6d, type: 2}
   - {fileID: 11400000, guid: aef311bd420c65d4ebe33237cbd1a05b, type: 2}
+  - {fileID: 11400000, guid: a312a4763a4d92e41824a5f5c139827a, type: 2}
   - {fileID: 11400000, guid: ed9fbdfa6259e2b4ea0d8b9464452d4d, type: 2}
 --- !u!1001 &2161807926509366044
 PrefabInstance:
