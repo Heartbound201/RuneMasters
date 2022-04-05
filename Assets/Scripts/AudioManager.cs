@@ -34,18 +34,20 @@ public class AudioManager : MonoSingleton<AudioManager>
         return (normalizedValue - 1f) * 80f;
     }
 
-    public void PlayMusic(AudioClipSO audioClipSo)
+    public void PlayMusic(AudioClipSO audioClipSo, bool loop = false)
     {
         if (musicEmitter.clip == audioClipSo.audioClip) 
             return;
         musicEmitter.clip = audioClipSo.audioClip;
+        musicEmitter.loop = loop;
         // musicEmitter.volume = GetMixerVolume(MIXER_PARAM_MUSIC_VOLUME);
         musicEmitter.Play();
     }
 
-    public void PlaySFX(AudioClipSO audioClipSo)
+    public void PlaySFX(AudioClipSO audioClipSo, bool loop = false)
     {
         sfxEmitter.clip = audioClipSo.audioClip;
+        musicEmitter.loop = loop;
         // sfxEmitter.volume = GetMixerVolume(MIXER_PARAM_SFX_VOLUME);;
         sfxEmitter.Play();
     }

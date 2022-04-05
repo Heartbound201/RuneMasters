@@ -24,9 +24,12 @@
         public TurnMenuController turnMenuController;
         public PartyInfoMenuController partyInfoMenuController;
         public GameOverPanelController gameOverPanelController;
+
+        [Header("Audio")] public AudioClipSO battleTheme;
         private void Start()
         {
             Debug.Log("Start game");
+            if(battleTheme) AudioManager.Instance.PlayMusic(battleTheme);
             // Start game in menu state
             ChangeState<UnitPlacementState>();
             EnemyUnit.KOEvent += OnEnemyUnitKoEvent;

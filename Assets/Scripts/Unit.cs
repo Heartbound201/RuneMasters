@@ -28,6 +28,10 @@ public class Unit : MonoBehaviour
 
     protected Animator animator;
 
+    [Header("Audio")] public AudioClipSO getHitSfx;
+    public AudioClipSO deathSfx;
+    public AudioClipSO attackSfx;
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -81,11 +85,8 @@ public class Unit : MonoBehaviour
         }
 
         hasMoved = true;
-        
-        if (animator != null)
-        {
-            animator.Play("Idle");
-        }
+
+        if (animator) animator.Play("Idle");
 
         yield return null;
     }
@@ -101,10 +102,7 @@ public class Unit : MonoBehaviour
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
         }
 
-        if (animator != null)
-        {
-            animator.Play("Idle");
-        }
+        if (animator) animator.Play("Idle");
 
         yield return null;
     }
@@ -160,10 +158,8 @@ public class Unit : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
-        if (animator != null)
-        {
-            animator.Play("GetHit");
-        }
+        if (animator) animator.Play("GetHit");
+        if (getHitSfx) AudioManager.Instance.PlaySFX(getHitSfx);
     }
 
     public virtual int AvailableMana()
@@ -181,10 +177,7 @@ public class Unit : MonoBehaviour
         float elapsedTime = 0f;
         float waitTime = 0.5f;
 
-        if (animator != null)
-        {
-            animator.Play("Run");
-        }
+        if (animator) animator.Play("Run");
 
         while (elapsedTime < waitTime)
         {
@@ -205,10 +198,7 @@ public class Unit : MonoBehaviour
         float elapsedTime = 0f;
         float waitTime = 0.15f;
 
-        if (animator != null)
-        {
-            animator.Play("Idle");
-        }
+        if (animator) animator.Play("Idle");
 
         while (elapsedTime < waitTime)
         {
@@ -229,20 +219,22 @@ public class Unit : MonoBehaviour
 
     public IEnumerator Act(Ability ability, HexTile<Tile> targetTile)
     {
-        if(ability == null) yield break;
-        if (animator != null)
-        {
-            animator.Play("Attack");
-        }
-
+        if (ability == null) yield break;
         yield return Turn(targetTile);
+
+        if (animator) animator.Play("Attack");
+        if (attackSfx) AudioManager.Instance.PlaySFX(attackSfx);
+
         yield return ability.Execute(this, targetTile);
 
         hasActed = true;
 
-        if (animator != null)
-        {
-            animator.Play("Idle");
-        }
+        if (animator) animator.Play("Idle");
+    }
+
+    protected virtual void Die()
+    {
+        if (animator) animator.Play("Die");
+        if (deathSfx) AudioManager.Instance.PlaySFX(deathSfx);
     }
 }

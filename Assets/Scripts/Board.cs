@@ -25,9 +25,11 @@ public class Board : MonoBehaviour
 	public GameObject PartyInfoTab;
 
 
-	[Header("Audio")] public AudioClip tileHoverSfx;
-    public AudioClip tileSelectionSfx;
-    public AudioClip unitPlacementSfx;
+	[Header("Audio")] 
+    public AudioClipSO tileHoverSfx;
+    public AudioClipSO tilePlaceSfx;
+    public AudioClipSO tileSelectionSfx;
+    public AudioClipSO unitPlacementSfx;
 
     public GameObject edgePrefab;
     private GameObject[] edges;
@@ -64,6 +66,7 @@ public class Board : MonoBehaviour
 
         tileHover = tile;
         tileHover.Data.Hover(true);
+        if(tileHoverSfx) AudioManager.Instance.PlaySFX(tileHoverSfx);
 
 		// Check if tile is in danger
 		if (tileHover.Data.dangerList.Count != 0)
@@ -144,6 +147,7 @@ public class Board : MonoBehaviour
         tileSelection = tile;
 
         tileSelection.Data.Select(true);
+        if(tileSelectionSfx) AudioManager.Instance.PlaySFX(tileSelectionSfx);
     }
 
     public void HighlightTiles(List<HexTile<Tile>> tiles)
@@ -157,6 +161,7 @@ public class Board : MonoBehaviour
     public GameObject SpawnEntity(GameObject obj, int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
+        if(unitPlacementSfx) AudioManager.Instance.PlaySFX(unitPlacementSfx);
         return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
@@ -181,6 +186,9 @@ public class Board : MonoBehaviour
             tile.Data.posNorm = tile.NormalizedPosition;
             tile.Data.prototype = tilePrototype;
             tiles[tile.Index] = instance;
+            
+            if(tilePlaceSfx) AudioManager.Instance.PlaySFX(tilePlaceSfx);
+            
             yield return null;
         }
 

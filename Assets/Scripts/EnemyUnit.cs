@@ -102,11 +102,12 @@ public class EnemyUnit : Unit
         }
     }
 
-    private void Die()
+    protected override void Die()
     {
+        base.Die();
         tile.Data.unitList.Remove(this);
         KOEvent?.Invoke(this);
-        Destroy(gameObject);
+        Destroy(gameObject, 2f);
     }
 
     public override void Heal(int amount)
