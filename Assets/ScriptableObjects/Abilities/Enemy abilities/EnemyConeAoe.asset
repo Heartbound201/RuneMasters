@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52851217fd3397f4a86f8a4f03da19e4, type: 3}
-  m_Name: New Ability
+  m_Name: EnemyConeAoe
   m_EditorClassIdentifier: 
-  name: 
+  name: enemy ability
   description: 
-  abilityArea: {fileID: 0}
-  abilityRange: {fileID: 0}
-  abilityEffects: []
+  abilityArea: {fileID: 11400000, guid: 06a9cf3b6af79bc43b976e8fd518a451, type: 2}
+  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
+  abilityEffects:
+  - {fileID: 11400000, guid: 3686b00560fdebd459a3b8e6bb18430d, type: 2}
