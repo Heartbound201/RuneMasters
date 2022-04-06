@@ -56,7 +56,7 @@
 
         protected internal void IsBattleOver()
         {
-            if(party.health <= 0)
+            if(party.Health <= 0)
             {
                 ChangeState<GameOverState>();
             }

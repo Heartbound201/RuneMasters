@@ -19,16 +19,16 @@ public class PartyInfoMenuController : MonoBehaviour
     
     public void UpdatePartyInfo(Party party)
     {
-        partyHealthText.text = party.health.ToString();
-        partyHealthMaxText.text = party.healthMax.ToString();
-        partyManaText.text = party.mana.ToString();
-        partyManaMaxText.text = party.manaMax.ToString();
-        partyManaReserveText.text = party.manaReserve.ToString();
-        partyManaReserveMaxText.text = party.manaReserveMax.ToString();
+        partyHealthText.text = party.Health.ToString();
+        partyHealthMaxText.text = party.HealthMax.ToString();
+        partyManaText.text = party.Mana.ToString();
+        partyManaMaxText.text = party.ManaMax.ToString();
+        partyManaReserveText.text = party.ManaReserve.ToString();
+        partyManaReserveMaxText.text = party.ManaReserveMax.ToString();
 
-        HealthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(5 * party.health, HealthBar.GetComponent<RectTransform>().rect.height);
-        ManaBar.GetComponent<RectTransform>().sizeDelta = new Vector2(5 * party.mana, ManaBar.GetComponent<RectTransform>().rect.height);
-        ReserveBar.GetComponent<RectTransform>().sizeDelta = new Vector2(5 * party.manaReserve, ReserveBar.GetComponent<RectTransform>().rect.height);
+        HealthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(5 * party.Health, HealthBar.GetComponent<RectTransform>().rect.height);
+        ManaBar.GetComponent<RectTransform>().sizeDelta = new Vector2(5 * party.Mana, ManaBar.GetComponent<RectTransform>().rect.height);
+        ReserveBar.GetComponent<RectTransform>().sizeDelta = new Vector2(5 * party.ManaReserve, ReserveBar.GetComponent<RectTransform>().rect.height);
     }
     
 }

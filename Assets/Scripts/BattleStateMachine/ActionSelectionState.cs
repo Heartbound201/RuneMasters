@@ -14,18 +14,18 @@ public class ActionSelectionState : State
 
         owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
 
-        if (owner.party.units.TrueForAll(u => u.hasActed) || owner.party.AvailableMana <= 0)
+        if (owner.party.Units.TrueForAll(u => u.hasActed) || owner.party.AvailableMana <= 0)
         {
             owner.ChangeState<TurnSelectionState>();
         }
 
         if (owner.ActingUnit == null)
         {
-            SelectCharacter(owner.party.units.First());
+            SelectCharacter(owner.party.Units.First());
         }
         else if (owner.ActingUnit.hasActed && owner.ActingUnit.movement <= 0)
         {
-            PlayerUnit playerUnit = owner.party.units.Find(u => !u.hasActed || u.movement > 0);
+            PlayerUnit playerUnit = owner.party.Units.Find(u => !u.hasActed || u.movement > 0);
             SelectCharacter((PlayerUnit) (playerUnit != null ? playerUnit : owner.ActingUnit));
         }
         else

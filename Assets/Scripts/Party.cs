@@ -1,61 +1,57 @@
-    using System;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Party
+    public class Party : MonoSingleton<Party>
     {
-        public int health;
-        public int healthMax;
-        public int mana;
-        public int manaMax;
-        public int manaReserve;
-        public int manaReserveMax;
+        [field: SerializeField] public int Health { get; set; }
+        [field: SerializeField] public int HealthMax { get;set; }
+        [field: SerializeField] public int Mana { get; set; }
+        [field: SerializeField] public int ManaMax { get; set;}
+        [field: SerializeField] public int ManaReserve { get; set; }
+        [field: SerializeField] public int ManaReserveMax { get;set; }
 
-        public List<PlayerUnit> units = new List<PlayerUnit>();
+        public List<PlayerUnit> Units { get; } = new List<PlayerUnit>();
 
-        public int AvailableMana => mana + manaReserve;
+        public int AvailableMana => Mana + ManaReserve;
 
         public void ResetTurn()
         {
-            manaReserve = Mathf.Clamp(mana / 2, 0, manaReserveMax);
-            mana = manaMax;
+            ManaReserve = Mathf.Clamp(Mana / 2, 0, ManaReserveMax);
+            Mana = ManaMax;
         }
 
         public void SpendMana(int amount)
         {
-            if (manaReserve > 0)
+            if (ManaReserve > 0)
             {
                 int left = 0;
-                if (amount > manaReserve)
+                if (amount > ManaReserve)
                 {
-                    left = amount - manaReserve;
+                    left = amount - ManaReserve;
                 }
-                manaReserve = Mathf.Clamp(manaReserve - amount, 0, manaReserveMax);
-                mana = Mathf.Clamp(mana - left, 0, manaMax);
+                ManaReserve = Mathf.Clamp(ManaReserve - amount, 0, ManaReserveMax);
+                Mana = Mathf.Clamp(Mana - left, 0, ManaMax);
             }
             else
             {
-                mana = Mathf.Clamp(mana - amount, 0, manaMax);
+                Mana = Mathf.Clamp(Mana - amount, 0, ManaMax);
             }
         }
 
         public void TakeDamage(int amount)
         {
-            health = Mathf.Clamp(health - amount, 0, healthMax);
+            Health = Mathf.Clamp(Health - amount, 0, HealthMax);
         }
 
         public void Heal(int amount)
         {
-            health = Mathf.Clamp(health + amount, 0, healthMax);
+            Health = Mathf.Clamp(Health + amount, 0, HealthMax);
         }
         
         public void Init()
         {
-            health = healthMax;
-
-            // Temp fix, da sistemare correttamente l-inizializzazione della riserva mana
-            //mana = manaMax;
-            mana = 0;
-            manaReserve = 0;
+            Health = HealthMax;
+            Mana = ManaMax;
+            ManaReserve = 0;
         }
     }

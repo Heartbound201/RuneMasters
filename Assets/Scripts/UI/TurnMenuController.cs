@@ -25,7 +25,7 @@ public class TurnMenuController : MonoBehaviour
     public void Load(Party party)
     {
         this.party = party;
-        foreach (PlayerUnit partyUnit in party.units)
+        foreach (PlayerUnit partyUnit in party.Units)
         {
             GameObject charaMenuGO = Instantiate(characterSelectionButton, charactersPanel);
             CharacterMenuItem characterMenuItem = charaMenuGO.GetComponent<CharacterMenuItem>();

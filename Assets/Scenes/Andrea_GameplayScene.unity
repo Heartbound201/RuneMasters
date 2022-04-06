@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTurn: 0
+  party: {fileID: 0}
   units: []
   enemies: []
 --- !u!1 &452952921
@@ -764,6 +765,7 @@ MonoBehaviour:
   turnManager: {fileID: 451213438}
   levelData: {fileID: 11400000, guid: 3cde398b1df49d6468104f3347c605a0, type: 2}
   enemies: []
+  party: {fileID: 1573039302}
   turnMenuController: {fileID: 1691647032}
   partyInfoMenuController: {fileID: 1475038544}
   gameOverPanelController: {fileID: 0}
@@ -1518,6 +1520,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1573039301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718402, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718412, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: m_Name
+      value: Party
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+--- !u!114 &1573039302 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8469307636208718403, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+  m_PrefabInstance: {fileID: 1573039301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7358c794369b42ec884ea583f46f425e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1686658231
 GameObject:
   m_ObjectHideFlags: 0

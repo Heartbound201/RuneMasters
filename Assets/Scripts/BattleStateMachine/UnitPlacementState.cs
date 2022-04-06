@@ -23,12 +23,6 @@ public class UnitPlacementState : State
             owner.enemies.Add(enemyUnit);
         }
 
-        owner.party = new Party
-        {
-            healthMax = 25,
-            manaMax = 15,
-            manaReserveMax = 6
-        };
         owner.party.Init();
         foreach (SpawnInfo spawnInfo in owner.levelData.characters)
         {
@@ -36,12 +30,12 @@ public class UnitPlacementState : State
             PlayerUnit playerUnit = spawnEntity.GetComponent<PlayerUnit>();
 
             playerUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Right);
-            playerUnit.party = owner.party; //TODO find a better solution
-            owner.party.units.Add(playerUnit);
+            playerUnit.party = owner.party;
+            owner.party.Units.Add(playerUnit);
         }
 
         TurnManager.party = owner.party;
-        TurnManager.units = owner.party.units;
+        TurnManager.units = owner.party.Units;
         TurnManager.enemies = owner.enemies;
         Debug.Log("Units spawned");
 
@@ -53,6 +47,6 @@ public class UnitPlacementState : State
                 owner.ChangeState<TurnSelectionState>();
             }
         });
-        owner.ChangeState<TurnSelectionState>();
+        owner.ChangeState<ActionSelectionState>();
     }
 }
