@@ -1,4 +1,4 @@
-public class DamageOvertimeStatus : Status
+public class DamageOvertimeOnTurnStartStatus : Status
 {
     public int potency;
 
@@ -8,7 +8,7 @@ public class DamageOvertimeStatus : Status
         target.TakeDamage(potency);
     }
 
-    public DamageOvertimeStatus(int duration, int potency) : base(duration)
+    public DamageOvertimeOnTurnStartStatus(int duration, int potency) : base(duration)
     {
         this.potency = potency;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurnMenuController : MonoBehaviour
 {
-    public static event Action<Unit> SelectUnit;
+    public static event Action<PlayerUnit> SelectUnit;
 
     public Camera camera;
     public BattleStateMachine stateMachine;
@@ -30,7 +30,7 @@ public class TurnMenuController : MonoBehaviour
             GameObject charaMenuGO = Instantiate(characterSelectionButton, charactersPanel);
             CharacterMenuItem characterMenuItem = charaMenuGO.GetComponent<CharacterMenuItem>();
             characterMenuItem.text.text = partyUnit.name;
-            characterMenuItem.button.onClick.AddListener(() => SelectCharacter(partyUnit));
+            characterMenuItem.button.onClick.AddListener(() => SelectUnit?.Invoke(partyUnit));
         }
     }
 
@@ -63,7 +63,6 @@ public class TurnMenuController : MonoBehaviour
 
         FillInfoPanel(unit);
         
-        SelectUnit?.Invoke(unit);
     }
 
     private void FillInfoPanel(PlayerUnit playerUnit)

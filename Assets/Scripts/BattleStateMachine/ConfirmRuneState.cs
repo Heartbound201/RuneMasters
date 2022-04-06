@@ -91,7 +91,12 @@ public class ConfirmRuneState : State
     {
         List<HexTile<Tile>> hexTiles = selectedRuneTiles
             .Select(selectedRuneTile => Board.GetTile(selectedRuneTile)).ToList();
-        if (!hexTiles.TrueForAll(t => t != null && t.Data.IsPassable)) return;
+        // all tiles must be either passable, empty or containing only player units
+        if (!hexTiles.TrueForAll(t =>
+            t != null && (t.Data.IsPassable || t.Data.unitList.TrueForAll(u => u is PlayerUnit)))) return;
+        // the last tile must be empty
+        if(hexTiles.Last().Data.unitList.Count > 0) return;
+        // the number of tiles must be equal to the number of steps required by the rune
         if (selectedRuneTiles.Count != owner.SelectedRune.RunePrototype.steps.Count) return;
         StartCoroutine(ExecuteRune());
     }

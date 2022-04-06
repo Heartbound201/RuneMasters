@@ -21,16 +21,16 @@ public class ActionSelectionState : State
 
         if (owner.ActingUnit == null)
         {
-            owner.turnMenuController.SelectCharacter(owner.party.units.First());
+            SelectCharacter(owner.party.units.First());
         }
         else if (owner.ActingUnit.hasActed && owner.ActingUnit.movement <= 0)
         {
             PlayerUnit playerUnit = owner.party.units.Find(u => !u.hasActed || u.movement > 0);
-            owner.turnMenuController.SelectCharacter((PlayerUnit) (playerUnit != null ? playerUnit : owner.ActingUnit));
+            SelectCharacter((PlayerUnit) (playerUnit != null ? playerUnit : owner.ActingUnit));
         }
         else
         {
-            owner.turnMenuController.SelectCharacter((PlayerUnit) owner.ActingUnit);
+            SelectCharacter((PlayerUnit) owner.ActingUnit);
         }
 
     }
@@ -48,14 +48,14 @@ public class ActionSelectionState : State
     {
         base.AddListeners();
         Board.SelectTileEvent += SelectTileForMovement;
-        TurnMenuController.SelectUnit += HighlightAllowedMovement;
+        TurnMenuController.SelectUnit += SelectCharacter;
     }
 
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
         Board.SelectTileEvent -= SelectTileForMovement;
-        TurnMenuController.SelectUnit -= HighlightAllowedMovement;
+        TurnMenuController.SelectUnit -= SelectCharacter;
     }
 
     private void SelectTileForMovement(HexTile<Tile> obj)
@@ -64,6 +64,13 @@ public class ActionSelectionState : State
         owner.SelectedTile = obj;
         owner.ChangeState<UnitMovementState>();
     }
+
+    private void SelectCharacter(PlayerUnit unit)
+    {
+        owner.turnMenuController.SelectCharacter(unit);
+        HighlightAllowedMovement(unit);
+    }
+    
 
     private void HighlightAllowedMovement(Unit unit)
     {

@@ -4,4 +4,5 @@ using UnityEngine;
 public class AudioClipSO : ScriptableObject
 {
     public AudioClip audioClip;
+    public bool loop;
 }

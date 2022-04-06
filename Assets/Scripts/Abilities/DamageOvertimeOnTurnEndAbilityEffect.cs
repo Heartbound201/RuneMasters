@@ -1,9 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
-
-[CreateAssetMenu(fileName = "DamageOvertimeEffect", menuName = "Create Damage Overtime OnTurnStart Ability Effect")]
-class DamageOvertimeAbilityEffect : DamageAbilityEffect
+[CreateAssetMenu(fileName = "DamageOvertimeEffect", menuName = "Create Damage Overtime OnTurnEnd Ability Effect")]
+class DamageOvertimeOnTurnEndAbilityEffect : DamageAbilityEffect
 {
     public int duration;
 
@@ -12,7 +11,7 @@ class DamageOvertimeAbilityEffect : DamageAbilityEffect
         yield return base.Apply(actor, target);
         for (int i = target.Data.unitList.Count - 1; i >= 0; i--)
         {
-            DamageOvertimeOnTurnStartStatus se = new DamageOvertimeOnTurnStartStatus(duration, potency);
+            DamageOvertimeOnTurnEndStatus se = new DamageOvertimeOnTurnEndStatus(duration, potency);
             se.Apply(target.Data.unitList[i]);
         }
     }

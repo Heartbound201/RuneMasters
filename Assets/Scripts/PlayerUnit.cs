@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
-using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
 public class PlayerUnit : Unit
@@ -24,7 +20,7 @@ public class PlayerUnit : Unit
     public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
         return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana &&
-               to.Data.IsPassable;
+               (to.Data.IsPassable || to.Data.unitList.TrueForAll(u => u is PlayerUnit));
     }
 
     public override IEnumerator MoveTact(List<HexTile<Tile>> tiles)

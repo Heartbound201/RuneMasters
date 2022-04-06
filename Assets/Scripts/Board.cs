@@ -63,7 +63,7 @@ public class Board : MonoBehaviour
 
         tileHover = tile;
         tileHover.Data.Hover(true);
-        if(tileHoverSfx) AudioManager.Instance.PlaySFX(tileHoverSfx);
+        if(tileHoverSfx) AudioManager.Instance.PlaySfx(tileHoverSfx);
 
 		// Check if tile is in danger
 		if (tileHover.Data.dangerList.Count != 0)
@@ -144,7 +144,7 @@ public class Board : MonoBehaviour
         tileSelection = tile;
 
         tileSelection.Data.Select(true);
-        if(tileSelectionSfx) AudioManager.Instance.PlaySFX(tileSelectionSfx);
+        if(tileSelectionSfx) AudioManager.Instance.PlaySfx(tileSelectionSfx);
     }
 
     public void HighlightTiles(List<HexTile<Tile>> tiles)
@@ -158,7 +158,7 @@ public class Board : MonoBehaviour
     public GameObject SpawnEntity(GameObject obj, int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
-        if(unitPlacementSfx) AudioManager.Instance.PlaySFX(unitPlacementSfx);
+        if(unitPlacementSfx) AudioManager.Instance.PlaySfx(unitPlacementSfx);
         return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
@@ -184,7 +184,7 @@ public class Board : MonoBehaviour
             tile.Data.prototype = tilePrototype;
             tiles[tile.Index] = instance;
             
-            if(tilePlaceSfx) AudioManager.Instance.PlaySFX(tilePlaceSfx);
+            if(tilePlaceSfx) AudioManager.Instance.PlaySfx(tilePlaceSfx);
             
             yield return null;
         }

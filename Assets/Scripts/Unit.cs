@@ -159,7 +159,7 @@ public class Unit : MonoBehaviour
     public virtual void TakeDamage(int amount)
     {
         if (animator) animator.Play("GetHit");
-        if (getHitSfx) AudioManager.Instance.PlaySFX(getHitSfx);
+        if (getHitSfx) AudioManager.Instance.PlaySfx(getHitSfx);
     }
 
     public virtual int AvailableMana()
@@ -223,7 +223,7 @@ public class Unit : MonoBehaviour
         yield return Turn(targetTile);
 
         if (animator) animator.Play("Attack");
-        if (attackSfx) AudioManager.Instance.PlaySFX(attackSfx);
+        if (attackSfx) AudioManager.Instance.PlaySfx(attackSfx);
 
         yield return ability.Execute(this, targetTile);
 
@@ -235,6 +235,6 @@ public class Unit : MonoBehaviour
     protected virtual void Die()
     {
         if (animator) animator.Play("Die");
-        if (deathSfx) AudioManager.Instance.PlaySFX(deathSfx);
+        if (deathSfx) AudioManager.Instance.PlaySfx(deathSfx);
     }
 }

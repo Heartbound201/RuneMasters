@@ -47,7 +47,7 @@ MonoBehaviour:
   name: Thief
   movement: 3
   movementMax: 3
-  isPassable: 1
+  isPassable: 0
   hasActed: 0
   hasMoved: 0
   direction: 0
@@ -59,6 +59,9 @@ MonoBehaviour:
   defenseStart: 0
   intelligenceStart: 0
   dexterityStart: 0
+  getHitSfx: {fileID: 0}
+  deathSfx: {fileID: 0}
+  attackSfx: {fileID: 0}
   runePrototypes:
   - {fileID: 11400000, guid: 5c91fcf917480f744bfe0db1b0c230a1, type: 2}
   - {fileID: 11400000, guid: a88bd834178fa1348bfb4050e45c5b54, type: 2}
