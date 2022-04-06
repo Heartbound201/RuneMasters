@@ -14,20 +14,29 @@ public class ActionSelectionState : State
 
         owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
 
+        // change turn if
+        // party mana <= 0
+        // all units have acted
         if (owner.party.Units.TrueForAll(u => u.hasActed) || owner.party.AvailableMana <= 0)
         {
             owner.ChangeState<TurnSelectionState>();
         }
 
+        // if turn has just started and no unit was selected yet, select the first in line
         if (owner.ActingUnit == null)
         {
             SelectCharacter(owner.party.Units.First());
         }
-        else if (owner.ActingUnit.hasActed && owner.ActingUnit.movement <= 0)
+        
+        // if the current acting unit has acted it cannot use tact movement even if it has movement left
+        // select another one that can move or act
+        else if (owner.ActingUnit.hasActed)
         {
             PlayerUnit playerUnit = owner.party.Units.Find(u => !u.hasActed || u.movement > 0);
             SelectCharacter((PlayerUnit) (playerUnit != null ? playerUnit : owner.ActingUnit));
         }
+        
+        // if the current acting unit has only moved and can act, keep it selected
         else
         {
             SelectCharacter((PlayerUnit) owner.ActingUnit);
@@ -74,8 +83,11 @@ public class ActionSelectionState : State
 
     private void HighlightAllowedMovement(Unit unit)
     {
-        tilesInRange = unit.GetTilesInRange();
         Board.ClearHighlight();
-        Board.HighlightTiles(tilesInRange);
+        if(!unit.hasActed)
+        {
+            tilesInRange = unit.GetTilesInRange();
+            Board.HighlightTiles(tilesInRange);
+        }
     }
 }

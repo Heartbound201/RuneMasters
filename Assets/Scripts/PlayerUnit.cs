@@ -34,6 +34,7 @@ public class PlayerUnit : Unit
             movement = Mathf.Clamp(movement - 1, 0, movementMax);
             party.SpendMana(1);
         }
+        hasMoved = true;
 
         if (animator != null)
         {
