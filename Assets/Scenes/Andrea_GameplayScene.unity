@@ -554,8 +554,8 @@ MonoBehaviour:
   hexMouse: {fileID: 0}
   canvas: {fileID: 1320306092}
   forewarningTab: {fileID: 181150537}
-  PartyInfoTab: {fileID: 1475038540}
   tileHoverSfx: {fileID: 0}
+  tilePlaceSfx: {fileID: 0}
   tileSelectionSfx: {fileID: 0}
   unitPlacementSfx: {fileID: 0}
   edgePrefab: {fileID: 0}
@@ -762,11 +762,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 582367346}
   turnManager: {fileID: 451213438}
-  levelData: {fileID: 11400000, guid: c7d95a947aeb10b4cb4cf2938cee4e0e, type: 2}
+  levelData: {fileID: 11400000, guid: 3cde398b1df49d6468104f3347c605a0, type: 2}
   enemies: []
   turnMenuController: {fileID: 1691647032}
   partyInfoMenuController: {fileID: 1475038544}
   gameOverPanelController: {fileID: 0}
+  battleTheme: {fileID: 0}
 --- !u!4 &921112281
 Transform:
   m_ObjectHideFlags: 0

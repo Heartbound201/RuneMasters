@@ -22,9 +22,6 @@ public class Board : MonoBehaviour
 	public GameObject forewarningTab;
 	private Forewarning forewarningController;
 
-	public GameObject PartyInfoTab;
-
-
 	[Header("Audio")] 
     public AudioClipSO tileHoverSfx;
     public AudioClipSO tilePlaceSfx;
