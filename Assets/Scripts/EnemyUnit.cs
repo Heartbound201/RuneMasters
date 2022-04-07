@@ -19,6 +19,37 @@ public class EnemyUnit : Unit
         healthBar.UpdateHealth(currentHealth, health);
     }
 
+    public AIPlan PlanMovement()
+    {
+        float temp = Time.realtimeSinceStartup;
+        int planCounter = 0;
+
+        HexTile<Tile> start = tile;
+
+        Unit nearestEnemy = GetNearestEnemy(this);
+        Debug.Log("Nearest enemy is " + nearestEnemy);
+
+        AIPlan bestPlan = new AIPlan(this, null, null, tile, nearestEnemy);
+        planCounter++;
+        
+        // Evaluate every possible movement
+        foreach (HexTile<Tile> moveOpt in GetTilesInRange())
+        {
+            // There may not be a useful ability to cast
+            AIPlan planMoveOnly = new AIPlan(this, null, null, moveOpt, nearestEnemy);
+            planCounter++;
+
+            if (planMoveOnly.Evaluate() >= bestPlan.Evaluate())
+            {
+                bestPlan = planMoveOnly;
+            }
+        }
+        PlaceOnTile(start);
+        Debug.LogFormat("[AI {0}] {1} plans explored in {2}. Best plan's score: {3}",
+            this, planCounter, (Time.realtimeSinceStartup - temp), bestPlan.Evaluate());
+        return bestPlan;
+    }
+
     public AIPlan PlanAction()
     {
         float temp = Time.realtimeSinceStartup;
@@ -33,31 +64,19 @@ public class EnemyUnit : Unit
         AIPlan bestPlan = new AIPlan(this, null, null, tile, nearestEnemy);
         planCounter++;
 
-        // Evaluate every possible movement
-        foreach (HexTile<Tile> moveOpt in GetTilesInRange())
+
+        // Evaluate every possible ability
+        foreach (Ability a in abilityOption)
         {
-            // There may not be a useful ability to cast
-            AIPlan planMoveOnly = new AIPlan(this, null, null, moveOpt, nearestEnemy);
-            planCounter++;
-
-            if (planMoveOnly.Evaluate() >= bestPlan.Evaluate())
+            PlaceOnTile(start);
+            List<HexTile<Tile>> atkOptions = a.abilityRange.GetTilesInRange(start, start.Data.board);
+            // Evaluate every possible target
+            foreach (HexTile<Tile> atkOpt in atkOptions)
             {
-                bestPlan = planMoveOnly;
-            }
-
-            // Evaluate every possible ability
-            foreach (Ability a in abilityOption)
-            {
-                PlaceOnTile(moveOpt);
-                List<HexTile<Tile>> atkOptions = a.abilityRange.GetTilesInRange(moveOpt, moveOpt.Data.board);
-                // Evaluate every possible target
-                foreach (HexTile<Tile> atkOpt in atkOptions)
-                {
-                    AIPlan plan = new AIPlan(this, a, atkOpt, moveOpt, nearestEnemy);
-                    planCounter++;
-                    if (plan.Evaluate() > bestPlan.Evaluate())
-                        bestPlan = plan;
-                }
+                AIPlan plan = new AIPlan(this, a, atkOpt, start, nearestEnemy);
+                planCounter++;
+                if (plan.Evaluate() > bestPlan.Evaluate())
+                    bestPlan = plan;
             }
         }
 

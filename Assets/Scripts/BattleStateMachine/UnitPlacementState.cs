@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,18 @@ public class UnitPlacementState : State
                 owner.ChangeState<TurnSelectionState>();
             }
         });
-        owner.ChangeState<ActionSelectionState>();
+        
+        
+        switch (TurnManager.currentTurn)
+        {
+            case TurnManager.Turn.Player:
+                owner.ChangeState<ActionSelectionState>();
+                break;
+            case TurnManager.Turn.Enemy:
+                owner.ChangeState<AIPlanExecutionState>();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }
