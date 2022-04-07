@@ -198,7 +198,7 @@ public class Board : MonoBehaviour
                 instance.transform.position = tileBorder.CartesianPosition;
                 instance.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
                 edges[tileBorder.Index] = instance;
-                instance.SetActive(false);
+                instance.SetActive(true);
             }
         }
 

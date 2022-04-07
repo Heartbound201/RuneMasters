@@ -47,7 +47,6 @@ public class ConfirmAbilityTargetState : State
     private void SelectTarget(HexTile<Tile> obj)
     {
         if (!tilesInArea.Contains(obj)) return;
-        owner.SelectedTile = obj;
         owner.ChangeState<AbilityExecutionState>();
     }
 }
