@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
   m_Name: Pdor Rune Red
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 09109c56432ca6949b8109591fe13eec, type: 3}
+  icon: {fileID: 21300000, guid: 13069eedf0664444f9846e0e6ac506c6, type: 3}
   runeName: Pdor
-  runeDescription: 
+  description: 
   steps: 00000000000000000500000005000000
   ability: {fileID: 11400000, guid: 4d110afd111421e498acfe892d812c00, type: 2}
-  runePrefab: {fileID: 0}
+  cooldown: 1

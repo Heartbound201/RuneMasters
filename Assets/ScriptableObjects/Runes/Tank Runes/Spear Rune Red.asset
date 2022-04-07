@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
   m_Name: Spear Rune Red
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 20b8f14bb30e1b94bbba015cb774861f, type: 3}
+  icon: {fileID: 21300000, guid: 24533ba3456487a43af17d62552c335a, type: 3}
   runeName: Spear
-  runeDescription: 
+  description: 
   steps: 000000000000000000000000
   ability: {fileID: 11400000, guid: ec5ef87363d55ac4ea9bd59f1095dadc, type: 2}
-  runePrefab: {fileID: 0}
+  cooldown: 0
