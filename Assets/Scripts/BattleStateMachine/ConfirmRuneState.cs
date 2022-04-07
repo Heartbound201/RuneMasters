@@ -52,6 +52,7 @@ public class ConfirmRuneState : State
         Board.ClearHighlight();
         List<HexTile<Tile>> hexTiles = selectedRuneTiles
             .Select(selectedRuneTile => Board.GetTile(selectedRuneTile)).ToList();
+        hexTiles.Add(owner.ActingUnit.tile);
         Board.HighlightTiles(hexTiles);
     }
 
