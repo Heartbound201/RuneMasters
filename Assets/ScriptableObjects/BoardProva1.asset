@@ -448,14 +448,13 @@ MonoBehaviour:
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 216
     proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
-  tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
   enemies:
   - index: 111
-    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
+    obj: {fileID: 3754591301903308259, guid: 9fea9dd66a111ab4ebfcb234a173a5ac, type: 3}
   - index: 78
-    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
+    obj: {fileID: 3754591301903308259, guid: 9fea9dd66a111ab4ebfcb234a173a5ac, type: 3}
   - index: 142
-    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
+    obj: {fileID: 3754591301903308259, guid: 9fea9dd66a111ab4ebfcb234a173a5ac, type: 3}
   characters:
   - index: 105
     obj: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
