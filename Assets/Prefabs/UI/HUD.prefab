@@ -1013,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8509913155056087159, guid: d6dc6ae9d598e7d4fb2a3113e445430a, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6dc6ae9d598e7d4fb2a3113e445430a, type: 3}
 --- !u!224 &520368126072608280 stripped
