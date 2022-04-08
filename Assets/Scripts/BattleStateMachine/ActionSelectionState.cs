@@ -17,6 +17,7 @@ public class ActionSelectionState : State
         // change turn if
         // party mana <= 0
         // all units have acted
+        Debug.LogFormat("is turn over? {0} || {1}", owner.party.Units.TrueForAll(u => u.hasActed) , owner.party.AvailableMana <= 0);
         if (owner.party.Units.TrueForAll(u => u.hasActed) || owner.party.AvailableMana <= 0)
         {
             owner.ChangeState<TurnSelectionState>();

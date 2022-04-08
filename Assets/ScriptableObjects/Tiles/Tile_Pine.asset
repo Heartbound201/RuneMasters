@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2ad1505fe784f65b8c4aa4ba3550605, type: 3}
-  m_Name: PrototypeTile
+  m_Name: Tile_Pine
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1388657164994780, guid: 96c8f3f371c41084c95e405feaf67e30, type: 3}
+  prefab: {fileID: 1114219214756384, guid: eb030b40e497449418f98c8ffb0b9528, type: 3}
   sprite: {fileID: 0}

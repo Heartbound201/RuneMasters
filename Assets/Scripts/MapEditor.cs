@@ -5,11 +5,13 @@ using UnityEditor;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
+using Random = UnityEngine.Random;
 
 public class MapEditor : MonoBehaviour
 {
     private HexMouse hexMouse;
-    private HexMap<Tile> hexMap;
+    
+    public HexMap<Tile, int> hexMap;
     private HexTile<Tile> tileHover;
     private HexTile<Tile> tileSelected;
 
@@ -21,6 +23,10 @@ public class MapEditor : MonoBehaviour
     public List<Unit> enemiesPrefabs;
     public PlacementPanelController placementPanelController;
 
+    public GameObject edgePrefab;
+    
+    private GameObject[] edges;
+    private GameObject[] tiles;
     private void Awake()
     {
         hexMouse = gameObject.AddComponent<HexMouse>();
@@ -190,7 +196,7 @@ public class MapEditor : MonoBehaviour
 
     private IEnumerator GenerateBoard()
     {
-        hexMap = new HexMap<Tile>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
+        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
         foreach (var tile in hexMap.Tiles)
         {
@@ -203,6 +209,7 @@ public class MapEditor : MonoBehaviour
 
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
+            // instance.transform.rotation = new Quaternion(0f, Random.Range(0, 6) * 60f, 0f, 0f);
             instance.gameObject.name = "Hex" + tile.CartesianPosition;
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.prototype = tilePrototype;
@@ -227,6 +234,60 @@ public class MapEditor : MonoBehaviour
             }
 
             yield return null;
+        }
+
+        yield return null;
+    }
+    private IEnumerator GenerateRandomBoard()
+    {
+        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
+        hexMouse.Init(hexMap);
+        tiles = new GameObject[hexMap.TilesByPosition.Count];
+        edges = new GameObject[hexMap.EdgesByPosition.Count];
+        foreach (var tile in hexMap.Tiles)
+        {
+            TilePrototype tilePrototype = tileCollection.tiles[Random.Range(0, tileCollection.tiles.Count)];
+
+            GameObject instance = Instantiate(tilePrototype.prefab, transform);
+            instance.transform.position = tile.CartesianPosition;
+            instance.transform.rotation = new Quaternion(0f, Random.Range(0, 6) * 60f, 0f, 0f);
+            instance.gameObject.name = "Hex" + tile.CartesianPosition;
+            tile.Data = instance.GetComponent<Tile>();
+            tile.Data.prototype = tilePrototype;
+            
+            if (!levelData.tiles.Exists(info => info.index == tile.Index))
+            {
+                levelData.tiles.Add(new TileInfo
+                {
+                    index = tile.Index,
+                    proto = tilePrototype
+                });
+            }
+
+            if (levelData.characters.Exists(info => info.index == tile.Index))
+            {
+                PlaceCharacter(tile, levelData.characters.Find(info => info.index == tile.Index).obj);
+            }
+
+            if (levelData.enemies.Exists(info => info.index == tile.Index))
+            {
+                PlaceEnemy(tile, levelData.enemies.Find(info => info.index == tile.Index).obj);
+            }
+
+            yield return null;
+        }
+        
+        if (edgePrefab)
+        {
+            foreach (var tileBorder in hexMap.Edges)
+            {
+                GameObject instance2 = Instantiate(edgePrefab, transform);
+                instance2.name = "MapEdge_" + tileBorder.Position;
+                instance2.transform.position = tileBorder.CartesianPosition;
+                instance2.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
+                edges[tileBorder.Index] = instance2;
+                instance2.SetActive(true);
+            }
         }
 
         yield return null;
@@ -296,6 +357,11 @@ public class MapEditor : MonoBehaviour
         {
             ClearBoard();
             StartCoroutine(GenerateBoard());
+        }
+        if (GUI.Button(new Rect(100, 200, 250, 50), "Generate Random", customButton))
+        {
+            ClearBoard();
+            StartCoroutine(GenerateRandomBoard());
         }
     }
 }
