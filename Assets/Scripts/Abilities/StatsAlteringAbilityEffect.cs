@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
@@ -19,5 +21,31 @@ class StatsAlteringAbilityEffect : AbilityEffect
             StatsAlteringStatus se = new StatsAlteringStatus(duration, strength, defense, intelligence, dexterity);
             se.Apply(target.Data.unitList[i]);
         }
+    }
+    
+    public override string Summary()
+    {
+        List<string> stats = new List<string>();
+        
+        if (strength != 0)
+        {
+            stats.Add($"{strength} STR");
+        }
+        if (defense != 0)
+        {
+            stats.Add($"{defense} DEF");
+        }
+        if (intelligence != 0)
+        {
+            stats.Add($"{intelligence} INT");
+        }
+        if (dexterity != 0)
+        {
+            stats.Add($"{dexterity:0.##\\%} DEX");
+        }
+
+        string statsString = String.Join(", ", stats);
+        string text = $"<b>{statsString}</b> Stats altering for {duration} turns";
+        return text;
     }
 }

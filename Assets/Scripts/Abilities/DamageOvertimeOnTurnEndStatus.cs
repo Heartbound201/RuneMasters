@@ -12,4 +12,10 @@ public class DamageOvertimeOnTurnEndStatus: Status
     {
         this.potency = potency;
     }
+    
+    public override string Summary()
+    {
+        string text = $"<b>{potency}</b> Damage Overtime for {duration} turns";
+        return text;
+    }
 }

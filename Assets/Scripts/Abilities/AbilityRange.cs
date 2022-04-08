@@ -6,4 +6,5 @@ public abstract class AbilityRange : ScriptableObject
 {
     public abstract List<HexTile<Tile>> GetTilesInRange (HexTile<Tile> tile, Board board);
     public abstract List<HexTile<Tile>> GetTilesInRange (Unit unit, Board board);
+    public abstract string Summary();
 }

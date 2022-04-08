@@ -14,4 +14,8 @@ public class InfiniteAbilityRange : AbilityRange
     {
         return GetTilesInRange(unit.tile, board);
     }
+    public override string Summary()
+    {
+        return $"Infinite";
+    }
 }

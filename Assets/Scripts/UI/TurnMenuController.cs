@@ -18,9 +18,11 @@ public class TurnMenuController : MonoBehaviour
 
     public GameObject characterSelectionButton;
     public GameObject runeSelectionButton;
+    public List<Sprite> costSprites = new List<Sprite>();
 
     private Party party;
     private List<RuneMenuItem> runeMenuItems = new List<RuneMenuItem>();
+
 
     public void Load(Party party)
     {
@@ -51,6 +53,14 @@ public class TurnMenuController : MonoBehaviour
             runeMenuItem.rune = rune;
             runeMenuItem.text.text = rune.RunePrototype.runeName;
             runeMenuItem.icon.sprite = rune.RunePrototype.icon;
+            if(rune.RunePrototype.categorySprite)
+            {
+                runeMenuItem.categoryIcon.sprite = rune.RunePrototype.categorySprite;
+            }
+            if(costSprites != null && costSprites.Count >= rune.RunePrototype.Cost)
+            {
+                runeMenuItem.costIcon.sprite = costSprites[rune.RunePrototype.Cost];
+            }
             runeMenuItem.button.onClick.AddListener(() => SelectRune(rune));
             if (!rune.IsAvailable(unit)) 
             {

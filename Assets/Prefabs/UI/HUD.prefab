@@ -378,6 +378,17 @@ MonoBehaviour:
   defenseInfo: {fileID: 7466611338610313926}
   characterSelectionButton: {fileID: 7161619918386738280, guid: cdd9e0808a04b784b850c3519c630865, type: 3}
   runeSelectionButton: {fileID: 480635549618743431, guid: d0f234dae56287a478d59ba5f0f6f499, type: 3}
+  costSprites:
+  - {fileID: 21300000, guid: 7f3af7f6c26de804dae8e33c99d7115f, type: 3}
+  - {fileID: 21300000, guid: af88e637281e9a548aa31d1cb76a0486, type: 3}
+  - {fileID: 21300000, guid: 7d053d3b3746a204bb3be41bbecff78f, type: 3}
+  - {fileID: 21300000, guid: eed1ebcab0d6c3743950949d537f1f5b, type: 3}
+  - {fileID: 21300000, guid: aa9220a4630dfef45adbd0c6f1be9d0a, type: 3}
+  - {fileID: 21300000, guid: 8ad5b66611fa4b9419df448ff4163468, type: 3}
+  - {fileID: 21300000, guid: 06abe4d0d97c03542a9ff7896e156d25, type: 3}
+  - {fileID: 21300000, guid: 0743cb3a5452dda4795dc9431659da6b, type: 3}
+  - {fileID: 21300000, guid: 26e3aeab4dc4e5343b4b40a99f2b5c0f, type: 3}
+  - {fileID: 21300000, guid: 1cc885353d9b00542b84756c94858d59, type: 3}
 --- !u!1 &3418000967703965838
 GameObject:
   m_ObjectHideFlags: 0

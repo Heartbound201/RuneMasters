@@ -12,4 +12,8 @@ public class LineAbilityRange : AbilityRange
     {
         return GetTilesInRange(unit.tile, board);
     }
+    public override string Summary()
+    {
+        return $"Line";
+    }
 }

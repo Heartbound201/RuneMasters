@@ -14,4 +14,8 @@ class ConeAbilityArea : AbilityArea
         Vector3Int directionVector = HexGrid.TileDirectionVectors[(int) start.GetDirection(target)];
         return board.hexMap.GetTiles.Cone(start, directionVector, coneAngle, coneLength);
     }
+    public override string Summary()
+    {
+        return $"Cone angle <b>{coneAngle}</b>, length <b>{coneLength}</b>";
+    }
 }

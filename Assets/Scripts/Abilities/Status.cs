@@ -26,5 +26,5 @@ public abstract class Status
     {
         target.statuses.Remove(this);
     }
-
+    public abstract string Summary();
 }

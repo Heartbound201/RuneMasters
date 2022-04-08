@@ -124,10 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d288ebea1e5820d46b17f7b0c0c8aaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rune: {fileID: 0}
   text: {fileID: 4247755274025800919}
   icon: {fileID: 6968003054389446422}
+  categoryIcon: {fileID: 2820728705411886300}
+  costIcon: {fileID: 1136329682323556316}
   button: {fileID: 1755729586469831664}
+  unit: {fileID: 0}
 --- !u!1 &2543033762163515025
 GameObject:
   m_ObjectHideFlags: 0

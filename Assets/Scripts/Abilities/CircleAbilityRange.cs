@@ -18,4 +18,8 @@ public class CircleAbilityRange : AbilityRange
     {
         return (from.Data._distance + 1) <= range;
     }
+    public override string Summary()
+    {
+        return $"Circle radius <b>{range}</b>";
+    }
 }

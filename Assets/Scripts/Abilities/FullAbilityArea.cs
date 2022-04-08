@@ -7,4 +7,9 @@ public class FullAbilityArea : AbilityArea
     {
         throw new System.NotImplementedException();
     }
+    
+    public override string Summary()
+    {
+        return $"Full range area";
+    }
 }

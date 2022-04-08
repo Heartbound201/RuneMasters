@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 public class StatsAlteringStatus : Status
 {
     public int strength;
@@ -31,5 +34,31 @@ public class StatsAlteringStatus : Status
         target.defense -= defense;
         target.intelligence -= intelligence;
         target.dexterity -= dexterity;
+    }
+    
+    public override string Summary()
+    {
+        List<string> stats = new List<string>();
+        
+        if (strength != 0)
+        {
+            stats.Add($"{strength} STR");
+        }
+        if (defense != 0)
+        {
+            stats.Add($"{defense} DEF");
+        }
+        if (intelligence != 0)
+        {
+            stats.Add($"{intelligence} INT");
+        }
+        if (dexterity != 0)
+        {
+            stats.Add($"{dexterity:0.##\\%} DEX");
+        }
+
+        string statsString = String.Join(", ", stats);
+        string text = $"<b>{statsString}</b> Stats altered for {duration} turns";
+        return text;
     }
 }

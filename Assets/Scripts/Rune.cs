@@ -20,14 +20,28 @@ public class Rune
         return true;
     }
 
-    public string Format(Unit unit)
+    public string Summary(Unit unit)
     {
-        return $"{RunePrototype.name}" +
-               $"\n{RunePrototype.description}" + 
-               (RunePrototype.cooldown > 0 ? $"\nCooldown: {RunePrototype.cooldown}" : "")+ 
-               "\n" + (IsAvailable(unit) ? "Available" : $"Not available") + ((turnToWait > 0) ? $"( {turnToWait} Turns)" : "") + 
-               $"\n{RunePrototype.ability.name}" +
-               $"\n{RunePrototype.ability.description}";
+        string cooldownText = "";
+        if (RunePrototype.cooldown > 0)
+        {
+            cooldownText += $"\n";
+            if (IsAvailable(unit))
+            {
+                cooldownText += $"\nCooldown: {RunePrototype.cooldown} turns";
+            }
+            else
+            {
+                cooldownText += $"Unavailable for {turnToWait} turns";
+            }
+        }
+
+        return $"<b>{RunePrototype.name}</b>" +
+               $"\nCategory: {RunePrototype.category}" +
+               $"\nMana Cost: {RunePrototype.Cost}" +
+               $"\n{RunePrototype.ability.Summary()}" +
+               $"{cooldownText}";
+
     }
 
 

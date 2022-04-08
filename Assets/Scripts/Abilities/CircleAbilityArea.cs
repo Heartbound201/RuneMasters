@@ -10,6 +10,12 @@ public class CircleAbilityArea : AbilityArea
     {
         return board.SearchRange(target, ExpandSearch);
     }
+
+    public override string Summary()
+    {
+        return $"Circle radius <b>{range}</b>";
+    }
+
     bool ExpandSearch (HexTile<Tile> from, HexTile<Tile> to)
     {
         return (from.Data._distance + 1) <= range;

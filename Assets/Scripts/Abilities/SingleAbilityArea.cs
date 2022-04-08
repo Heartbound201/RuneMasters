@@ -12,4 +12,9 @@ public class SingleAbilityArea : AbilityArea
             retValue.Add(target);
         return retValue;
     }
+    
+    public override string Summary()
+    {
+        return $"Single";
+    }
 }

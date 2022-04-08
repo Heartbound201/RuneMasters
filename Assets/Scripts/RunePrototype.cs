@@ -14,4 +14,17 @@ public class RunePrototype : ScriptableObject
     public Ability ability;
     public int Cost => steps.Count;
     public int cooldown;
+    public Category category;
+    public Sprite categorySprite;
+}
+
+public enum Category
+{
+    Damage,
+    DamageOvertime,
+    Heal,
+    Buff,
+    Debuff,
+    MapInteraction
+
 }
