@@ -60,13 +60,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9467e9a46ff42454394ddd136f3c1271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prototype: {fileID: 0}
   board: {fileID: 0}
-  unit: {fileID: 0}
+  unitList: []
   isPassable: 0
   IsHighlighted: 0
   IsSelected: 0
-  IsWarning: 0
   IsHovered: 0
+  pos: {x: 0, y: 0, z: 0}
+  posCart: {x: 0, y: 0, z: 0}
+  posNorm: {x: 0, y: 0}
   _distance: 0
 --- !u!64 &7387552427716047684
 MeshCollider:
@@ -99,11 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 26be381455f4a274c8688dd8ff4f5893, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 26be381455f4a274c8688dd8ff4f5893, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.75
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 26be381455f4a274c8688dd8ff4f5893, type: 3}
       propertyPath: m_LocalScale.z
@@ -115,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 26be381455f4a274c8688dd8ff4f5893, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 26be381455f4a274c8688dd8ff4f5893, type: 3}
       propertyPath: m_LocalPosition.z
