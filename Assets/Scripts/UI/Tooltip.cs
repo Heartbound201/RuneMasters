@@ -9,6 +9,7 @@
         private TMP_Text tooltipText;
         private RectTransform backgroundRect;
         private RectTransform rect;
+        [SerializeField] private Vector2 padding;
         [SerializeField] private RectTransform canvasRect;
 
         private void Awake()
@@ -40,7 +41,7 @@
             tooltipText.SetText(text);
             tooltipText.ForceMeshUpdate();
             Vector2 textSize = tooltipText.GetRenderedValues(false);
-            Vector2 paddingSize = new Vector2(8, 8);
+            Vector2 paddingSize = padding;
             backgroundRect.sizeDelta = textSize + paddingSize;
         }
         private void Show(string text)
