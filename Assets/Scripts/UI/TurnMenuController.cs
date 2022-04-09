@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class TurnMenuController : MonoBehaviour
 
     public TMP_Text movementInfo;
     public TMP_Text defenseInfo;
+    public TMP_Text statusInfo;
 
     public GameObject characterSelectionButton;
     public GameObject runeSelectionButton;
@@ -53,36 +55,40 @@ public class TurnMenuController : MonoBehaviour
             runeMenuItem.rune = rune;
             runeMenuItem.text.text = rune.RunePrototype.runeName;
             runeMenuItem.icon.sprite = rune.RunePrototype.icon;
-            if(rune.RunePrototype.categorySprite)
+            if (rune.RunePrototype.categorySprite)
             {
                 runeMenuItem.categoryIcon.sprite = rune.RunePrototype.categorySprite;
             }
-            if(costSprites != null && costSprites.Count >= rune.RunePrototype.Cost)
+
+            if (costSprites != null && costSprites.Count >= rune.RunePrototype.Cost)
             {
                 runeMenuItem.costIcon.sprite = costSprites[rune.RunePrototype.Cost];
             }
+
             runeMenuItem.button.onClick.AddListener(() => SelectRune(rune));
-            if (!rune.IsAvailable(unit)) 
+            if (!rune.IsAvailable(unit))
             {
                 runeMenuItem.button.interactable = false;
             }
+
             runeMenuItems.Add(runeMenuItem);
         }
 
-        ClearInfoPanel();
-
         FillInfoPanel(unit);
-        
     }
 
     private void FillInfoPanel(PlayerUnit playerUnit)
     {
         movementInfo.text = $"{playerUnit.movement}/{playerUnit.movementMax}";
         defenseInfo.text = $"{playerUnit.defense}";
-    }
 
-    private void ClearInfoPanel()
-    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var playerUnitStatus in playerUnit.statuses)
+        {
+            sb.AppendLine($"{playerUnitStatus.Summary()}");
+        }
+
+        if (statusInfo) statusInfo.text = sb.ToString();
     }
 
     private void ClearRunePanel()
@@ -91,7 +97,7 @@ public class TurnMenuController : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        
+
         runeMenuItems.Clear();
     }
 
@@ -101,5 +107,4 @@ public class TurnMenuController : MonoBehaviour
         stateMachine.ChangeState<ActionSelectionState>();
         stateMachine.ChangeState<ConfirmRuneState>();
     }
-
 }
