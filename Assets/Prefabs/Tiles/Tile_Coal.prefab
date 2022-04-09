@@ -250,7 +250,7 @@ MonoBehaviour:
   prototype: {fileID: 0}
   board: {fileID: 0}
   unitList: []
-  isPassable: 0
+  isPassable: 1
   IsHighlighted: 0
   IsSelected: 0
   IsHovered: 0

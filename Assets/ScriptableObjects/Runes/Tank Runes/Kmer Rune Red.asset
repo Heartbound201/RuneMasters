@@ -18,3 +18,5 @@ MonoBehaviour:
   steps: 05000000050000000100000001000000
   ability: {fileID: 11400000, guid: c0ed10ab18f4c0746985196c7b707c90, type: 2}
   cooldown: 0
+  category: 0
+  categorySprite: {fileID: 21300000, guid: badda803d0ff3454a8c9e172ce4acfd5, type: 3}

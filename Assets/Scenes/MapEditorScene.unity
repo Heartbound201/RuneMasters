@@ -602,6 +602,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1876689095}
     - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: levelData
+      value: 
+      objectReference: {fileID: 11400000, guid: 028956bd9b798c9448b2d25b80b45db9, type: 2}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
       propertyPath: edgePrefab
       value: 
       objectReference: {fileID: 7354726749590977549, guid: b903f974fab66a14eb8c7cd8887291fe, type: 3}

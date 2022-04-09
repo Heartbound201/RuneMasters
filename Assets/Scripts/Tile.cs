@@ -77,9 +77,10 @@ public class Tile : MonoBehaviour
 
     public void RenderColor()
     {
+        if(_renderer == null) return;
         if (IsHovered)
         {
-            _renderer.material.color = Color.white;
+            _renderer.material.color = Color.yellow;
             return;
         }
 

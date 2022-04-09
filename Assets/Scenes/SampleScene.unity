@@ -289,7 +289,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 582367346}
   turnManager: {fileID: 451213438}
-  levelData: {fileID: 11400000, guid: c7d95a947aeb10b4cb4cf2938cee4e0e, type: 2}
+  levelData: {fileID: 11400000, guid: 028956bd9b798c9448b2d25b80b45db9, type: 2}
   enemies: []
   party: {fileID: 1604125016}
   turnMenuController: {fileID: 1691647032}

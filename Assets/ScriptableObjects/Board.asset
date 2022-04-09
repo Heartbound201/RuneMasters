@@ -364,3 +364,5 @@ MonoBehaviour:
     obj: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
   - index: 20
     obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
+  - index: 0
+    obj: {fileID: 0}

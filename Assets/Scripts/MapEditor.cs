@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 public class MapEditor : MonoBehaviour
 {
     private HexMouse hexMouse;
-    
+
     public HexMap<Tile, int> hexMap;
     private HexTile<Tile> tileHover;
     private HexTile<Tile> tileSelected;
@@ -21,12 +21,19 @@ public class MapEditor : MonoBehaviour
     public TilePrototype defaultTile;
     public List<Unit> charactersPrefabs;
     public List<Unit> enemiesPrefabs;
+
+    public int radius = 5;
+
+    [Tooltip("Apply a random rotation to tiles")]
+    public bool applyRandomRotation = false;
+
     public PlacementPanelController placementPanelController;
 
     public GameObject edgePrefab;
-    
+
     private GameObject[] edges;
     private GameObject[] tiles;
+
     private void Awake()
     {
         hexMouse = gameObject.AddComponent<HexMouse>();
@@ -43,12 +50,33 @@ public class MapEditor : MonoBehaviour
     {
         if (levelData == null)
         {
-            levelData = CreateLevelData();
+            StartCoroutine(GenerateRandomBoard());
+        }
+        else
+        {
+            StartCoroutine(GenerateBoardFromLevelData());
         }
 
-        StartCoroutine(GenerateBoard());
         SetCamera();
         FillPlacementOptions();
+    }
+
+    void Update()
+    {
+        if (!hexMouse.CursorIsOnMap) return;
+        Vector3Int mouseTilePosition = hexMouse.TileCoord;
+        HexTile<Tile> t = hexMap.TilesByPosition[mouseTilePosition];
+        HoverTile(t);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            SelectTile(t);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            ClearTile(t);
+        }
     }
 
     private void FillPlacementOptions()
@@ -72,54 +100,11 @@ public class MapEditor : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (!hexMouse.CursorIsOnMap) return;
-        Vector3Int mouseTilePosition = hexMouse.TileCoord;
-        HexTile<Tile> t = hexMap.TilesByPosition[mouseTilePosition];
-        HoverTile(t);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            SelectTile(t);
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            ClearTile(t);
-        }
-    }
-
     private void ClearTile(HexTile<Tile> hexTile)
     {
-        if (levelData.characters.Exists(info => info.index == hexTile.Index))
-        {
-            if (hexTile.Data.unitList.Count > 0)
-            {
-                Unit unit = hexTile.Data.unitList[0];
-                if (unit != null) Destroy(unit.gameObject);
-            }
-
-            hexTile.Data.unitList.Clear();
-            SpawnInfo spawnInfo = levelData.characters.Find(info => info.index == hexTile.Index);
-            levelData.characters.Remove(spawnInfo);
-        }
-        else if (levelData.enemies.Exists(info => info.index == hexTile.Index))
-        {
-            if (hexTile.Data.unitList.Count > 0)
-            {
-                Unit unit = hexTile.Data.unitList[0];
-                if (unit != null) Destroy(unit.gameObject);
-            }
-
-            hexTile.Data.unitList.Clear();
-            SpawnInfo spawnInfo = levelData.enemies.Find(info => info.index == hexTile.Index);
-            levelData.enemies.Remove(spawnInfo);
-        }
-        else
-        {
-            ChangeTilePrototype(hexTile, defaultTile);
-        }
+        levelData.PlaceEnemy(hexTile.Index, null);
+        levelData.PlaceUnit(hexTile.Index, null);
+        levelData.SwapTilePrototype(hexTile.Index, defaultTile);
     }
 
     private void ChangeTilePrototype(HexTile<Tile> hexTile, TilePrototype tilePrototype)
@@ -131,152 +116,126 @@ public class MapEditor : MonoBehaviour
         instance.gameObject.name = "Hex" + hexTile.CartesianPosition;
         hexTile.Data.prototype = tilePrototype;
 
-        TileInfo tileInfo = levelData.tiles.Find(ti => ti.index == hexTile.Index);
-        tileInfo.proto = tilePrototype;
+        levelData.SwapTilePrototype(hexTile.Index, tilePrototype);
     }
 
     private void PlaceCharacter(HexTile<Tile> hexTile, GameObject go)
     {
-        if (levelData.characters.Exists(info => info.index == hexTile.Index))
+        // clear previous unit on tile
+        if (hexTile.Data.unitList.Count > 0)
         {
-            if(hexTile.Data.unitList.Count > 0)
-            {
-                Unit unit = hexTile.Data.unitList[0];
-                if (unit != null) Destroy(unit.gameObject);
-            }
-            hexTile.Data.unitList.Clear();
-            SpawnInfo spawnInfo = levelData.characters.Find(info => info.index == hexTile.Index);
-            spawnInfo.obj = go;
+            Unit unit = hexTile.Data.unitList[0];
+            if (unit != null) Destroy(unit.gameObject);
         }
 
-        GameObject instance = Instantiate(go, transform);
-        instance.transform.position = hexTile.CartesianPosition;
-        Unit character = instance.GetComponent<PlayerUnit>();
-        hexTile.Data.unitList.Add(character);
+        hexTile.Data.unitList.Clear();
 
-        if (!levelData.characters.Exists(info => info.index == hexTile.Index))
+        // place unit on leveldata
+        levelData.PlaceUnit(hexTile.Index, go);
+
+        // instantiate graphics
+        if (go != null)
         {
-            levelData.characters.Add(new SpawnInfo()
-            {
-                index = hexTile.Index,
-                obj = go
-            });
+            GameObject instance = Instantiate(go, transform);
+            instance.transform.position = hexTile.CartesianPosition;
+            Unit character = instance.GetComponent<PlayerUnit>();
+            hexTile.Data.unitList.Add(character);
         }
     }
 
     private void PlaceEnemy(HexTile<Tile> hexTile, GameObject go)
     {
-        if (levelData.enemies.Exists(info => info.index == hexTile.Index))
+        // clear previous unit on tile
+        if (hexTile.Data.unitList.Count > 0)
         {
-            if (hexTile.Data.unitList.Count > 0)
-            {
-                Unit unit = hexTile.Data.unitList[0];
-                if (unit != null) Destroy(unit.gameObject);
-            }
-
-            hexTile.Data.unitList.Clear();
-            SpawnInfo spawnInfo = levelData.enemies.Find(info => info.index == hexTile.Index);
-            spawnInfo.obj = go;
+            Unit unit = hexTile.Data.unitList[0];
+            if (unit != null) Destroy(unit.gameObject);
         }
 
-        GameObject instance = Instantiate(go, transform);
-        instance.transform.position = hexTile.CartesianPosition;
-        Unit character = instance.GetComponent<EnemyUnit>();
-        hexTile.Data.unitList.Add(character);
+        hexTile.Data.unitList.Clear();
 
-        if (!levelData.enemies.Exists(info => info.index == hexTile.Index))
+        // place unit on leveldata
+        levelData.PlaceEnemy(hexTile.Index, go);
+
+        // instantiate graphics
+        if (go != null)
         {
-            levelData.enemies.Add(new SpawnInfo()
-            {
-                index = hexTile.Index,
-                obj = go
-            });
+            GameObject instance = Instantiate(go, transform);
+            instance.transform.position = hexTile.CartesianPosition;
+            Unit character = instance.GetComponent<EnemyUnit>();
+            hexTile.Data.unitList.Add(character);
         }
     }
 
-    private IEnumerator GenerateBoard()
+    private IEnumerator GenerateBoardFromLevelData()
     {
+        ClearBoard();
         hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
+
+        tiles = new GameObject[hexMap.TilesByPosition.Count];
+        edges = new GameObject[hexMap.EdgesByPosition.Count];
+
         foreach (var tile in hexMap.Tiles)
         {
-            TilePrototype tilePrototype = defaultTile;
-
-            if (levelData.tiles.Exists(info => info.index == tile.Index))
-            {
-                tilePrototype = levelData.tiles.Find(info => info.index == tile.Index).proto;
-            }
+            TilePrototype tilePrototype = levelData.GetTilePrototypeAt(tile.Index);
 
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
-            // instance.transform.rotation = new Quaternion(0f, Random.Range(0, 6) * 60f, 0f, 0f);
+            if (applyRandomRotation)
+            {
+                instance.transform.rotation = new Quaternion(0f, Random.Range(0, 6) * 60f, 0f, 0f);
+            }
+
             instance.gameObject.name = "Hex" + tile.CartesianPosition;
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.prototype = tilePrototype;
 
-            if (!levelData.tiles.Exists(info => info.index == tile.Index))
-            {
-                levelData.tiles.Add(new TileInfo
-                {
-                    index = tile.Index,
-                    proto = tilePrototype
-                });
-            }
-
-            if (levelData.characters.Exists(info => info.index == tile.Index))
-            {
-                PlaceCharacter(tile, levelData.characters.Find(info => info.index == tile.Index).obj);
-            }
-
-            if (levelData.enemies.Exists(info => info.index == tile.Index))
-            {
-                PlaceEnemy(tile, levelData.enemies.Find(info => info.index == tile.Index).obj);
-            }
+            PlaceCharacter(tile, levelData.GetUnitAt(tile.Index));
+            PlaceEnemy(tile, levelData.GetEnemyAt(tile.Index));
 
             yield return null;
         }
+
+        GenerateEdges();
 
         yield return null;
     }
+
     private IEnumerator GenerateRandomBoard()
     {
-        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
+        ClearBoard();
+        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(radius), null);
         hexMouse.Init(hexMap);
+
         tiles = new GameObject[hexMap.TilesByPosition.Count];
         edges = new GameObject[hexMap.EdgesByPosition.Count];
+
         foreach (var tile in hexMap.Tiles)
         {
-            TilePrototype tilePrototype = tileCollection.tiles[Random.Range(0, tileCollection.tiles.Count)];
+            TilePrototype tilePrototype = GetRandomTileProto();
 
             GameObject instance = Instantiate(tilePrototype.prefab, transform);
             instance.transform.position = tile.CartesianPosition;
-            instance.transform.rotation = new Quaternion(0f, Random.Range(0, 6) * 60f, 0f, 0f);
+            if (applyRandomRotation)
+            {
+                instance.transform.rotation = new Quaternion(0f, Random.Range(0, 6) * 60f, 0f, 0f);
+            }
+
             instance.gameObject.name = "Hex" + tile.CartesianPosition;
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.prototype = tilePrototype;
-            
-            if (!levelData.tiles.Exists(info => info.index == tile.Index))
-            {
-                levelData.tiles.Add(new TileInfo
-                {
-                    index = tile.Index,
-                    proto = tilePrototype
-                });
-            }
-
-            if (levelData.characters.Exists(info => info.index == tile.Index))
-            {
-                PlaceCharacter(tile, levelData.characters.Find(info => info.index == tile.Index).obj);
-            }
-
-            if (levelData.enemies.Exists(info => info.index == tile.Index))
-            {
-                PlaceEnemy(tile, levelData.enemies.Find(info => info.index == tile.Index).obj);
-            }
 
             yield return null;
         }
-        
+
+        GenerateEdges();
+
+        yield return null;
+    }
+
+    private void GenerateEdges()
+    {
         if (edgePrefab)
         {
             foreach (var tileBorder in hexMap.Edges)
@@ -289,8 +248,6 @@ public class MapEditor : MonoBehaviour
                 instance2.SetActive(true);
             }
         }
-
-        yield return null;
     }
 
     private void ClearBoard()
@@ -342,7 +299,7 @@ public class MapEditor : MonoBehaviour
     {
         LevelData data = ScriptableObject.CreateInstance<LevelData>();
         string fileName =
-            $"Assets/ScriptableObjects/{name}{DateTime.Today.Year}{DateTime.Today.Month}{DateTime.Today.Day}.asset";
+            $"Assets/ScriptableObjects/{name}_{DateTime.Today.Year}_{DateTime.Today.Month}_{DateTime.Today.Day}_{Guid.NewGuid()}.asset";
         AssetDatabase.CreateAsset(data, fileName);
         return data;
     }
@@ -353,15 +310,45 @@ public class MapEditor : MonoBehaviour
         {
             fontSize = 24
         };
-        if (GUI.Button(new Rect(100, 100, 250, 50), "Reload Level", customButton))
+        if (GUI.Button(new Rect(100, 100, 250, 50), "Load Level", customButton))
         {
             ClearBoard();
-            StartCoroutine(GenerateBoard());
+            StartCoroutine(GenerateBoardFromLevelData());
         }
+
         if (GUI.Button(new Rect(100, 200, 250, 50), "Generate Random", customButton))
         {
             ClearBoard();
             StartCoroutine(GenerateRandomBoard());
         }
+
+        if (GUI.Button(new Rect(100, 300, 250, 50), "Save as New", customButton))
+        {
+            SaveAsNewLevel();
+        }
+    }
+
+    private void SaveAsNewLevel()
+    {
+        var data = CreateLevelData();
+        data.boardRadius = radius;
+        foreach (var tile in hexMap.Tiles)
+        {
+            if (tile.Data.unitList.Count > 0 && tile.Data.unitList[0] is PlayerUnit)
+            {
+                data.PlaceUnit(tile.Index, tile.Data.unitList[0].gameObject);
+            }
+            if (tile.Data.unitList.Count > 0 && tile.Data.unitList[0] is EnemyUnit)
+            {
+                data.PlaceEnemy(tile.Index, tile.Data.unitList[0].gameObject);
+            }
+            data.SwapTilePrototype(tile.Index, tile.Data.prototype);
+        }
+        EditorUtility.SetDirty(data);
+    }
+
+    private TilePrototype GetRandomTileProto()
+    {
+        return tileCollection.tiles[Random.Range(0, tileCollection.tiles.Count)];
     }
 }
