@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Runtime.Serialization;
 using UnityEngine;
@@ -54,12 +53,4 @@ public abstract class AbilityEffect : ScriptableObject
     }
 
     public abstract string Summary();
-}
-
-class ObstacleSpawningAbilityEffect : AbilityEffect
-{
-    public override string Summary()
-    {
-        throw new NotImplementedException();
-    }
 }
