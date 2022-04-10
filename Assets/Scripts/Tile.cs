@@ -23,6 +23,10 @@ public class Tile : MonoBehaviour
     public Vector3 posCart;
     public Vector2 posNorm;
 
+    public Color highlightColor;
+    public Color dangerColor;
+    public Color hoverColor;
+
     private MeshRenderer _renderer
     {
         get
@@ -96,25 +100,25 @@ public class Tile : MonoBehaviour
         if (_renderer == null) return;
         if (IsHovered)
         {
-            _renderer.material.color = Color.yellow;
+            _renderer.material.color = hoverColor;
             return;
         }
 
         if (IsHighlighted && dangerList.Count > 0)
         {
-            _renderer.material.color = Color.Lerp(Color.red, Color.cyan, 0.2f);
+            _renderer.material.color = Color.Lerp(dangerColor, highlightColor, 0.2f);
             return;
         }
 
         if (IsHighlighted)
         {
-            _renderer.material.color = Color.cyan;
+            _renderer.material.color = highlightColor;
             return;
         }
 
         if (dangerList.Count > 0)
         {
-            _renderer.material.color = Color.red;
+            _renderer.material.color = dangerColor;
             return;
         }
 

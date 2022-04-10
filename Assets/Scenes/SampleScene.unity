@@ -993,6 +993,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1320306093}
     m_Modifications:
+    - target: {fileID: 43718694885441380, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43718694885441380, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43718694885441380, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43718694885441380, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43718694885441380, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 43718694885441380, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 520368126544291409, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
       propertyPath: m_Name
       value: HUD

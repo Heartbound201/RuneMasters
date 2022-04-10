@@ -26,19 +26,16 @@ public class Unit : MonoBehaviour
     [HideInInspector] public int intelligenceStart;
     [HideInInspector] public int dexterityStart;
 
-    protected Animator animator;
+    public Animator animator;
 
     [Header("Audio")] public AudioClipSO getHitSfx;
     public AudioClipSO deathSfx;
     public AudioClipSO attackSfx;
 
-    private void Awake()
-    {
-        animator = GetComponentInChildren<Animator>();
-    }
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         strengthStart = strength;
         defenseStart = defense;
         intelligenceStart = intelligence;
@@ -177,8 +174,10 @@ public class Unit : MonoBehaviour
         float elapsedTime = 0f;
         float waitTime = 0.5f;
 
-        if (animator) animator.Play("Run");
-
+        if (animator)
+        {
+            animator.Play("Run");
+        }
         while (elapsedTime < waitTime)
         {
             transform.position = Vector3.Lerp(startPos, tile.CartesianPosition, (elapsedTime / waitTime));

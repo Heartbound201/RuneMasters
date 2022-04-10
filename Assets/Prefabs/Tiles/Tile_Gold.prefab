@@ -55,6 +55,9 @@ MonoBehaviour:
   pos: {x: 0, y: 0, z: 0}
   posCart: {x: 0, y: 0, z: 0}
   posNorm: {x: 0, y: 0}
+  highlightColor: {r: 0.040850822, g: 0.7589313, b: 0.9622642, a: 1}
+  dangerColor: {r: 0.9433962, g: 0.09344962, b: 0.09344962, a: 1}
+  hoverColor: {r: 0.9528302, g: 0.93003964, b: 0.112362035, a: 1}
   _distance: 0
 --- !u!1 &1630363132612422
 GameObject:
