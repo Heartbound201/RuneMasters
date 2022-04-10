@@ -69,6 +69,7 @@ public class TurnMenuController : MonoBehaviour
             if (!rune.IsAvailable(unit))
             {
                 runeMenuItem.button.interactable = false;
+				runeMenuItem.disabledImg.SetActive(true);
             }
 
             runeMenuItems.Add(runeMenuItem);

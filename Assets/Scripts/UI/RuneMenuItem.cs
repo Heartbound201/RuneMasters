@@ -12,6 +12,7 @@ public class RuneMenuItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public TMP_Text text;
     public Image icon;
     public Image categoryIcon;
+    public GameObject disabledImg;
     public Image costIcon;
     public Button button;
     public Unit unit;
