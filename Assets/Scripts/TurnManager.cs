@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class TurnManager : MonoBehaviour
 {
@@ -24,8 +26,14 @@ public class TurnManager : MonoBehaviour
             Switch();
             Debug.Log(currentTurn + " turn");
 
+            ShowTurnMessage(currentTurn);
             yield return currentTurn;
         }
+    }
+
+    private void ShowTurnMessage(Turn turn)
+    {
+        MessageDisplayingUIController.Instance.ShowMessage($"{turn}'s turn");
     }
 
     private void Start()

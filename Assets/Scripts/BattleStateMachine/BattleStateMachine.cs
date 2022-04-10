@@ -1,6 +1,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
+    using UnityEngine.Playables;
     using UnityEngine.Serialization;
     using Wunderwunsch.HexMapLibrary;
     using Wunderwunsch.HexMapLibrary.Generic;
@@ -25,6 +26,8 @@
         public PartyInfoMenuController partyInfoMenuController;
         public GameOverPanelController gameOverPanelController;
 
+        public PlayableDirector HudFadeInTimeline;
+        
         [Header("Audio")] public AudioClipSO battleTheme;
         private void Start()
         {

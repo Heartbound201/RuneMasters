@@ -42,23 +42,23 @@ public class StatsAlteringStatus : Status
         
         if (strength != 0)
         {
-            stats.Add($"{strength} STR");
+            stats.Add($"{strength:+#;-#;0} STR");
         }
         if (defense != 0)
         {
-            stats.Add($"{defense} DEF");
+            stats.Add($"{defense:+#;-#;0} DEF");
         }
         if (intelligence != 0)
         {
-            stats.Add($"{intelligence} INT");
+            stats.Add($"{intelligence:+#;-#;0} INT");
         }
         if (dexterity != 0)
         {
-            stats.Add($"{dexterity:0.##\\%} DEX");
+            stats.Add($"{dexterity:+#;-#;0} DEX");
         }
 
         string statsString = String.Join(", ", stats);
-        string text = $"<b>{statsString}</b> Stats altered for {duration} turns";
+        string text = $"<b>{statsString}</b> for {duration} turns";
         return text;
     }
 }

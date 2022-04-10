@@ -49,6 +49,8 @@ public class UnitPlacementState : State
             }
         });
         
+        owner.HudFadeInTimeline.Play();
+        
         
         switch (TurnManager.currentTurn)
         {

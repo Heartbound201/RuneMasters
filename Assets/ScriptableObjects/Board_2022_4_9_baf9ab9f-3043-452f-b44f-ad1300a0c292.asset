@@ -399,7 +399,7 @@ MonoBehaviour:
   - index: 191
     proto: {fileID: 11400000, guid: 60c675b298557e549a1368e31dfa2fdc, type: 2}
   - index: 192
-    proto: {fileID: 11400000, guid: 60c675b298557e549a1368e31dfa2fdc, type: 2}
+    proto: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
   - index: 193
     proto: {fileID: 11400000, guid: 582f906d0dd4ef944bbc627375a7c645, type: 2}
   - index: 194
@@ -556,5 +556,17 @@ MonoBehaviour:
     proto: {fileID: 11400000, guid: b9173c20a96f2d24ca3c0c34b4dcb60d, type: 2}
   - index: 270
     proto: {fileID: 11400000, guid: b9173c20a96f2d24ca3c0c34b4dcb60d, type: 2}
-  enemies: []
-  characters: []
+  enemies:
+  - index: 207
+    obj: {fileID: 3754591301903308259, guid: 15e4a4e177a662c4084156b13730d6cf, type: 3}
+  - index: 172
+    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
+  - index: 119
+    obj: {fileID: 3754591301903308259, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
+  characters:
+  - index: 65
+    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
+  - index: 98
+    obj: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
+  - index: 80
+    obj: {fileID: 3754591301903308259, guid: 86cf64050e5595f4dad82b421a42b65a, type: 3}

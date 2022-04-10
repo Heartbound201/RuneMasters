@@ -17,8 +17,12 @@ public class TurnSelectionState : State
         TurnManager.Round().MoveNext();
         yield return null;
         if (TurnManager.currentTurn == TurnManager.Turn.Player)
+        {
             owner.ChangeState<ActionSelectionState>();
+        }
         else
+        {
             owner.ChangeState<AIPlanExecutionState>();
+        }
     }
 }

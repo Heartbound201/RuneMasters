@@ -9,7 +9,7 @@ using Wunderwunsch.HexMapLibrary.Generic;
 public class Tile : MonoBehaviour
 {
     public TilePrototype prototype;
-    
+
     public Board board;
     public List<Unit> unitList;
     public bool isPassable;
@@ -23,13 +23,27 @@ public class Tile : MonoBehaviour
     public Vector3 posCart;
     public Vector2 posNorm;
 
-    private MeshRenderer _renderer { get { return GetComponentInChildren<MeshRenderer>(); } }
+    private MeshRenderer _renderer
+    {
+        get
+        {
+            try
+            {
+                return GetComponentInChildren<MeshRenderer>();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+
     private Color originColor;
 
     [HideInInspector] public HexTile<Tile> _prev;
     [HideInInspector] public int _distance;
 
-    
+
     // HexTile<> .position = cube coord (q + r + s = 0)
     // pos.x = s        pos.y = r       pos.z = q
     // void OnGUI(){
@@ -47,6 +61,7 @@ public class Tile : MonoBehaviour
         originColor = _renderer.material.color;
         unitList = new List<Unit>();
     }
+
     public void Select(bool value)
     {
         this.IsSelected = value;
@@ -57,12 +72,13 @@ public class Tile : MonoBehaviour
         dangerList.Add(danger);
         RenderColor();
     }
-    
+
     public void SolveDanger(AIPlan danger)
     {
         dangerList.Remove(danger);
         RenderColor();
     }
+
     public void Hover(bool value)
     {
         this.IsHovered = value;
@@ -77,7 +93,7 @@ public class Tile : MonoBehaviour
 
     public void RenderColor()
     {
-        if(_renderer == null) return;
+        if (_renderer == null) return;
         if (IsHovered)
         {
             _renderer.material.color = Color.yellow;
@@ -89,7 +105,7 @@ public class Tile : MonoBehaviour
             _renderer.material.color = Color.Lerp(Color.red, Color.cyan, 0.2f);
             return;
         }
-        
+
         if (IsHighlighted)
         {
             _renderer.material.color = Color.cyan;
@@ -101,16 +117,12 @@ public class Tile : MonoBehaviour
             _renderer.material.color = Color.red;
             return;
         }
-        
+
         _renderer.material.color = originColor;
     }
+
     public bool IsPassable
     {
-        get
-        {
-            return isPassable && unitList.TrueForAll(u => u.isPassable);
-        }
+        get { return isPassable && unitList.TrueForAll(u => u.isPassable); }
     }
-
-
 }

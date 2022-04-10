@@ -9,7 +9,7 @@ public class PlayerUnit : Unit
     public List<Rune> runes = new List<Rune>();
     public Party party;
 
-    private void Start()
+    private void Awake()
     {
         foreach (RunePrototype runePrototype in runePrototypes)
         {
