@@ -58,6 +58,8 @@ public class ConfirmRuneState : State
 
     private void Undo()
     {
+        // TODO on char button click, undo + select unit
+        // TODO select unit with tile click
         owner.ChangeState<ActionSelectionState>();
     }
 

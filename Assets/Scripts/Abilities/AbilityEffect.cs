@@ -55,3 +55,11 @@ public abstract class AbilityEffect : ScriptableObject
 
     public abstract string Summary();
 }
+
+class ObstacleSpawningAbilityEffect : AbilityEffect
+{
+    public override string Summary()
+    {
+        throw new NotImplementedException();
+    }
+}

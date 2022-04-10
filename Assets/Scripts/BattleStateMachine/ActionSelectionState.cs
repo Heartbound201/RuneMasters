@@ -57,17 +57,30 @@ public class ActionSelectionState : State
     protected override void AddListeners()
     {
         base.AddListeners();
-        Board.SelectTileEvent += SelectTileForMovement;
+        Board.SelectTileEvent += SelectUnitOrMovement;
         TurnMenuController.SelectUnit += SelectCharacter;
     }
 
     protected override void RemoveListeners()
     {
         base.RemoveListeners();
-        Board.SelectTileEvent -= SelectTileForMovement;
+        Board.SelectTileEvent -= SelectUnitOrMovement;
         TurnMenuController.SelectUnit -= SelectCharacter;
     }
 
+    private void SelectUnitOrMovement(HexTile<Tile> obj)
+    {
+        if (obj.Data.unitList.Count > 0 && obj.Data.unitList[0] is PlayerUnit)
+        {
+            Unit unit = obj.Data.unitList[0];
+            SelectCharacter((PlayerUnit) unit);
+        }
+        else
+        {
+            SelectTileForMovement(obj);
+        }
+    }
+    
     private void SelectTileForMovement(HexTile<Tile> obj)
     {
         if (!tilesInRange.Contains(obj)) return;
