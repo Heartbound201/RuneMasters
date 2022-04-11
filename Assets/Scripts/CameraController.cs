@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     public static CameraController instance;
     public Camera cam;
     public CameraMode currentMode;
+	public float IsometricAngle = 40;
     public float transitionDuration;
     public float zoomInSize = 12;
     public float zoomOutSize = 16;
@@ -35,7 +36,7 @@ public class CameraController : MonoBehaviour
     private void GoIsometric()
     {
         if(inTransition) return;
-        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(35, 30, 0)));
+        StartCoroutine(Transition(cam.transform.position, Quaternion.Euler(IsometricAngle, 30, 0)));
         currentMode = CameraMode.Isometric;
     }
 
