@@ -42,7 +42,7 @@ public class Party : MonoSingleton<Party>
     public void FillMana(int amount)
     {
         int left = (Mana + amount) - ManaMax;
-        Mana += Mathf.Clamp(Mana + amount, 0, ManaMax);
+        Mana = Mathf.Clamp(Mana + amount, 0, ManaMax);
         if (left > 0)
         {
             ManaReserve = Mathf.Clamp(ManaReserve + left, 0, ManaReserveMax);
