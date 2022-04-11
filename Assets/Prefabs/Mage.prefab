@@ -59,14 +59,17 @@ MonoBehaviour:
   defenseStart: 0
   intelligenceStart: 0
   dexterityStart: 0
+  animator: {fileID: 0}
   getHitSfx: {fileID: 0}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
   runePrototypes:
   - {fileID: 11400000, guid: affc2e2bc509db64d9f16cf1fb2ac4d2, type: 2}
   - {fileID: 11400000, guid: 48ae0869f553b344ab354d1591a6bf58, type: 2}
+  - {fileID: 11400000, guid: ebe9d6f96ea41a843b63e091fa4d1ba4, type: 2}
   - {fileID: 11400000, guid: aee3444bb1aadb04d9b2dd6bebd64c9c, type: 2}
   - {fileID: 11400000, guid: 7fdf261c9fc089146afe8eaf04214e83, type: 2}
+  party: {fileID: 0}
 --- !u!1001 &8062240362380193792
 PrefabInstance:
   m_ObjectHideFlags: 0
