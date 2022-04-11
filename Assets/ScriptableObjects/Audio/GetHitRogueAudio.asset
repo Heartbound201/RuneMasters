@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f976219fcf240b198170290f19a4c82, type: 3}
-  m_Name: GetHitAudio
+  m_Name: GetHitRogueAudio
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: b1a6ca1c91d2a2949a90604ba4dbf707, type: 3}
