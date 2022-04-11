@@ -486,7 +486,7 @@ MonoBehaviour:
   partyInfoMenuController: {fileID: 1658000950}
   gameOverPanelController: {fileID: 9087387069366079366}
   HudFadeInTimeline: {fileID: 1396248649}
-  battleTheme: {fileID: 0}
+  battleTheme: {fileID: 11400000, guid: 85aa74621c6f1ae4a85358394ec6303b, type: 2}
 --- !u!4 &921112281
 Transform:
   m_ObjectHideFlags: 0
