@@ -22,7 +22,7 @@ public abstract class AbilityEffect : ScriptableObject
     {
         if (particleEffectSelf)
         {
-            var gameObject = Instantiate(particleEffectSelf, actor.tile.Data.transform.position, Quaternion.identity);
+            var gameObject = Instantiate(particleEffectSelf, actor.tile.Data.transform);
             ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
             yield return new WaitForSeconds(totalDuration);
@@ -44,7 +44,7 @@ public abstract class AbilityEffect : ScriptableObject
     {
         if (particleEffectTarget)
         {
-            var gameObject = Instantiate(particleEffectTarget, target.Data.transform.position, Quaternion.identity);
+            var gameObject = Instantiate(particleEffectTarget, target.Data.transform);
             ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
             yield return new WaitForSeconds(totalDuration);
