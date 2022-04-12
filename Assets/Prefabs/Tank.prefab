@@ -60,7 +60,7 @@ MonoBehaviour:
   intelligenceStart: 0
   dexterityStart: 0
   animator: {fileID: 0}
-  getHitSfx: {fileID: 11400000, guid: 5c6df4da8e4a3ba4281f2d074555268e, type: 2}
+  getHitSfx: {fileID: 11400000, guid: faadd8d8b8f656a468b265cad24c07ef, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
   runePrototypes:

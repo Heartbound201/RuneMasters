@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbeeac04077f435dadb3515aa9858269, type: 3}
   m_Name: Poison1_3Turns
   m_EditorClassIdentifier: 
+  particleEffectSelf: {fileID: 0}
+  particleEffectProjectile: {fileID: 0}
+  particleEffectTarget: {fileID: 100006, guid: f62f1afe65b09fe4d964fa840983e21f, type: 3}
   potency: 1
   strengthScaling: 0
   intelligenceScaling: 0
