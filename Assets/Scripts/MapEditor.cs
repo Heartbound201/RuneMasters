@@ -122,13 +122,13 @@ public class MapEditor : MonoBehaviour
     private void PlaceCharacter(HexTile<Tile> hexTile, GameObject go)
     {
         // clear previous unit on tile
-        if (hexTile.Data.unitList.Count > 0)
+        if (hexTile.Data.content.Count > 0)
         {
-            Unit unit = hexTile.Data.unitList[0];
+            Unit unit = hexTile.Data.Unit;
             if (unit != null) Destroy(unit.gameObject);
         }
 
-        hexTile.Data.unitList.Clear();
+        hexTile.Data.content.Clear();
 
         // place unit on leveldata
         levelData.PlaceUnit(hexTile.Index, go);
@@ -139,20 +139,20 @@ public class MapEditor : MonoBehaviour
             GameObject instance = Instantiate(go, transform);
             instance.transform.position = hexTile.CartesianPosition;
             Unit character = instance.GetComponent<PlayerUnit>();
-            hexTile.Data.unitList.Add(character);
+            hexTile.Data.content.Add(character);
         }
     }
 
     private void PlaceEnemy(HexTile<Tile> hexTile, GameObject go)
     {
         // clear previous unit on tile
-        if (hexTile.Data.unitList.Count > 0)
+        if (hexTile.Data.content.Count > 0)
         {
-            Unit unit = hexTile.Data.unitList[0];
+            Unit unit = hexTile.Data.Unit;
             if (unit != null) Destroy(unit.gameObject);
         }
 
-        hexTile.Data.unitList.Clear();
+        hexTile.Data.content.Clear();
 
         // place unit on leveldata
         levelData.PlaceEnemy(hexTile.Index, go);
@@ -163,7 +163,7 @@ public class MapEditor : MonoBehaviour
             GameObject instance = Instantiate(go, transform);
             instance.transform.position = hexTile.CartesianPosition;
             Unit character = instance.GetComponent<EnemyUnit>();
-            hexTile.Data.unitList.Add(character);
+            hexTile.Data.content.Add(character);
         }
     }
 
@@ -300,7 +300,9 @@ public class MapEditor : MonoBehaviour
         LevelData data = ScriptableObject.CreateInstance<LevelData>();
         string fileName =
             $"Assets/ScriptableObjects/{name}_{DateTime.Today.Year}_{DateTime.Today.Month}_{DateTime.Today.Day}_{Guid.NewGuid()}.asset";
+#if UNITY_EDITOR
         AssetDatabase.CreateAsset(data, fileName);
+#endif
         return data;
     }
 
@@ -334,17 +336,21 @@ public class MapEditor : MonoBehaviour
         data.boardRadius = radius;
         foreach (var tile in hexMap.Tiles)
         {
-            if (tile.Data.unitList.Count > 0 && tile.Data.unitList[0] is PlayerUnit)
+            if (tile.Data.content.Count > 0 && tile.Data.content[0] is PlayerUnit)
             {
-                data.PlaceUnit(tile.Index, tile.Data.unitList[0].gameObject);
+                data.PlaceUnit(tile.Index, tile.Data.content[0].gameObject);
             }
-            if (tile.Data.unitList.Count > 0 && tile.Data.unitList[0] is EnemyUnit)
+
+            if (tile.Data.content.Count > 0 && tile.Data.content[0] is EnemyUnit)
             {
-                data.PlaceEnemy(tile.Index, tile.Data.unitList[0].gameObject);
+                data.PlaceEnemy(tile.Index, tile.Data.content[0].gameObject);
             }
+
             data.SwapTilePrototype(tile.Index, tile.Data.prototype);
         }
+#if UNITY_EDITOR
         EditorUtility.SetDirty(data);
+#endif
     }
 
     private TilePrototype GetRandomTileProto()

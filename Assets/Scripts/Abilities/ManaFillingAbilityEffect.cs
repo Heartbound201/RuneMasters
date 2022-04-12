@@ -6,15 +6,13 @@ using Wunderwunsch.HexMapLibrary.Generic;
 class ManaFillingAbilityEffect : AbilityEffect
 {
     public int amount;
+
     public override void Apply(Unit actor, HexTile<Tile> target)
     {
-        for (int i = target.Data.unitList.Count - 1; i >= 0; i--)
+        Unit unit = target.Data.Unit;
+        if (unit is PlayerUnit playerUnit)
         {
-            Unit unit = target.Data.unitList[i];
-            if (unit is PlayerUnit playerUnit)
-            {
-                playerUnit.party.FillMana(amount);
-            }
+            playerUnit.party.FillMana(amount);
         }
     }
 

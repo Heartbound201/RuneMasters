@@ -9,6 +9,7 @@ public abstract class Status
 
     public virtual void Apply(Unit target)
     {
+        if(target == null) return;
         target.statuses.Add(this);
     }
     public virtual void ApplyOnTurnStart(Unit target){}

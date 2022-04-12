@@ -11,9 +11,27 @@ public class Tile : MonoBehaviour
     public TilePrototype prototype;
 
     public Board board;
-    public List<Unit> unitList;
-    public bool isPassable;
+    public List<BoardObject> content;
 
+    public List<IDamageable> Damageables
+    {
+        get
+        {
+             return content.FindAll(c => c is IDamageable).Cast<IDamageable>().ToList();
+            
+        }
+    }
+    public Unit Unit
+    {
+        get
+        {
+            var bo = content.Find(c => c is Unit);
+            if (bo == null) return null;
+            return (Unit) bo;
+        }
+    }
+
+    public bool isPassable;
     public bool IsHighlighted;
     public bool IsSelected;
     public bool IsHovered;
@@ -63,7 +81,7 @@ public class Tile : MonoBehaviour
     private void Start()
     {
         originColor = _renderer.material.color;
-        unitList = new List<Unit>();
+        content = new List<BoardObject>();
     }
 
     public void Select(bool value)
@@ -127,6 +145,6 @@ public class Tile : MonoBehaviour
 
     public bool IsPassable
     {
-        get { return isPassable && unitList.TrueForAll(u => u.isPassable); }
+        get { return isPassable && content.TrueForAll(u => u.IsPassable); }
     }
 }

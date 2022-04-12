@@ -4,12 +4,11 @@ using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
-public class Unit : MonoBehaviour
+public class Unit : BoardObject, IDamageable
 {
     public string name;
     public int movement;
     public int movementMax;
-    public bool isPassable;
     public bool hasActed;
     public bool hasMoved;
     public HexTile<Tile> tile;
@@ -45,15 +44,15 @@ public class Unit : MonoBehaviour
     public virtual void PlaceOnTile(HexTile<Tile> target)
     {
         // Make sure old tile location is not still pointing to this unit
-        if (tile != null && tile.Data.unitList.Contains(this))
-            tile.Data.unitList.Remove(this);
+        if (tile != null && tile.Data.content.Contains(this))
+            tile.Data.content.Remove(this);
 
         // Link unit and tile references
         tile = target;
 
         if (target != null)
         {
-            target.Data.unitList.Add(this);
+            target.Data.content.Add(this);
             transform.position = target.CartesianPosition;
         }
     }
@@ -114,7 +113,7 @@ public class Unit : MonoBehaviour
     protected virtual void Filter(List<HexTile<Tile>> tiles)
     {
         for (int i = tiles.Count - 1; i > 0; --i)
-            if (tiles[i].Data.unitList.Count > 0)
+            if (tiles[i].Data.content.Count > 0)
                 tiles.RemoveAt(i);
     }
 

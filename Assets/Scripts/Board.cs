@@ -115,11 +115,11 @@ public class Board : MonoBehaviour
             forewarningController.ShowTotalDamage(totalDamage);
 
 
-            // check if there is a unit on the tile
-            if (tileHover.Data.unitList.Count != 0)
-            {
-                // Show damage received by unit on the tile
-                int unitDefense = tileHover.Data.unitList[0].defense;
+			// check if there is a unit on the tile
+			if (tileHover.Data.content.Count != 0)
+			{
+				// Show damage received by unit on the tile
+				int unitDefense = tileHover.Data.Unit.defense;
                 forewarningController.ShowDamageReceived(totalDamage - (unitDefense * enemyCount));
             }
             else

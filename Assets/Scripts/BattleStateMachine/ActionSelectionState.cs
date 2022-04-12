@@ -71,9 +71,9 @@ public class ActionSelectionState : State
 
     private void SelectUnitOrMovement(HexTile<Tile> obj)
     {
-        if (obj.Data.unitList.Count > 0 && obj.Data.unitList[0] is PlayerUnit)
+        if (obj.Data.content.Count > 0 && obj.Data.content[0] is PlayerUnit)
         {
-            Unit unit = obj.Data.unitList[0];
+            Unit unit = obj.Data.Unit;
             SelectCharacter((PlayerUnit) unit);
         }
         else

@@ -40,7 +40,7 @@ public class AIPlan
             value -= moveLocation.Data.dangerList.Count * 10;
         }
         
-        if (ability != null && attackLocation != null && attackLocation.Data.unitList.Count > 0)
+        if (ability != null && attackLocation != null && attackLocation.Data.content.Count > 0)
         {
             foreach (var hexTileInArea in ability.abilityArea.GetTilesInArea(attackLocation.Data.board, actor.tile, attackLocation))
             {

@@ -96,9 +96,9 @@ public class EnemyUnit : Unit
         Unit nearestEnemy = null;
         tile.Data.board.SearchRange(from.tile, delegate(HexTile<Tile> arg1, HexTile<Tile> arg2)
         {
-            if (nearestEnemy == null && arg2.Data.unitList.Count > 0)
+            if (nearestEnemy == null && arg2.Data.content.Count > 0)
             {
-                Unit other = arg2.Data.unitList[0];
+                Unit other = arg2.Data.Unit;
                 if (other != null && other is PlayerUnit)
                 {
                     Unit unit = other.GetComponent<Unit>();
@@ -127,7 +127,7 @@ public class EnemyUnit : Unit
     protected override void Die()
     {
         base.Die();
-        tile.Data.unitList.Remove(this);
+        tile.Data.content.Remove(this);
         KOEvent?.Invoke(this);
         Destroy(gameObject, 2f);
     }

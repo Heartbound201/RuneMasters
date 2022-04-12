@@ -25,7 +25,7 @@ class ConeAbilityArea : AbilityArea
             {
                 if (coneAngle > 30f)
                 {
-                    if(tile.Data.unitList.Count > 0 && tile.Data.unitList[0] != null)
+                    if(tile.Data.Unit != null)
                     {
                         yield return abilityEffect.ApplyParticleEffectSelf(actor, tile);
                         yield return abilityEffect.ApplyParticleEffectTarget(actor, tile);
