@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: enemy ability
   description: 
-  abilityArea: {fileID: 11400000, guid: 06a9cf3b6af79bc43b976e8fd518a451, type: 2}
+  abilityArea: {fileID: 11400000, guid: f802558204789174591885a5b29b1f9d, type: 2}
   abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
   - {fileID: 11400000, guid: 3686b00560fdebd459a3b8e6bb18430d, type: 2}
