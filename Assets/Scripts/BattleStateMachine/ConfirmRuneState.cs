@@ -98,7 +98,7 @@ public class ConfirmRuneState : State
         if (!hexTiles.TrueForAll(t =>
             t != null && (t.Data.IsPassable || (t.Data.unitList.Count > 0 && t.Data.unitList.TrueForAll(u => u is PlayerUnit))))) return;
         // the last tile must be empty
-        if(hexTiles.Last().Data.unitList.Count > 0) return;
+        if(hexTiles.Last().Data.unitList.Count > 0 && hexTiles.Last().Data.unitList[0] != owner.ActingUnit) return;
         // the number of tiles must be equal to the number of steps required by the rune
         if (selectedRuneTiles.Count != owner.SelectedRune.RunePrototype.steps.Count) return;
         StartCoroutine(ExecuteRune());
