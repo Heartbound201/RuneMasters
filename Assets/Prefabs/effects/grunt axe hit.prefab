@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 3794010035654942548}
   m_Layer: 0
-  m_Name: CFX_Hit_C White 1
+  m_Name: grunt axe hit
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

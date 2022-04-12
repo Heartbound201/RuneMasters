@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2ca27d16934ceeb3a2238df967a105, type: 3}
   m_Name: Heal5
   m_EditorClassIdentifier: 
+  particleEffectSelf: {fileID: 0}
+  particleEffectProjectile: {fileID: 0}
+  particleEffectTarget: {fileID: 100004, guid: f2294f453ca6e344c974593dad1953bd, type: 3}
   potency: 5
   strengthScaling: 0
   intelligenceScaling: 0
