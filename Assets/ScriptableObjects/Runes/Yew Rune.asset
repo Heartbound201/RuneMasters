@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
-  m_Name: Blitz Rune Red
+  m_Name: Yew Rune
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 914976df2006dff47a070648f5ad8a69, type: 3}
-  runeName: Blitz
+  icon: {fileID: 0}
+  runeName: 
   description: 
-  steps: 000000000000000002000000020000000000000000000000
-  ability: {fileID: 11400000, guid: 0b60ba39a2f98e347bb5cf6ea74d0bde, type: 2}
-  cooldown: 2
+  steps: 01000000000000000000000001000000
+  ability: {fileID: 0}
+  cooldown: 0
   category: 0
-  categorySprite: {fileID: 21300000, guid: badda803d0ff3454a8c9e172ce4acfd5, type: 3}
+  categorySprite: {fileID: 0}
