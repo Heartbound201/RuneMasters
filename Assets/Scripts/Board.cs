@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
@@ -10,20 +11,18 @@ public class Board : MonoBehaviour
 {
     public static event Action<HexTile<Tile>> SelectTileEvent;
 
-	public HexMouse hexMouse;
+    public HexMouse hexMouse;
     public HexMap<Tile, int> hexMap;
 
     public HexTile<Tile> tileHover;
     public HexTile<Tile> tileSelection;
 
-	[Header("UI")]
-	public Canvas canvas;
+    [Header("UI")] public Canvas canvas;
 
-	public GameObject forewarningTab;
-	private Forewarning forewarningController;
+    public GameObject forewarningTab;
+    private Forewarning forewarningController;
 
-	[Header("Audio")] 
-    public AudioClipSO tileHoverSfx;
+    [Header("Audio")] public AudioClipSO tileHoverSfx;
     public AudioClipSO tilePlaceSfx;
     public AudioClipSO tileSelectionSfx;
     public AudioClipSO unitPlacementSfx;
@@ -49,8 +48,11 @@ public class Board : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            SelectTile(t);
-            SelectTileEvent?.Invoke(t);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                SelectTile(t);
+                SelectTileEvent?.Invoke(t);
+            }
         }
     }
 
@@ -63,69 +65,69 @@ public class Board : MonoBehaviour
 
         tileHover = tile;
         tileHover.Data.Hover(true);
-        if(tileHoverSfx) AudioManager.Instance.PlaySfx(tileHoverSfx);
+        if (tileHoverSfx) AudioManager.Instance.PlaySfx(tileHoverSfx);
 
-		// Check if tile is in danger
-		if (tileHover.Data.dangerList.Count != 0)
-		{
-			int totalDamage = 0;
-			int enemyCount = 0;
-			string InfoText = "";
+        // Check if tile is in danger
+        if (tileHover.Data.dangerList.Count != 0)
+        {
+            int totalDamage = 0;
+            int enemyCount = 0;
+            string InfoText = "";
 
-			foreach (AIPlan enemy in tileHover.Data.dangerList)
-			{
-				enemyCount++;
-				InfoText += enemy.actor.name + ": ";
+            foreach (AIPlan enemy in tileHover.Data.dangerList)
+            {
+                enemyCount++;
+                InfoText += enemy.actor.name + ": ";
 
-                if(enemy.ability.abilityEffects.Count != 0)
-				{
-                    foreach(AbilityEffect ability in enemy.ability.abilityEffects)
-					{
+                if (enemy.ability.abilityEffects.Count != 0)
+                {
+                    foreach (AbilityEffect ability in enemy.ability.abilityEffects)
+                    {
                         // Cast to understand what type of ability will hit
                         if (ability as DamageAbilityEffect)
-						{
+                        {
                             DamageAbilityEffect DamageAbility = ability as DamageAbilityEffect;
-							totalDamage += DamageAbility.potency;
+                            totalDamage += DamageAbility.potency;
 
-							InfoText += DamageAbility.potency.ToString() + "\n";
+                            InfoText += DamageAbility.potency.ToString() + "\n";
                         }
                         //Other casts, if necessary(dotdamage etc..)
                         else if (ability as DamageOvertimeAbilityEffect)
                         {
-							DamageOvertimeAbilityEffect DamageOvertimeAbility = ability as DamageOvertimeAbilityEffect;
-							totalDamage += DamageOvertimeAbility.potency;
+                            DamageOvertimeAbilityEffect DamageOvertimeAbility = ability as DamageOvertimeAbilityEffect;
+                            totalDamage += DamageOvertimeAbility.potency;
 
-							InfoText += DamageOvertimeAbility.potency.ToString() + " (" + DamageOvertimeAbility.duration.ToString() + ")\n";
-						}
-						else if (ability as StatsAlteringAbilityEffect)
+                            InfoText += DamageOvertimeAbility.potency.ToString() + " (" +
+                                        DamageOvertimeAbility.duration.ToString() + ")\n";
+                        }
+                        else if (ability as StatsAlteringAbilityEffect)
                         {
-							StatsAlteringAbilityEffect StatsAlteringAbility = ability as StatsAlteringAbilityEffect;
-
-						}
+                            StatsAlteringAbilityEffect StatsAlteringAbility = ability as StatsAlteringAbilityEffect;
+                        }
                     }
                 }
-			}
+            }
 
-			// Get and pass tileHover.Data.dangerList[0].actor and ability damage to UI
-			forewarningController.ShowInfoText(InfoText);
+            // Get and pass tileHover.Data.dangerList[0].actor and ability damage to UI
+            forewarningController.ShowInfoText(InfoText);
 
-			// Show total damage done by enemies
-			forewarningController.ShowTotalDamage(totalDamage);
+            // Show total damage done by enemies
+            forewarningController.ShowTotalDamage(totalDamage);
 
 
-			// check if there is a unit on the tile
-			if (tileHover.Data.unitList.Count != 0)
-			{
-				// Show damage received by unit on the tile
-				int unitDefense = tileHover.Data.unitList[0].defense;
+            // check if there is a unit on the tile
+            if (tileHover.Data.unitList.Count != 0)
+            {
+                // Show damage received by unit on the tile
+                int unitDefense = tileHover.Data.unitList[0].defense;
                 forewarningController.ShowDamageReceived(totalDamage - (unitDefense * enemyCount));
-			}
-			else
-			{
+            }
+            else
+            {
                 forewarningController.DamageReceivedPanel.SetActive(false);
             }
 
-			// Visualize tab
+            // Visualize tab
             forewarningTab.SetActive(true);
         }
         else
@@ -144,7 +146,7 @@ public class Board : MonoBehaviour
         tileSelection = tile;
 
         tileSelection.Data.Select(true);
-        if(tileSelectionSfx) AudioManager.Instance.PlaySfx(tileSelectionSfx);
+        if (tileSelectionSfx) AudioManager.Instance.PlaySfx(tileSelectionSfx);
     }
 
     public void HighlightTiles(List<HexTile<Tile>> tiles)
@@ -158,15 +160,15 @@ public class Board : MonoBehaviour
     public GameObject SpawnEntity(GameObject obj, int index)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
-        if(unitPlacementSfx) AudioManager.Instance.PlaySfx(unitPlacementSfx);
+        if (unitPlacementSfx) AudioManager.Instance.PlaySfx(unitPlacementSfx);
         return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
     public IEnumerator GenerateBoard(LevelData levelData)
     {
-		canvas.enabled = false;
+        canvas.enabled = false;
 
-		hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
+        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
         tiles = new GameObject[hexMap.TilesByPosition.Count];
         edges = new GameObject[hexMap.EdgesByPosition.Count];
@@ -183,9 +185,9 @@ public class Board : MonoBehaviour
             tile.Data.posNorm = tile.NormalizedPosition;
             tile.Data.prototype = tilePrototype;
             tiles[tile.Index] = instance;
-            
-            if(tilePlaceSfx) AudioManager.Instance.PlaySfx(tilePlaceSfx);
-            
+
+            if (tilePlaceSfx) AudioManager.Instance.PlaySfx(tilePlaceSfx);
+
             yield return null;
         }
 
@@ -202,9 +204,9 @@ public class Board : MonoBehaviour
             }
         }
 
-		canvas.enabled = true;
+        canvas.enabled = true;
 
-		yield return null;
+        yield return null;
     }
 
     public List<HexTile<Tile>> SearchRange(HexTile<Tile> start, Func<HexTile<Tile>, HexTile<Tile>, bool> addTile,
@@ -325,7 +327,8 @@ public class Board : MonoBehaviour
 
     public List<Vector3Int> RotateCounterClockwise(List<Vector3Int> tiles, Vector3Int center)
     {
-        return tiles.Select(hexTile => HexGrid.GetTile.FromTileRotated60DegreeCounterClockwise(center, hexTile)).ToList();
+        return tiles.Select(hexTile => HexGrid.GetTile.FromTileRotated60DegreeCounterClockwise(center, hexTile))
+            .ToList();
     }
 
     public HexTile<Tile> GetTile(Vector3Int position)
