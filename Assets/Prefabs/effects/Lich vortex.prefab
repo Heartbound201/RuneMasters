@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 19900002}
   - component: {fileID: -5443025590446355703}
   m_Layer: 0
-  m_Name: CFX3_Vortex_Ground 1
+  m_Name: Lich vortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
