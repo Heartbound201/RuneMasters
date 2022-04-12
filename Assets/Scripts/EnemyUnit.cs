@@ -15,6 +15,7 @@ public class EnemyUnit : Unit
 
     void Start()
     {
+        base.Start();
         currentHealth = health;
         healthBar.UpdateHealth(currentHealth, health);
     }

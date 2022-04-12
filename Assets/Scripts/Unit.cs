@@ -33,7 +33,7 @@ public class Unit : MonoBehaviour
     public AudioClipSO attackSfx;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         animator = GetComponentInChildren<Animator>();
         strengthStart = strength;
