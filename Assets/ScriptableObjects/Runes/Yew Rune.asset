@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Yew Rune
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  runeName: 
+  runeName: Yew
   description: 
   steps: 01000000000000000000000001000000
   ability: {fileID: 0}
