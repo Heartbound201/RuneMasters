@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
@@ -12,7 +13,21 @@ public class SingleAbilityArea : AbilityArea
             retValue.Add(target);
         return retValue;
     }
-    
+
+    public override IEnumerator Execute(Unit actor, HexTile<Tile> targetTile, List<AbilityEffect> abilityEffects)
+    {
+        List<HexTile<Tile>> tilesInArea = GetTilesInArea(targetTile.Data.board, actor.tile, targetTile);
+        foreach (HexTile<Tile> tile in tilesInArea)
+        {
+            foreach (AbilityEffect abilityEffect in abilityEffects)
+            {
+                yield return abilityEffect.ApplyParticleEffectSelf(actor, tile);
+                yield return abilityEffect.ApplyParticleEffectTarget(actor, tile);
+                abilityEffect.Apply(actor, tile);
+            }
+        }
+    }
+
     public override string Summary()
     {
         return $"Single";

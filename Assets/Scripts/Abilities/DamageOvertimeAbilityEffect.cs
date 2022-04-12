@@ -10,9 +10,8 @@ class DamageOvertimeAbilityEffect : DamageAbilityEffect
 {
     public int duration;
 
-    public override IEnumerator Apply(Unit actor, HexTile<Tile> target)
+    public override void Apply(Unit actor, HexTile<Tile> target)
     {
-        yield return base.Apply(actor, target);
         for (int i = target.Data.unitList.Count - 1; i >= 0; i--)
         {
             DamageOvertimeOnTurnStartStatus se = new DamageOvertimeOnTurnStartStatus(duration, potency);
