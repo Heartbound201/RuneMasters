@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f976219fcf240b198170290f19a4c82, type: 3}
   m_Name: BattleThemeAudio
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: c7bd3f612533f8d44bcf1fbec5300b13, type: 3}
+  audioClip: {fileID: 8300000, guid: 3853279e64a6ce94ea4ae0476f7223a0, type: 3}
+  loop: 1
