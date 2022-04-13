@@ -1381,6 +1381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8469307636208718403, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
+      propertyPath: partyInfoMenuController
+      value: 
+      objectReference: {fileID: 1658000950}
     - target: {fileID: 8469307636208718412, guid: ae5a0d526e3128c4aa8fda283d2ee86b, type: 3}
       propertyPath: m_Name
       value: Party

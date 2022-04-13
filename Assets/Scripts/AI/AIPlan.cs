@@ -34,7 +34,10 @@ public class AIPlan
         {                
             int currentDistance = moveLocation.Data.board.hexMap.GetTileDistance.Grid(actor.tile.Position, nearestEnemy.tile.Position);
             int afterMovementDistance = moveLocation.Data.board.hexMap.GetTileDistance.Grid(moveLocation.Position, nearestEnemy.tile.Position);
+            // add value the closer you get to the enemy
             value += currentDistance - afterMovementDistance;
+            // subtract value if standing on endangered tile 
+            value -= moveLocation.Data.dangerList.Count * 10;
         }
         
         if (ability != null && attackLocation != null && attackLocation.Data.unitList.Count > 0)

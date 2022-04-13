@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary.Generic;
 
@@ -30,7 +31,9 @@ public class EnemyUnit : Unit
         Unit nearestEnemy = GetNearestEnemy(this);
         Debug.Log("Nearest enemy is " + nearestEnemy);
 
-        AIPlan bestPlan = new AIPlan(this, null, null, tile, nearestEnemy);
+        List<AIPlan> aiPlans = new List<AIPlan>();
+        AIPlan firstPlan = new AIPlan(this, null, null, tile, nearestEnemy);
+        aiPlans.Add(firstPlan);
         planCounter++;
         
         // Evaluate every possible movement
@@ -39,13 +42,11 @@ public class EnemyUnit : Unit
             // There may not be a useful ability to cast
             AIPlan planMoveOnly = new AIPlan(this, null, null, moveOpt, nearestEnemy);
             planCounter++;
-
-            if (planMoveOnly.Evaluate() >= bestPlan.Evaluate())
-            {
-                bestPlan = planMoveOnly;
-            }
+            aiPlans.Add(planMoveOnly);
         }
         PlaceOnTile(start);
+
+        var bestPlan = aiPlans.OrderBy(plan => plan.Evaluate()).Last();
         Debug.LogFormat("[AI {0}] {1} plans explored in {2}. Best plan's score: {3}",
             this, planCounter, (Time.realtimeSinceStartup - temp), bestPlan.Evaluate());
         return bestPlan;
@@ -62,7 +63,9 @@ public class EnemyUnit : Unit
         Unit nearestEnemy = GetNearestEnemy(this);
         Debug.Log("Nearest enemy is " + nearestEnemy);
 
-        AIPlan bestPlan = new AIPlan(this, null, null, tile, nearestEnemy);
+        List<AIPlan> aiPlans = new List<AIPlan>();
+        AIPlan firstPlan = new AIPlan(this, null, null, tile, nearestEnemy);
+        aiPlans.Add(firstPlan);
         planCounter++;
 
 
@@ -76,12 +79,13 @@ public class EnemyUnit : Unit
             {
                 AIPlan plan = new AIPlan(this, a, atkOpt, start, nearestEnemy);
                 planCounter++;
-                if (plan.Evaluate() > bestPlan.Evaluate())
-                    bestPlan = plan;
+                aiPlans.Add(plan);
             }
         }
 
         PlaceOnTile(start);
+        
+        var bestPlan = aiPlans.OrderBy(plan => plan.Evaluate()).Last();
         Debug.LogFormat("[AI {0}] {1} plans explored in {2}. Best plan's score: {3}",
             this, planCounter, (Time.realtimeSinceStartup - temp), bestPlan.Evaluate());
         return bestPlan;

@@ -12,7 +12,6 @@ public class ActionSelectionState : State
     {
         base.Enter();
 
-        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
         StartCoroutine(SwitchCharacterOrTurn());
     }
 
@@ -53,8 +52,6 @@ public class ActionSelectionState : State
     {
         base.Exit();
         Board.ClearHighlight();
-
-        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
     }
 
 

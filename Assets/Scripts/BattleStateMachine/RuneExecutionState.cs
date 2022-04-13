@@ -10,13 +10,6 @@ public class RuneExecutionState : State
         StartCoroutine(Sequence(owner.SelectedRuneSteps));
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-        
-        owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
-    }
-
     IEnumerator Sequence(List<HexTile<Tile>> line)
     {
         yield return StartCoroutine(owner.ActingUnit.MoveRune(line)); // coroutine

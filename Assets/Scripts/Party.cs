@@ -11,6 +11,7 @@ public class Party : MonoSingleton<Party>
     [field: SerializeField] public int ManaReserveMax { get; set; }
 
     public List<PlayerUnit> Units { get; } = new List<PlayerUnit>();
+    public PartyInfoMenuController partyInfoMenuController;
 
     public int AvailableMana => Mana + ManaReserve;
 
@@ -18,6 +19,7 @@ public class Party : MonoSingleton<Party>
     {
         ManaReserve = Mathf.Clamp(Mana / 2, 0, ManaReserveMax);
         Mana = ManaMax;
+        partyInfoMenuController.UpdatePartyInfo(this);
     }
 
     public void SpendMana(int amount)
@@ -37,6 +39,7 @@ public class Party : MonoSingleton<Party>
         {
             Mana = Mathf.Clamp(Mana - amount, 0, ManaMax);
         }
+        partyInfoMenuController.UpdatePartyInfo(this);
     }
 
     public void FillMana(int amount)
@@ -47,16 +50,19 @@ public class Party : MonoSingleton<Party>
         {
             ManaReserve = Mathf.Clamp(ManaReserve + left, 0, ManaReserveMax);
         }
+        partyInfoMenuController.UpdatePartyInfo(this);
     }
 
     public void TakeDamage(int amount)
     {
         Health = Mathf.Clamp(Health - amount, 0, HealthMax);
+        partyInfoMenuController.UpdatePartyInfo(this);
     }
 
     public void Heal(int amount)
     {
         Health = Mathf.Clamp(Health + amount, 0, HealthMax);
+        partyInfoMenuController.UpdatePartyInfo(this);
     }
 
     public void Init()
@@ -64,5 +70,6 @@ public class Party : MonoSingleton<Party>
         Health = HealthMax;
         Mana = ManaMax;
         ManaReserve = 0;
+        partyInfoMenuController.UpdatePartyInfo(this);
     }
 }
