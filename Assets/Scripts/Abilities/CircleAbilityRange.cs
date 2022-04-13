@@ -20,6 +20,11 @@ public class CircleAbilityRange : AbilityRange
     }
     public override string Summary()
     {
-        return $"Circle radius <b>{range}</b>";
+		if (range == 0)
+		{
+			return $"Self";
+		}
+
+		return $"<b>{range}</b>";
     }
 }

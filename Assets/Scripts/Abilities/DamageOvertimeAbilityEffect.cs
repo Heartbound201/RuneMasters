@@ -40,7 +40,7 @@ class DamageOvertimeAbilityEffect : DamageAbilityEffect
         {
             scalingString = $"[{scalingString}]";
         }
-        string text = $"<b>{potency} {scalingString}</b> Damage Overtime for {duration} turns";
+        string text = $"<b>{potency}{scalingString}</b> Dmg overtime ({duration} turns)";
         return text;
     }
 }

@@ -20,7 +20,7 @@ class ManaFillingAbilityEffect : AbilityEffect
 
     public override string Summary()
     {
-        string text = $"Mana filling <b>{amount}</b> effect";
+        string text = $"+<b>{amount}</b> current Mana";
         return text;
     }
 }

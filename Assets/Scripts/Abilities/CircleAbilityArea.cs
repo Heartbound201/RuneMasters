@@ -32,6 +32,11 @@ public class CircleAbilityArea : AbilityArea
 
     public override string Summary()
     {
+		if(range == 0)
+		{
+			return $"Single target";
+		}
+
         return $"Circle radius <b>{range}</b>";
     }
 

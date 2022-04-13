@@ -44,7 +44,7 @@ class StatsAlteringAbilityEffect : AbilityEffect
         }
 
         string statsString = String.Join(", ", stats);
-        string text = $"<b>{statsString}</b> Stats altering for {duration} turns";
+        string text = $"+<b>{statsString}</b> ({duration} turns)";
         return text;
     }
 }

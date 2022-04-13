@@ -30,7 +30,7 @@ public class HealEffect : AbilityEffect
         }
         if (intelligenceScaling != 0)
         {
-            scalings.Add($"{intelligenceScaling:0.##\\%} NT");
+            scalings.Add($"{intelligenceScaling:0.##\\%} INT");
         }
         if (dexterityScaling != 0)
         {
@@ -42,7 +42,7 @@ public class HealEffect : AbilityEffect
         {
             scalingString = $"[{scalingString}]";
         }
-        string text = $"<b>{potency} {scalingString}</b> Healing";
+        string text = $"+<b>{potency}{scalingString}</b> current Health";
         return text;
     }
 }

@@ -46,7 +46,7 @@ public class DamageAbilityEffect : AbilityEffect
         {
             scalingString = $"[{scalingString}]";
         }
-        string text = $"<b>{potency} {scalingString}</b> Damage";
+        string text = $"<b>{potency}{scalingString}</b> Dmg";
         return text;
     }
 }
