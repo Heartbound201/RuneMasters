@@ -13,11 +13,16 @@ public class ActionSelectionState : State
         base.Enter();
 
         owner.partyInfoMenuController.UpdatePartyInfo(owner.party);
+        StartCoroutine(SwitchCharacterOrTurn());
+    }
 
+    private IEnumerator SwitchCharacterOrTurn()
+    {
         // change turn if
         // party mana <= 0
         // all units have acted
-        Debug.LogFormat("is turn over? {0} || {1}", owner.party.Units.TrueForAll(u => u.hasActed) , owner.party.AvailableMana <= 0);
+        
+        yield return null;
         if (owner.party.Units.TrueForAll(u => u.hasActed) || owner.party.AvailableMana <= 0)
         {
             owner.ChangeState<TurnSelectionState>();
@@ -28,7 +33,7 @@ public class ActionSelectionState : State
         {
             SelectCharacter(owner.party.Units.First());
         }
-        
+
         // if the current acting unit has acted it cannot use tact movement even if it has movement left
         // select another one that can move or act
         else if (owner.ActingUnit.hasActed)
@@ -36,13 +41,12 @@ public class ActionSelectionState : State
             PlayerUnit playerUnit = owner.party.Units.Find(u => !u.hasActed || u.movement > 0);
             SelectCharacter((PlayerUnit) (playerUnit != null ? playerUnit : owner.ActingUnit));
         }
-        
+
         // if the current acting unit has only moved and can act, keep it selected
         else
         {
             SelectCharacter((PlayerUnit) owner.ActingUnit);
         }
-
     }
 
     public override void Exit()
@@ -80,7 +84,7 @@ public class ActionSelectionState : State
             SelectTileForMovement(obj);
         }
     }
-    
+
     private void SelectTileForMovement(HexTile<Tile> obj)
     {
         if (!tilesInRange.Contains(obj)) return;
@@ -93,12 +97,12 @@ public class ActionSelectionState : State
         owner.turnMenuController.SelectCharacter(unit);
         HighlightAllowedMovement(unit);
     }
-    
+
 
     private void HighlightAllowedMovement(Unit unit)
     {
         Board.ClearHighlight();
-        if(!unit.hasActed)
+        if (!unit.hasActed)
         {
             tilesInRange = unit.GetTilesInRange();
             Board.HighlightTiles(tilesInRange);
