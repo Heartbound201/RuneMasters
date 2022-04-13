@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52851217fd3397f4a86f8a4f03da19e4, type: 3}
-  m_Name: SpearBlueAbility 4
+  m_Name: PdorBlueAbility
   m_EditorClassIdentifier: 
-  name: Spear
+  name: Pdor
   description: 
   abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: 9acaf1939569c9a49b611a41dae9974c, type: 2}
+  abilityRange: {fileID: 11400000, guid: f4ab2f2ab63a93245990129ed126c4b0, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: 2298db8971b7295489bdbf9bfb88627e, type: 2}
+  - {fileID: 11400000, guid: e5690e45672eeb845bafbf4633b3dd7b, type: 2}
