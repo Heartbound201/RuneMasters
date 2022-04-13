@@ -106,7 +106,7 @@ public class Tile : MonoBehaviour
 
         if (IsHighlighted && dangerList.Count > 0)
         {
-            _renderer.material.color = Color.Lerp(dangerColor, highlightColor, 0.2f);
+            _renderer.material.color = Color.Lerp(dangerColor, highlightColor, 0.3f);
             return;
         }
 
