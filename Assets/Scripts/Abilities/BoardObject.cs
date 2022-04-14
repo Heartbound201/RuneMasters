@@ -4,7 +4,7 @@ using Wunderwunsch.HexMapLibrary.Generic;
 public class BoardObject : MonoBehaviour
 {
     public HexTile<Tile> Tile { get; set; }
-    public bool IsPassable { get; set; }
+    public bool isPassable;
     protected void PlaceOnTile(HexTile<Tile> target)
     {
         // Make sure old tile location is not still pointing to this unit

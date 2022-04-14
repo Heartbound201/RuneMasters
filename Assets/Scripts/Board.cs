@@ -116,7 +116,7 @@ public class Board : MonoBehaviour
 
 
 			// check if there is a unit on the tile
-			if (tileHover.Data.content.Count != 0)
+			if (tileHover.Data.Unit != null)
 			{
 				// Show damage received by unit on the tile
 				int unitDefense = tileHover.Data.Unit.defense;

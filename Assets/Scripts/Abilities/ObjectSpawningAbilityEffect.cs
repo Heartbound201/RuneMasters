@@ -7,15 +7,17 @@ using Object = UnityEngine.Object;
 [CreateAssetMenu(fileName = "CreateObjectEffect", menuName = "Create Object Ability Effect")]
 class ObjectSpawningAbilityEffect : AbilityEffect
 {
-    // TODO add dedicated class with board and/or tile reference
-    public BoardObject boardObject;
+    public GameObject boardObject;
 
     public override void Apply(Unit actor, HexTile<Tile> target)
     {
         if (target.Data.content.Count == 0)
         {
-            var instantiate = Instantiate(boardObject, target.Data.transform);
+            GameObject instantiate = Instantiate(boardObject, target.Data.transform);
             instantiate.transform.position = target.Data.transform.position;
+            BoardObject component = instantiate.GetComponent<BoardObject>();
+            component.Tile = target;
+            target.Data.content.Add(component);
         }
     }
 

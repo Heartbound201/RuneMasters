@@ -145,6 +145,6 @@ public class Tile : MonoBehaviour
 
     public bool IsPassable
     {
-        get { return isPassable && content.TrueForAll(u => u.IsPassable); }
+        get { return isPassable && content.TrueForAll(u => u.isPassable); }
     }
 }

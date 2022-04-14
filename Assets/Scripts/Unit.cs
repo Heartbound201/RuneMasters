@@ -66,7 +66,7 @@ public class Unit : BoardObject, IDamageable
 
     public virtual bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
-        return (from.Data._distance + 1) <= movement && to.Data.isPassable;
+        return (from.Data._distance + 1) <= movement && to.Data.IsPassable;
     }
 
     public virtual IEnumerator MoveTact(List<HexTile<Tile>> tiles)

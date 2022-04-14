@@ -1,9 +1,11 @@
 using UnityEngine;
+using Wunderwunsch.HexMapLibrary;
 
 public class DestroyableBoardObject : BoardObject, IDamageable
 {
     [SerializeField] private int startingHealth;
     private int currentHealth;
+
     public void TakeDamage(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, startingHealth);
@@ -22,6 +24,6 @@ public class DestroyableBoardObject : BoardObject, IDamageable
     private void DestroyBoardObject()
     {
         Tile.Data.content.Remove(this);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
