@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c70d693d1d432a9305d9c636bdca32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassable: 0
   name: Mage
   movement: 2
   movementMax: 2
-  isPassable: 0
   hasActed: 0
   hasMoved: 0
   direction: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ebe9d6f96ea41a843b63e091fa4d1ba4, type: 2}
   - {fileID: 11400000, guid: aee3444bb1aadb04d9b2dd6bebd64c9c, type: 2}
   - {fileID: 11400000, guid: 7fdf261c9fc089146afe8eaf04214e83, type: 2}
+  - {fileID: 11400000, guid: 8950e3360059b3545828dda942cf976e, type: 2}
   party: {fileID: 0}
 --- !u!1001 &8062240362380193792
 PrefabInstance:
