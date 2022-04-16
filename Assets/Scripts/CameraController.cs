@@ -17,6 +17,9 @@ public class CameraController : MonoBehaviour
     public Bounds bounds;
 
     private bool inTransition = false;
+    private bool targetReached = true;
+    private Vector3 targetFollow;
+    private Vector3 followOrigin;
     private Vector3 dragOrigin;
 
     public enum CameraMode
@@ -66,14 +69,18 @@ public class CameraController : MonoBehaviour
         inTransition = false;
     }
 
-    public static void CameraLookAt(Unit unit)
+    public void CameraLookAt(Unit unit)
     {
-        var position = unit.transform.position;
-        instance.cam.transform.position = new Vector3(position.x, 0 , position.z);
-    } public void CameraLookAt(HexTile<Tile> tile)
+        targetFollow = unit.transform.position;
+        targetReached = false;
+        followOrigin = cam.transform.position;
+    }
+
+    public void CameraLookAt(HexTile<Tile> tile)
     {
-        var position = tile.Data.transform.position;
-        instance.cam.transform.position = new Vector3(position.x, 0 , position.z);
+        targetFollow = tile.Data.transform.position;
+        targetReached = false;
+        followOrigin = cam.transform.position;
     }
 
     private void Update()
@@ -85,6 +92,18 @@ public class CameraController : MonoBehaviour
 
         ChangeZoom();
         HandlePanning();
+        FollowTarget();
+    }
+
+    private void FollowTarget()
+    {
+        if (targetReached) return;
+        cam.transform.position = Vector3.Lerp(cam.transform.position, targetFollow, Time.deltaTime * 2);
+        if (Vector3.Distance(followOrigin, targetFollow) < .2f)
+        {
+            cam.transform.position = targetFollow;
+            targetReached = true;
+        }
     }
 
     private void HandlePanning()
@@ -92,6 +111,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+            targetReached = true;
         }
 
         if (Input.GetMouseButton(2))

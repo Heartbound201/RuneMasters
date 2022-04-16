@@ -42,7 +42,7 @@ public class TurnMenuController : MonoBehaviour
     {
         stateMachine.ActingUnit = unit;
 
-        CameraController.CameraLookAt(unit);
+        CameraController.instance.CameraLookAt(unit);
         // clear rune panel
         ClearRunePanel();
 
