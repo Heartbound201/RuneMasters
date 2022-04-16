@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements.Experimental;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
 
@@ -28,6 +29,9 @@ public class Board : MonoBehaviour
     public AudioClipSO unitPlacementSfx;
 
     public GameObject edgePrefab;
+    public bool animateTileSpawn;
+
+    [Header("ParticleEffects")] public GameObject spawnEffect;
     private GameObject[] edges;
     private GameObject[] tiles;
 
@@ -115,11 +119,11 @@ public class Board : MonoBehaviour
             forewarningController.ShowTotalDamage(totalDamage);
 
 
-			// check if there is a unit on the tile
-			if (tileHover.Data.Unit != null)
-			{
-				// Show damage received by unit on the tile
-				int unitDefense = tileHover.Data.Unit.defense;
+            // check if there is a unit on the tile
+            if (tileHover.Data.Unit != null)
+            {
+                // Show damage received by unit on the tile
+                int unitDefense = tileHover.Data.Unit.defense;
                 forewarningController.ShowDamageReceived(totalDamage - (unitDefense * enemyCount));
             }
             else
@@ -161,6 +165,10 @@ public class Board : MonoBehaviour
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
         if (unitPlacementSfx) AudioManager.Instance.PlaySfx(unitPlacementSfx);
+        if (spawnEffect)
+        {
+            Instantiate(spawnEffect, hexTile.Data.transform);
+        }
         return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
@@ -172,35 +180,30 @@ public class Board : MonoBehaviour
         hexMouse.Init(hexMap);
         tiles = new GameObject[hexMap.TilesByPosition.Count];
         edges = new GameObject[hexMap.EdgesByPosition.Count];
-        foreach (var tile in hexMap.Tiles)
+
+        var centerTile = hexMap.TilesByPosition[Vector3Int.zero];
+        var centerPrototype = levelData.tiles.Find(ti => ti.index == centerTile.Index).proto;
+        SpawnTile(centerPrototype, centerTile);
+        for (int i = 1; i <= levelData.boardRadius; i++)
         {
-            TilePrototype tilePrototype = levelData.tiles.Find(ti => ti.index == tile.Index).proto;
-            GameObject instance = Instantiate(tilePrototype.prefab, transform);
-            instance.transform.position = tile.CartesianPosition;
-            instance.gameObject.name = "Hex" + tile.CartesianPosition + "[" + tile.Index + "]";
-            tile.Data = instance.GetComponent<Tile>();
-            tile.Data.board = this;
-            tile.Data.pos = tile.Position;
-            tile.Data.posCart = tile.CartesianPosition;
-            tile.Data.posNorm = tile.NormalizedPosition;
-            tile.Data.prototype = tilePrototype;
-            tiles[tile.Index] = instance;
+            List<HexTile<Tile>> ring = hexMap.GetTiles.Ring(centerTile, i, 1);
 
-            if (tilePlaceSfx) AudioManager.Instance.PlaySfx(tilePlaceSfx);
+            foreach (var tile in ring)
+            {
+                TilePrototype tilePrototype = levelData.tiles.Find(ti => ti.index == tile.Index).proto;
+                SpawnTile(tilePrototype, tile);
+                if (tilePlaceSfx) AudioManager.Instance.PlaySfx(tilePlaceSfx);
+            }
 
-            yield return null;
+            yield return new WaitForSeconds(0.2f);
         }
+
 
         if (edgePrefab)
         {
             foreach (var tileBorder in hexMap.Edges)
             {
-                GameObject instance = Instantiate(edgePrefab, transform);
-                instance.name = "MapEdge_" + tileBorder.Position;
-                instance.transform.position = tileBorder.CartesianPosition;
-                instance.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
-                edges[tileBorder.Index] = instance;
-                instance.SetActive(true);
+                SpawnEdge(tileBorder);
             }
         }
 
@@ -209,6 +212,52 @@ public class Board : MonoBehaviour
         yield return null;
     }
 
+    private void SpawnEdge(HexEdge<int> tileBorder)
+    {
+        GameObject instance = Instantiate(edgePrefab, transform);
+        instance.name = "MapEdge_" + tileBorder.Position;
+        instance.transform.position = tileBorder.CartesianPosition;
+        instance.transform.rotation = Quaternion.Euler(0, tileBorder.EdgeAlignmentAngle, 0);
+        edges[tileBorder.Index] = instance;
+        instance.SetActive(true);
+    }
+
+    private void SpawnTile(TilePrototype tilePrototype, HexTile<Tile> tile)
+    {
+        GameObject instance = Instantiate(tilePrototype.prefab, transform);
+        instance.transform.position = tile.CartesianPosition;
+        instance.gameObject.name = "Hex" + tile.CartesianPosition + "[" + tile.Index + "]";
+        tile.Data = instance.GetComponent<Tile>();
+        tile.Data.board = this;
+        tile.Data.pos = tile.Position;
+        tile.Data.posCart = tile.CartesianPosition;
+        tile.Data.posNorm = tile.NormalizedPosition;
+        tile.Data.prototype = tilePrototype;
+        tiles[tile.Index] = instance;
+
+        if (animateTileSpawn)
+        {
+            var endPos = instance.transform.position;
+            var startPos = instance.transform.position + Vector3.up * 2;
+            StartCoroutine(EasePosition(instance.transform, startPos, endPos, 0.5f, EaseMethods.ElasticEaseOut));
+        }
+    }
+
+    public IEnumerator EasePosition(Transform trans, Vector3 start, Vector3 end, float dur, Ease ease)
+    {
+        float t = 0f;
+        while(t < dur)
+        {
+            float sc = ease(t, 0f, 1f, dur);
+            trans.position = Vector3.LerpUnclamped(start, end, sc);
+     
+            yield return null;
+            t += Time.deltaTime;
+        }
+ 
+        trans.position = end;
+    }
+    
     public List<HexTile<Tile>> SearchRange(HexTile<Tile> start, Func<HexTile<Tile>, HexTile<Tile>, bool> addTile,
         bool selectTilesAtEnd = false)
     {

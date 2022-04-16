@@ -22,6 +22,7 @@ public class UnitPlacementState : State
             EnemyUnit enemyUnit = spawnEntity.GetComponent<EnemyUnit>();
             enemyUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Left);
             owner.enemies.Add(enemyUnit);
+            yield return new WaitForSeconds(0.8f);
         }
 
         owner.party.Init();
@@ -33,6 +34,7 @@ public class UnitPlacementState : State
             playerUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Right);
             playerUnit.party = owner.party;
             owner.party.Units.Add(playerUnit);
+            yield return new WaitForSeconds(0.8f);
         }
 
         TurnManager.party = owner.party;
