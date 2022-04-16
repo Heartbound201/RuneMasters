@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hook
   description: 
-  abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: 34376573bc8ba8f4e82415416d93bba3, type: 2}
+  abilityArea: {fileID: 11400000, guid: 044e13a5899007f4bbc2331545666af6, type: 2}
+  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: 04580aac2f0186b499ec799e68b0604d, type: 2}
+  - {fileID: 11400000, guid: 7a0c27c16b99e6b489da39cfd4da878f, type: 2}
