@@ -68,6 +68,7 @@ public class PlayerUnit : Unit
     {
         base.TakeDamage(amount);
         party.TakeDamage(amount - defense);
+        NumberDisplayManager.Instance.ShowNumber(-(amount - defense), transform, Color.red);
         Debug.Log(name + " is hit for " + (amount - defense));
     }
 
@@ -75,6 +76,7 @@ public class PlayerUnit : Unit
     {
         base.Heal(amount);
         party.Heal(amount);
+        NumberDisplayManager.Instance.ShowNumber(amount, transform, Color.green);
         Debug.Log(name + " is healed for " + amount);
     }
 

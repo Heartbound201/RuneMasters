@@ -117,7 +117,7 @@ public class EnemyUnit : Unit
         base.TakeDamage(amount);
         currentHealth = Mathf.Clamp(currentHealth - (amount - defense), 0, health);
         healthBar.UpdateHealth(currentHealth, health);
-
+        NumberDisplayManager.Instance.ShowNumber(-(amount - defense), transform, Color.red);
         if (currentHealth <= 0)
         {
             Die();
@@ -137,5 +137,6 @@ public class EnemyUnit : Unit
         base.Heal(amount);
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, health);
         healthBar.UpdateHealth(currentHealth, health);
+        NumberDisplayManager.Instance.ShowNumber(amount, transform, Color.green);
     }
 }

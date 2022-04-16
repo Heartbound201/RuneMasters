@@ -1153,6 +1153,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+--- !u!1001 &2078291608226589976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 621737988679429959, guid: ca3c49d56aae09341812b583c27dea10, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 621737988679429959, guid: ca3c49d56aae09341812b583c27dea10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 621737988679429959, guid: ca3c49d56aae09341812b583c27dea10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 621737988679429959, guid: ca3c49d56aae09341812b583c27dea10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215877765372226956, guid: ca3c49d56aae09341812b583c27dea10, type: 3}
+      propertyPath: m_Name
+      value: NumberDisplayManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca3c49d56aae09341812b583c27dea10, type: 3}
 --- !u!1001 &2792910642879186457
 PrefabInstance:
   m_ObjectHideFlags: 0
