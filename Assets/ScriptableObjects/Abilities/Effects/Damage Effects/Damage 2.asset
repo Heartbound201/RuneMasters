@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Damage 2
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectProjectile: {fileID: 0}
   particleEffectTarget: {fileID: 100000, guid: 63bb3f317ae665b4998e11e30a9674ff, type: 3}
   potency: 2
-  strengthScaling: 0
+  strengthScaling: 1
   intelligenceScaling: 0
   dexterityScaling: 0
