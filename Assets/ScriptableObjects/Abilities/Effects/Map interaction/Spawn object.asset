@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Spawn object
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  particleEffectTarget: {fileID: 100000, guid: 5b9c4f1e53b9e6f4d9f4a6ee3eb917de, type: 3}
   boardObject: {fileID: 3086579922588152567, guid: 27db4619f4ebf4442b8e92c2e78bcb9e, type: 3}
