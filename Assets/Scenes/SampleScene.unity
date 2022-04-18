@@ -1213,6 +1213,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 520368126307041791, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_CellSize.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 520368126307041791, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_CellSize.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 520368126307041791, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 520368126307041791, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 520368126544291409, guid: 8271096d86936f846b57c57a1cc81e4b, type: 3}
       propertyPath: m_Name
       value: HUD
