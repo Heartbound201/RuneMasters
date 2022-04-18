@@ -60,6 +60,7 @@ public class ActionSelectionState : State
         base.AddListeners();
         Board.SelectTileEvent += SelectUnitOrMovement;
         TurnMenuController.SelectUnit += SelectCharacter;
+        InputController.CommandPause += owner.PauseOrResumeGame;
     }
 
     protected override void RemoveListeners()
@@ -67,6 +68,7 @@ public class ActionSelectionState : State
         base.RemoveListeners();
         Board.SelectTileEvent -= SelectUnitOrMovement;
         TurnMenuController.SelectUnit -= SelectCharacter;
+        InputController.CommandPause -= owner.PauseOrResumeGame;
     }
 
     private void SelectUnitOrMovement(HexTile<Tile> obj)

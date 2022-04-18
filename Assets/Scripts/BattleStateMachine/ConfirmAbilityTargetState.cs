@@ -35,6 +35,7 @@ public class ConfirmAbilityTargetState : State
         base.AddListeners();
         Board.SelectTileEvent += SelectTarget;
         InputController.CommandCancel += Undo;
+        InputController.CommandPause += owner.PauseOrResumeGame;
     }
 
     protected override void RemoveListeners()
@@ -42,6 +43,7 @@ public class ConfirmAbilityTargetState : State
         base.RemoveListeners();
         Board.SelectTileEvent -= SelectTarget;
         InputController.CommandCancel -= Undo;
+        InputController.CommandPause -= owner.PauseOrResumeGame;
     }
 
     private void SelectTarget(HexTile<Tile> obj)

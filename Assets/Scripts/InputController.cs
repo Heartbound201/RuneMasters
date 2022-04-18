@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     public static event Action CommandConfirm;
     public static event Action CommandCancel;
     public static event Action CommandMirror;
+    public static event Action CommandPause;
 
     private void Update()
     {
@@ -34,6 +35,11 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             CommandCancel?.Invoke();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CommandPause?.Invoke();
         }
     }
 }

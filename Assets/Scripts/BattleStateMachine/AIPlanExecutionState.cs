@@ -9,7 +9,17 @@ public class AIPlanExecutionState : State
         base.Enter();
         StartCoroutine(AITurn());
     }
+    protected override void AddListeners()
+    {
+        base.AddListeners();
+        InputController.CommandPause += owner.PauseOrResumeGame;
+    }
 
+    protected override void RemoveListeners()
+    {
+        base.RemoveListeners();
+        InputController.CommandPause -= owner.PauseOrResumeGame;
+    }
     IEnumerator AITurn()
     {
         // Resolve prev turn action

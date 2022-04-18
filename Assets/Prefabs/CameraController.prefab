@@ -45,10 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   currentMode: 0
+  IsometricAngle: 40
   transitionDuration: 0.5
   zoomInSize: 5
   zoomOutSize: 16
   zoomSensitivity: 80
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 20, y: 10, z: 10}
+    m_Extent: {x: 10, y: 5, z: 5}

@@ -34,6 +34,7 @@ public class ConfirmRuneState : State
         InputController.CommandConfirm += ConfirmRune;
         InputController.CommandCancel += Undo;
         InputController.CommandMirror += Mirror;
+        InputController.CommandPause += owner.PauseOrResumeGame;
     }
 
     protected override void RemoveListeners()
@@ -45,6 +46,7 @@ public class ConfirmRuneState : State
         InputController.CommandConfirm -= ConfirmRune;
         InputController.CommandCancel -= Undo;
         InputController.CommandMirror -= Mirror;
+        InputController.CommandPause -= owner.PauseOrResumeGame;
     }
 
     private void HighlightRune()

@@ -25,6 +25,7 @@
         public TurnMenuController turnMenuController;
         public PartyInfoMenuController partyInfoMenuController;
         public GameOverPanelController gameOverPanelController;
+        public PauseController pauseController;
 
         public PlayableDirector HudFadeInTimeline;
         
@@ -67,6 +68,14 @@
             if (enemies.Count == 0 || enemies.TrueForAll(e => e.currentHealth <= 0))
             {
                 ChangeState<VictoryState>();
+            }
+        }
+
+        public void PauseOrResumeGame()
+        {
+            if(pauseController != null)
+            {
+                pauseController.PauseOrResume();
             }
         }
         

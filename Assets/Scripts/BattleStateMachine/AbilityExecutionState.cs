@@ -20,7 +20,17 @@ public class AbilityExecutionState : State
         owner.SelectedRune = null;
         owner.SelectedRuneSteps = new List<HexTile<Tile>>();
     }
+    protected override void AddListeners()
+    {
+        base.AddListeners();
+        InputController.CommandPause += owner.PauseOrResumeGame;
+    }
 
+    protected override void RemoveListeners()
+    {
+        base.RemoveListeners();
+        InputController.CommandPause -= owner.PauseOrResumeGame;
+    }
     IEnumerator Execution()
     {
         Ability a = owner.SelectedAbility;

@@ -51,4 +51,14 @@ public class AudioManager : MonoSingleton<AudioManager>
         sfxEmitter.volume = GetMixerVolume(MIXER_PARAM_SFX_VOLUME);
         sfxEmitter.Play();
     }
+    public void Mute()
+    {
+        SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, 0);
+    }
+    
+    public void Unmute()
+    {
+        SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, 1);
+    }
+
 }
