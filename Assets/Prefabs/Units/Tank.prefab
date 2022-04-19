@@ -60,6 +60,7 @@ MonoBehaviour:
   intelligenceStart: 0
   dexterityStart: 0
   animator: {fileID: 0}
+  meshRenderer: {fileID: 2298714376675357832}
   getHitSfx: {fileID: 11400000, guid: faadd8d8b8f656a468b265cad24c07ef, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
@@ -134,5 +135,10 @@ PrefabInstance:
 --- !u!4 &2165711478584339562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4063552230360950, guid: df105d02374aada4a8ebdd303c0e30d1, type: 3}
+  m_PrefabInstance: {fileID: 2161807926509366044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2298714376675357832 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137047875659472788, guid: df105d02374aada4a8ebdd303c0e30d1, type: 3}
   m_PrefabInstance: {fileID: 2161807926509366044}
   m_PrefabAsset: {fileID: 0}

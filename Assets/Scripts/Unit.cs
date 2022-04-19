@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
@@ -26,6 +27,8 @@ public class Unit : BoardObject, IDamageable
     [HideInInspector] public int dexterityStart;
 
     public Animator animator;
+    public SkinnedMeshRenderer meshRenderer;
+    public Color originalColor;
 
     [Header("Audio")] public AudioClipSO getHitSfx;
     public AudioClipSO deathSfx;
@@ -39,6 +42,7 @@ public class Unit : BoardObject, IDamageable
         defenseStart = defense;
         intelligenceStart = intelligence;
         dexterityStart = dexterity;
+        originalColor = meshRenderer.material.color;
     }
 
     public virtual void PlaceOnTile(HexTile<Tile> target)
@@ -177,6 +181,7 @@ public class Unit : BoardObject, IDamageable
         {
             animator.Play("Run");
         }
+
         while (elapsedTime < waitTime)
         {
             transform.position = Vector3.Lerp(startPos, tile.CartesianPosition, (elapsedTime / waitTime));
@@ -234,5 +239,26 @@ public class Unit : BoardObject, IDamageable
     {
         if (animator) animator.Play("Die");
         if (deathSfx) AudioManager.Instance.PlaySfx(deathSfx);
+    }
+
+    public virtual void Highlight(bool value)
+    {
+        try
+        {
+            if (value)
+            {
+                meshRenderer.material.color = Color.red;
+            }
+            else
+            {
+                meshRenderer.material.color = originalColor;
+            }
+        }
+        catch (Exception ignored)
+        {
+            // ignoring shaders that don't expose _color
+        }
+
+        
     }
 }

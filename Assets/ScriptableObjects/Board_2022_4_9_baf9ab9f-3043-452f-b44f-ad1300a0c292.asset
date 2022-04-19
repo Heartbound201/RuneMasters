@@ -563,14 +563,6 @@ MonoBehaviour:
     obj: {fileID: 3754591301903308259, guid: 883849ed4275a154aaf109ec9c8c42af, type: 3}
   - index: 119
     obj: {fileID: 3754591301903308259, guid: 883849ed4275a154aaf109ec9c8c42af, type: 3}
-  - index: 116
-    obj: {fileID: 3754591301903308259, guid: 883849ed4275a154aaf109ec9c8c42af, type: 3}
-  - index: 82
-    obj: {fileID: 3754591301903308259, guid: 883849ed4275a154aaf109ec9c8c42af, type: 3}
-  - index: 83
-    obj: {fileID: 3754591301903308259, guid: 883849ed4275a154aaf109ec9c8c42af, type: 3}
-  - index: 65
-    obj: {fileID: 3754591301903308259, guid: 883849ed4275a154aaf109ec9c8c42af, type: 3}
   characters:
   - index: 65
     obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}

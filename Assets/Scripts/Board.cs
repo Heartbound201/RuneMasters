@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements.Experimental;
@@ -31,12 +32,12 @@ public class Board : MonoBehaviour
     public GameObject edgePrefab;
     public bool animateTileSpawn;
 
-    [Header("ParticleEffects")] 
-    public GameObject spawnUnitEffect;
+    [Header("ParticleEffects")] public GameObject spawnUnitEffect;
     public GameObject spawnEnemyEffect;
-    
+
     private GameObject[] edges;
     private GameObject[] tiles;
+    private List<Unit> highlightedUnits = new List<Unit>();
 
     private void Awake()
     {
@@ -67,6 +68,11 @@ public class Board : MonoBehaviour
     {
         if (tileHover != null && tileHover != tile)
         {
+            foreach (var highlightedUnit in highlightedUnits)
+            {
+                highlightedUnit.Highlight(false);
+            }
+            highlightedUnits.Clear();
             tileHover.Data.Hover(false);
         }
 
@@ -79,33 +85,38 @@ public class Board : MonoBehaviour
         {
             int totalDamage = 0;
             int enemyCount = 0;
-            string InfoText = "";
+            StringBuilder infoText = new StringBuilder();
 
-            foreach (AIPlan enemy in tileHover.Data.dangerList)
+            foreach (AIPlan aiPlan in tileHover.Data.dangerList)
             {
                 enemyCount++;
-                InfoText += enemy.actor.name + ": ";
+                infoText.Append($"{aiPlan.actor.name}:");
+                
+                // highlight enemies attacking this tile
+                aiPlan.actor.Highlight(true);
+                highlightedUnits.Add(aiPlan.actor);
 
-                if (enemy.ability.abilityEffects.Count != 0)
+                if (aiPlan.ability.abilityEffects.Count != 0)
                 {
-                    foreach (AbilityEffect ability in enemy.ability.abilityEffects)
+                    foreach (AbilityEffect ability in aiPlan.ability.abilityEffects)
                     {
                         // Cast to understand what type of ability will hit
                         if (ability as DamageAbilityEffect)
                         {
-                            DamageAbilityEffect DamageAbility = ability as DamageAbilityEffect;
-                            totalDamage += DamageAbility.potency;
+                            DamageAbilityEffect damageAbility = ability as DamageAbilityEffect;
+                            totalDamage += damageAbility.potency;
 
-                            InfoText += DamageAbility.potency.ToString() + "\n";
+                            infoText.Append(damageAbility.potency);
+                            infoText.AppendLine();
                         }
                         //Other casts, if necessary(dotdamage etc..)
                         else if (ability as DamageOvertimeAbilityEffect)
                         {
-                            DamageOvertimeAbilityEffect DamageOvertimeAbility = ability as DamageOvertimeAbilityEffect;
-                            totalDamage += DamageOvertimeAbility.potency;
+                            DamageOvertimeAbilityEffect damageOvertimeAbility = ability as DamageOvertimeAbilityEffect;
+                            totalDamage += damageOvertimeAbility.potency;
 
-                            InfoText += DamageOvertimeAbility.potency.ToString() + " (" +
-                                        DamageOvertimeAbility.duration.ToString() + ")\n";
+                            infoText.Append($"{damageOvertimeAbility.potency} ({damageOvertimeAbility.duration})");
+                            infoText.AppendLine();
                         }
                         else if (ability as StatsAlteringAbilityEffect)
                         {
@@ -116,7 +127,7 @@ public class Board : MonoBehaviour
             }
 
             // Get and pass tileHover.Data.dangerList[0].actor and ability damage to UI
-            forewarningController.ShowInfoText(InfoText);
+            forewarningController.ShowInfoText(infoText.ToString());
 
             // Show total damage done by enemies
             forewarningController.ShowTotalDamage(totalDamage);
@@ -168,11 +179,12 @@ public class Board : MonoBehaviour
     {
         return SpawnEntity(obj, index, spawnUnitEffect);
     }
+
     public GameObject SpawnEnemy(GameObject obj, int index)
     {
         return SpawnEntity(obj, index, spawnEnemyEffect);
     }
-    
+
     public GameObject SpawnEntity(GameObject obj, int index, GameObject spawnEffect)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
@@ -181,6 +193,7 @@ public class Board : MonoBehaviour
         {
             Instantiate(spawnEffect, hexTile.Data.transform);
         }
+
         return Instantiate(obj, hexTile.CartesianPosition, Quaternion.identity);
     }
 
@@ -258,18 +271,18 @@ public class Board : MonoBehaviour
     public IEnumerator EasePosition(Transform trans, Vector3 start, Vector3 end, float dur, Ease ease)
     {
         float t = 0f;
-        while(t < dur)
+        while (t < dur)
         {
             float sc = ease(t, 0f, 1f, dur);
             trans.position = Vector3.LerpUnclamped(start, end, sc);
-     
+
             yield return null;
             t += Time.deltaTime;
         }
- 
+
         trans.position = end;
     }
-    
+
     public List<HexTile<Tile>> SearchRange(HexTile<Tile> start, Func<HexTile<Tile>, HexTile<Tile>, bool> addTile,
         bool selectTilesAtEnd = false)
     {

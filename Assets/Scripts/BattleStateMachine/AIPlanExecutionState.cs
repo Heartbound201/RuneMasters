@@ -25,9 +25,9 @@ public class AIPlanExecutionState : State
     IEnumerator AITurn()
     {
         // Resolve prev turn action
-        foreach (var ownerEnemyPlan in owner.enemyPlans)
+        for (int i = owner.enemyPlans.Count - 1; i >= 0; i--)
         {
-            yield return ExecuteAIPlan(ownerEnemyPlan);
+            yield return ExecuteAIPlan(owner.enemyPlans[i]);
         }
 
         owner.enemyPlans.Clear();
