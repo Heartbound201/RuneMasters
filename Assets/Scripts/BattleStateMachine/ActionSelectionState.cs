@@ -60,6 +60,7 @@ public class ActionSelectionState : State
         base.AddListeners();
         Board.SelectTileEvent += SelectUnitOrMovement;
         TurnMenuController.SelectUnit += SelectCharacter;
+        TurnMenuController.SelectRune += SelectRune;
         InputController.CommandPause += owner.PauseOrResumeGame;
     }
 
@@ -68,7 +69,14 @@ public class ActionSelectionState : State
         base.RemoveListeners();
         Board.SelectTileEvent -= SelectUnitOrMovement;
         TurnMenuController.SelectUnit -= SelectCharacter;
+        TurnMenuController.SelectRune -= SelectRune;
         InputController.CommandPause -= owner.PauseOrResumeGame;
+    }
+
+    private void SelectRune(Rune obj)
+    {
+        owner.SelectedRune = obj;
+        owner.ChangeState<ConfirmRuneState>();
     }
 
     private void SelectUnitOrMovement(HexTile<Tile> obj)

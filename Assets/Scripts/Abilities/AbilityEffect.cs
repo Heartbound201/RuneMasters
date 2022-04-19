@@ -16,9 +16,9 @@ public abstract class AbilityEffect : ScriptableObject
     {
         if (particleEffectSelf)
         {
-            var gameObject = Instantiate(particleEffectSelf, actor.tile.Data.transform);
-            gameObject.transform.localScale = Vector3.one * scale;
-            ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();
+            var particleGO = Instantiate(particleEffectSelf, actor.tile.Data.transform);
+            particleGO.transform.localScale = Vector3.one * scale;
+            ParticleSystem ps = particleGO.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
             yield return new WaitForSeconds(totalDuration);
         }
@@ -27,9 +27,9 @@ public abstract class AbilityEffect : ScriptableObject
     {
         if (particleEffectTarget)
         {
-            var gameObject = Instantiate(particleEffectTarget, target.Data.transform);
-            gameObject.transform.localScale = Vector3.one * scale;
-            ParticleSystem ps = gameObject.GetComponent<ParticleSystem>();
+            var particleGO = Instantiate(particleEffectTarget, target.Data.transform);
+            particleGO.transform.localScale = Vector3.one * scale;
+            ParticleSystem ps = particleGO.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
             yield return new WaitForSeconds(totalDuration);
             

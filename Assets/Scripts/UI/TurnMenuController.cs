@@ -7,6 +7,7 @@ using UnityEngine;
 public class TurnMenuController : MonoBehaviour
 {
     public static event Action<PlayerUnit> SelectUnit;
+    public static event Action<Rune> SelectRune;
 
     public Camera camera;
     public BattleStateMachine stateMachine;
@@ -65,7 +66,7 @@ public class TurnMenuController : MonoBehaviour
                 runeMenuItem.costIcon.sprite = costSprites[rune.RunePrototype.Cost];
             }
 
-            runeMenuItem.button.onClick.AddListener(() => SelectRune(rune));
+            runeMenuItem.button.onClick.AddListener(() => SelectRune?.Invoke(rune));
             if (!rune.IsAvailable(unit))
             {
                 runeMenuItem.button.interactable = false;
@@ -100,12 +101,5 @@ public class TurnMenuController : MonoBehaviour
         }
 
         runeMenuItems.Clear();
-    }
-
-    private void SelectRune(Rune rune)
-    {
-        stateMachine.SelectedRune = rune;
-        stateMachine.ChangeState<ActionSelectionState>();
-        stateMachine.ChangeState<ConfirmRuneState>();
     }
 }

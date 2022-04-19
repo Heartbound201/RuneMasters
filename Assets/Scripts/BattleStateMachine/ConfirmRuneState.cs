@@ -35,6 +35,15 @@ public class ConfirmRuneState : State
         InputController.CommandCancel += Undo;
         InputController.CommandMirror += Mirror;
         InputController.CommandPause += owner.PauseOrResumeGame;
+        TurnMenuController.SelectRune += SelectRune;
+    }
+
+    private void SelectRune(Rune obj)
+    {
+        owner.SelectedRune = obj;
+        selectedRuneDirection = owner.SelectedRune.RunePrototype.steps[0];
+        selectedRuneTiles = Board.GetPathTiles(owner.ActingUnit.tile.Position, owner.SelectedRune.RunePrototype.steps);
+        HighlightRune();
     }
 
     protected override void RemoveListeners()
@@ -47,6 +56,7 @@ public class ConfirmRuneState : State
         InputController.CommandCancel -= Undo;
         InputController.CommandMirror -= Mirror;
         InputController.CommandPause -= owner.PauseOrResumeGame;
+        TurnMenuController.SelectRune -= SelectRune;
     }
 
     private void HighlightRune()
