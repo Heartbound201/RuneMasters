@@ -13,6 +13,8 @@ public class AudioManager : MonoSingleton<AudioManager>
     public AudioSource musicEmitter;
     public AudioSource sfxEmitter;
 
+    private float masterVolume = 1;
+
     public void SetMixerVolume(string key, float value)
     {
         AudioMixer.SetFloat(key, NormalizedToMixerValue(value));
@@ -53,12 +55,13 @@ public class AudioManager : MonoSingleton<AudioManager>
     }
     public void Mute()
     {
+        masterVolume = GetMixerVolume(MIXER_PARAM_MASTER_VOLUME);
         SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, 0);
     }
     
     public void Unmute()
     {
-        SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, 1);
+        SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, masterVolume);
     }
 
 }
