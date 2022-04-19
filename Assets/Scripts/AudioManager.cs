@@ -14,6 +14,8 @@ public class AudioManager : MonoSingleton<AudioManager>
     public AudioSource sfxEmitter;
 
     private float masterVolume = 1;
+    private float musicVolume = 1;
+    private float sfxVolume = 1;
 
     public void SetMixerVolume(string key, float value)
     {
@@ -53,15 +55,26 @@ public class AudioManager : MonoSingleton<AudioManager>
         sfxEmitter.volume = GetMixerVolume(MIXER_PARAM_SFX_VOLUME);
         sfxEmitter.Play();
     }
-    public void Mute()
+    public void MuteMusic()
     {
-        masterVolume = GetMixerVolume(MIXER_PARAM_MASTER_VOLUME);
-        SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, 0);
+        musicVolume = GetMixerVolume(MIXER_PARAM_MUSIC_VOLUME);
+        SetMixerVolume(MIXER_PARAM_MUSIC_VOLUME, 0);
     }
     
-    public void Unmute()
+    public void UnmuteMusic()
     {
-        SetMixerVolume(MIXER_PARAM_MASTER_VOLUME, masterVolume);
+        SetMixerVolume(MIXER_PARAM_MUSIC_VOLUME, musicVolume);
+    }
+
+    public void MuteSfx()
+    {
+        sfxVolume = GetMixerVolume(MIXER_PARAM_SFX_VOLUME);
+        SetMixerVolume(MIXER_PARAM_SFX_VOLUME, 0);
+    }
+    
+    public void UnmuteSfx()
+    {
+        SetMixerVolume(MIXER_PARAM_SFX_VOLUME, sfxVolume);
     }
 
 }

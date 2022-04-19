@@ -1,13 +1,15 @@
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PauseController : MonoBehaviour
 {
     public GameObject pauseMenuPanel;
-    public GameObject muteButton;
-    public GameObject unmuteButton;
+    [FormerlySerializedAs("muteButton")] public GameObject muteMusicButton;
+    [FormerlySerializedAs("unmuteButton")] public GameObject unmuteMusicButton;
+    public GameObject muteSfxButton;
+    public GameObject unmuteSfxButton;
     private bool isPaused = false;
-    private bool isMuted = false;
     public void PauseOrResume()
     {
         if (isPaused)
@@ -34,20 +36,32 @@ public class PauseController : MonoBehaviour
         isPaused = false;
     }
 
-    public void Mute()
+    public void MuteMusic()
     {
-        AudioManager.Instance.Mute();
-        isMuted = true;
-        unmuteButton.SetActive(true);
-        muteButton.SetActive(false);
+        AudioManager.Instance.MuteMusic();
+        unmuteMusicButton.SetActive(true);
+        muteMusicButton.SetActive(false);
     }
     
-    public void Unmute()
+    public void UnmuteMusic()
     {
-        AudioManager.Instance.Unmute();
-        isMuted = false;
-        muteButton.SetActive(true);
-        unmuteButton.SetActive(false);
+        AudioManager.Instance.UnmuteMusic();
+        muteMusicButton.SetActive(true);
+        unmuteMusicButton.SetActive(false);
+    }
+    
+    public void MuteSfx()
+    {
+        AudioManager.Instance.MuteSfx();
+        unmuteSfxButton.SetActive(true);
+        muteSfxButton.SetActive(false);
+    }
+    
+    public void UnmuteSfx()
+    {
+        AudioManager.Instance.UnmuteSfx();
+        muteSfxButton.SetActive(true);
+        unmuteSfxButton.SetActive(false);
     }
     
     public void Quit()
