@@ -61,7 +61,8 @@ MonoBehaviour:
   dexterityStart: 0
   animator: {fileID: 0}
   meshRenderer: {fileID: 7927514801324650388}
-  getHitSfx: {fileID: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  getHitSfx: {fileID: 11400000, guid: 6d3c38ee0e3bdf944af4c36f899c1cbc, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
   runePrototypes:

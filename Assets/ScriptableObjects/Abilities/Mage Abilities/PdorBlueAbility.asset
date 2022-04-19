@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pdor
   description: 
-  abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: 61a2dec077afdd344a2127ccbaa9cdd2, type: 2}
+  abilityArea: {fileID: 11400000, guid: 5052acc75bb9ca6449c43ac1fc8b79ea, type: 2}
+  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: e5690e45672eeb845bafbf4633b3dd7b, type: 2}
+  - {fileID: 11400000, guid: 8cbfa81219e729d42a0dd4369eeee3e6, type: 2}
