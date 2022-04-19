@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heal10
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 100004, guid: f2294f453ca6e344c974593dad1953bd, type: 3}
-  particleEffectTarget: {fileID: 100004, guid: f2294f453ca6e344c974593dad1953bd, type: 3}
+  particleEffectTarget: {fileID: 0}
   potency: 10
   strengthScaling: 0
   intelligenceScaling: 0
