@@ -30,11 +30,11 @@ public class Ability : ScriptableObject
             {
                 if (actor.tile == targetTile)
                 {
-                    abilityValue += 50;
+                    abilityValue += 10;
                 }
                 else if (targetTile.Data.content.Count > 0 && targetTile.Data.content[0] is EnemyUnit)
                 {
-                    abilityValue += 50;
+                    abilityValue += 10;
                 }
                 else if (targetTile.Data.content.Count > 0 && targetTile.Data.content[0] is PlayerUnit)
                 {
@@ -53,7 +53,7 @@ public class Ability : ScriptableObject
                 }
                 else if (targetTile.Data.content.Count > 0 && targetTile.Data.content[0] is PlayerUnit)
                 {
-                    abilityValue += 50;
+                    abilityValue += 10;
                 }
             }
             
