@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: StraightArea0DegLength5
   m_EditorClassIdentifier: 
   coneAngle: 0
-  coneLength: 3
+  coneLength: 5

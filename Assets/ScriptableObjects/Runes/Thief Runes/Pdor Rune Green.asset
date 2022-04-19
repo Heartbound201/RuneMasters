@@ -15,8 +15,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 57887365de609b143ad3dcb96fded1a3, type: 3}
   runeName: Pdor
   description: 
-  steps: 0000000000000000000000000500000005000000
+  steps: 00000000000000000500000005000000
   ability: {fileID: 11400000, guid: 7337539247416ca4a8ff28fe6817bf42, type: 2}
   cooldown: 2
   category: 0
-  categorySprite: {fileID: 21300000, guid: 930364c19c1d375458fcf956a4d88a98, type: 3}
+  categorySprite: {fileID: 21300000, guid: 1f795c83ee1684c4eb53f09770a58985, type: 3}
