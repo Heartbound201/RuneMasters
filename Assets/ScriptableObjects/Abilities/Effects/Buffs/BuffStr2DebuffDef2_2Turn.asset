@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BuffStr2DebuffDef2_2Turn
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 0}
+  particleEffectTarget: {fileID: 100006, guid: 84af1f6ebeec2b34e89656b0dc6bf86f, type: 3}
   duration: 2
-  strength: 1
-  defense: 0
+  strength: 2
+  defense: -2
   intelligence: 0
   dexterity: 0

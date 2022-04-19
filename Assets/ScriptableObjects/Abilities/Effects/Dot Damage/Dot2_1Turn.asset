@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
   particleEffectTarget: {fileID: 0}
-  potency: 1
+  potency: 2
   strengthScaling: 0
   intelligenceScaling: 0
   dexterityScaling: 0
-  duration: 0
+  duration: 1

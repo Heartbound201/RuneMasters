@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Blitz
   description: 
-  abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
+  abilityArea: {fileID: 11400000, guid: 6219c0730f15caf499fbc7d6eb5e65e8, type: 2}
   abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: 2298db8971b7295489bdbf9bfb88627e, type: 2}
-  - {fileID: 11400000, guid: 659077462b78595438a3cfcbfbf5dadc, type: 2}
+  - {fileID: 11400000, guid: ed58aff59d42fcc49804fd2e640d5e02, type: 2}
+  - {fileID: 11400000, guid: 5fdd45c9347a7f5469b589fb2432c5ee, type: 2}

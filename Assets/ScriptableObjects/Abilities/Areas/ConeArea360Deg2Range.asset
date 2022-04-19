@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c89b591995475cbcef651926994445, type: 3}
   m_Name: ConeArea360Deg2Range
   m_EditorClassIdentifier: 
-  coneAngle: 0
-  coneLength: 0
+  coneAngle: 180
+  coneLength: 2

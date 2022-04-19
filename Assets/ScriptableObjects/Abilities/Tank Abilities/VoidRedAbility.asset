@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Void
   description: 
   abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: f4ab2f2ab63a93245990129ed126c4b0, type: 2}
+  abilityRange: {fileID: 11400000, guid: 61a2dec077afdd344a2127ccbaa9cdd2, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: 567516741cca7f54989f5108ef063d40, type: 2}
+  - {fileID: 11400000, guid: 6aeffebca88b1704d94795aea63c954d, type: 2}
