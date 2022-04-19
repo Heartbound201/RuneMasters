@@ -64,9 +64,9 @@ MonoBehaviour:
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
   runePrototypes:
-  - {fileID: 11400000, guid: 8950e3360059b3545828dda942cf976e, type: 2}
   - {fileID: 11400000, guid: 48ae0869f553b344ab354d1591a6bf58, type: 2}
   - {fileID: 11400000, guid: ebe9d6f96ea41a843b63e091fa4d1ba4, type: 2}
+  - {fileID: 11400000, guid: 8950e3360059b3545828dda942cf976e, type: 2}
   - {fileID: 11400000, guid: aee3444bb1aadb04d9b2dd6bebd64c9c, type: 2}
   - {fileID: 11400000, guid: 7fdf261c9fc089146afe8eaf04214e83, type: 2}
   party: {fileID: 0}
