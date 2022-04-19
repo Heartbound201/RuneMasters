@@ -44,15 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c70d693d1d432a9305d9c636bdca32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassable: 0
   name: Tank
   movement: 1
   movementMax: 1
-  isPassable: 0
   hasActed: 0
   hasMoved: 0
   direction: 0
   strength: 0
-  defense: 6
+  defense: 4
   intelligence: 0
   dexterity: 0
   strengthStart: 0

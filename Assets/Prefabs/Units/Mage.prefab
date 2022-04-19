@@ -52,7 +52,7 @@ MonoBehaviour:
   hasMoved: 0
   direction: 0
   strength: 0
-  defense: 2
+  defense: 6
   intelligence: 0
   dexterity: 0
   strengthStart: 0
