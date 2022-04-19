@@ -16,6 +16,8 @@ public class ConfirmRuneState : State
         selectedRuneDirection = owner.SelectedRune.RunePrototype.steps[0];
         selectedRuneTiles = Board.GetPathTiles(owner.ActingUnit.tile.Position, owner.SelectedRune.RunePrototype.steps);
         HighlightRune();
+        
+        owner.ShowHint("Confirm your unit's rune movement");
     }
 
     public override void Exit()
@@ -23,6 +25,8 @@ public class ConfirmRuneState : State
         base.Exit();
         owner.SelectedRuneSteps = selectedRuneTiles
             .Select(selectedRuneTile => Board.GetTile(selectedRuneTile)).ToList();
+        
+        owner.HideHint();
     }
 
     protected override void AddListeners()

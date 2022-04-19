@@ -1,5 +1,6 @@
     using System.Collections.Generic;
     using System.Linq;
+    using TMPro;
     using UnityEngine;
     using UnityEngine.Playables;
     using UnityEngine.Serialization;
@@ -26,6 +27,7 @@
         public PartyInfoMenuController partyInfoMenuController;
         public GameOverPanelController gameOverPanelController;
         public PauseController pauseController;
+        public TMP_Text stateHintText;
 
         public PlayableDirector HudFadeInTimeline;
         
@@ -37,6 +39,16 @@
             // Start game in menu state
             ChangeState<UnitPlacementState>();
             EnemyUnit.KOEvent += OnEnemyUnitKoEvent;
+        }
+
+        public void ShowHint(string text)
+        {
+            stateHintText.text = text;
+            stateHintText.transform.parent.gameObject.SetActive(true);
+        }
+        public void HideHint()
+        {
+            stateHintText.transform.parent.gameObject.SetActive(false);
         }
 
         private void OnEnemyUnitKoEvent(Unit unit)

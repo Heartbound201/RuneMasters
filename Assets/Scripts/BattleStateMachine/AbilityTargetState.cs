@@ -10,6 +10,13 @@ public class AbilityTargetState : State
     {
         base.Enter();
         HighlightAbilityRange();
+        owner.ShowHint("Select a tile to target");
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        owner.HideHint();
     }
 
     private void HighlightAbilityRange()

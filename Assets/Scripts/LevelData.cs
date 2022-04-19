@@ -94,7 +94,7 @@ public class LevelData : ScriptableObject
         }
     }
 
-    public void SwapTilePrototype(int index, TilePrototype proto)
+    public void PlaceTilePrototype(int index, TilePrototype proto)
     {
         var tileInfo = tiles.Find(info => info.index == index);
         if (tileInfo != null)

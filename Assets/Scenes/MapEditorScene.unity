@@ -387,17 +387,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2633135422234782739, guid: 5b5c53ba11d586740a07e896c34e2fda, type: 3}
   m_PrefabInstance: {fileID: 2633135422615323541}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1773236106 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2633135422234782751, guid: 5b5c53ba11d586740a07e896c34e2fda, type: 3}
-  m_PrefabInstance: {fileID: 2633135422615323541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9958a7b009644dab0fd846685c1a3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1876689093
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +573,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2633135422234782751, guid: 5b5c53ba11d586740a07e896c34e2fda, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b5c53ba11d586740a07e896c34e2fda, type: 3}
 --- !u!1001 &7386420403975696984
 PrefabInstance:
@@ -604,19 +594,43 @@ PrefabInstance:
     - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
       propertyPath: levelData
       value: 
-      objectReference: {fileID: 11400000, guid: 028956bd9b798c9448b2d25b80b45db9, type: 2}
+      objectReference: {fileID: 11400000, guid: f600c3dcb7ce63440b16de1f563ff337, type: 2}
     - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
-      propertyPath: edgePrefab
+      propertyPath: brushPanel
       value: 
-      objectReference: {fileID: 7354726749590977549, guid: b903f974fab66a14eb8c7cd8887291fe, type: 3}
+      objectReference: {fileID: 1773236102}
     - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
-      propertyPath: tileCollection
+      propertyPath: brushes.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: brushes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: dffedc03c22341b4d8640fa80906c217, type: 2}
+      objectReference: {fileID: 6158079099338775854, guid: 209c363882a532d479f6c7402c48ab22, type: 3}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: brushes.Array.data[1]
+      value: 
+      objectReference: {fileID: 6158079099338775854, guid: 6c07c1b2c22727a45b65237812f6f751, type: 3}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: brushes.Array.data[2]
+      value: 
+      objectReference: {fileID: 6158079099338775854, guid: 99e1bdf669b126742919e585c014d810, type: 3}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: brushes.Array.data[3]
+      value: 
+      objectReference: {fileID: 6158079099338775854, guid: e8586fb4384a7694ca7337a68b8a83b6, type: 3}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: brushes.Array.data[4]
+      value: 
+      objectReference: {fileID: 6158079099338775854, guid: 56a9675cf9bb5df43934dd7d8dd29ea4, type: 3}
+    - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
+      propertyPath: brushes.Array.data[5]
+      value: 
+      objectReference: {fileID: 6158079099338775854, guid: 5044a9f1560044143aff54d3648833c9, type: 3}
     - target: {fileID: 7386420403044595730, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
       propertyPath: placementPanelController
       value: 
-      objectReference: {fileID: 1773236106}
+      objectReference: {fileID: 0}
     - target: {fileID: 7386420403044595731, guid: edf157c54a95a4149b330c536a6baf63, type: 3}
       propertyPath: m_RootOrder
       value: 2
