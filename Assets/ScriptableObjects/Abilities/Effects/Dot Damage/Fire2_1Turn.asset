@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c93bcba96b8448c3a9b63e82f45c93d5, type: 3}
-  m_Name: Damage 3 red
+  m_Script: {fileID: 11500000, guid: efab2031a9b046359a6cbd131e596545, type: 3}
+  m_Name: Fire2_1Turn
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 1134129239631916, guid: a1d5c8e19774bff419a05e7221f7dc7f, type: 3}
-  potency: 3
-  strengthScaling: 2
+  particleEffectTarget: {fileID: 100004, guid: 0e2676221a48f184d820117f86a613e6, type: 3}
+  potency: 2
+  strengthScaling: 0
   intelligenceScaling: 0
   dexterityScaling: 0
+  duration: 1

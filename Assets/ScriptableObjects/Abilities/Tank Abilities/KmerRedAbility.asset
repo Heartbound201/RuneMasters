@@ -17,4 +17,4 @@ MonoBehaviour:
   abilityArea: {fileID: 11400000, guid: 761a69dc6be6e914fb00d0b2f9e7564d, type: 2}
   abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: e16c26a067da60748bc22728f70ab2dd, type: 2}
+  - {fileID: 11400000, guid: 5b50d18a2bc14274893f76e0e0381be4, type: 2}
