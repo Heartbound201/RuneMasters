@@ -9,12 +9,14 @@ public class ConfirmAbilityTargetState : State
     {
         base.Enter();
         HighlightAbilityArea();
+        owner.ShowHint("Confirm your target location");
     }
 
     public override void Exit()
     {
         base.Exit();
         Board.ClearHighlight();
+        owner.HideHint();
     }
 
     private void HighlightAbilityArea()

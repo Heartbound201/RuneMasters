@@ -13,6 +13,7 @@ public class ActionSelectionState : State
         base.Enter();
 
         StartCoroutine(SwitchCharacterOrTurn());
+        owner.ShowHint("Select a tile for movement");
     }
 
     private IEnumerator SwitchCharacterOrTurn()
@@ -52,6 +53,7 @@ public class ActionSelectionState : State
     {
         base.Exit();
         Board.ClearHighlight();
+        owner.HideHint();
     }
 
 
