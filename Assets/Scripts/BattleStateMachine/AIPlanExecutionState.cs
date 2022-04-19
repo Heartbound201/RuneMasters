@@ -9,6 +9,7 @@ public class AIPlanExecutionState : State
         base.Enter();
         StartCoroutine(AITurn());
     }
+
     protected override void AddListeners()
     {
         base.AddListeners();
@@ -20,12 +21,13 @@ public class AIPlanExecutionState : State
         base.RemoveListeners();
         InputController.CommandPause -= owner.PauseOrResumeGame;
     }
+
     IEnumerator AITurn()
     {
         // Resolve prev turn action
-        for (int i = owner.enemyPlans.Count - 1; i >= 0; i--)
+        foreach (var ownerEnemyPlan in owner.enemyPlans)
         {
-            yield return ExecuteAIPlan(owner.enemyPlans[i]);
+            yield return ExecuteAIPlan(ownerEnemyPlan);
         }
 
         owner.enemyPlans.Clear();

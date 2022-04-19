@@ -31,7 +31,10 @@ public class Board : MonoBehaviour
     public GameObject edgePrefab;
     public bool animateTileSpawn;
 
-    [Header("ParticleEffects")] public GameObject spawnEffect;
+    [Header("ParticleEffects")] 
+    public GameObject spawnUnitEffect;
+    public GameObject spawnEnemyEffect;
+    
     private GameObject[] edges;
     private GameObject[] tiles;
 
@@ -161,7 +164,16 @@ public class Board : MonoBehaviour
         }
     }
 
-    public GameObject SpawnEntity(GameObject obj, int index)
+    public GameObject SpawnUnit(GameObject obj, int index)
+    {
+        return SpawnEntity(obj, index, spawnUnitEffect);
+    }
+    public GameObject SpawnEnemy(GameObject obj, int index)
+    {
+        return SpawnEntity(obj, index, spawnEnemyEffect);
+    }
+    
+    public GameObject SpawnEntity(GameObject obj, int index, GameObject spawnEffect)
     {
         HexTile<Tile> hexTile = hexMap.Tiles[index];
         if (unitPlacementSfx) AudioManager.Instance.PlaySfx(unitPlacementSfx);

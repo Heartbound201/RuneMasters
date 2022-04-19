@@ -18,7 +18,7 @@ public class UnitPlacementState : State
 
         foreach (SpawnInfo spawnInfo in owner.levelData.enemies)
         {
-            GameObject spawnEntity = Board.SpawnEntity(spawnInfo.obj, spawnInfo.index);
+            GameObject spawnEntity = Board.SpawnEnemy(spawnInfo.obj, spawnInfo.index);
             EnemyUnit enemyUnit = spawnEntity.GetComponent<EnemyUnit>();
             enemyUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Left);
             owner.enemies.Add(enemyUnit);
@@ -28,7 +28,7 @@ public class UnitPlacementState : State
         owner.party.Init();
         foreach (SpawnInfo spawnInfo in owner.levelData.characters)
         {
-            GameObject spawnEntity = Board.SpawnEntity(spawnInfo.obj, spawnInfo.index);
+            GameObject spawnEntity = Board.SpawnUnit(spawnInfo.obj, spawnInfo.index);
             PlayerUnit playerUnit = spawnEntity.GetComponent<PlayerUnit>();
 
             playerUnit.PlaceOnTile(Board.hexMap.Tiles[spawnInfo.index], TileDirection.Right);
