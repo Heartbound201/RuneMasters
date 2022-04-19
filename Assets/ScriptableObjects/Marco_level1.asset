@@ -451,8 +451,6 @@ MonoBehaviour:
   enemies:
   - index: 142
     obj: {fileID: 3754591301903308259, guid: 479b078d2ffcf734e94aeca89a13f237, type: 3}
-  - index: 109
-    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
   - index: 145
     obj: {fileID: 3754591301903308259, guid: 479b078d2ffcf734e94aeca89a13f237, type: 3}
   - index: 28
