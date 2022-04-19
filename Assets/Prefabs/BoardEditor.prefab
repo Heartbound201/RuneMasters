@@ -45,13 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   levelData: {fileID: 11400000, guid: 7637326394bb0404cabe2cef79a56192, type: 2}
-  tileCollection: {fileID: 11400000, guid: 2e14c644d7569084fb317f221f7b6a6c, type: 2}
-  defaultTile: {fileID: 11400000, guid: 143298831e31c834e90c6c50a760e24e, type: 2}
-  charactersPrefabs:
-  - {fileID: 5206588187344463374, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
-  - {fileID: 3303707291693377008, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
-  - {fileID: 858314115910056776, guid: 86cf64050e5595f4dad82b421a42b65a, type: 3}
-  enemiesPrefabs:
-  - {fileID: 5676427393560813927, guid: 0b2cab10fc4af8842b9c40646a3cf04c, type: 3}
-  - {fileID: 5676427393560813927, guid: 15e4a4e177a662c4084156b13730d6cf, type: 3}
-  placementPanelController: {fileID: 0}
+  tileCollection: {fileID: 11400000, guid: dffedc03c22341b4d8640fa80906c217, type: 2}
+  brushPanel: {fileID: 0}
+  applyRandomRotation: 0
+  brushes: []
+  edgePrefab: {fileID: 7354726749590977549, guid: b903f974fab66a14eb8c7cd8887291fe, type: 3}

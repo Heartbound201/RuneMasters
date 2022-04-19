@@ -1,11 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using Wunderwunsch.HexMapLibrary;
 using Wunderwunsch.HexMapLibrary.Generic;
-using Random = UnityEngine.Random;
 
 public class MapEditor : MonoBehaviour
 {
@@ -18,21 +16,17 @@ public class MapEditor : MonoBehaviour
     public Camera cam;
     public LevelData levelData;
     public TileCollection tileCollection;
-    public TilePrototype defaultTile;
-    public List<Unit> charactersPrefabs;
-    public List<Unit> enemiesPrefabs;
-
-    public int radius = 5;
+    public Transform brushPanel;
 
     [Tooltip("Apply a random rotation to tiles")]
     public bool applyRandomRotation = false;
 
-    public PlacementPanelController placementPanelController;
-
+    public List<GameObject> brushes = new List<GameObject>();
     public GameObject edgePrefab;
 
     private GameObject[] edges;
     private GameObject[] tiles;
+    private IBrush selectedBrush;
 
     private void Awake()
     {
@@ -50,6 +44,11 @@ public class MapEditor : MonoBehaviour
     {
         if (levelData == null)
         {
+            Debug.LogError("set a LevelData into the Board game object.");
+        }
+
+        if (levelData.tiles == null || levelData.tiles.Count <= 0)
+        {
             StartCoroutine(GenerateRandomBoard());
         }
         else
@@ -58,7 +57,17 @@ public class MapEditor : MonoBehaviour
         }
 
         SetCamera();
-        FillPlacementOptions();
+        CreateBrushes();
+    }
+
+    private void CreateBrushes()
+    {
+        foreach (var brush in brushes)
+        {
+            var brushGO = Instantiate(brush, brushPanel);
+            var brushComponent = brushGO.GetComponent<IBrush>();
+            brushComponent.AddButtonListener(() => SelectBrush(brushComponent));
+        }
     }
 
     void Update()
@@ -70,7 +79,7 @@ public class MapEditor : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            SelectTile(t);
+            Paint(t);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -79,48 +88,70 @@ public class MapEditor : MonoBehaviour
         }
     }
 
-    private void FillPlacementOptions()
+    public void SelectBrush(IBrush brush)
     {
-        foreach (TilePrototype tilePrototype in tileCollection.tiles)
+        if (selectedBrush != null)
         {
-            placementPanelController.CreatePlacementButton(tilePrototype.name,
-                () => { ChangeTilePrototype(this.tileSelected, tilePrototype); });
+            selectedBrush.Select(false);
         }
 
-        foreach (Unit unit in charactersPrefabs)
-        {
-            placementPanelController.CreatePlacementButton(unit.name,
-                () => { PlaceCharacter(this.tileSelected, unit.gameObject); });
-        }
+        brush.Select(true);
+        selectedBrush = brush;
+    }
 
-        foreach (Unit unit in enemiesPrefabs)
-        {
-            placementPanelController.CreatePlacementButton(unit.name,
-                () => { PlaceEnemy(this.tileSelected, unit.gameObject); });
-        }
+    private void Paint(HexTile<Tile> hexTile)
+    {
+        if (selectedBrush == null) return;
+        if (hexTile == null || hexTile.Data == null) return;
+        selectedBrush.Paint(levelData, hexTile, transform);
     }
 
     private void ClearTile(HexTile<Tile> hexTile)
     {
-        levelData.PlaceEnemy(hexTile.Index, null);
-        levelData.PlaceUnit(hexTile.Index, null);
-        levelData.SwapTilePrototype(hexTile.Index, defaultTile);
+        RemoveCharacter(hexTile, null);
+        RemoveEnemy(hexTile, null);
+        RemoveTile(hexTile, GetRandomTileProto());
     }
 
-    private void ChangeTilePrototype(HexTile<Tile> hexTile, TilePrototype tilePrototype)
+    private void RemoveCharacter(HexTile<Tile> hexTile, GameObject go)
+    {
+        // clear previous unit on tile
+        Unit unit = hexTile.Data.Unit;
+        if (unit != null) Destroy(unit.gameObject);
+
+        hexTile.Data.content.Clear();
+
+        // place unit on leveldata
+        levelData.PlaceUnit(hexTile.Index, go);
+    }
+
+    private void RemoveEnemy(HexTile<Tile> hexTile, GameObject go)
+    {
+        // clear previous unit on tile
+        Unit unit = hexTile.Data.Unit;
+        if (unit != null) Destroy(unit.gameObject);
+
+        hexTile.Data.content.Clear();
+
+        // place unit on leveldata
+        levelData.PlaceEnemy(hexTile.Index, go);
+    }
+
+    private void RemoveTile(HexTile<Tile> hexTile, TilePrototype proto)
     {
         Destroy(hexTile.Data.gameObject);
-        GameObject instance = Instantiate(tilePrototype.prefab, transform);
+        GameObject instance = Instantiate(proto.prefab, transform);
         hexTile.Data = instance.GetComponent<Tile>();
         instance.transform.position = hexTile.CartesianPosition;
         instance.gameObject.name = "Hex" + hexTile.CartesianPosition;
-        hexTile.Data.prototype = tilePrototype;
+        hexTile.Data.prototype = proto;
 
-        levelData.SwapTilePrototype(hexTile.Index, tilePrototype);
+        levelData.PlaceTilePrototype(hexTile.Index, proto);
     }
 
     private void PlaceCharacter(HexTile<Tile> hexTile, GameObject go)
     {
+        if (go == null) return;
         // clear previous unit on tile
         if (hexTile.Data.content.Count > 0)
         {
@@ -134,17 +165,15 @@ public class MapEditor : MonoBehaviour
         levelData.PlaceUnit(hexTile.Index, go);
 
         // instantiate graphics
-        if (go != null)
-        {
-            GameObject instance = Instantiate(go, transform);
-            instance.transform.position = hexTile.CartesianPosition;
-            Unit character = instance.GetComponent<PlayerUnit>();
-            hexTile.Data.content.Add(character);
-        }
+        GameObject instance = Instantiate(go, transform);
+        instance.transform.position = hexTile.CartesianPosition;
+        Unit character = instance.GetComponent<PlayerUnit>();
+        hexTile.Data.content.Add(character);
     }
 
     private void PlaceEnemy(HexTile<Tile> hexTile, GameObject go)
     {
+        if (go == null) return;
         // clear previous unit on tile
         if (hexTile.Data.content.Count > 0)
         {
@@ -158,13 +187,10 @@ public class MapEditor : MonoBehaviour
         levelData.PlaceEnemy(hexTile.Index, go);
 
         // instantiate graphics
-        if (go != null)
-        {
-            GameObject instance = Instantiate(go, transform);
-            instance.transform.position = hexTile.CartesianPosition;
-            Unit character = instance.GetComponent<EnemyUnit>();
-            hexTile.Data.content.Add(character);
-        }
+        GameObject instance = Instantiate(go, transform);
+        instance.transform.position = hexTile.CartesianPosition;
+        Unit character = instance.GetComponent<EnemyUnit>();
+        hexTile.Data.content.Add(character);
     }
 
     private IEnumerator GenerateBoardFromLevelData()
@@ -191,8 +217,8 @@ public class MapEditor : MonoBehaviour
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.prototype = tilePrototype;
 
-            PlaceCharacter(tile, levelData.GetUnitAt(tile.Index));
             PlaceEnemy(tile, levelData.GetEnemyAt(tile.Index));
+            PlaceCharacter(tile, levelData.GetUnitAt(tile.Index));
 
             yield return null;
         }
@@ -205,7 +231,7 @@ public class MapEditor : MonoBehaviour
     private IEnumerator GenerateRandomBoard()
     {
         ClearBoard();
-        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(radius), null);
+        hexMap = new HexMap<Tile, int>(HexMapBuilder.CreateHexagonalShapedMap(levelData.boardRadius), null);
         hexMouse.Init(hexMap);
 
         tiles = new GameObject[hexMap.TilesByPosition.Count];
@@ -225,6 +251,8 @@ public class MapEditor : MonoBehaviour
             instance.gameObject.name = "Hex" + tile.CartesianPosition;
             tile.Data = instance.GetComponent<Tile>();
             tile.Data.prototype = tilePrototype;
+
+            levelData.PlaceTilePrototype(tile.Index, tilePrototype);
 
             yield return null;
         }
@@ -269,41 +297,18 @@ public class MapEditor : MonoBehaviour
         tileHover.Data.Hover(true);
     }
 
-    private void SelectTile(HexTile<Tile> tile)
+    private void SetCamera()
     {
-        if (tileSelected == tile) return;
-        if (tileSelected != null && tileSelected.Data != null)
-        {
-            tileSelected.Data.Highlight(false);
-        }
-
-        tileSelected = tile;
-        tile.Data.Highlight(true);
-    }
-
-	private void SetCamera()
-	{
-		//put the following at the end of the start method (or in its own method called after map creation)
-		cam.transform.position =
-			new Vector3(hexMap.MapSizeData.center.x, 4,
-				hexMap.MapSizeData.center.z); // centers the camera and moves it 5 units above the XZ-plane
-		cam.orthographic = true; //for this example we use an orthographic camera.
-		cam.transform.rotation = Quaternion.Euler(35, 30, 0); //rotates the camera to it looks at the XZ-plane
-		cam.orthographicSize =
-			hexMap.MapSizeData.extents.z * 1.5f * 0.8f; // sets orthographic size of the camera.]
+        //put the following at the end of the start method (or in its own method called after map creation)
+        cam.transform.position =
+            new Vector3(hexMap.MapSizeData.center.x, 4,
+                hexMap.MapSizeData.center.z); // centers the camera and moves it 5 units above the XZ-plane
+        cam.orthographic = true; //for this example we use an orthographic camera.
+        cam.transform.rotation = Quaternion.Euler(35, 30, 0); //rotates the camera to it looks at the XZ-plane
+        cam.orthographicSize =
+            hexMap.MapSizeData.extents.z * 1.5f * 0.8f; // sets orthographic size of the camera.]
         cam.nearClipPlane = -50f;
         //this does not account for aspect ratio but for our purposes it works good enough.
-    }
-
-    private LevelData CreateLevelData()
-    {
-        LevelData data = ScriptableObject.CreateInstance<LevelData>();
-        string fileName =
-            $"Assets/ScriptableObjects/{name}_{DateTime.Today.Year}_{DateTime.Today.Month}_{DateTime.Today.Day}_{Guid.NewGuid()}.asset";
-#if UNITY_EDITOR
-        AssetDatabase.CreateAsset(data, fileName);
-#endif
-        return data;
     }
 
     private void OnGUI()
@@ -323,35 +328,8 @@ public class MapEditor : MonoBehaviour
             ClearBoard();
             StartCoroutine(GenerateRandomBoard());
         }
-
-        if (GUI.Button(new Rect(100, 300, 250, 50), "Save as New", customButton))
-        {
-            SaveAsNewLevel();
-        }
     }
 
-    private void SaveAsNewLevel()
-    {
-        var data = CreateLevelData();
-        data.boardRadius = radius;
-        foreach (var tile in hexMap.Tiles)
-        {
-            if (tile.Data.content.Count > 0 && tile.Data.content[0] is PlayerUnit)
-            {
-                data.PlaceUnit(tile.Index, tile.Data.content[0].gameObject);
-            }
-
-            if (tile.Data.content.Count > 0 && tile.Data.content[0] is EnemyUnit)
-            {
-                data.PlaceEnemy(tile.Index, tile.Data.content[0].gameObject);
-            }
-
-            data.SwapTilePrototype(tile.Index, tile.Data.prototype);
-        }
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(data);
-#endif
-    }
 
     private TilePrototype GetRandomTileProto()
     {
