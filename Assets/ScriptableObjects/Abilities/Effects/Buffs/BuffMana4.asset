@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4292533324e048319319cb60ae7f77a1, type: 3}
   m_Name: BuffMana4
   m_EditorClassIdentifier: 
-  particleEffectSelf: {fileID: 0}
-  particleEffectProjectile: {fileID: 0}
+  particleEffectSelf: {fileID: 100006, guid: 84af1f6ebeec2b34e89656b0dc6bf86f, type: 3}
   particleEffectTarget: {fileID: 100006, guid: 84af1f6ebeec2b34e89656b0dc6bf86f, type: 3}
   amount: 4

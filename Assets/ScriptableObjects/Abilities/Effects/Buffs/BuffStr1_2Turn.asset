@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17146b2fc758421487a22d3bc7e72022, type: 3}
   m_Name: BuffStr1_2Turn
   m_EditorClassIdentifier: 
-  particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 0}
+  particleEffectSelf: {fileID: 100006, guid: 84af1f6ebeec2b34e89656b0dc6bf86f, type: 3}
+  particleEffectTarget: {fileID: 100006, guid: 84af1f6ebeec2b34e89656b0dc6bf86f, type: 3}
   duration: 2
   strength: 1
   defense: 0

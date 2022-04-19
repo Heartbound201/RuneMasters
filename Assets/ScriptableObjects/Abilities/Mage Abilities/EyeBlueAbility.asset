@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Eye
   description: 
   abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: 34376573bc8ba8f4e82415416d93bba3, type: 2}
+  abilityRange: {fileID: 11400000, guid: 61a2dec077afdd344a2127ccbaa9cdd2, type: 2}
   abilityEffects:
   - {fileID: 11400000, guid: c0f884d62922e6245a2ef8861e3a2eaa, type: 2}
