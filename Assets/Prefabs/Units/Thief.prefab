@@ -44,29 +44,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c70d693d1d432a9305d9c636bdca32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPassable: 0
   name: Thief
   movement: 3
   movementMax: 3
-  isPassable: 0
   hasActed: 0
   hasMoved: 0
   direction: 0
   strength: 0
-  defense: 4
+  defense: 2
   intelligence: 0
   dexterity: 0
   strengthStart: 0
   defenseStart: 0
   intelligenceStart: 0
   dexterityStart: 0
+  animator: {fileID: 0}
   getHitSfx: {fileID: 0}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
   runePrototypes:
   - {fileID: 11400000, guid: 5c91fcf917480f744bfe0db1b0c230a1, type: 2}
   - {fileID: 11400000, guid: a88bd834178fa1348bfb4050e45c5b54, type: 2}
-  - {fileID: 11400000, guid: 511f9cb8efd8f1343a512df790bc03a9, type: 2}
-  - {fileID: 11400000, guid: fc2fab04cf49dab4daf8e8175fda771b, type: 2}
+  - {fileID: 11400000, guid: 8b1ddf7cb9f9d1a489796be67ee01d7d, type: 2}
+  - {fileID: 11400000, guid: ea9b466735790ef488d508967f292645, type: 2}
+  - {fileID: 11400000, guid: 81941e7bba29b9e42a0d0a9e44c88e2d, type: 2}
+  party: {fileID: 0}
 --- !u!1001 &8864968937791745480
 PrefabInstance:
   m_ObjectHideFlags: 0

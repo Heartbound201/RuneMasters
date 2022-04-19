@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Spear
   description: 
   abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: e9c32afec4051fe4687ffa391ab52d5b, type: 2}
+  abilityRange: {fileID: 11400000, guid: 666d32c19251ca344885105025edf3d5, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: 8cbfa81219e729d42a0dd4369eeee3e6, type: 2}
+  - {fileID: 11400000, guid: e16c26a067da60748bc22728f70ab2dd, type: 2}

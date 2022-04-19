@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BuffDef2_2Turn
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 100000, guid: 5593b894f082baf42a173460ae6086b4, type: 3}
-  particleEffectTarget: {fileID: 100000, guid: 5593b894f082baf42a173460ae6086b4, type: 3}
+  particleEffectTarget: {fileID: 0}
   duration: 2
   strength: 0
   defense: 2

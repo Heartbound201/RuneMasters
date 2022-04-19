@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62da5d3c1d348b147a373bab06147abb, type: 3}
-  m_Name: Spear Rune Green
+  m_Name: Yew Rune Green
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 7b2cdad26a46ae84d989775e1e36e90a, type: 3}
-  runeName: Spear
+  icon: {fileID: 21300000, guid: f8ea1491ecc3de643b0126d1ffaa94dc, type: 3}
+  runeName: Yew
   description: 
-  steps: 000000000000000000000000
-  ability: {fileID: 11400000, guid: 0baf9a956784da44bb148f5d66b3775a, type: 2}
-  cooldown: 1
-  category: 0
-  categorySprite: {fileID: 21300000, guid: 1f795c83ee1684c4eb53f09770a58985, type: 3}
+  steps: 01000000000000000000000001000000
+  ability: {fileID: 11400000, guid: ba643518ff71d224ba72e851a65d02f9, type: 2}
+  cooldown: 3
+  category: 2
+  categorySprite: {fileID: 21300000, guid: 9546712e5255d694aa4543f193121f51, type: 3}
