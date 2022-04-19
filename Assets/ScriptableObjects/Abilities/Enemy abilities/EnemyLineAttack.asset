@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52851217fd3397f4a86f8a4f03da19e4, type: 3}
-  m_Name: EnemyConeAoe
+  m_Name: EnemyLineAttack
   m_EditorClassIdentifier: 
   name: enemy ability
   description: 
-  abilityArea: {fileID: 11400000, guid: f802558204789174591885a5b29b1f9d, type: 2}
+  abilityArea: {fileID: 11400000, guid: 05d99293e6c5d604a8a4c0c246855044, type: 2}
   abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
   - {fileID: 11400000, guid: 6e6d3377028496d448b219bb6e923349, type: 2}

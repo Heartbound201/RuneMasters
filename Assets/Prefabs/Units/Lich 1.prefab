@@ -63,14 +63,15 @@ MonoBehaviour:
   dexterityStart: 0
   animator: {fileID: 0}
   meshRenderer: {fileID: 278355042652720524}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   getHitSfx: {fileID: 0}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
-  health: 1
+  health: 8
   currentHealth: 0
   healthBar: {fileID: 6271444441539859201}
   abilities:
-  - {fileID: 11400000, guid: 9c6798ca17fbbdd4eaf806c37b540da7, type: 2}
+  - {fileID: 11400000, guid: 2b41b09841559e540b98fe546bcaca44, type: 2}
 --- !u!114 &6271444441539859201
 MonoBehaviour:
   m_ObjectHideFlags: 0
