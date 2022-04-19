@@ -458,7 +458,8 @@ MonoBehaviour:
   unitPlacementSfx: {fileID: 0}
   edgePrefab: {fileID: 7354726749590977549, guid: b903f974fab66a14eb8c7cd8887291fe, type: 3}
   animateTileSpawn: 1
-  spawnEffect: {fileID: 100006, guid: 950677df89eb70644a72d36a285fb7f2, type: 3}
+  spawnUnitEffect: {fileID: 100006, guid: 950677df89eb70644a72d36a285fb7f2, type: 3}
+  spawnEnemyEffect: {fileID: 100006, guid: 950677df89eb70644a72d36a285fb7f2, type: 3}
 --- !u!4 &582367347
 Transform:
   m_ObjectHideFlags: 0
