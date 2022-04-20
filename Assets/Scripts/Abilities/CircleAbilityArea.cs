@@ -23,7 +23,7 @@ public class CircleAbilityArea : AbilityArea
                 if (tile == targetTile)
                 {
                     yield return abilityEffect.ApplyParticleEffectSelf(actor, tile);
-                    yield return abilityEffect.ApplyParticleEffectTarget(actor, tile, 1 + range);
+                    yield return abilityEffect.ApplyParticleEffectTarget(actor, tile, 1 + range / 2);
                 }
                 abilityEffect.Apply(actor, tile);
             }
