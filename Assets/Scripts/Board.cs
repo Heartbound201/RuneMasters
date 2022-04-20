@@ -106,8 +106,9 @@ public class Board : MonoBehaviour
                             DamageAbilityEffect damageAbility = ability as DamageAbilityEffect;
                             totalDamage += damageAbility.potency;
 
-                            infoText.Append(damageAbility.potency);
-                            infoText.AppendLine();
+                            infoText.Append(($"{damageAbility.potency} dmg"));
+
+							infoText.AppendLine();
                         }
                         //Other casts, if necessary(dotdamage etc..)
                         else if (ability as DamageOvertimeAbilityEffect)
@@ -115,13 +116,17 @@ public class Board : MonoBehaviour
                             DamageOvertimeAbilityEffect damageOvertimeAbility = ability as DamageOvertimeAbilityEffect;
                             totalDamage += damageOvertimeAbility.potency;
 
-                            infoText.Append($"{damageOvertimeAbility.potency} ({damageOvertimeAbility.duration})");
+                            infoText.Append($"{damageOvertimeAbility.potency} Dot dmg ({damageOvertimeAbility.duration}) turns");
                             infoText.AppendLine();
                         }
                         else if (ability as StatsAlteringAbilityEffect)
                         {
                             StatsAlteringAbilityEffect StatsAlteringAbility = ability as StatsAlteringAbilityEffect;
-                        }
+							
+							infoText.Append(($"{StatsAlteringAbility.strength} DEF ({StatsAlteringAbility.duration}) turns"));
+
+							infoText.AppendLine();
+						}
                     }
                 }
             }
