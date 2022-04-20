@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3754591301903308259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 8865579411437873854}
   m_Father: {fileID: 0}
@@ -65,6 +65,7 @@ MonoBehaviour:
   getHitSfx: {fileID: 11400000, guid: 5c6df4da8e4a3ba4281f2d074555268e, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
+  positionY: 0.25
   runePrototypes:
   - {fileID: 11400000, guid: 5c91fcf917480f744bfe0db1b0c230a1, type: 2}
   - {fileID: 11400000, guid: a88bd834178fa1348bfb4050e45c5b54, type: 2}

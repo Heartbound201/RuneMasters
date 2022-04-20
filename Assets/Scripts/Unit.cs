@@ -30,12 +30,13 @@ public class Unit : BoardObject, IDamageable
     public SkinnedMeshRenderer meshRenderer;
     public Color originalColor;
 
-    [Header("Audio")] public AudioClipSO getHitSfx;
+	public float positionY = 0f;
+
+	[Header("Audio")] public AudioClipSO getHitSfx;
     public AudioClipSO deathSfx;
     public AudioClipSO attackSfx;
 
-
-    protected virtual void Start()
+	protected virtual void Start()
     {
         animator = GetComponentInChildren<Animator>();
         strengthStart = strength;
@@ -43,7 +44,10 @@ public class Unit : BoardObject, IDamageable
         intelligenceStart = intelligence;
         dexterityStart = dexterity;
         originalColor = meshRenderer.material.color;
-    }
+
+		Vector3 translatePosition = new Vector3(transform.position.x, positionY, transform.position.z);
+		transform.position = translatePosition;
+	}
 
     public virtual void PlaceOnTile(HexTile<Tile> target)
     {

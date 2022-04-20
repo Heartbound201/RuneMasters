@@ -16,8 +16,8 @@ public class PlayerUnit : Unit
             runes.Add(new Rune(runePrototype));
         }
     }
-    
-    public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
+
+	public override bool ExpandSearch(HexTile<Tile> from, HexTile<Tile> to)
     {
         return (from.Data._distance + 1) <= movement && (from.Data._distance + 1) <= party.AvailableMana &&
                (to.Data.IsPassable || to.Data.content.TrueForAll(u => u is PlayerUnit));
