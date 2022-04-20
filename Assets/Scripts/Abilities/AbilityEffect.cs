@@ -20,8 +20,8 @@ public abstract class AbilityEffect : ScriptableObject
             particleGO.transform.localScale = Vector3.one * scale;
             ParticleSystem ps = particleGO.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
-            yield return null;
-            // yield return new WaitForSeconds(totalDuration);
+            //yield return null;
+            yield return new WaitForSeconds(totalDuration / 5);
         }
     }
     public virtual IEnumerator ApplyParticleEffectTarget(Unit actor, HexTile<Tile> target, float scale = 1f)
@@ -32,8 +32,8 @@ public abstract class AbilityEffect : ScriptableObject
             particleGO.transform.localScale = Vector3.one * scale;
             ParticleSystem ps = particleGO.GetComponent<ParticleSystem>();
             float totalDuration = ps.duration + ps.startLifetime;
-            yield return null;
-            // yield return new WaitForSeconds(totalDuration);
+            //yield return null;
+            yield return new WaitForSeconds(totalDuration / 5);
             
         }
     }
