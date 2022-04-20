@@ -38,5 +38,5 @@ public abstract class AbilityEffect : ScriptableObject
         }
     }
 
-    public abstract string Summary();
+    public abstract string Summary(Unit unit);
 }

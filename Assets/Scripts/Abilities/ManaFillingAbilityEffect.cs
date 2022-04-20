@@ -16,7 +16,7 @@ class ManaFillingAbilityEffect : AbilityEffect
         }
     }
 
-    public override string Summary()
+    public override string Summary(Unit unit)
     {
         string text = $"+<b>{amount}</b> current Mana";
         return text;

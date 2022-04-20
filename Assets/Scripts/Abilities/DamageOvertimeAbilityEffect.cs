@@ -18,14 +18,17 @@ class DamageOvertimeAbilityEffect : DamageAbilityEffect
             se.Apply(target.Data.content[i] as Unit);
         }
     }
-    public override string Summary()
+    public override string Summary(Unit unit)
     {
         List<string> scalings = new List<string>();
         
         if (strengthScaling != 0)
         {
-            scalings.Add($"{strengthScaling:0.##\\%} STR");
-        }
+			if (unit.strength != 0)
+			{
+				scalings.Add($"+{unit.strength * strengthScaling}");
+			}
+		}
         if (intelligenceScaling != 0)
         {
             scalings.Add($"{intelligenceScaling:0.##\\%} INT");
@@ -40,7 +43,7 @@ class DamageOvertimeAbilityEffect : DamageAbilityEffect
         {
             scalingString = $"[{scalingString}]";
         }
-        string text = $"<b>{potency}{scalingString}</b> Dmg overtime ({duration} turns)";
+        string text = $"<b>{potency}{scalingString}</b> Dot Dmg ({duration} turns)";
         return text;
     }
 }

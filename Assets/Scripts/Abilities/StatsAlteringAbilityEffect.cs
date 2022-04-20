@@ -22,7 +22,7 @@ class StatsAlteringAbilityEffect : AbilityEffect
         }
     }
     
-    public override string Summary()
+    public override string Summary(Unit unit)
     {
         List<string> stats = new List<string>();
         

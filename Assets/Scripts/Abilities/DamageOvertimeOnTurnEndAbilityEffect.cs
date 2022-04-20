@@ -16,7 +16,7 @@ class DamageOvertimeOnTurnEndAbilityEffect : DamageAbilityEffect
             se.Apply(target.Data.content[i] as Unit);
         }
     }
-    public override string Summary()
+    public override string Summary(Unit unit)
     {
         List<string> scalings = new List<string>();
         
@@ -38,7 +38,7 @@ class DamageOvertimeOnTurnEndAbilityEffect : DamageAbilityEffect
         {
             scalingString = $"[{scalingString}]";
         }
-        string text = $"<b>{potency} {scalingString}</b> Damage Overtime for {duration} turns";
+        string text = $"<b>{potency}{scalingString}</b> Dot Dmg ({duration} turns)";
         return text;
     }
 }

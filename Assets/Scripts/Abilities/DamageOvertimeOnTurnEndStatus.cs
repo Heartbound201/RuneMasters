@@ -15,7 +15,7 @@ public class DamageOvertimeOnTurnEndStatus: Status
     
     public override string Summary()
     {
-        string text = $"<b>{potency}</b> Damage Overtime for {duration} turns";
+        string text = $"<b>{potency}</b> Dot Dmg ({duration} turns)";
         return text;
     }
 }

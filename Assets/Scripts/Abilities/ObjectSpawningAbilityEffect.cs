@@ -21,7 +21,7 @@ class ObjectSpawningAbilityEffect : AbilityEffect
         }
     }
 
-    public override string Summary()
+    public override string Summary(Unit unit)
     {
         return $"Spawns a <b>{boardObject.name}</b> on the target tile";
     }

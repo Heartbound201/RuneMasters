@@ -62,10 +62,10 @@ public class Ability : ScriptableObject
         return abilityValue;
     }
 
-    public string Summary()
+    public string Summary(Unit unit)
     {
         List<string> effectTexts = new List<string>();
-        abilityEffects.ForEach(effect => effectTexts.Add(effect.Summary()));
+        abilityEffects.ForEach(effect => effectTexts.Add(effect.Summary(unit)));
         return $"Range: {abilityRange.Summary()}" +
                $"\nEffects: {String.Join(", ", effectTexts)}" +
                $"\nArea: {abilityArea.Summary()}";

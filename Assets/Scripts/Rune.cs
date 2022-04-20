@@ -39,7 +39,7 @@ public class Rune
         return $"<b>{RunePrototype.runeName}</b>" +
                $"\nCategory: {RunePrototype.category}" +
                $"\nMana Cost: <b>{RunePrototype.Cost}</b>" +
-               $"\n{RunePrototype.ability.Summary()}" +
+               $"\n{RunePrototype.ability.Summary(unit)}" +
                $"{cooldownText}";
 
     }

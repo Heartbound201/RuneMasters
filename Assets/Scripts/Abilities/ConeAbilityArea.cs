@@ -43,6 +43,12 @@ class ConeAbilityArea : AbilityArea
 
     public override string Summary()
     {
-        return $"Cone angle <b>{coneAngle}</b>, length <b>{coneLength}</b>";
-    }
+		if (coneAngle > 30f)
+		{
+			return $"Cone angle <b>{coneAngle*2}</b>, length <b>{coneLength}</b>";
+		}
+
+		return $"Straight line, length <b>{coneLength}</b>";
+
+	}
 }
