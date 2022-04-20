@@ -122,11 +122,11 @@ public class Board : MonoBehaviour
 							
 							infoText.Append(($", {StatsAlteringAbility.defense} DEF ({StatsAlteringAbility.duration} turns)"));
 						}
-
-						infoText.AppendLine();
 					}
+
+					infoText.AppendLine();
 				}
-            }
+			}
 
             // Get and pass tileHover.Data.dangerList[0].actor and ability damage to UI
             forewarningController.ShowInfoText(infoText.ToString());
