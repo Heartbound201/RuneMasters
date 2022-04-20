@@ -68,7 +68,7 @@ MonoBehaviour:
   getHitSfx: {fileID: 0}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
-  health: 8
+  health: 5
   currentHealth: 0
   healthBar: {fileID: 6271444441539859201}
   abilities:

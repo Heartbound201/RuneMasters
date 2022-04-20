@@ -692,7 +692,7 @@ MonoBehaviour:
   characters:
   - index: 161
     obj: {fileID: 3754591301903308259, guid: 7c7133f9722acbf41b040c375b250693, type: 3}
-  - index: 120
-    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
   - index: 200
+    obj: {fileID: 3754591301903308259, guid: f1b606605eb2d85469eaebe30dd54b33, type: 3}
+  - index: 120
     obj: {fileID: 3754591301903308259, guid: 86cf64050e5595f4dad82b421a42b65a, type: 3}
