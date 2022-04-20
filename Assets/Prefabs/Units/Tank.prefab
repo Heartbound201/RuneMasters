@@ -80,6 +80,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3517529330400996379}
     m_Modifications:
+    - target: {fileID: 1121047496057440, guid: df105d02374aada4a8ebdd303c0e30d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830797229530566, guid: df105d02374aada4a8ebdd303c0e30d1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1953271650171834, guid: df105d02374aada4a8ebdd303c0e30d1, type: 3}
       propertyPath: m_Name
       value: RuneMasterWizard
