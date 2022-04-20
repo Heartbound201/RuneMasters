@@ -90,7 +90,7 @@ public class Board : MonoBehaviour
             foreach (AIPlan aiPlan in tileHover.Data.dangerList)
             {
                 enemyCount++;
-                infoText.Append($"{aiPlan.actor.name}:");
+                infoText.Append($"{aiPlan.actor.name}: ");
                 
                 // highlight enemies attacking this tile
                 aiPlan.actor.Highlight(true);
