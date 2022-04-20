@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LichCircleDamageEffect
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 100002, guid: 303be7807e72eb34a86f33bdbb851e4c, type: 3}
+  particleEffectTarget: {fileID: 1965343156803978, guid: 822d1ee9505aa844a982317b6b423008, type: 3}
   potency: 12
   strengthScaling: 4
   intelligenceScaling: 0
