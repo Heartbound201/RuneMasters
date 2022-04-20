@@ -35,7 +35,7 @@ public class EnemyUnit : Unit
         AIPlan firstPlan = new AIPlan(this, null, null, tile, nearestEnemy);
         aiPlans.Add(firstPlan);
         planCounter++;
-        
+
         // Evaluate every possible movement
         foreach (HexTile<Tile> moveOpt in GetTilesInRange())
         {
@@ -44,6 +44,7 @@ public class EnemyUnit : Unit
             planCounter++;
             aiPlans.Add(planMoveOnly);
         }
+
         PlaceOnTile(start);
 
         var bestPlan = aiPlans.OrderBy(plan => plan.Evaluate()).Last();
@@ -84,9 +85,8 @@ public class EnemyUnit : Unit
         }
 
         PlaceOnTile(start);
-        
+
         var bestPlan = aiPlans.OrderBy(plan => plan.Evaluate()).Last();
-        Debug.Log(bestPlan);
         Debug.LogFormat("[AI {0}] {1} plans explored in {2}. Best plan's score: {3}",
             this, planCounter, (Time.realtimeSinceStartup - temp), bestPlan.Evaluate());
         return bestPlan;
@@ -116,9 +116,10 @@ public class EnemyUnit : Unit
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        currentHealth = Mathf.Clamp(currentHealth - (amount - defense), 0, health);
+        amount = Mathf.Max(0, amount - defense);
+        currentHealth = Mathf.Clamp(currentHealth - amount, 0, health);
         healthBar.UpdateHealth(currentHealth, health);
-        NumberDisplayManager.Instance.ShowNumber(-(amount - defense), transform, Color.red);
+        NumberDisplayManager.Instance.ShowNumber(-amount, transform, Color.red);
         if (currentHealth <= 0)
         {
             Die();

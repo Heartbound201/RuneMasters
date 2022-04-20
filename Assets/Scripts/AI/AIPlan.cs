@@ -46,12 +46,10 @@ public class AIPlan
             // add value the closer you get to the enemy
             value += (currentDistance - attackDistance) * 10;
             var tilesInArea = ability.abilityArea.GetTilesInArea(dataBoard, actor.tile, attackLocation);
-            Debug.Log(tilesInArea.Count);
             foreach (var hexTileInArea in tilesInArea)
             {
                 value += ability.Predict(actor, hexTileInArea);
             }
-            Debug.Log("value after tiles in area: " + value);
         }
 
         return value;

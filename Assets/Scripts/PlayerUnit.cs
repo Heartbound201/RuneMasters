@@ -67,9 +67,10 @@ public class PlayerUnit : Unit
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        party.TakeDamage(amount - defense);
-        NumberDisplayManager.Instance.ShowNumber(-(amount - defense), transform, Color.red);
-        Debug.Log(name + " is hit for " + (amount - defense));
+        amount = Mathf.Max(0, amount - defense);
+        party.TakeDamage(amount);
+        NumberDisplayManager.Instance.ShowNumber(-amount, transform, Color.red);
+        Debug.Log(name + " is hit for " + amount);
     }
 
     public override void Heal(int amount)
