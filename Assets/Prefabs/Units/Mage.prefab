@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPassable: 0
-  name: Mage
+  name: Freya
   movement: 2
   movementMax: 2
   hasActed: 0
@@ -62,10 +62,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   meshRenderer: {fileID: 7927514801324650388}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+  positionY: 0.25
   getHitSfx: {fileID: 11400000, guid: 6d3c38ee0e3bdf944af4c36f899c1cbc, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
-  positionY: 0.25
   runePrototypes:
   - {fileID: 11400000, guid: 48ae0869f553b344ab354d1591a6bf58, type: 2}
   - {fileID: 11400000, guid: ebe9d6f96ea41a843b63e091fa4d1ba4, type: 2}
