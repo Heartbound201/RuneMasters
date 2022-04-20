@@ -352,17 +352,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: turn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b92743afb898ec54da2272e2cfa1e237, type: 2}
+  m_sharedMaterial: {fileID: -8697820819090412443, guid: b92743afb898ec54da2272e2cfa1e237, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279505990
+  m_fontColor: {r: 0.2735849, g: 0.079150334, b: 0.079150334, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -554,7 +554,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Show a state hint here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f93608dad0f0e5d499f607851d77abd0, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &492410733
@@ -807,7 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 582367346}
   turnManager: {fileID: 451213438}
-  levelData: {fileID: 11400000, guid: 50cfc4758a5c3374a943cd329f6b1cc1, type: 2}
+  levelData: {fileID: 11400000, guid: f600c3dcb7ce63440b16de1f563ff337, type: 2}
   enemies: []
   party: {fileID: 1604125016}
   turnMenuController: {fileID: 1691647032}
