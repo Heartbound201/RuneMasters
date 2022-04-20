@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Pdor
   description: 
   abilityArea: {fileID: 11400000, guid: 91fb50a71d3729a46bb5dbad49492667, type: 2}
-  abilityRange: {fileID: 11400000, guid: 55e8f32b18dae16479d02e84ff7d79d4, type: 2}
+  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: ed58aff59d42fcc49804fd2e640d5e02, type: 2}
+  - {fileID: 11400000, guid: 4a6963a1635025745951ff43ba392d49, type: 2}

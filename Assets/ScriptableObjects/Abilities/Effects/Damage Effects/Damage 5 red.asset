@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage 5 red
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 0}
+  particleEffectTarget: {fileID: 1727626132299242, guid: 88496c40a0a4d574b8bc4018ab4b07f7, type: 3}
   potency: 5
   strengthScaling: 2
   intelligenceScaling: 0
