@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52851217fd3397f4a86f8a4f03da19e4, type: 3}
-  m_Name: EnemyCirlceAoe
+  m_Name: EnemyCircleAoe
   m_EditorClassIdentifier: 
   name: enemy ability
   description: 
   abilityArea: {fileID: 11400000, guid: 933ebed27954fad4eb20d510567405a9, type: 2}
   abilityRange: {fileID: 11400000, guid: 666d32c19251ca344885105025edf3d5, type: 2}
   abilityEffects:
-  - {fileID: 11400000, guid: 3686b00560fdebd459a3b8e6bb18430d, type: 2}
+  - {fileID: 11400000, guid: 3e95efc000e42df48b3f3156689bd199, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage 12
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 100000, guid: 451d8e74798679043b4d230bc13cb920, type: 3}
+  particleEffectTarget: {fileID: 100002, guid: 303be7807e72eb34a86f33bdbb851e4c, type: 3}
   potency: 12
   strengthScaling: 3
   intelligenceScaling: 0
