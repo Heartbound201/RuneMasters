@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPassable: 0
-  name: Grunt 1
+  name: Grunt
   movement: 4
   movementMax: 4
   hasActed: 0

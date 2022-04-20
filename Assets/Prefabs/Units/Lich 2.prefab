@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPassable: 0
-  name: enemy2
+  name: Revenant
   movement: 0
   movementMax: 0
   hasActed: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   meshRenderer: {fileID: 9053656264698146339}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+  positionY: 0
   getHitSfx: {fileID: 0}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
