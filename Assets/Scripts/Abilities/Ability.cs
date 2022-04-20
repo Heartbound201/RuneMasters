@@ -38,18 +38,18 @@ public class Ability : ScriptableObject
                 }
                 else if (targetTile.Data.content.Count > 0 && targetTile.Data.content[0] is PlayerUnit)
                 {
-                    abilityValue -= 50;
+                    abilityValue -= 100;
                 }
             }
             else
             {
                 if (actor.tile == targetTile)
                 {
-                    abilityValue -= 50;
+                    abilityValue -= 100;
                 }
                 else if (targetTile.Data.content.Count > 0 && targetTile.Data.content[0] is EnemyUnit)
                 {
-                    abilityValue -= 50;
+                    abilityValue -= 100;
                 }
                 else if (targetTile.Data.content.Count > 0 && targetTile.Data.content[0] is PlayerUnit)
                 {

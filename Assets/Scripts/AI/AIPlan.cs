@@ -10,7 +10,7 @@ public class AIPlan
     public HexTile<Tile> attackLocation;
     public HexTile<Tile> moveLocation;
     public Unit nearestEnemy;
-    
+
     public AIPlan(Unit unit)
     {
         this.actor = unit;
@@ -28,25 +28,32 @@ public class AIPlan
 
     public int Evaluate()
     {
-        int value = -999;
-
+        int value = 0;
+        var dataBoard = moveLocation.Data.board;
+        int currentDistance = dataBoard.hexMap.GetTileDistance.Grid(actor.tile.Position, nearestEnemy.tile.Position);
         if (moveLocation != null)
-        {                
-            int currentDistance = moveLocation.Data.board.hexMap.GetTileDistance.Grid(actor.tile.Position, nearestEnemy.tile.Position);
-            int afterMovementDistance = moveLocation.Data.board.hexMap.GetTileDistance.Grid(moveLocation.Position, nearestEnemy.tile.Position);
-            // add value the closer you get to the enemy
-            value += currentDistance - afterMovementDistance;
-            // subtract value if standing on endangered tile 
-            value -= moveLocation.Data.dangerList.Count * 10;
-        }
-        
-        if (ability != null && attackLocation != null && attackLocation.Data.content.Count > 0)
         {
-            foreach (var hexTileInArea in ability.abilityArea.GetTilesInArea(attackLocation.Data.board, actor.tile, attackLocation))
+            int afterMovementDistance = dataBoard.hexMap.GetTileDistance.Grid(moveLocation.Position, nearestEnemy.tile.Position);
+            // add value the closer you get to the enemy
+            value += (currentDistance - afterMovementDistance) * 10;
+            // subtract value if standing on endangered tile 
+            value -= moveLocation.Data.dangerList.Count * 100;
+        }
+
+        if (ability != null && attackLocation != null)
+        {
+            int attackDistance = dataBoard.hexMap.GetTileDistance.Grid(attackLocation.Position, nearestEnemy.tile.Position);
+            // add value the closer you get to the enemy
+            value += (currentDistance - attackDistance) * 10;
+            var tilesInArea = ability.abilityArea.GetTilesInArea(dataBoard, actor.tile, attackLocation);
+            Debug.Log(tilesInArea.Count);
+            foreach (var hexTileInArea in tilesInArea)
             {
                 value += ability.Predict(actor, hexTileInArea);
             }
+            Debug.Log("value after tiles in area: " + value);
         }
+
         return value;
     }
 }

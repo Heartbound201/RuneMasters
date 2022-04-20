@@ -86,6 +86,7 @@ public class EnemyUnit : Unit
         PlaceOnTile(start);
         
         var bestPlan = aiPlans.OrderBy(plan => plan.Evaluate()).Last();
+        Debug.Log(bestPlan);
         Debug.LogFormat("[AI {0}] {1} plans explored in {2}. Best plan's score: {3}",
             this, planCounter, (Time.realtimeSinceStartup - temp), bestPlan.Evaluate());
         return bestPlan;

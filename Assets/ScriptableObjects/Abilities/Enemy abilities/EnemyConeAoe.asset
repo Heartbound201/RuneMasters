@@ -15,6 +15,6 @@ MonoBehaviour:
   name: enemy ability
   description: 
   abilityArea: {fileID: 11400000, guid: f802558204789174591885a5b29b1f9d, type: 2}
-  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
+  abilityRange: {fileID: 11400000, guid: 55e8f32b18dae16479d02e84ff7d79d4, type: 2}
   abilityEffects:
   - {fileID: 11400000, guid: 88b9b8a863dea234bb03175c2f28e574, type: 2}
