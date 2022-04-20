@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52851217fd3397f4a86f8a4f03da19e4, type: 3}
+  m_Name: GruntLineAttack
+  m_EditorClassIdentifier: 
+  name: enemy ability
+  description: 
+  abilityArea: {fileID: 11400000, guid: 06a9cf3b6af79bc43b976e8fd518a451, type: 2}
+  abilityRange: {fileID: 11400000, guid: 73c00307d83d2774f90eb2ee5546fff7, type: 2}
+  abilityEffects:
+  - {fileID: 11400000, guid: 7c01cbac3c369ef44aa2d3bd2a1a968a, type: 2}
