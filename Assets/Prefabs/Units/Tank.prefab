@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPassable: 0
-  name: Tank
+  name: Baldr
   movement: 1
   movementMax: 1
   hasActed: 0
@@ -62,10 +62,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   meshRenderer: {fileID: 2298714376675357832}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+  positionY: 0.25
   getHitSfx: {fileID: 11400000, guid: faadd8d8b8f656a468b265cad24c07ef, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
-  positionY: 0.25
   runePrototypes:
   - {fileID: 11400000, guid: 54ea6615bf16f1e4386e83472bdffc6d, type: 2}
   - {fileID: 11400000, guid: aef311bd420c65d4ebe33237cbd1a05b, type: 2}

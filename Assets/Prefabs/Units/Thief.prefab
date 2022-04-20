@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPassable: 0
-  name: Thief
+  name: Loki
   movement: 3
   movementMax: 3
   hasActed: 0
@@ -62,10 +62,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   meshRenderer: {fileID: 8854171523524948572}
   originalColor: {r: 0, g: 0, b: 0, a: 0}
+  positionY: 0.25
   getHitSfx: {fileID: 11400000, guid: 5c6df4da8e4a3ba4281f2d074555268e, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
-  positionY: 0.25
   runePrototypes:
   - {fileID: 11400000, guid: 5c91fcf917480f744bfe0db1b0c230a1, type: 2}
   - {fileID: 11400000, guid: a88bd834178fa1348bfb4050e45c5b54, type: 2}
