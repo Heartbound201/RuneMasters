@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage 3 green
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 0}
+  particleEffectTarget: {fileID: 1845240806346120, guid: dddb03c82d8595942a7f6d95e3444a37, type: 3}
   potency: 3
   strengthScaling: 2
   intelligenceScaling: 0

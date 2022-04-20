@@ -61,13 +61,14 @@ MonoBehaviour:
   dexterityStart: 0
   animator: {fileID: 0}
   meshRenderer: {fileID: 2298714376675357832}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   getHitSfx: {fileID: 11400000, guid: faadd8d8b8f656a468b265cad24c07ef, type: 2}
   deathSfx: {fileID: 0}
   attackSfx: {fileID: 0}
   runePrototypes:
-  - {fileID: 11400000, guid: f078877b9704e5942b7aef84a038c3ce, type: 2}
-  - {fileID: 11400000, guid: aef311bd420c65d4ebe33237cbd1a05b, type: 2}
   - {fileID: 11400000, guid: 54ea6615bf16f1e4386e83472bdffc6d, type: 2}
+  - {fileID: 11400000, guid: aef311bd420c65d4ebe33237cbd1a05b, type: 2}
+  - {fileID: 11400000, guid: f078877b9704e5942b7aef84a038c3ce, type: 2}
   - {fileID: 11400000, guid: a312a4763a4d92e41824a5f5c139827a, type: 2}
   - {fileID: 11400000, guid: ed9fbdfa6259e2b4ea0d8b9464452d4d, type: 2}
   party: {fileID: 0}

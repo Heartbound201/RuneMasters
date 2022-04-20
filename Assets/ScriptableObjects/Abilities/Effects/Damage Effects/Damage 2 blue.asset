@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage 2 blue
   m_EditorClassIdentifier: 
   particleEffectSelf: {fileID: 0}
-  particleEffectTarget: {fileID: 100000, guid: 63bb3f317ae665b4998e11e30a9674ff, type: 3}
+  particleEffectTarget: {fileID: 100008, guid: 34b11031a67093a4c84c851aabae58bf, type: 3}
   potency: 2
   strengthScaling: 1
   intelligenceScaling: 0
