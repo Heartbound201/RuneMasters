@@ -233,6 +233,8 @@ public class Unit : BoardObject, IDamageable
         hasActed = true;
 
         if (animator) animator.Play("Idle");
+
+        yield return new WaitForSeconds(1f);
     }
 
     protected virtual void Die()
