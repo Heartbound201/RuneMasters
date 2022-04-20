@@ -52,6 +52,7 @@ public class AIPlanExecutionState : State
 
     private IEnumerator ExecuteAIPlan(AIPlan aiPlan)
     {
+        if (aiPlan.actor == null || !owner.enemies.Contains((EnemyUnit) aiPlan.actor)) yield break;
         yield return StartCoroutine(aiPlan.actor.Act(aiPlan.ability, aiPlan.attackLocation));
         ClearAIPlanDangerFromTiles(aiPlan, aiPlan.attackLocation);
     }
@@ -68,7 +69,6 @@ public class AIPlanExecutionState : State
 
     private void ClearAIPlanDangerFromTiles(AIPlan aiPlan, HexTile<Tile> aiPlanAttackLocation)
     {
-        owner.enemyPlans.Remove(aiPlan);
         if (aiPlan.ability == null) return;
         foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(Board, aiPlan.actor.tile,
             aiPlanAttackLocation))

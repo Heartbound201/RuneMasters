@@ -58,7 +58,6 @@
         }
         private void ClearAIPlanDangerFromTiles(AIPlan aiPlan, HexTile<Tile> aiPlanAttackLocation)
         {
-            enemyPlans.Remove(aiPlan);
             if (aiPlan.ability == null) return;
             foreach (HexTile<Tile> tile in aiPlan.ability.abilityArea.GetTilesInArea(board, aiPlan.actor.tile, aiPlanAttackLocation))
             {
